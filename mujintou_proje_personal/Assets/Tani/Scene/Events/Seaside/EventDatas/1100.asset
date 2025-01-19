@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050302beb80aafa4a81bafe0a4641693, type: 3}
+  m_Name: 1100
+  m_EditorClassIdentifier: 
+  event_title:
+    m_TableReference:
+      m_TableCollectionName: GUID:5a4addbac0767ce42b2ab2b456cdbb64
+    m_TableEntryReference:
+      m_KeyId: 15276864941768704
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  scene_id: 1100
+  event_view_sprite: {fileID: 21300000, guid: b46f861625ea90b4ca9fc5e042c72084, type: 3}
+  probability: 1
+  main_text:
+    m_TableReference:
+      m_TableCollectionName: GUID:5a4addbac0767ce42b2ab2b456cdbb64
+    m_TableEntryReference:
+      m_KeyId: 15276955631009792
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  callBackType: 0
+  buttons_prefab: {fileID: 7029110843412465754, guid: 1066121386c2d0942bc581fcf8485926, type: 3}
+  results:
+  - choise_text:
+      m_TableReference:
+        m_TableCollectionName: GUID:5a4addbac0767ce42b2ab2b456cdbb64
+      m_TableEntryReference:
+        m_KeyId: 15278589522132992
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    Gain_Items:
+    - id: 7
+      probability: 1
+      range_min: 2
+      range_max: 3
+    result_text:
+      m_TableReference:
+        m_TableCollectionName: GUID:5a4addbac0767ce42b2ab2b456cdbb64
+      m_TableEntryReference:
+        m_KeyId: 15278893655310336
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    health_change_min: 0
+    health_change_max: 0
+    hunger_change_min: 0
+    hunger_change_max: 0
+    thirst_change_min: 0
+    thirst_change_max: 0
+    required_action_value: 3
+  - choise_text:
+      m_TableReference:
+        m_TableCollectionName: GUID:5a4addbac0767ce42b2ab2b456cdbb64
+      m_TableEntryReference:
+        m_KeyId: 15279188112228352
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    Gain_Items: []
+    result_text:
+      m_TableReference:
+        m_TableCollectionName: GUID:5a4addbac0767ce42b2ab2b456cdbb64
+      m_TableEntryReference:
+        m_KeyId: 15279311898722304
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    health_change_min: 0
+    health_change_max: 0
+    hunger_change_min: 0
+    hunger_change_max: 0
+    thirst_change_min: 0
+    thirst_change_max: 0
+    required_action_value: 0
+  - choise_text:
+      m_TableReference:
+        m_TableCollectionName: GUID:5a4addbac0767ce42b2ab2b456cdbb64
+      m_TableEntryReference:
+        m_KeyId: 15277408594870272
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    Gain_Items:
+    - id: 12
+      probability: 1
+      range_min: 1
+      range_max: 2
+    - id: 32
+      probability: 0.5
+      range_min: 1
+      range_max: 2
+    result_text:
+      m_TableReference:
+        m_TableCollectionName: GUID:5a4addbac0767ce42b2ab2b456cdbb64
+      m_TableEntryReference:
+        m_KeyId: 15278478385659904
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    health_change_min: 0
+    health_change_max: 0
+    hunger_change_min: 0
+    hunger_change_max: 0
+    thirst_change_min: 0
+    thirst_change_max: 0
+    required_action_value: 2
+  references:
+    version: 2
+    RefIds: []

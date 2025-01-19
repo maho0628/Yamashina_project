@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c15296713da1f04e9c180fc9a7cb3c8, type: 3}
+  m_Name: item10_mat_salt
+  m_EditorClassIdentifier: 
+  enCategory: 0
+  itemID: 10
+  stackCount: 20
+  itemName: "\u5CA9\u5869"
+  itemInfo: "\u5CF6\u306E\u8CB4\u91CD\u306A\u8ABF\u5473\u6599\u3002 \u3053\u308C\u304C\u306A\u3051\u308C\u3070\u6599\u7406\u306F\u59CB\u307E\u3089\u306A\u3044\u3002"
+  isCraftingItem: 0
+  isUseItem: 1
+  firstID: 0
+  secondID: 0
+  ThirdID: 0
+  fItemCount: 0
+  sItemCount: 0
+  tItemCount: 0
+  addHealHP: 0
+  addHealWater: 0
+  addHealHungry: 0

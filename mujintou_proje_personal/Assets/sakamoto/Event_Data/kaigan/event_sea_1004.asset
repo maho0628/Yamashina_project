@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 028cb057826417445a25603ba80e8406, type: 3}
+  m_Name: event_sea_1004
+  m_EditorClassIdentifier: 
+  Event_ID: 1004
+  Event_BG: {fileID: 21300000, guid: e1afab06a7e4059438e023dc15d0880b, type: 3}
+  Event_Ilast: {fileID: 21300000, guid: 695344d59f215e3409b25fbfc8ec60bc, type: 3}
+  Event_Title: "\u7259\u3092\u5265\u304F\u592A\u967D"
+  Main_Text: "\u4F53\u304C\u713C\u3051\u308B\u3088\u3046\u306B\u71B1\u3044\u2026\uFF01\n\u6804\u990A\u5931\u8ABF\u2026\uFF1F\u65E5\u5DEE\u3057\u306E\u305B\u3044\u3060\u308D\u3046\u304B\u2026\uFF1F\n\u4ECA\u65E5\u306F\u63A2\u7D22\u3092\u5207\u308A\u4E0A\u3052\u3066\u5E30\u3063\u305F\u65B9\u304C\u3044\u3044\u3060\u308D\u3046\u304B\u2026\uFF1F"
+  Sentakusi1: "\u63A2\u7D22\u3092\u7D9A\u3051\u308B"
+  Sentakusi2: "\u63A2\u7D22\u3092\u8F9E\u3081\u308B"
+  Cancel: "\u7121\u8996\u3059\u308B"
+  Sentakusi1_Result1: "\u82E6\u3057\u3044\u2026\uFF01\u3060\u304C\u4ECA\u65E5\u3068\u3044\u3046\u65E5\u3092\u7121\u99C4\u306B\u3059\u308B\u308F\u3051\u306B\u306F\u3044\u304B\u306A\u3044\u3093\u3060\u2026\u3002"
+  Sentakusi1_Next_Ivent_ID: 1007
+  Sentakusi2_Result1: "\u5927\u4E8B\u3092\u53D6\u3063\u3066\u62E0\u70B9\u306B\u623B\u308B\u3053\u3068\u306B\u3057\u305F\u2026\u3002"
+  Sentakusi2_Next_Ivent_ID: 900
+  Cancel_Result: '-'
+  Cancel_Next_Ivent_ID: 0

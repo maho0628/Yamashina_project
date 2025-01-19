@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e1529b6c86cc7040bd697ca2aa729c7, type: 3}
+  m_Name: SheetData
+  m_EditorClassIdentifier: 
+  sheetDataRecord:
+  - Ja: {fileID: 4900000, guid: d8509ced0fe349f4780721d7c42f7ae9, type: 3}
+    En: {fileID: 4900000, guid: bb29259c4fbe0bf49862313d5101848f, type: 3}
+  spreadsheetId: 150n0k79I9V7WSz6WbAENfVaVXHI7ErAcpiHdIh-H8OU
+  apiKey: AIzaSyDgnxaj1AOSYROgHUQv5xmpVo_SnfAiepE
+  sheetName: TextAsset

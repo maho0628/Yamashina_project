@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 028cb057826417445a25603ba80e8406, type: 3}
+  m_Name: event5007
+  m_EditorClassIdentifier: 
+  Event_ID: 5007
+  Event_BG: {fileID: 0}
+  Event_Ilast: {fileID: 0}
+  Event_Title: "\u4E0D\u601D\u8B70\u306A\u6D1E\u7A9F\uFF08\u4E2D\u5C64\uFF09"
+  Main_Text: "\u307E\u305F\u5C11\u3057\u9032\u3080\u3068\u6B21\u306E\u5206\u304B\u308C\u9053\u304C\u73FE\u308C\u305F\u3002\n\u3053\u306E\u6D1E\u7A9F\u63A2\u7D22\u306B\u610F\u5473\u306F\u3042\u308B\u306E\u3060\u308D\u3046\u304B\u2026\uFF1F\n\u2026\u3068\u306B\u304B\u304F\u9032\u3080\u5148\u3092\u6C7A\u3081\u3088\u3046\u3002"
+  Sentakusi1: "\u5DE6\u3078\u9032\u3080"
+  Sentakusi2: "\u53F3\u3078\u9032\u3080"
+  Cancel: "\u3072\u3068\u3064\u524D\u306B\u623B\u308B"
+  Sentakusi1_Result1: "\u884C\u304D\u6B62\u307E\u308A\u3060\u3002\u3060\u304C\u58C1\u9762\u306B\u4F55\u304B\u767D\u3044\u3082\u306E\u304C
+    \u5149\u3063\u3066\u898B\u3048\u305F\u2026\uFF01\u3088\u304F\u898B\u308B\u3068\u305D\u308C\u306F
+    \u5869\u306E\u7D50\u6676\u306E\u3088\u3046\u3060\u3063\u305F\u3002"
+  Sentakusi1_Zyouken: 0
+  Sentakusi1_Zyouken_num: 0
+  Sentakusi1_Reward1: 11
+  Sentakusi1_Reward1_num: 6
+  Sentakusi1_Reward2: 0
+  Sentakusi1_Reward2_num: 0
+  Sentakusi1_Reward3: 0
+  Sentakusi1_Reward3_num: 0
+  Sentakusi1_health: 0
+  Sentakusi1_hunger: 0
+  Sentakusi1_warter: 0
+  Sentakusi1_day: 0
+  Sentakusi1_Next_Ivent_ID: 5013
+  Sentakusi1_Next_Ivent_ID_2: 0
+  Sentakusi2_Result1: "\u3075\u3068\u4E0A\u3092\u898B\u4E0A\u3052\u308B\u3068\u3001\u5929\u4E95\u306B\u306F\u30B3\u30A6\u30E2\u30EA\u306E
+    \u7FA4\u308C\u304C\u5C45\u305F\u3002\u9A5A\u3044\u3066\u58F0\u3092\u51FA\u3059\u3068\u4E00\u6589\u306B
+    \u8972\u3044\u639B\u304B\u3063\u3066\u304D\u305F\uFF01\u2026\u3068\u601D\u3063\u305F\u304C\u3001\u8EAB\u4F53\u306B
+    \u7570\u5E38\u306F\u306A\u3044\u3002\u8DB3\u5143\u306B\u306F\u30D5\u30EB\u30FC\u30C4\u304C\u843D\u3061\u3066\u3044\u308B\u3002
+    \u2026\u306A\u3093\u3060\u3063\u305F\u3093\u3060\uFF1F "
+  Sentakusi2_Zyouken: 0
+  Sentakusi2_Zyouken_num: 0
+  Sentakusi2_Reward1: 10
+  Sentakusi2_Reward1_num: 4
+  Sentakusi2_Reward2: 15
+  Sentakusi2_Reward2_num: 4
+  Sentakusi2_Reward3: 0
+  Sentakusi2_Reward3_num: 0
+  Sentakusi2_health: 0
+  Sentakusi2_hunger: 0
+  Sentakusi2_warter: 0
+  Sentakusi2_day: 0
+  Sentakusi2_Next_Ivent_ID: 5013
+  Sentakusi2_Next_Ivent_ID_2: 0
+  Cancel_Result: "\u6765\u305F\u9053\u3092\u614E\u91CD\u306B\u5F15\u304D\u8FD4\u3057\u305F\u2026\u3002"
+  Cancel_Next_Ivent_ID: 5003

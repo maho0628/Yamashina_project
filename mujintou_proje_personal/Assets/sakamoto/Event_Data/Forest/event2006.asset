@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 028cb057826417445a25603ba80e8406, type: 3}
+  m_Name: event2006
+  m_EditorClassIdentifier: 
+  Event_ID: 2006
+  Event_BG: {fileID: 0}
+  Event_Ilast: {fileID: 0}
+  Event_Title: "\u5927\u6728\u8ABF\u67FB"
+  Main_Text: "\u7ACB\u6D3E\u306A\u6728\u3060\u3002\n\u4F55\u304B\u5909\u308F\u3063\u305F\u7269\u304C\u3042\u308B\u304B\u3082\u3057\u308C\u306A\u3044\u3002\u8ABF\u3079\u3066\u307F\u3088\u3046\u3002\n"
+  Sentakusi1: "\u5E79\u56DE\u308A\u3092\u8ABF\u3079\u308B"
+  Sentakusi2: "\u767B\u3063\u3066\u8ABF\u3079\u308B"
+  Cancel: "\u7121\u8996\u3059\u308B"
+  Sentakusi1_Result1: "\u6728\u306E\u5E79\u306B\u306F\u30AD\u30CE\u30B3\u304C\u751F\u3048\u3066\u3044\u305F\u3002\n\u30AD\u30CE\u30B3\u30922\u3064\u624B\u306B\u5165\u308C\u305F\uFF01"
+  Sentakusi1_Zyouken: 0
+  Sentakusi1_Zyouken_num: 0
+  Sentakusi1_Reward1: 14
+  Sentakusi1_Reward1_num: 2
+  Sentakusi1_Reward2: 0
+  Sentakusi1_Reward2_num: 0
+  Sentakusi1_Reward3: 0
+  Sentakusi1_Reward3_num: 0
+  Sentakusi1_health: 0
+  Sentakusi1_hunger: -2
+  Sentakusi1_warter: -2
+  Sentakusi1_Next_Ivent_ID: 2007
+  Sentakusi2_Result1: "\u767B\u3063\u3066\u307F\u308B\u3068\u5927\u6728\u3092\u30D7\u30E9\u30F3\u30BF\u30FC\u4EE3\u308F\u308A\u306B\u3057\u3066\n\u3055\u3089\u306B\u5225\u306E\u690D\u7269\u304C\u80B2\u3063\u3066\u3044\u305F\u3002\n\u85AC\u52B9\u690D\u7269\u3092\uFF11\u3064\u624B\u306B\u5165\u308C\u305F\uFF01"
+  Sentakusi2_Zyouken: 0
+  Sentakusi2_Zyouken_num: 0
+  Sentakusi2_Reward1: 14
+  Sentakusi2_Reward1_num: 1
+  Sentakusi2_Reward2: 0
+  Sentakusi2_Reward2_num: 0
+  Sentakusi2_Reward3: 0
+  Sentakusi2_Reward3_num: 0
+  Sentakusi2_health: 0
+  Sentakusi2_hunger: -8
+  Sentakusi2_warter: -8
+  Sentakusi2_Next_Ivent_ID: 2008
+  Cancel_Result: "\u305D\u306E\u5834\u3092\u7ACB\u3061\u53BB\u3063\u305F\u3002"
+  Cancel_Next_Ivent_ID: 2009

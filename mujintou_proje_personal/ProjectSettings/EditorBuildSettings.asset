@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Yamashina/Scene/Title_scene.unity
+    guid: e28e68875da7f3549ac3039e541b329f
+  - enabled: 1
+    path: Assets/Tani/Scene/BaseLocation/BaseLocationDaytime.unity
+    guid: a8f4ed0bd92a75f4d85b81a1a85cdd62
+  - enabled: 1
+    path: Assets/Tani/Scene/Events/Seaside/SeasideEvent.unity
+    guid: 75ebd501ae6a96945bf90518d3518279
+  - enabled: 1
+    path: Assets/z_shibata/Csenes/EventScene/ForestEvent_shibata.unity
+    guid: c818cad090263854bb53bbcaa653dda3
+  - enabled: 1
+    path: Assets/z_shibata/Csenes/EventScene/MountainEvent_shibata.unity
+    guid: eb70f84d26a78b641b1db00069a6f392
+  - enabled: 1
+    path: Assets/z_shibata/Csenes/EventScene/RiversideEvent_shibata.unity
+    guid: 3098d469327ea0740974ff84bb97fb4b
+  - enabled: 1
+    path: Assets/Tani/Scene/OPED/TrueEndingScene.unity
+    guid: d737adbd8da523c44816449b175716df
+  - enabled: 1
+    path: Assets/sakamoto/Scenes/Doukutu_fire.unity
+    guid: 58da0c7574a7e8d4ca21d0c362a9c6b4
+  - enabled: 1
+    path: Assets/Tani/Scene/Events/Ending/True_End.unity
+    guid: 455e1266653da99489b869bd3be74d6f
+  - enabled: 1
+    path: Assets/Tani/Scene/Events/Ending/Bad_End.unity
+    guid: a19dcb5e71ee8b041a04119e7cec1e15
+  - enabled: 1
+    path: Assets/z_shibata/Csenes/EventScene/SeasideEvent_shibata.unity
+    guid: 13e28b91c3098ab4e8ccc4f5a76d0e0d
+  - enabled: 1
+    path: Assets/z_shibata/Csenes/EventScene/volcanoEvent.unity
+    guid: 043b9fb335fcca6489d4361e9c04673d
+  - enabled: 1
+    path: Assets/Tani/Scene/OPED/OpeningScene.unity
+    guid: 2ac8ef321ba8aef4d96c670d4e3a7c21
+  - enabled: 1
+    path: Assets/z_shibata/Csenes/EventScene/caveEvent.unity
+    guid: e51dba42f10d47c4e9cd834a4de6eb92
+  - enabled: 1
+    path: Assets/Tani/Scene/OPED/BadEndingScene.unity
+    guid: 135769cb4d49ae841af04a8c08663d55
+  - enabled: 1
+    path: Assets/z_shibata/Csenes/tutorialScene/tutorialScene_Event.unity
+    guid: 3ed77d0199d9d094ab94d1cdfcef6c26
+  - enabled: 1
+    path: Assets/Tani/Scene/BaseLocation/BL_Tu_1.unity
+    guid: 5b8994b8fdf91654fb43901015690dd7
+  - enabled: 1
+    path: Assets/Tani/Scene/BaseLocation/BL_Tu_3.unity
+    guid: 5a3b2081acb92fb4e8e11968b2c89645
+  - enabled: 1
+    path: Assets/Tani/Scene/BaseLocation/BL_Tu_2.unity
+    guid: d46a0bfbb7d4d3f4db3ecba08b66d0a9
+  - enabled: 1
+    path: Assets/Tani/Scene/OPED/Tutorial.unity
+    guid: fa4b51cfd219bd34ea51291bbcf95631
+  - enabled: 1
+    path: Assets/sakamoto/Scenes/Doukutu_light.unity
+    guid: 81a3365e6d9d7284f80a9db916b31845
+  - enabled: 1
+    path: Assets/z_shibata/Csenes/ED/TrueEndingScene_CaseOfRaft.unity
+    guid: a85a07cc34e8a7049a66d335a92bff5e
+  - enabled: 1
+    path: Assets/Yamashina/Scene/ResultScene/ResultScene.unity
+    guid: 96473aba302859941a7a589f7ba9d027
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: a2ff759c1875da4469257117e6ab24de, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: 10e215c227d7fd44e8faa627742bd9ea, type: 2}

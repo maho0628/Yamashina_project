@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c15296713da1f04e9c180fc9a7cb3c8, type: 3}
+  m_Name: item35_craft_bakedBigFish
+  m_EditorClassIdentifier: 
+  enCategory: 2
+  itemID: 35
+  stackCount: 5
+  itemName: "\u5927\u304D\u306A\u713C\u304D\u9B5A"
+  itemInfo: 
+  isCraftingItem: 1
+  isUseItem: 1
+  firstID: 22
+  secondID: 0
+  ThirdID: 0
+  fItemCount: 1
+  sItemCount: 0
+  tItemCount: 0

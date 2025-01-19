@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 028cb057826417445a25603ba80e8406, type: 3}
+  m_Name: event2100
+  m_EditorClassIdentifier: 
+  Event_ID: 2100
+  Event_BG: {fileID: 0}
+  Event_Ilast: {fileID: 0}
+  Event_Title: "\u68EE\u306E\u6075\u307F"
+  Main_Text: "\u68EE\u3078\u3084\u3063\u3066\u304D\u305F\u3002\n\u307E\u305A\u306F\u3069\u3093\u306A\u3082\u306E\u3092\u63A2\u305D\u3046\u304B\u2026\uFF1F"
+  Sentakusi1: "\u98DF\u3079\u7269\u3092\u63A2\u3059"
+  Sentakusi2: "\u7D20\u6750\u3092\u63A2\u3059"
+  Cancel: "\u7121\u8996\u3059\u308B"
+  Sentakusi1_Result1: "\u5C0F\u3076\u308A\u306A\u30A4\u30E2\u3092\uFF12\u3064\u624B\u306B\u5165\u308C\u305F\uFF01"
+  Sentakusi1_Zyouken: 0
+  Sentakusi1_Zyouken_num: 0
+  Sentakusi1_Reward1: 12
+  Sentakusi1_Reward1_num: 2
+  Sentakusi1_Reward2: 0
+  Sentakusi1_Reward2_num: 0
+  Sentakusi1_Reward3: 0
+  Sentakusi1_Reward3_num: 0
+  Sentakusi1_health: 0
+  Sentakusi1_hunger: 0
+  Sentakusi1_warter: 0
+  Sentakusi1_Next_Ivent_ID: 2001
+  Sentakusi2_Result1: "\u5C0F\u3076\u308A\u306A\u30A4\u30E2\u3092\uFF11\u3064\u3068\u6728\u6750\u3092\uFF11\u3064\u624B\u306B\u5165\u308C\u305F\uFF01"
+  Sentakusi2_Zyouken: 0
+  Sentakusi2_Zyouken_num: 0
+  Sentakusi2_Reward1: 12
+  Sentakusi2_Reward1_num: 1
+  Sentakusi2_Reward2: 3
+  Sentakusi2_Reward2_num: 1
+  Sentakusi2_Reward3: 0
+  Sentakusi2_Reward3_num: 0
+  Sentakusi2_health: 0
+  Sentakusi2_hunger: 0
+  Sentakusi2_warter: 0
+  Sentakusi2_Next_Ivent_ID: 2002
+  Cancel_Result: "\u305D\u306E\u5834\u3092\u7ACB\u3061\u53BB\u3063\u305F\u3002"
+  Cancel_Next_Ivent_ID: 2003

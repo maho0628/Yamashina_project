@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Local_Ja_toEn_Asset Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Local_Ja_toEn_Asset
+  m_TableCollectionNameGuidString: 01c7e5f68a4df1a4a8a2d83fda7c37d8
+  m_Entries:
+  - m_Id: 15303951295627264
+    m_Key: New Entry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17557075964116992
+    m_Key: tutorialScene_Event/MainEventCanvas/EventPanel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18847015364640768
+    m_Key: TestScene_kakou/Main Camera/Canvas
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items:
+    - rid: 2800749228846481412
+    - rid: 1355992668217540615
+  m_KeyGenerator:
+    rid: 1526309444992893001
+  references:
+    version: 2
+    RefIds:
+    - rid: 1355992668217540615
+      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries:
+        - m_KeyId: 18847015364640768
+          m_TableCodes:
+          - en
+          - ja
+        m_TypeString: EventDatas, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+    - rid: 1526309444992893001
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1721188664966
+    - rid: 2800749228846481412
+      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries:
+        - m_KeyId: 15303951295627264
+          m_TableCodes:
+          - en
+        m_TypeString: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null

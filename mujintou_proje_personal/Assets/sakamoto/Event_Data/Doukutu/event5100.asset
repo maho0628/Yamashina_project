@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 028cb057826417445a25603ba80e8406, type: 3}
+  m_Name: event5100
+  m_EditorClassIdentifier: 
+  Event_ID: 5106
+  Event_BG: {fileID: 0}
+  Event_Ilast: {fileID: 0}
+  Event_Title: "\u4E2D\u5C64\u306E\u5C90\u8DEF"
+  Main_Text: "\u5148\u307B\u3069\u306E\u5206\u5C90\u70B9\u307E\u3067\u623B\u3063\u3066\u304D\u305F\u3002\n\u3069\u3046\u3057\u3088\u3046\uFF1F"
+  Sentakusi1: "\u5DE6\u3078\u9032\u3080"
+  Sentakusi2: "\u53F3\u3078\u9032\u3080"
+  Cancel: "\u3072\u3068\u3064\u524D\u306B\u623B\u308B"
+  Sentakusi1_Result1: "\u58C1\u306B\u30AD\u30CE\u30B3\u304C\u751F\u3048\u3066\u3044\u308B\u2026\uFF01
+    \u98DF\u3079\u3089\u308C\u308B\u304B\u306F\u308F\u304B\u3089\u306A\u3044\u304C\u3001
+    \u4E00\u5FDC\u6301\u3063\u3066\u5E30\u308D\u3046\u3002 "
+  Sentakusi1_Zyouken: 0
+  Sentakusi1_Zyouken_num: 0
+  Sentakusi1_Reward1: 0
+  Sentakusi1_Reward1_num: 0
+  Sentakusi1_Reward2: 0
+  Sentakusi1_Reward2_num: 0
+  Sentakusi1_Reward3: 0
+  Sentakusi1_Reward3_num: 0
+  Sentakusi1_health: 0
+  Sentakusi1_hunger: 0
+  Sentakusi1_warter: 0
+  Sentakusi1_day: 0
+  Sentakusi1_Next_Ivent_ID: 5012
+  Sentakusi1_Next_Ivent_ID_2: 0
+  Sentakusi2_Result1: "\u82D4\u304C\u751F\u3048\u3066\u3044\u308B\u2026\u3002\u6642\u6298\u898B\u304B\u3051\u308B\u5149\u308B\u9271\u77F3\u3092
+    \u5229\u7528\u3057\u3066\u80B2\u3063\u3066\u3044\u308B\u306E\u3060\u308D\u3046\u304B\u2026\uFF1F
+    \u624B\u3067\u89E6\u308C\u3066\u307F\u308B\u3068\u6C37\u306E\u3088\u3046\u306B\u51B7\u305F\u304B\u3063\u305F\u3002"
+  Sentakusi2_Zyouken: 0
+  Sentakusi2_Zyouken_num: 0
+  Sentakusi2_Reward1: 0
+  Sentakusi2_Reward1_num: 0
+  Sentakusi2_Reward2: 0
+  Sentakusi2_Reward2_num: 0
+  Sentakusi2_Reward3: 0
+  Sentakusi2_Reward3_num: 0
+  Sentakusi2_health: 0
+  Sentakusi2_hunger: 0
+  Sentakusi2_warter: 0
+  Sentakusi2_day: 0
+  Sentakusi2_Next_Ivent_ID: 5013
+  Sentakusi2_Next_Ivent_ID_2: 0
+  Cancel_Result: "\u6765\u305F\u9053\u3092\u614E\u91CD\u306B\u5F15\u304D\u8FD4\u3057\u305F\u2026\u3002"
+  Cancel_Next_Ivent_ID: 5002

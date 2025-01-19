@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c15296713da1f04e9c180fc9a7cb3c8, type: 3}
+  m_Name: item57_craft_DIYnet
+  m_EditorClassIdentifier: 
+  enCategory: 1
+  itemID: 57
+  stackCount: 3
+  itemName: "\u624B\u4F5C\u308A\u7DB2"
+  itemInfo: 
+  isCraftingItem: 1
+  isUseItem: 0
+  firstID: 6
+  secondID: 12
+  ThirdID: 19
+  fItemCount: 1
+  sItemCount: 2
+  tItemCount: 1

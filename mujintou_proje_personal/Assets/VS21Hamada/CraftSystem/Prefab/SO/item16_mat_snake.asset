@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c15296713da1f04e9c180fc9a7cb3c8, type: 3}
+  m_Name: item16_mat_snake
+  m_EditorClassIdentifier: 
+  enCategory: 0
+  itemID: 16
+  stackCount: 20
+  itemName: "\u6BD2\u30D8\u30D3"
+  itemInfo: "\u6BD2\u3092\u6301\u3064\u86C7\u3002 \u713C\u3044\u3066\u98DF\u3048\u3070\u6BD2\u306A\u3093\u3066
+    \u5927\u4E08\u592B\u3060\u308D\u3002"
+  isCraftingItem: 0
+  isUseItem: 1
+  firstID: 0
+  secondID: 0
+  ThirdID: 0
+  fItemCount: 0
+  sItemCount: 0
+  tItemCount: 0
+  addHealHP: 0
+  addHealWater: 0
+  addHealHungry: 0

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6559e12861f41d44490afc4f191676db, type: 3}
+  m_Name: Bad_Ending
+  m_EditorClassIdentifier: 
+  BG: {fileID: 21300000, guid: e1afab06a7e4059438e023dc15d0880b, type: 3}
+  FarstLine: "\u30D0\u30C3\u30C9\u30A8\u30F3\u30C9\u3067\u3059"
+  ScondLine: b
+  ThirdLine: NULL
+  FourthLine: d
+  FifthLine: e
+  SixthLine: f
+  SeventhLine: g
+  EightLine: h
+  NinethLine: i
+  TenthLine: j

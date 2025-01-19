@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c15296713da1f04e9c180fc9a7cb3c8, type: 3}
+  m_Name: item8_mat_shell
+  m_EditorClassIdentifier: 
+  enCategory: 0
+  itemID: 8
+  stackCount: 20
+  itemName: "\u5C0F\u3055\u306A\u5DFB\u8C9D"
+  itemInfo: "\u3042\u307E\u308A\u7F8E\u5473\u3057\u304F\u306A\u3055\u305D\u3046\u306A\u8C9D
+    \u4E2D\u8EAB\u3082\u5C11\u306A\u304F \u898B\u305F\u76EE\u304C\u60AA\u3044"
+  isCraftingItem: 0
+  isUseItem: 1
+  firstID: 0
+  secondID: 0
+  ThirdID: 0
+  fItemCount: 0
+  sItemCount: 0
+  tItemCount: 0
+  addHealHP: 0
+  addHealWater: 0
+  addHealHungry: 0

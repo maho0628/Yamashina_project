@@ -1,0 +1,3745 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Local_Ja_toEn_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 5a4addbac0767ce42b2ab2b456cdbb64, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 2800749200731799552
+  m_TableData:
+  - m_Id: 355452764160
+    m_Localized: From the beginning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31560059502592
+    m_Localized: continue from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31771922186240
+    m_Localized: Option
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31895087923200
+    m_Localized: Credit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31956417036288
+    m_Localized: End
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33487103115264
+    m_Localized: Is the game over?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33694352064512
+    m_Localized: yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33791383093248
+    m_Localized: no
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41230954315776
+    m_Localized: Japanese
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42033517608960
+    m_Localized: "\u82F1\u8A9E"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42873645088768
+    m_Localized: <Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43109893455872
+    m_Localized: <Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44012247629824
+    m_Localized: yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44146750570496
+    m_Localized: no
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44194741796864
+    m_Localized: 'If you have ongoing data,
+
+      It will be initialized.
+
+      Do
+      you want to start?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3666780230959104
+    m_Localized: return
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3673819594276864
+    m_Localized: SoundVolume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3673944097996800
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5584407002005504
+    m_Localized: flashlight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5584447779028992
+    m_Localized: knife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5584492502892544
+    m_Localized: Emergency food
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5584518826344448
+    m_Localized: favorite book
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5598592989577216
+    m_Localized: 'director
+
+      J. Shibata
+
+
+      lead programmer
+
+      M.Yamashina
+
+
+      art
+      director
+
+      K.Koyama
+
+      Mossan Taro
+
+
+      programmer
+
+      M.Yamashina
+
+      R.Tani
+
+      T.Sakamoto
+
+
+      background
+      design
+
+      Relatively Yoshida
+
+      K.Kato
+
+      K.Koyama
+
+      K.Matsuyama
+
+      M.Shiraki
+
+      Mossan
+      Taro
+
+      Y.Motchizuki
+
+
+      item design
+
+      Relatively Yoshida
+
+      H.Miyagoshi
+
+      K.Kato
+
+      K.Koyama
+
+      K.Matsuyama
+
+      Mossan
+      Taro
+
+      Y.Motchizuki
+
+
+      UI design
+
+      Y.Suzuki
+
+
+      planner
+
+      J.
+      Shibata
+
+      M.shiraki
+
+      Y.Kamiguchi
+
+
+      technical support
+
+      H.Asakura
+
+      T.
+      Hamada
+
+
+      debugger
+
+      Dear team
+
+      younger sister
+
+
+      sound
+
+      Demon
+      King Soul
+
+      Sound effect lab
+
+
+      Dear PocketSound
+
+      From DOVA-SYNDROME
+
+      Mr.
+      Imataku
+
+      Mr. Kazuchi
+
+      Dear shimtone
+
+      Mr. Yoshinori Tanaka
+
+      Mr.
+      Noru
+
+      Dear brightwaltz
+
+      Mr. Heitaro Ashibe
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5599763183616000
+    m_Localized: lighter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5601148142796800
+    m_Localized: Skip opening and tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5601167327543296
+    m_Localized: Please select items to bring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5602186857988096
+    m_Localized: flashlight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5602208567705600
+    m_Localized: knife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12333921410924544
+    m_Localized: Emergency food
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12333997269106688
+    m_Localized: favorite book
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12659121407049728
+    m_Localized: Search
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12662569825386496
+    m_Localized: 'You can start exploring by clicking on the base entrance.
+
+      Let''s
+      start by heading to the coast.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12717414515130368
+    m_Localized: Let's go exploring.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12717579628101632
+    m_Localized: stop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12717860013129728
+    m_Localized: departure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12718338042150912
+    m_Localized: Insufficient action values!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12719720262451200
+    m_Localized: 'Action value: open at 6.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13800790915465216
+    m_Localized: "By pressing the\u2018Use\u2019button\n You can recover your status!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13799617793802240
+    m_Localized: 'Drag and drop items
+
+      You can move it.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13798257815896064
+    m_Localized: Craft
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13798518257008640
+    m_Localized: "Rocks at the base can be used\n as crafting platforms.\nRefer to
+      the recipe in the item section,\nUse the coconut juice you have created."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13799018503258112
+    m_Localized: Craft table
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13802548811186176
+    m_Localized: 'By clicking on the list button.
+
+      Switch between inventories,
+
+      recipes.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13834340960223232
+    m_Localized: Craft
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13834526809833472
+    m_Localized: You can create new items by combining materials.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13835052498731008
+    m_Localized: Recipes can be viewed by clicking on the tabs at the top of the
+      inventory.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13838794119888896
+    m_Localized: If you want to create the item using a different recipe, retrieve
+      the item after creation and then set the material item.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13839534662008832
+    m_Localized: "If the item is set according to the recipe,\nThe item can be \u2018created\u2019.\nHowever,
+      1 action value  is consumed."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13841191982514176
+    m_Localized: Make coconut juice.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13841476335353856
+    m_Localized: Craft
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13841953152221184
+    m_Localized: Detail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13842108882534400
+    m_Localized: Effectiveness when used.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13846845212246016
+    m_Localized: ': Move
+
+
+      : Split
+
+
+      :Tighten (press and hold)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13850553748733952
+    m_Localized: briefcase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13859195172601856
+    m_Localized: List
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13863191715168256
+    m_Localized: Craft
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13863254621339648
+    m_Localized: You can check the recipe by clicking the tab at the top of your
+      inventory.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13863293594812416
+    m_Localized: "If the items are set according to\n the recipe,\"Create\" is now
+      possible.\nHowever, 1 action value\u3000 \nwill be consumed."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13863318454452224
+    m_Localized: If you want to create it using a different recipe, please obtain
+      the created item and then set the material items.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13863333251956736
+    m_Localized: You can create new items by combining materials.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13871858531352576
+    m_Localized: Detail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13872032678854656
+    m_Localized: Effectiveness when used.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13872090795130880
+    m_Localized: Description.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14302372929126400
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14305985726431232
+    m_Localized: proceed to next
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14306019922591744
+    m_Localized: It seems like there are **still things you need. **Let's continue
+      exploring.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14301954589245440
+    m_Localized: OK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14302149771182080
+    m_Localized: OK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14307337059876864
+    m_Localized: OK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14847707384561664
+    m_Localized: OK
+    m_Metadata:
+      m_Items:
+      - rid: 2800749200731799552
+  - m_Id: 14848175380807680
+    m_Localized: OK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14845506201239552
+    m_Localized: return
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14845612824641536
+    m_Localized: a
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14845830798426112
+    m_Localized: A lot of materials were **collected. Let's go back **to our base.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14847534654734336
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14847778100527104
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14850496236011520
+    m_Localized: a
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14851000471044096
+    m_Localized: a
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14851142020415488
+    m_Localized: a
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14856023938613248
+    m_Localized: a
+    m_Metadata:
+      m_Items:
+      - rid: 2800749200731799552
+  - m_Id: 14856069711052800
+    m_Localized: a
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14856435827654656
+    m_Localized: a
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14856729579929600
+    m_Localized: a
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14858172445671424
+    m_Localized: First exploration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14858398338301952
+    m_Localized: Let's go find food first.**Fortunately, the island is **lush with
+      greenery.**There's no way you won't **have anything to eat.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14858855005732864
+    m_Localized: walk all the way
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14868780280889344
+    m_Localized: As I was walking along **the coastline, I found a **palm tree. When
+      I look**under the tree, I see a**palm fruit that has just **fallen. This looks
+      edible!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14868937097527296
+    m_Localized: look at the sea
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14869018504773632
+    m_Localized: As I gazed at the ocean, **coconuts floated down on**the waves.
+      I was just in a **daze... **Something unexpected**will happen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14870354738724864
+    m_Localized: Run anyway
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14871879078821888
+    m_Localized: I just ran along the **coastline! Anyway! **I ran anyway! ...Come
+      on!!**It looks like he tripped over**something and fell...**It's coconut! lucky!!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14951941492883456
+    m_Localized: life infrastructure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14954238532829184
+    m_Localized: A bonfire at your base is**essential. The materials to **make...
+      Would a stone or **a branch be enough?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14954422331424768
+    m_Localized: Search near the forest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14954798766014464
+    m_Localized: After breaking off tree **branches and digging **through the bushes,**I
+      was able to find lots of **dead branches and **affordable stones! **Let's keep
+      it in our bag.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14954928164487168
+    m_Localized: Find a sandy beach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14956452739465216
+    m_Localized: "While walking on the beach,**I came across some dry**driftwood.
+      Although it was **a little damp, we were able**to pick up a lot of stones!
+      **\u2026heavy."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14957174415605760
+    m_Localized: floating debris
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14957241797099520
+    m_Localized: I'm getting tired, but I'll **keep searching for a little**while
+      longer. In particular,**looking for flotsam on the**beach might yield useful**artefacts.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14957327277015040
+    m_Localized: After walking for a while,**I found a cooler box buried**in the
+      sand. This seems**useful! When he pulled it out**of the sand, he found an**empty
+      plastic bottle inside.**...This looks like it could be**useful too!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14957536329515008
+    m_Localized: Look for it on the way home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14957581602832384
+    m_Localized: As I was returning home,**looking around, I saw what**looked like
+      a box on the**beach. It appeared to be a**broken cooler box that had**washed
+      up on the beach.**When I looked inside, there**was some kind of drink in it,**but
+      it looked like it wasn't**drinkable.... Let's throw away**the contents and
+      use only the bottles.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14957633691893760
+    m_Localized: Try taking a detour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14960912991698944
+    m_Localized: blessings of the sea
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14961121872232448
+    m_Localized: I came to the coast. What should I look for?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14961540451188736
+    m_Localized: look for food
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14961639046692864
+    m_Localized: I looked for something**to eat.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14962043553759232
+    m_Localized: Search for materials
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14962408336572416
+    m_Localized: I searched for things that would be useful in my daily life.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15193708037324800
+    m_Localized: do nothing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15193722780303360
+    m_Localized: I didn't do anything on the spot.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15194487276093440
+    m_Localized: charity work
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15194628322148352
+    m_Localized: Picking up trash at sea is great even on a deserted**island. There
+      don't seem to be many stranded objects nearby, but if I go far**away, I'll
+      be draining my**energy...what should I do?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15194914403041280
+    m_Localized: Search nearby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15195233191116800
+    m_Localized: When I walked around near the base, I was able to**find some floating
+      objects.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15195412803796992
+    m_Localized: search a wide range
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15195539249479680
+    m_Localized: After walking around,**I discovered some floating debris. It was
+      a little tiring, but it was a solid accomplishment.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15196038451347456
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15196195238625280
+    m_Localized: Let's go back the way we came
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15238258491572224
+    m_Localized: Let's go back the way we came
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15197273438994432
+    m_Localized: Natural seafood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15199746543239168
+    m_Localized: Shells are stuck to the**rocks. It's a bit unpleasant, but it's
+      still a source of**energy.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15219264812400640
+    m_Localized: Start collecting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15232888582881280
+    m_Localized: It's a small shellfish, but**it's not inedible. It's**precious food.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15233017360596992
+    m_Localized: Find a better rocky place
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15234638186463232
+    m_Localized: I found a school of crabs**behind a rock!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15235761702092800
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15235920502636544
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15236520749481984
+    m_Localized: tree climbing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15236780750192640
+    m_Localized: There are coconuts on the tree. There are only a few on the low
+      trees, but I**think I can get more**if I climb a higher tree.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15237007565570048
+    m_Localized: taken from a low tree
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15237408918519808
+    m_Localized: I jumped and hit the**coconut and it fell down**hard. I was glad
+      that the**fruit was growing at a**height that I could reach.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15237927678427136
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15238812252946432
+    m_Localized: taken from a tall tree
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15240069902417920
+    m_Localized: He climbed a tree and dropped a coconut. I was... Apparently, he
+      cut his arm on a palm leaf while climbing.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15250517611692032
+    m_Localized: The sun baring its fangs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15252675778232320
+    m_Localized: My body feels like it's**burning...! Malnutrition...?**Could it
+      be because of the sunlight...? Shall we**cut short our exploration**and go
+      home today?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15253323907252224
+    m_Localized: continue exploring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15253444262805504
+    m_Localized: "painful\u2026! But I can't let**this day go to waste..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15253654275801088
+    m_Localized: quit exploring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15254062037647360
+    m_Localized: I decided to take care of myself and return to my base...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15254304292257792
+    m_Localized: A rescue boat for a lonely island?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15255098445971456
+    m_Localized: "I'm thirsty... I feel dizzy\u2026. As I was walking along the coast
+      in a hazy state of mind, I saw a ship on the horizon! Is this a hallucination...?
+      No, let's do something anyway...!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15259038545788928
+    m_Localized: Drop a big flag <color=#B53D3D>(Requires flag)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15260268118589440
+    m_Localized: I waved the flag desperately! Please notice! ! Please! ! ! Please
+      notice! ! !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15260651335368704
+    m_Localized: scream out loud and swim to the ship
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15262712978391040
+    m_Localized: I swam desperately towards the ship. ...But it never comes close.
+      I was swept far out to sea... I don't have the strength left to go back to
+      shore...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15262817542389760
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15263030508175360
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15264132846764032
+    m_Localized: lift
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15264513911865344
+    m_Localized: rotten driftwood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15264740559470592
+    m_Localized: It's a big piece of**driftwood. Moderately**decayed. It must have
+      been a while since I washed up on this shore... Could there be any living things
+      inside?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15265900750094336
+    m_Localized: in the sand
+    m_Metadata:
+      m_Items:
+      - rid: 2800749200731799552
+  - m_Id: 15268079657467904
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15265374524325888
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15265547489034240
+    m_Localized: Let's go back.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15266429689577472
+    m_Localized: Gaze at the sandy beach.**Collecting flotsam is the**most effective
+      way to**obtain resources on a deserted island
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15266871337205760
+    m_Localized: look closely at your feet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15267250611339264
+    m_Localized: 'I found a piece of debris buried in the sand and pulled it out. '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15267397965627392
+    m_Localized: Look a little further away
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15267833233719296
+    m_Localized: I saw something in the distance and started walking.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15267998552211456
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15268359316881408
+    m_Localized: inquisitive spirit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15268629732048896
+    m_Localized: Suddenly, I became curious about what was in the**forests of this
+      island. Shall we go a little further**away?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15268865892335616
+    m_Localized: Continue exploring the sandy beach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15269031793836032
+    m_Localized: I walked around, but there was nothing but sandy**beaches. I picked
+      up some things along the way that I thought would be useful.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15269500146597888
+    m_Localized: I explored the area around the forest as my interests dictated.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15269975747117056
+    m_Localized: Explore near the forest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15270016327008256
+    m_Localized: do nothing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15270096635346944
+    m_Localized: Only time passed.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15270337233207296
+    m_Localized: wreckage of a spaceship
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15270505814867968
+    m_Localized: The remains of a spaceship are left on the beach...**Couldn't it
+      be used**effectively for something?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15270925610172416
+    m_Localized: examine the area around the wreckage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15271119017918464
+    m_Localized: It seems that the surrounding area has already become a habitat
+      for living creatures.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15271293479993344
+    m_Localized: Peel off parts <color=#B53D3D>(knife required)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15271637379366912
+    m_Localized: When I finally peeled off the parts, the engine part was exposed.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15271876077207552
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15271964132425728
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15272104272510976
+    m_Localized: rain of blessings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15272977233002496
+    m_Localized: It's raining today! We can't waste precious water. Let's use it
+      effectively to survive!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15273240694013952
+    m_Localized: Fill up the bottle you have <color=#B53D3D>(needs an empty bottle)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15273607305543680
+    m_Localized: When I put the bottle down and inserted a funnel made of rolled
+      leaves, the water immediately filled up!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15273778223431680
+    m_Localized: lie down with your mouth open
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15274417858985984
+    m_Localized: Anyway, I want to quench my throat right away. When I was lying
+      on my back with my mouth open, I was able to rehydrate a little!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15264869748228096
+    m_Localized: There was some floating**debris stuck under the tree!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15265037805600768
+    m_Localized: Try to break it <color=#B53D3D>(knife required)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15265143279763456
+    m_Localized: It broke! It appears that the inside was a habitat for crabs. Furthermore,
+      there was some debris trapped under the tree.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15274512587341824
+    m_Localized: do nothing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15275318975840256
+    m_Localized: I just stood there in the rain.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15275389322706944
+    m_Localized: beyond the horizon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15275640133697536
+    m_Localized: While strolling along the familiar sandy beach, I suddenly looked
+      out at the sea and discovered what looked like a ship! I've been waiting for
+      this moment! What should I do?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15276031093161984
+    m_Localized: wave your hand and call loudly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15276148462370816
+    m_Localized: Help me! ! Here it is! ! ! Help me! ! ! ...I screamed many times,
+      but the shadow disappeared. It was an opportunity that would never come again...
+      It might not be good anymore...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15276359456833536
+    m_Localized: Raise the smoke <color=#B53D3D>(requires slowness)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15276465371398144
+    m_Localized: I quickly started a fire and let it grow.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15276554865262592
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15276770251161600
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15276864941768704
+    m_Localized: blessings of the sea
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15276955631009792
+    m_Localized: I came to the coast. What should I look for?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15277408594870272
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15278478385659904
+    m_Localized: Let's go back the way we came
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15278589522132992
+    m_Localized: look for food
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15278893655310336
+    m_Localized: Let's look for food!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15279188112228352
+    m_Localized: search a wide range
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15279311898722304
+    m_Localized: search a wide range
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15279722487529472
+    m_Localized: Next
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15279850891952128
+    m_Localized: What should I do next?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15280003241656320
+    m_Localized: continue exploring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15281218096644096
+    m_Localized: Return to base
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627552947355648
+    m_Localized: grilled fish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15618369816543232
+    m_Localized: big grilled fish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15623798277718016
+    m_Localized: small snail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15625268263829504
+    m_Localized: Shellfish that doesn't seem to be very tasty. There's not much inside
+      and it doesn't look good.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15625392679469056
+    m_Localized: It rarely becomes poisonous.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15626411530436608
+    m_Localized: many branches
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15626514651594752
+    m_Localized: A tree branch I picked up on the beach earlier. For some reason,
+      I can't imagine using it for anything other than building a base.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15626650878394368
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15626810014482432
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15626838682550272
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15626848165871616
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15626870500540416
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15626880222937088
+    m_Localized: fish caught in the sea. It's delicious when baked.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627208804712448
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627268342857728
+    m_Localized: It was too big to be grilled. It was big, thick, heavy, and delicious.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627277188644864
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627388530638848
+    m_Localized: Yakitori
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627396956995584
+    m_Localized: A dish that is just grilled chicken. Because it is grilled over
+      an open fire, it is quite juicy and delicious.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627422143791104
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627455610142720
+    m_Localized: grilled crab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627467656183808
+    m_Localized: Grilled crab. Compared to the crabs I eat back home, it's too bland.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627478800449536
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627505350393856
+    m_Localized: fried egg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627516796649472
+    m_Localized: "\uFEFFFried eggs slowly baked on a hot stone. It's called sunny
+      side up."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627528477786112
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627566562066432
+    m_Localized: As the name suggests, it's just grilled fish. It's delicious when
+      eaten outside.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627578234814464
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627596542951424
+    m_Localized: Just grilled mushrooms. It doesn't seem to be poisonous, but it
+      does have a fragrant smell.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627606638641152
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627627060707328
+    m_Localized: stone roasted sweet potato
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627637034762240
+    m_Localized: A dish made by simply grilling potatoes. It has a chewy texture
+      and a deep flavor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627645381427200
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627682282913792
+    m_Localized: Grilled conch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627695700492288
+    m_Localized: Conch shells grilled over an open fire. If you cook it through the
+      fire, you won't have to worry about it going hungry.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15627704697274368
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15639099992096768
+    m_Localized: grilled mushrooms
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15640740766072832
+    m_Localized: wood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15641311438880768
+    m_Localized: A fine wood with excellent durability. If handled well, it can be
+      used as a material for various things.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15641369441910784
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15641389507461120
+    m_Localized: Wild vegetables
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15641496529321984
+    m_Localized: It looks similar to common wild plants, so it's probably edible.
+      It's delicious...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15641603672817664
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15641662091083776
+    m_Localized: small fish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15641759323439104
+    m_Localized: A delicious-looking small fish. It's absolutely delicious when grilled
+      with salt. I can be sure of that.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15641790533255168
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15641820170207232
+    m_Localized: baby bird
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15641885387440128
+    m_Localized: A very cute baby bird. When I eat it, I feel guilty. If you feel
+      like you're about to starve to death, let's burn it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15642062710030336
+    m_Localized: stone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15642172567240704
+    m_Localized: It's just an ordinary stone that can be found anywhere. It looks
+      like it could be used as a material.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15642277311594496
+    m_Localized: rock salt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15642469062590464
+    m_Localized: A precious seasoning from the island. Without this, cooking cannot
+      begin.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15642491820883968
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15642548196524032
+    m_Localized: tattered rope
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15642643818266624
+    m_Localized: A rope that would have been used for fishing. Despite its shabby
+      appearance, it seems to be quite durable.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15642673648156672
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15642783845105664
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15642896248258560
+    m_Localized: small crab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15643058098061312
+    m_Localized: 'A small crab that lives on the island. Although the shell is hard
+      and there is not much edible part, it is quite a decent meal. '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15643120475750400
+    m_Localized: coconut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15643874800353280
+    m_Localized: Sweet and delicious coconut fruit. It's difficult to cut, but it's
+      a valuable food source.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15645146911784960
+    m_Localized: rag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15645238335029248
+    m_Localized: Rags washed up on the shore. Was it originally clothes? Although
+      it does not remain in its original form, it is a valuable resource on this
+      island.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15645361899225088
+    m_Localized: branch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15645423027011584
+    m_Localized: 'Just branches falling everywhere. It seems that it can be effectively
+      used as firewood and material. '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15645493361295360
+    m_Localized: empty bottle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15645661250895872
+    m_Localized: A plastic bottle that I don't know where it came from. It looks
+      like it could be useful for something.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15645809456627712
+    m_Localized: fine fish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15645934958592000
+    m_Localized: A very nice fish. They must have won the battle for survival.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15646000364568576
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17537024494059520
+    m_Localized: 'Action value: Open at 6'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17539046849036288
+    m_Localized: 'Action value: Open at 8'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17544157822369792
+    m_Localized: 'Action value: Open at 13'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17544137312223232
+    m_Localized: 'Action value: Open at 10'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17545252221140992
+    m_Localized: departure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17545266796347392
+    m_Localized: stop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17549166362411008
+    m_Localized: Craft
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17549298738839552
+    m_Localized: You can create new items by combining materials.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17549411372679168
+    m_Localized: Recipes can be viewed by clicking on the tabs at the top of the
+      inventory.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17549808145448960
+    m_Localized: "If the item is set according to the recipe,\nThe item can be \u2018created\u2019.\nHowever,
+      1 action value is consumed."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17549873190715392
+    m_Localized: If you want to create the item using a different recipe, retrieve
+      the item after creation and then set the material item.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17551596600868864
+    m_Localized: "If the item is set according to the recipe,\nThe item can be \u2018created\u2019.\nHowever,
+      1 action value is consumed."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17551763240566784
+    m_Localized: You can create new items by combining materials.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17552417677819904
+    m_Localized: "If the item is set according to the recipe,\nThe item can be \u2018created\u2019.\nHowever,
+      1 action value is consumed."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17552747484332032
+    m_Localized: You can create new items by combining materials.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17553188490231808
+    m_Localized: "If the item is set according to the recipe,\nThe item can be \u2018created\u2019.\nHowever,
+      1 action value is consumed."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17778303157059584
+    m_Localized: grilled snake skewers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17778644632125440
+    m_Localized: Even dangerous snakes are powerless if you put them on a skewer
+      and put them through fire. Surprisingly delicious.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17779242710515712
+    m_Localized: Once in a while, it eliminates toxins from the body.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17779567077015552
+    m_Localized: boiled egg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17779667480264704
+    m_Localized: A dish made simply by boiling eggs. By the way, I'm a fan of eating
+      with salt... Should I try using seawater?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17779699885457408
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17780365756383232
+    m_Localized: coconut juice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17781188922097664
+    m_Localized: Sweet and delicious coconut juice that I finally managed to squeeze
+      out. I'm lucky to find something sweet on this deserted island.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17782233073106944
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17782272046579712
+    m_Localized: handmade knife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17782585524666368
+    m_Localized: A knife carved from ore obtained on this island. In the midst of
+      nature, beautiful stones are nothing more than tools.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17782593539981312
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17782671696642048
+    m_Localized: antidote
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17782752537657344
+    m_Localized: "A medicine prepared from plants on the island. I don't understand
+      the logic behind it, but using it makes me feel better.\uFEFF"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17782849417691136
+    m_Localized: Definitely eliminates toxins from your body.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17782906871267328
+    m_Localized: handmade net
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17783068867870720
+    m_Localized: A net made from materials from the island. With this, you should
+      be able to reliably catch fish and insects.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17783242147151872
+    m_Localized: Parent and child soup
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17783312020062208
+    m_Localized: "\uFEFFA nutritious soup made with stewed chicken and eggs. I want
+      to pour every drop into my stomach."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17784762724958208
+    m_Localized: flag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17784989087350784
+    m_Localized: homemade flag. Although it is in tatters, it will serve as a landmark
+      when help arrives.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17785267001933824
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17785304595480576
+    m_Localized: Morimori salad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17785376544571392
+    m_Localized: Salads are made from wild vegetables and wild plants collected in
+      the forest. All the ingredients are unfamiliar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17785712596402176
+    m_Localized: Sweet ~ grilled fish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17786495672958976
+    m_Localized: A challenging dish made with grilled fish topped with honey. It's
+      sweet and delicious, but I wouldn't order it at a restaurant.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17786520306106368
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17786573410189312
+    m_Localized: Megumi of the island
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17786646198140928
+    m_Localized: Dishes made with plenty of ingredients grown on the island. It's
+      a luxury item that you wouldn't expect from a shipwrecked person.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17786717929127936
+    m_Localized: max potato
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17787406285717504
+    m_Localized: "\uFEFFA dish that is a combination of energetic ingredients. Just
+      looking at it gives me energy and saliva."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17787524661559296
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17787561152004096
+    m_Localized: fire starter set
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17788127932497920
+    m_Localized: Homemade fire starter set. You should be able to easily start a
+      fire by tying a string to a bow and a stick. If you use it even once, it will
+      break.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17788148031602688
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17788173855932416
+    m_Localized: protein salad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17790489933824000
+    m_Localized: A salad rich in valuable protein. Let's close our eyes and eat.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17790831350169600
+    m_Localized: Raft
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17791621968084992
+    m_Localized: A rescue boat made with hope. Will I be able to escape from this
+      island?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17791689592848384
+    m_Localized: salad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17791834745126912
+    m_Localized: A mixed salad of wild vegetables and mushrooms. I think it would
+      be even more delicious with the dressing.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17791953188077568
+    m_Localized: seafood soup
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17792028899459072
+    m_Localized: A soup made with crabs and shellfish whose names I don't even know.
+      It looks terrible but tastes pretty good.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17793449669607424
+    m_Localized: Noroshi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17793727877791744
+    m_Localized: I bundled the fuel and fire starter kit together so I could start
+      smoke anytime. I hope it will be helpful when help comes...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17793805329809408
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17794513542234112
+    m_Localized: super fried egg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17794743813718016
+    m_Localized: "Super fried eggs made with hawk eggs. The size is average, but
+      I feel like eating it gives me strength.\uFEFF"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17794829067141120
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17795733996617728
+    m_Localized: torch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17796441261129728
+    m_Localized: "\uFEFFA torch made by tying cloth to a stick. If you have this,
+      you will be able to explore nearby areas even at night."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17796469790785536
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17797038152531968
+    m_Localized: water bottle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17797117676535808
+    m_Localized: Precious water. This bottle allows me to carry water with me.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17797166653423616
+    m_Localized: Very occasionally it becomes poisonous.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17797230763360256
+    m_Localized: beautiful water
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17797252628267008
+    m_Localized: Beautifully clear drinking water. No matter how much I drink, I
+      never feel hungry.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17797264712056832
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17797522854690816
+    m_Localized: larva
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17797601082654720
+    m_Localized: An insect whose appearance makes you instinctively feel uncomfortable.
+      Eat when you really don't have enough food.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17797642925031424
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17797749565210624
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17797786219233280
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17798767044640768
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17798779816296448
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17798797973438464
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17798882585133056
+    m_Localized: bird eggs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17798999740432384
+    m_Localized: eggs laid by birds. It looks very delicious when fried.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17799022075101184
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17799053473660928
+    m_Localized: fruit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17799132737617920
+    m_Localized: An unknown fruit grown on the island. Anyway, it has a shape that
+      I have never seen in a supermarket.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17799166237523968
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17799225670811648
+    m_Localized: hawk eggs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17799258063421440
+    m_Localized: Eggs taken from a hawk. You can eat it raw, but I think it's delicious
+      when fried.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17799286194618368
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17799899150204928
+    m_Localized: medicinal plants
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17800018662703104
+    m_Localized: Strangely enough, when I eat this plant, I feel a little bit of
+      relief.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17800055677435904
+    m_Localized: Sometimes it eliminates toxins from the body.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17800107267375104
+    m_Localized: honey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17800116935245824
+    m_Localized: A sweet and nutritious food. It's so delicious that you'll want
+      to ask for honey.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17800257482178560
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17800319075532800
+    m_Localized: tree vine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17800332727992320
+    m_Localized: A sturdy looking tree vine. Maybe it can be used like a rope.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17800372867481600
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17800406937812992
+    m_Localized: burning stone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17800472561893376
+    m_Localized: A mysterious stone that is burning for some reason. It seems to
+      have considerable utility as a fuel.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17800495655731200
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17800536013324288
+    m_Localized: mushroom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17801229302415360
+    m_Localized: Mushrooms that are edible. I don't know what kind it is, but it
+      looks like something you can buy at a local supermarket, so it's probably okay.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17801323351293952
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17801353323790336
+    m_Localized: ore pieces
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17801364115734528
+    m_Localized: A beautiful ore that shines green. If I brought it back to my hometown,
+      I might be able to turn it into money, but here it is useless.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17801479475871744
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17801705313976320
+    m_Localized: cold moss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17801769235169280
+    m_Localized: Cool moss. If you use it instead of a compress, it will probably
+      be somewhat effective for sprains.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17801792014434304
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17801884654026752
+    m_Localized: A small potato. It fills my stomach, but it doesn't satisfy my heart.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17801922180464640
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17802224333930496
+    m_Localized: poisonous snake
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17802453917548544
+    m_Localized: A poisonous snake. A liquid was dripping from the fangs.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17802490911309824
+    m_Localized: It rarely becomes poisonous.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17802558317969408
+    m_Localized: strange mushroom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17803013081186304
+    m_Localized: As the name suggests, this is a strange mushroom. It looks like
+      you'll die if you eat it. Is it okay to take a bite...?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17803059860258816
+    m_Localized: It smells dangerous.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17803147433132032
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17803234196504576
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17803655602421760
+    m_Localized: favorite book
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17803794018648064
+    m_Localized: My favorite book ever. I read it whenever I have time. Reading it
+      makes me feel full of motivation.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17803837463248896
+    m_Localized: Action value +3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17803913245933568
+    m_Localized: flashlight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17804057634848768
+    m_Localized: A light that illuminates the darkness. With this, you can explore
+      dark caves and at night without any problem.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17804099187818496
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17804286178279424
+    m_Localized: Emergency food
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17804303421063168
+    m_Localized: Emergency food that I managed to bring with me. It looks delicious,
+      but the quantity is a little disappointing. If we don't find the ingredients
+      soon...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17804433247354880
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17804455296811008
+    m_Localized: knife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17804526671282176
+    m_Localized: A useful item that ranks number one on the list of things you'll
+      want to bring to a deserted island. Be careful when using the blade to prevent
+      it from spilling.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17804548821401600
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17804954729365504
+    m_Localized: writer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17805000971567104
+    m_Localized: A tool for starting a fire. It was exposed to seawater when it was
+      washed ashore, but it appears to still be usable.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17805052179824640
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17805074581602304
+    m_Localized: antibiotics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17805520096378880
+    m_Localized: A pill that kills all germs. It's like magic on a deserted island.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17805582163689472
+    m_Localized: Definitely eliminates toxins from your body.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17805653454274560
+    m_Localized: big coconut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17805841346510848
+    m_Localized: A large coconut harvested from the coast. If you break it with a
+      stone, will you be able to extract the juice inside?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17805882018676736
+    m_Localized: Tutorial-only items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17805941032534016
+    m_Localized: cooler box
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17805956295606272
+    m_Localized: Broken cooler box. It looks like it will come in handy when I bring
+      it back to the base.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17805993817849856
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17819669807415296
+    m_Localized: blessings of the forest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17821057098629120
+    m_Localized: I came to the forest.   What should I look for?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17821125549670400
+    m_Localized: look for food
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17821276431368192
+    m_Localized: I looked for something to fill my stomach.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17821293128892416
+    m_Localized: Search for materials
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17821396409434112
+    m_Localized: I looked for something that would be useful in my daily life.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17821455075164160
+    m_Localized: do nothing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17821486561804288
+    m_Localized: I stood there in a daze.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17822106387660800
+    m_Localized: both above and below
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17822119654244352
+    m_Localized: The dense greenery covers the ground above my head. Which area should
+      we focus on exploring?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17826013906124800
+    m_Localized: strange plants
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17826018880569344
+    m_Localized: I found a strange plant in the forest. It's probably a carnivorous
+      plant that I saw in a book a long time ago... I could drink the liquid inside
+      without any harm, but what should I do?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17826312817393664
+    m_Localized: walk while looking up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17826327006724096
+    m_Localized: As I looked up and walked, I was able to find a few things that
+      seemed useful.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17830729406922752
+    m_Localized: walk while looking down
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17830921770287104
+    m_Localized: I suddenly looked down and saw an edible mushroom growing at the
+      base of the tree.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17831049000304640
+    m_Localized: do nothing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17831852096274432
+    m_Localized: I didn't do anything, just time passed.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17832150055436288
+    m_Localized: Fill in your own bottle <color=#B53D3D> (needs an empty bottle)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17832161610743808
+    m_Localized: It's a little slimy, but it's okay.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17832455929249792
+    m_Localized: drink it here
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17832495070494720
+    m_Localized: Thankfully I drank it all. It was a good hydration... Let's get
+      the larva that was inside too...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17832558219935744
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17832623902736384
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17832665778667520
+    m_Localized: dangerous creature
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17832676407033856
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17832957362487296
+    m_Localized: It looks like a creature that lives on this island. It's slowly
+      approaching... Its sharp poisonous fangs are peeking out, and it looks like
+      it's about to attack...!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17833003189452800
+    m_Localized: run away
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17833009699012608
+    m_Localized: We shouldn't fight a battle we don't have a chance of winning...
+      He ran away cautiously and boldly. ...It doesn't seem like they're chasing
+      me.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17833688417091584
+    m_Localized: Kill <color=#B53D3D>(knife required)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17833857418182656
+    m_Localized: Confront the snake and swing your weapon. Fortunately, I was able
+      to kill it in the head with one blow.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17833986208481280
+    m_Localized: lost child
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17833999756083200
+    m_Localized: Here...? It seems like I've lost my way... Which was the right path?
+      No matter which way you turn, the view is the same and the sun is almost directly
+      overhead.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17834119172112384
+    m_Localized: Go back the way you came by intuition
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17834234913931264
+    m_Localized: "After a long walk, I finally found my location. tired\u2026."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17834327033430016
+    m_Localized: As the sun set, I finally found my bearings. It was already late
+      so I had to go back to my base, but it would have been a wiser decision than
+      moving blindly and wasting my strength.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17834348227248128
+    m_Localized: Wait for sunset and return to base
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17836234997153792
+    m_Localized: mushroom!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17836258044854272
+    m_Localized: I found some edible mushrooms. If you look closely, you'll see another
+      mushroom growing at your feet... Should I only bring home food that I'm sure
+      I can eat?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17836444531998720
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17836465318969344
+    m_Localized: Pick only safe items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17836502199484416
+    m_Localized: You shouldn't make dangerous bets on this deserted island. Only
+      highly safe mushrooms were collected.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17836840990195712
+    m_Localized: pick indiscriminately
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17836975321169920
+    m_Localized: When it comes to food, you can't just do whatever you want. I also
+      picked up some strange mushrooms.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17838563280470016
+    m_Localized: Large tree survey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17838580594556928
+    m_Localized: It's a fine tree. There may be something strange. Let's find out.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17840994743664640
+    m_Localized: Check around the trunk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17841007548874752
+    m_Localized: Mushrooms and moss were growing on the tree trunks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17841531094482944
+    m_Localized: Climb and find out
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17841624149311488
+    m_Localized: When I climbed up, I found that other plants were growing using
+      the large tree as a planter.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17841694651367424
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17841751148642304
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17841909382955008
+    m_Localized: bird's nest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17841921957478400
+    m_Localized: I hear a voice from above the tree... It's a bird's nest! My heart
+      hurts when I see Hina peeking out, but I can't change my heart for my back...
+      It might be worth investigating.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17841948234792960
+    m_Localized: throw a stone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17841970183585792
+    m_Localized: When I threw a handy stone at it, the nest broke and fell down.
+      The egg broke, but I think I'll be able to catch the chick. I did something
+      bad...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17841991989772288
+    m_Localized: climb a tree and collect it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17842000705536000
+    m_Localized: Come on! I got injured on the way up, but when I climbed up, it
+      turned out to be a bird's nest! It's a cruel thing to say, but it's for survival.
+      Let's take it all.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17842089041772544
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17842129021878272
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17842934743482368
+    m_Localized: deforestation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17843278802239488
+    m_Localized: There are many fallen trees around here. No matter how much wood
+      you have, you don't have to worry about it. Let's bring a lot home.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17843305951969280
+    m_Localized: I'll pick it up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17843325136715776
+    m_Localized: I picked up a lot of wood chips under my feet.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17843336897544192
+    m_Localized: Cut down <color=#B53D3D>(requires knife)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17843346246647808
+    m_Localized: A lot of thirsty wood was harvested.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17843512559190016
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17843543085334528
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17844275066880000
+    m_Localized: Beast path
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17844352627949568
+    m_Localized: There are signs that plants have been trampled. Are there large
+      animals living on this island?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17844465739939840
+    m_Localized: follow footsteps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17844484798857216
+    m_Localized: I followed the footprints and found a tree with fruit!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17844500401668096
+    m_Localized: pick up branches around
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17844509142597632
+    m_Localized: The branches scattered around are dry and look useful.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17844542768332800
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17844569645432832
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17844593141923840
+    m_Localized: climbing plant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17844606630805504
+    m_Localized: A large vine is hanging down. Many of the roots of vines are edible.
+      I'm a little tired, but I guess I'll dig it up.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17844627145146368
+    m_Localized: pick a vine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17844661437775872
+    m_Localized: I cut off the vine. The strong and flexible vines can be used like
+      strings.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17844748444418048
+    m_Localized: I'll dig it up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17844760939249664
+    m_Localized: When I dug it up, I found a potato.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17844895165366272
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17844916531150848
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17844943580217344
+    m_Localized: food chain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17844956788080640
+    m_Localized: I found a caterpillar wriggling on a leaf. We often say that it's
+      a valuable source of protein, but when it's in front of us, it's hard to think
+      of eating it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17844985225461760
+    m_Localized: take
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17844996654940160
+    m_Localized: Pick up the moving larvae. If you look closely, you can see that
+      the leaves the larva was eating are from medicinal plants!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17845011842514944
+    m_Localized: look for decent food
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17845031601881088
+    m_Localized: After walking for a while, I saw some ripe fruit falling. Much better
+      than larvae!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17845061045895168
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17845085075062784
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17845112354816000
+    m_Localized: Next
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17845123863986176
+    m_Localized: What should I do next?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17845223449346048
+    m_Localized: continue exploring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17845237177303040
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17845451120361472
+    m_Localized: Return to base
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17845463111876608
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18825697776812032
+    m_Localized: Let's go explore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17858270356226048
+    m_Localized: river blessings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17858432801619968
+    m_Localized: I came to the riverside. What should I look for?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17858535671119872
+    m_Localized: look for food
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17858601962094592
+    m_Localized: I looked for something to fill my stomach.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17858670782234624
+    m_Localized: Search for materials
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17859137117536256
+    m_Localized: I looked for something that would be useful in my daily life.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17859185461084160
+    m_Localized: do nothing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17859211193139200
+    m_Localized: I stood there in a daze.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17859381892923392
+    m_Localized: water source
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17859537791008768
+    m_Localized: The water is a little cloudy, but it looks drinkable. However, there
+      is also the risk of parasites and infections. Is it dangerous to drink it straight?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17859612659335168
+    m_Localized: Fill the bottle with water <color=#B53D3D>(requires an empty bottle)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17859787096244224
+    m_Localized: It would be terrible if I got sick in this life. I filled the bottle
+      with water.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17859861834547200
+    m_Localized: drink it as is
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17861240481300480
+    m_Localized: I drank a lot of river water. I feel like my stomach hurts, but
+      my hydration is perfect...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17861333141864448
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17861466311016448
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17861523533905920
+    m_Localized: picking up trash in the river
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17861694762172416
+    m_Localized: It looks like something has fallen into the river. Let's pick it
+      up. Artificial? Could the debris flow backwards due to the flood? Also, if
+      you look closely, there seems to be something at the bottom.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17862404643930112
+    m_Localized: pick up floating objects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17862518380871680
+    m_Localized: What was floating was a plastic bottle. It is truly terrifying to
+      think that it can reach from the sea to the middle of a river.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17862739370360832
+    m_Localized: Search to the bottom of the river
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17862789899141120
+    m_Localized: it hurts! fish? insect? Something bit me! ...But I was able to pick
+      up what I was looking for...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17862938000015360
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17863049685942272
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17863164584706048
+    m_Localized: fisherman by the river
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17863269974982656
+    m_Localized: I found a school of fish in the river. It's difficult to catch,
+      but just a few is enough. Let's catch some fish here to supplement our food
+      supply.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17863384852774912
+    m_Localized: Catch with a net <color=#B53D3D> (requires a handmade net)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17863509960474624
+    m_Localized: I carefully placed the net in the river and pulled it out all at
+      once! The fish are jumping in the net!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18136650754473984
+    m_Localized: Catch it with your hands
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18136959295864832
+    m_Localized: When I stepped into the shallow water, the fish ran away at once.
+      I kept my eyes focused for a while, but there were no signs that the fish were
+      returning.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18137134676492288
+    m_Localized: I left without doing anything.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18137177076711424
+    m_Localized: do nothing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18137554509545472
+    m_Localized: The sound of wings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18137616354557952
+    m_Localized: I found some delicious-looking fruit, but a large insect is getting
+      in the way. I want to get rid of them, but it would be troublesome if they
+      were seen as enemies. Do you want to continue reaching out and try...?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18137882709639168
+    m_Localized: Pick safely <color=#B53D3D>(needs branches)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18137999416147968
+    m_Localized: When I swung the branch vigorously, it just hit the insect. I thought
+      about eating it, but it seemed like it was shocked and ran away.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18138147990978560
+    m_Localized: Take it without worrying
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18139382261399552
+    m_Localized: Reach out to the fruit and brush away the insects with your hands.
+      Then an insect flew towards my face! I was so surprised that I fell on my butt.
+      I was...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18139787439554560
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19180902531907584
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19181100360450048
+    m_Localized: Watch your step
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19181190743506944
+    m_Localized: My feet are slippery in the rain. There is nothing wrong with walking
+      carefully, but there are only so many hours in a day when you can be active.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19181264017997824
+    m_Localized: proceed with caution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19181338647248896
+    m_Localized: The footing is especially bad along the riverside...  I moved carefully,
+      step by step. I'm a little tired, but it's better than getting hurt.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19181423871311872
+    m_Localized: proceed forcefully
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19181499469447168
+    m_Localized: Time is limited! Forcibly move forward! ! ...I got stuck in the
+      mud and fell! !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19181752063016960
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19181851509964800
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19181988542070784
+    m_Localized: river murmur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19182094825734144
+    m_Localized: I'm a little tired from walking. If I were to collapse here, I would
+      be nothing. It's also important to stop...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19182184432844800
+    m_Localized: take a bath
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19182256507764736
+    m_Localized: I took a bath and sat down on a fallen tree. It was a nice refresh!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19182335109021696
+    m_Localized: continue exploring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19182393535676416
+    m_Localized: I can't keep whining in a situation like this. I walked further.
+      Then I discovered a colony of mushrooms!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19182460522905600
+    m_Localized: fish path
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19182550872408064
+    m_Localized: The river is narrowed by rocks. If you use a net here, you might
+      be able to catch a big fish.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19182689905197056
+    m_Localized: Make a trap and catch it <color=#B53D3D>(Use an empty bottle)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19182862328840192
+    m_Localized: They made a trap by tearing open an empty bottle with a piece of
+      stone. After submerging it in the river and leaving it for a while, I was able
+      to catch a surprising amount of fish!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19182944683999232
+    m_Localized: Catch it with your hands
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19183004851290112
+    m_Localized: I approached carefully so that it wouldn't run away, and brushed
+      the water off towards the shore like a bear. Then the fish ran away, but only
+      one had washed up on land!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19183066809548800
+    m_Localized: do nothing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19183152293658624
+    m_Localized: I left without doing anything.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19183203296395264
+    m_Localized: droop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19183430266961920
+    m_Localized: Avoid the hanging vines with your hands. Is it because it's by the
+      river that it's so humid?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19183525054038016
+    m_Localized: Well, it's a tree vine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19183696072589312
+    m_Localized: Am I being too nervous...? It's nothing, just a tree vine. It'll
+      be useful, so let's take it home.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19183761281433600
+    m_Localized: No way it's a snake! ? <color=#B53D3D>(requires knife)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19183857565876224
+    m_Localized: He quickly moved away and grabbed his weapon.  If you look closely,
+      it's actually a snake...! When I brought the weapon down towards his neck,
+      he calmed down.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19183890549882880
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19183984535846912
+    m_Localized: I left without worrying about anything.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19184028236300288
+    m_Localized: hungry caterpillar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19184130157887488
+    m_Localized: Suddenly, I discovered a caterpillar behind a leaf. Probably a butterfly
+      or moth larva. I don't have a hobby of eating insects, but in today's environment
+      they are a valuable food source.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19184278351036416
+    m_Localized: take
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19184381874847744
+    m_Localized: When I pick it up, it moves and resists. ...If you look closely,
+      there's another one behind the leaves!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19184473377783808
+    m_Localized: look for another food
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19184547130425344
+    m_Localized: After walking for a while, I found a tree with fruit. Fortunately,
+      the last one remains. Let's get it before a wild animal takes it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19184621784842240
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19184684166725632
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19184751510470656
+    m_Localized: Great catch!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19184812680200192
+    m_Localized: The river, which has swollen due to rain, seems to have more fish
+      than usual, perhaps because it is rich in nutrients.  I'm so grateful for this!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19184901129682944
+    m_Localized: Make a trap and catch it <color=#B53D3D>(Use an empty bottle)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19185040615456768
+    m_Localized: He made an improvised trap by processing an empty bottle with sharp
+      stones. Within a few minutes, many of them were caught in the trap! It's the
+      best! !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19185177928581120
+    m_Localized: Catch it with your hands
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19185308220440576
+    m_Localized: What you should be aiming for is a large, slow-moving fish. When
+      I decided to plunge my hand into the river, I felt a positive response!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19185590337716224
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19185687016423424
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19185767698055168
+    m_Localized: Next
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19185882059948032
+    m_Localized: What should I do next?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19186033822449664
+    m_Localized: continue exploring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19186117557534720
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19186146087190528
+    m_Localized: Return to base
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19186288773218304
+    m_Localized: Blessings of the mountains
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19187229719183360
+    m_Localized: I came to the mountain. What should I look for?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19187339387650048
+    m_Localized: look for food
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19187464256274432
+    m_Localized: I looked for something to fill my stomach.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19187572142161920
+    m_Localized: Search for materials
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19187658058285056
+    m_Localized: I looked for something that would be useful in my daily life.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19187773439393792
+    m_Localized: do nothing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19187826186960896
+    m_Localized: I stood there in a daze.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19187936794951680
+    m_Localized: empty nest in the mountain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19187995259355136
+    m_Localized: There is a bird's nest a little below the cliff. I didn't see the
+      parent bird either... Shall I steal some eggs?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19188105154314240
+    m_Localized: Use a net to catch <color=#B53D3D> (requires a handmade net)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19188174003814400
+    m_Localized: They stretched out a net from the top of the cliff and caught the
+      eggs. They might lay eggs again, so let's leave the nest alone.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19188319860736000
+    m_Localized: reach out and take it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19188380040609792
+    m_Localized: When I crawl to the edge of the cliff and reach for the nest, I
+      feel the certainty of eggs. The moment I grabbed it, my hand was bitten! Apparently
+      there was a chick hiding... Being threatened in a loud voice. I don't think
+      I'll be able to get another egg.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19188555341545472
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19188629782052864
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19188764863807488
+    m_Localized: altitude sickness
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19188862574313472
+    m_Localized: I've heard that altitude sickness can even lead to death. Let's
+      go home and rest...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19189016740151296
+    m_Localized: continue exploring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19189094741622784
+    m_Localized: I've climbed all the way to the top of the mountain, so I feel like
+      it would be a waste to change things now. Let's take a little break and continue
+      exploring...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19189438146068480
+    m_Localized: return to base
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19189582820196352
+    m_Localized: I've heard that altitude sickness can even lead to death. Let's
+      go home and rest...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19189669252218880
+    m_Localized: Reach out from below and pick it up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19189804786958336
+    m_Localized: belly addition
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19189837607387136
+    m_Localized: When I climbed up the quay a little, I saw a familiar plant growing
+      just out of reach. It is an edible wild vegetable.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19189984772931584
+    m_Localized: I stretched out my hand, grabbed the stem of a wild vegetable I
+      could barely reach, and pulled it. ...Come on! I fell due to the force of pulling
+      out...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19190104654528512
+    m_Localized: Climb the cliff and collect from above
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19190351871000576
+    m_Localized: After climbing up the cliff a little, I got a good view of the wild
+      vegetables I was supposed to pick. Although I was a little tired, I was able
+      to complete the collection safely.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19190413648904192
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19190499699245056
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19190686853283840
+    m_Localized: Danger detection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19190745678397440
+    m_Localized: "earthquake\u2026? Is the feeling of shaking caused by volcanic
+      activity? Rather than thinking about it, we must first ensure the safety of
+      those around us at all costs..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19190886267273216
+    m_Localized: look around
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19190954256941056
+    m_Localized: In consideration of falling rocks and landslides, we moved to a
+      slightly more open area. The shaking quickly subsided, but it made us keenly
+      aware of the dangers of this island...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19191016299085824
+    m_Localized: look above
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19191095915364352
+    m_Localized: When I looked up, I saw a rock rolling down the slope! I was able
+      to move quickly on the unstable footing and avoid it, but I was slightly injured.
+      ...It was cheap considering the rock had hit it directly.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19191379500646400
+    m_Localized: honeycomb
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19191515287044096
+    m_Localized: A beehive can be seen in the crevices of the rocks. Although we
+      can look forward to the nutrition we receive from bees, there are also risks
+      involved.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19191610778763264
+    m_Localized: Gather by removing adult insects <color=#B53D3D>(requires torch)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19191671189323776
+    m_Localized: Insert the torch slowly into the nest and immediately retreat! Observe
+      from a distance how the bees panic. When I returned a while later, the torch
+      had become a cinder, but the bee was gone!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19191732862369792
+    m_Localized: take the risk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19191781478547456
+    m_Localized: Even though I was aware of the danger, I used a nearby stone to
+      scrape off the nest. Then, as if I had made it angry, countless bees appeared
+      from the hive! It hurts, it hurts, it hurts! ! ! I got stung quite a lot, but
+      I was able to collect a small amount of the wasp's nest.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19191885467926528
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19192021862498304
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19192087822123008
+    m_Localized: tightrope walking
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19192270920269824
+    m_Localized: I've been walking down a pathless path, but I can't seem to get
+      anywhere. It seems like there's still room for exploration if you climb up
+      the cliff...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19192446196039680
+    m_Localized: climb up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19192508770861056
+    m_Localized: After climbing up the rock wall, I was able to reach a slope that
+      I could walk on. I'm a little tired, but let's continue exploring.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19192621551501312
+    m_Localized: go back the way you came
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19192679445479424
+    m_Localized: I turned back the way I came. It was frustrating not to get any
+      results, so I picked up a few stones here and there along the way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19192745723871232
+    m_Localized: lumpy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19192820298596352
+    m_Localized: I never thought walking on an unmaintained mountain road would be
+      so difficult. It's best to always watch your step.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19193120765952000
+    m_Localized: Proceed with caution anyway
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19193158648905728
+    m_Localized: If you lose your life because you are not careful, you will lose
+      your life. I watched my step and took my time, moving slowly... I found some
+      wild vegetables along the way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19193221940953088
+    m_Localized: However, be careful of your surroundings.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19193340522315776
+    m_Localized: When I looked around, I found wild vegetables! Just as I was about
+      to head there happily, I broke my foot... I was...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19193416892203008
+    m_Localized: rock
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19193658530250752
+    m_Localized: There are many hard, high-quality stones falling in the mountains.
+      You may need stones, and you can pick them up. Or should I go find something
+      a little more useful?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19193756299476992
+    m_Localized: pick up stones
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19193836960137216
+    m_Localized: 'Anyway, I picked up some stones. It might be of some use. Let''s
+      choose what we can use later. '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19193937354997760
+    m_Localized: Explore a little more
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19193985652408320
+    m_Localized: Stones are everywhere. As expected, it would be more meaningful
+      to search for food. Thinking so, I walked a little further and found a mushroom
+      growing on a dead tree.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19194120356675584
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19194158331904000
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19194269304799232
+    m_Localized: road to the crater
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19194366985945088
+    m_Localized: I have come to a very high place... The ground is also dark, indicating
+      that it contains a lot of volcanic ash. Just out of curiosity, it might be
+      a good idea to go to the crater.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19194493729423360
+    m_Localized: go to the crater
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19194565833703424
+    m_Localized: There's probably something useful in the crater as well. I know
+      it's a dangerous place, but let's climb it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19194669512704000
+    m_Localized: stay in the mountains
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19194879324372992
+    m_Localized: It would be reckless to go all the way to the crater when you're
+      already on top of a dangerous mountain. Let's continue exploring halfway up
+      the mountain.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19194918583058432
+    m_Localized: Found a cave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19194989395492864
+    m_Localized: Is this...a cave...? There's a pretty big hole in the side. Might
+      be worth exploring.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19195121822253056
+    m_Localized: Let's go inside
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19195296967999488
+    m_Localized: The inside of the cave is damp, and moss grows on the walls. It's
+      a mysterious moss that feels cool to the touch. You won't be able to eat it,
+      but let's collect it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19195387510439936
+    m_Localized: Go all the way in <color=#B53D3D>(requires light)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19195541655306240
+    m_Localized: When you go deep inside, you will find that there is a lot of moss
+      growing and there is a bad smell. Are animals using it as a bed? ...While I
+      was thinking that, I found a fruit lying on the ground. Let's get it while
+      the landlord is away...!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19195639076405248
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19195849710157824
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19195962771816448
+    m_Localized: hypothermia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19196017574592512
+    m_Localized: It's raining heavily... Perhaps because of the high altitude, I
+      felt my body heat being ruthlessly stolen away from me. Should I turn back
+      before I endanger myself?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19196195023011840
+    m_Localized: continue exploring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19196370667880448
+    m_Localized: I can't waste time to overcome today's hunger... Let's continue
+      exploring. I feel kind of cold... I hope it's just my imagination.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19196475978465280
+    m_Localized: Return to base
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19196538792361984
+    m_Localized: Life is the most important thing. Let's go home and rest for today...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19196611483844608
+    m_Localized: view
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19196839117111296
+    m_Localized: I suddenly looked around. Nature is always our enemy, but it is
+      very beautiful to look at. Shall we take a little break while admiring the
+      scenery?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19197021992960000
+    m_Localized: rest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19197105061150720
+    m_Localized: I sat down on a handy rock and took a breather. When I looked into
+      the distance, the endless horizon appeared both beautiful and cruel. I feel
+      a strange mixture of sense of accomplishment and anxiety.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19197204185137152
+    m_Localized: continue exploring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19197301518155776
+    m_Localized: There is no time for sentimentality. As I continued walking, I saw
+      a baby bird on the ground. Did it fall from its nest on the cliff, or was it
+      abandoned? ...I felt a strange sense of familiarity. Let's take him home.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19197381738414080
+    m_Localized: It rains in the mountains
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19197538961899520
+    m_Localized: The rain has become heavier. Climbing a rough rocky mountain in
+      the rain is reckless, but in order to survive, you must not stop...!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19197630292869120
+    m_Localized: Keep exploring!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19197835595661312
+    m_Localized: it hurts! ! My foot got caught on a rock and I fell down hard. However,
+      there was a mushroom growing where he fell... I wonder if it's because of the
+      injury...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19197947365474304
+    m_Localized: take shelter from the rain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19198066777309184
+    m_Localized: There is a protrusion of rock that looks like it could be used as
+      a shelter from the rain. Let's stay still for a while under it... ......The
+      rain didn't stop, but I felt rested!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19198175204261888
+    m_Localized: Next
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19198229172371456
+    m_Localized: What should I do next?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19198313280749568
+    m_Localized: continue exploring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19198377336160256
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19198432084410368
+    m_Localized: Return to base
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19198466754527232
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19198621599842304
+    m_Localized: cave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19198716047179776
+    m_Localized: Is this...a cave...? There's a pretty big hole in the side. Might
+      be worth exploring.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19198827615666176
+    m_Localized: Light and advance <color=#B53D3D>(requires torch)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19198944003407872
+    m_Localized: It seems like we can move forward relatively safely if we illuminate
+      the area... I grabbed the light and headed inside.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19199188741046272
+    m_Localized: Turn on the light and proceed <color=#B53D3D> (requires flashlight)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19199347357040640
+    m_Localized: It seems like we can move forward relatively safely if we illuminate
+      the area... I grabbed the light and headed inside.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19200118530162688
+    m_Localized: Blessings of the volcano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19200255868452864
+    m_Localized: I came near the crater. What should I look for?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19200423770636288
+    m_Localized: look for food
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19200488094482432
+    m_Localized: I walked around for a while, but couldn't find anything edible.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19201298253660160
+    m_Localized: Search for materials
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19228490694049792
+    m_Localized: I looked for something that would be useful in my daily life.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19228671153979392
+    m_Localized: do nothing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19228756759724032
+    m_Localized: I stood there in a daze.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19228840083767296
+    m_Localized: mineral discovery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19228880663658496
+    m_Localized: A beautiful glowing green ore is exposed from the rock surface.
+      I would love to take it home with me, but will it have any value in life on
+      this deserted island?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19229029242683392
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19229113619496960
+    m_Localized: dig with bare hands
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19229390871379968
+    m_Localized: Dig the ground using nearby stones or your hands. After a while,
+      I was able to obtain the ore! However, the sand particles in this area were
+      so sharp that my finger was seriously injured.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19229502045601792
+    m_Localized: Dig with stone <color=#B53D3D>(requires stone)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19229603795222528
+    m_Localized: While scraping the ground with stones, I was able to collect some
+      beautiful ore! But I'm very happy. I hope the day will come when I can share
+      this joy with someone.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19229718819815424
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19229975234396160
+    m_Localized: Poisonous gas generated! ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19230032813801472
+    m_Localized: Poisonous gas is being generated. I don't know if that's true, but
+      that's how it feels. Is it dangerous to explore further?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19230141534355456
+    m_Localized: continue exploring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19230200804065280
+    m_Localized: Goho! Goho! ! I tried not to inhale it directly, but my throat wasn't
+      feeling well. Was it really poisonous? However, it was a blessing in disguise
+      that he did not die instantly.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19230305179320320
+    m_Localized: Return to base
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19230379095539712
+    m_Localized: I've heard that just one breath of volcanic gas is enough to kill
+      you. I can't stay in such a dangerous place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19230435257270272
+    m_Localized: lava spout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19230569797959680
+    m_Localized: 'Lava erupted from the rock surface. Signs of an eruption? There''s
+      no guarantee that it won''t erupt from under your feet...! Anyway, I have to
+      run away! '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19230659077914624
+    m_Localized: run away
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19230746139082752
+    m_Localized: I ran anyway to the other side of the crater. The footing is bad,
+      but it's better than burning your body. I'm pretty tired, but I think I'll
+      be safe once I get this far...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19230972203679744
+    m_Localized: Avoid by flying sideways
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19231383560044544
+    m_Localized: Suddenly, I felt a tremor beneath my feet and reflexively jumped
+      to the side. Perhaps the shaking was just my imagination, but nothing happened.
+      I think I scraped my arm...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19231416757960704
+    m_Localized: hot!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19231789455425536
+    m_Localized: The scorching hot lava mercilessly robs you of your physical strength.
+      Water consumption cannot be avoided... It would be better if I had something
+      to cool down with.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19231928496603136
+    m_Localized: continue exploring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19231995274117120
+    m_Localized: "hot\u2026\u2026. Sweat gushes out from my body inexhaustibly...
+      When you return to your base...let's take a bath at the nearby beach..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19232276745469952
+    m_Localized: Cool down your body <color=#B53D3D>(use cold moss)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19232312204115968
+    m_Localized: I tried pasting cold moss on my neck. It smells a little strange,
+      but I feel comfortable, probably because my blood is cooling down. I think
+      I can continue exploring for a while.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19240663629611008
+    m_Localized: burning stone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19240797549543424
+    m_Localized: The stones are burning... Is it something like coal? No matter what,
+      fuel is useful. I want to bring it home somehow...!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19240871109246976
+    m_Localized: I covered it with soil nearby and waited for a while, but it didn't
+      seem like it would ever cool down. It doesn't seem like you can touch it or
+      put it in your bag.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19240972993085440
+    m_Localized: Extinguish the fire <color=#B53D3D>(use water bottle)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19241030027231232
+    m_Localized: I was able to digest it by pouring water from a bottle on it. Was
+      it ignited from lava? Let it dry thoroughly before using.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19241096569864192
+    m_Localized: pour soil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19241180346892288
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19241268683128832
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19241369564528640
+    m_Localized: look around
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19241427215237120
+    m_Localized: The area around the crater is full of rocks and there isn't much
+      to harvest. I'm sure there are some useful things out there, but I have no
+      idea where or what to look for.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19241514028941312
+    m_Localized: look around
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19241615753396224
+    m_Localized: I looked around, but there was nothing particularly noticeable.
+      The sun is bright... ...After walking for a while, all I finally found was
+      a dead branch.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19241782426648576
+    m_Localized: Examine the cracks in the rock
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19241913435734016
+    m_Localized: As I carefully searched the crevices between the rocks, I found
+      some handy stones tumbling down. You could call it a harvest...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19241985275772928
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19242037620686848
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19242137067634688
+    m_Localized: In a place like this
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19242338448752640
+    m_Localized: A beehive is built in a crevice between rocks. If you look closely,
+      you can see a plump larva inside the hole... What should I do?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19256241471799296
+    m_Localized: Gather by removing adult insects <color=#B53D3D>(requires torch)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19256454412419072
+    m_Localized: I lit a torch and inserted it into the beehive. At that moment,
+      he ran away, but was chased everywhere by bees ready for battle. ...Stay. After
+      getting stung in several places, I returned to the nest and collected the wasp's
+      nest.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19256555151212544
+    m_Localized: take the risk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19256619156291584
+    m_Localized: Stick a handy stone into the beehive! Then, countless bees appeared
+      from the hive, and the area was quickly surrounded by bees. It hurts, it hurts,
+      it hurts! ! It stung me quite a bit, but I scraped it off and got some honey.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19256695953997824
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19256774370705408
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19256807354712064
+    m_Localized: air superiority
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19256863575162880
+    m_Localized: A large hawk is circling in the sky. Humans without civilization
+      would be nothing more than bait... If I were attacked, I wouldn't have a chance.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19257092160536576
+    m_Localized: hide and get away with it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19257197659865088
+    m_Localized: While I was still in the shade of a rock, the hawk flew off to another
+      location. I want to fly like that and look for food.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19257292086231040
+    m_Localized: Attack by throwing stones <color=#B53D3D> (use stones)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19257358716944384
+    m_Localized: Let me tell you who is at the top of the food chain. I threw a stone
+      at the hawk! However, it did not hit the hawk, which flew quickly through the
+      sky. The hawk didn't come towards me, but just scoffed and walked away.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19257463033479168
+    m_Localized: capture operation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19257527835475968
+    m_Localized: There is a bird's nest here. It was probably the hawk that had been
+      circling in the sky for some time now. I can see eggs, but what should I do?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19257677907673088
+    m_Localized: approach slowly and take it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19258057903226880
+    m_Localized: Approach the nest slowly and unnoticed. However, as if sensing our
+      movement, the hawk started to descend rapidly! it hurts! ! The nails dug into
+      my arm, causing severe lacerations.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19258142972100608
+    m_Localized: ignore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19258180523704320
+    m_Localized: Use a decoy <color=#B53D3D>(use yakitori)</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19258245711577088
+    m_Localized: When I threw the yakitori that was in my bag, he didn't miss it
+      and started descending. I was able to use this opportunity to run to the nest
+      and steal the eggs. Although we lost meat, the harvest was large.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19258387709739008
+    m_Localized: I left the place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19258542513111040
+    m_Localized: volcanic ash in the rain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19258599568228352
+    m_Localized: The volcanic ash melts due to the rain, and people lose their legs.
+      If you continue exploring like this, you'll only be using up your physical
+      strength... Would it be better to return to base for now?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19258883279339520
+    m_Localized: continue exploring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19258953659760640
+    m_Localized: We have come this far and cannot back down. Let's get some results
+      and then go home so we don't waste time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19259062023798784
+    m_Localized: Return to base
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19259127333306368
+    m_Localized: A crater in the rain, the danger is unknown. You shouldn't overdo
+      it here. ...I cautiously made my way home.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19259264495435776
+    m_Localized: Next
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19259544112906240
+    m_Localized: What should I do next?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19259694839414784
+    m_Localized: continue exploring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19259767505731584
+    m_Localized: '#VALUE!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19259829656928256
+    m_Localized: Return to base
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19268465162633216
+    m_Localized: Let's focus on the coconut for now.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19268660667531264
+    m_Localized: 'consumption:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19268955036368896
+    m_Localized: Let's go to sleep today
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19268982160932864
+    m_Localized: use coconut juice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19269077644263424
+    m_Localized: Insufficient action value
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19269102600372224
+    m_Localized: You can only go exploring during the day.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19269117624369152
+    m_Localized: (It would be a different story if there was light...)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19269136762978304
+    m_Localized: Go exploring at night
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19269150256054272
+    m_Localized: 'Required action value:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19273248355303424
+    m_Localized: "\u713C\u304D\u30AC\u30CB\ntairyoku:0\naa:0\naaa:0\n\u3042\u3075\u3047\u3044\u3046\uFF46\uFF48\u3074\uFF46\u307B\u3046\u3043"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 2800749200731799552
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00c06244e9bf340000c0a29d79c7340000c0627f413c3600
