@@ -9,7 +9,6 @@
 
 ![image](https://github.com/user-attachments/assets/bbd7ff3a-2a50-43a3-8771-323f4e31c531) ![image](https://github.com/user-attachments/assets/010c9727-e7ae-464e-a45a-15d836378ecf)
 
--|-
 
 # ふりーむ!でのURL  
 https://www.freem.ne.jp/win/game/32625  
