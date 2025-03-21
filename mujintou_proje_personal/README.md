@@ -5,8 +5,10 @@
 無人島には何か一つだけ持ち込めます！  
 それを活かしたり、アイテムクラフトや料理をしたりして脱出を目指しましょう。  
 ## 一部ゲーム画面のスクリーンショットを抜粋  
-![image](https://github.com/user-attachments/assets/595052e2-af66-47b4-9153-d534a0d09e5d)  
-![image](https://github.com/user-attachments/assets/bbd7ff3a-2a50-43a3-8771-323f4e31c531) 
+![image](https://github.com/user-attachments/assets/595052e2-af66-47b4-9153-d534a0d09e5d)  ![image](https://github.com/user-attachments/assets/02784294-158a-421c-9799-e3a6736ca8b0)
+
+![image](https://github.com/user-attachments/assets/bbd7ff3a-2a50-43a3-8771-323f4e31c531) ![image](https://github.com/user-attachments/assets/010c9727-e7ae-464e-a45a-15d836378ecf)
+
 -|-
 
 # ふりーむ!でのURL  
