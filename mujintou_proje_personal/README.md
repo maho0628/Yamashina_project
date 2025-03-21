@@ -4,6 +4,7 @@
 テキストベースで無人島サバイバルをするシミュレーションゲームです。
 無人島には何か一つだけ持ち込めます！  
 それを活かしたり、アイテムクラフトや料理をしたりして脱出を目指しましょう。
+![image](https://github.com/user-attachments/assets/595052e2-af66-47b4-9153-d534a0d09e5d)
 
 # ふりーむ!でのURL  
 https://www.freem.ne.jp/win/game/32625  
