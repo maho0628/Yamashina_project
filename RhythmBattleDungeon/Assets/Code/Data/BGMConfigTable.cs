@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BGMConfig", menuName = "GameData//BGMConfigTable")]
+[CreateAssetMenu(fileName = "BGMConfig", menuName = "GameData/BGMConfigTable")]
 // BGMを管理するためのスクリプタブルオブジェクト
 public class BGMConfigTable : ScriptableObject
 {
