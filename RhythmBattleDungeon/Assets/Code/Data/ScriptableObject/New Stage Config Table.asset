@@ -12,18 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da8addd456cd9f4a91bd5d970e92139, type: 3}
   m_Name: New Stage Config Table
   m_EditorClassIdentifier: 
-  stages:
-  - stageId: 
-    bgm:
-      bgmId: 
-      audioClip: {fileID: 0}
-      bpm: 0
-      genre: 
-    chartFileName: 
-  - stageId: 
-    bgm:
-      bgmId: 
-      audioClip: {fileID: 0}
-      bpm: 0
-      genre: 
+  stagesBgmList:
+  - stageId: stage1
+    stageBgm:
+      sceneId: BGM_baseLocation_notFire_DOVA_lab
+      bgmAudioClip: {fileID: 8300000, guid: e0ed9a9fa64c3b141b45194d7b4ddf13, type: 3}
+      bgmBpm: 0
+      bgmGenre: 
     chartFileName: 
