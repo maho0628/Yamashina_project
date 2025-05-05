@@ -2,49 +2,69 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "BGMConfig", menuName = "GameData/BGMConfigTable")]
-// BGMを管理するためのスクリプタブルオブジェクト
+/// <summary>
+/// ゲーム内で使用するBGM設定の一覧を保持する ScriptableObject
+/// </summary>
 public class BGMConfigTable : ScriptableObject
 {
-    //BGMの詳細設定のリスト
-    [SerializeField] private List<BGMConfig> bgmsList;
+    [SerializeField, Header("ゲーム内で使用するBGM設定の一覧")]
+    private List<BGMConfig> bgmList;
 
 
-    //シーンIDを探してBGMConfigデータを返すメソッド
+    /// <summary>
+    /// 全てのBGM設定を取得
+    /// </summary>
+    internal List<BGMConfig> GetAll()
+    {
+        return bgmList;
+    }
+
+    /// <summary>
+    /// 指定したIDのBGM設定を取得
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     internal BGMConfig GetBgmConfig(string id)
     {
-        return bgmsList.Find(s => s.SceneId == id);
+        return bgmList.Find(s => s.BgmId == id);
     }
 
 }
 
-//BGMの詳細設定
+
 [System.Serializable]
+/// <summary>
+/// 単一のBGMに関する設定データ
+/// </summary>
+
 public class BGMConfig
 {
-    //スプレッドシートで管理するBGMのID名
-    [SerializeField, Header("BGMのID名")]
-    private string sceneId;
+    [SerializeField, Header("BGMのID")]
+    private string bgmId;
 
-    //使う音源のオーディオクリップ
-    [SerializeField, Header("使う音源のオーディオクリップ")]
+    [SerializeField, Header("使用するオーディオクリップ")]
     private AudioClip bgmAudioClip;
 
-    [SerializeField, Header("使う音源のBPM")]
+    [SerializeField, Header("BPM（Beats Per Minute）")]
     private float bgmBpm;
 
-    [SerializeField, Header("使う音源のジャンル名")]
-    public string bgmGenre;//BGMのジャンル名　
+    [SerializeField, Header("ジャンル名")]
+    private string bgmGenre;
 
+    [SerializeField, Header("表示用の曲名")]
+    private string bgmDisplayName;
 
-    //シーン名を読み取りをする為のゲッター
-    internal string SceneId => sceneId;
-    //BGMのオーディオクリップの読み取りをする為のゲッター
+    [SerializeField, Header("ジャケット画像")]
+    private Sprite bgmJacketImage;
+
+    // 以下は各データの読み取り専用プロパティ
+
+    internal string BgmId => bgmId;
     internal AudioClip BgmAudioClip => bgmAudioClip;
-
-    //BGMのBPMの読み取りをするためのゲッター
     internal float BgmBpm => bgmBpm;
-
-    //BGMのジャンル名の読み取りをするためのゲッター
     internal string BgmGenre => bgmGenre;
-
+    internal string BgmDisplayName => bgmDisplayName;
+    internal Sprite BgmJacketImage => bgmJacketImage;
 }
+
+
