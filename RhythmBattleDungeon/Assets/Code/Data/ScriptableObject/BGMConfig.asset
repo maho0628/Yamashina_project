@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459e197dd0923244aa3f01939641da86, type: 3}
   m_Name: BGMConfig
   m_EditorClassIdentifier: 
-  bgmsList:
-  - sceneId: 
-    bgmAudioClip: {fileID: 0}
+  bgmList:
+  - bgmId: bgm01
+    bgmAudioClip: {fileID: 8300000, guid: e0ed9a9fa64c3b141b45194d7b4ddf13, type: 3}
     bgmBpm: 0
     bgmGenre: 

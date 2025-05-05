@@ -1,29 +1,30 @@
 using UnityEngine;
 
-public class SingletonMonobehaviour<T> : MonoBehaviour where T : Component
+public class SingletonMonoBehaviour<T> : MonoBehaviour where T : Component
 {
     private static T _instance;
+
+    /// <summary>
+    /// シングルトンインスタンスを取得
+    /// </summary>
     public static T Instance
     {
         get
         {
             if (_instance == null)
             {
-                //  アクセスされたらまずは、インスタンスがあるか調べる
-                _instance = (T)FindAnyObjectByType(typeof(T));    
+                //  インスタンスが存在しない場合、シーン内を検索
+                _instance = FindAnyObjectByType<T>();
 
                 if (_instance == null)
                 {
-                    //  なかったら作る
+                    // インスタンスが見つからなければ新しく作成
                     SetupInstance();
                 }
                 else
                 {
-                    //  既に会った時のデバッグログ　特に意味はない
-                    string typeName = typeof(T).Name;
-
-                    Debug.Log("[Singleton] " + typeName + " instance already created: " +
-                        _instance.gameObject.name);
+                    // 既にインスタンスが存在する場合のデバッグメッセージ
+                    Debug.Log($"[Singleton] Instance of {typeof(T).Name} already created: {_instance.gameObject.name}");
                 }
             }
 
@@ -31,30 +32,22 @@ public class SingletonMonobehaviour<T> : MonoBehaviour where T : Component
         }
     }
 
-    public virtual void Awake()
-    {
-        //  重複回避のためのチェック
-        RemoveDuplicates();
-
-    }
-
-    //  シングルトン初期化
+    /// <summary>
+    /// インスタンスがシーン内に存在しない場合、インスタンスをセットアップ
+    /// </summary>
     private static void SetupInstance()
     {
-        _instance = (T)FindAnyObjectByType(typeof(T));
-
-        if (_instance == null)
-        {
-            GameObject gameObj = new GameObject();
-            gameObj.name = typeof(T).Name;
-
-            _instance = gameObj.AddComponent<T>();
-            DontDestroyOnLoad(gameObj);
-        }
+        GameObject gameObj = new GameObject(typeof(T).Name);
+        _instance = gameObj.AddComponent<T>();
+        DontDestroyOnLoad(gameObj);
     }
 
-    private void RemoveDuplicates()
+    /// <summary>
+    /// 重複インスタンスの除去
+    /// </summary>
+    public virtual void Awake()
     {
+        // インスタンスがすでに存在するか確認し、存在する場合は自身を破棄
         if (_instance == null)
         {
             _instance = this as T;
@@ -66,4 +59,3 @@ public class SingletonMonobehaviour<T> : MonoBehaviour where T : Component
         }
     }
 }
-

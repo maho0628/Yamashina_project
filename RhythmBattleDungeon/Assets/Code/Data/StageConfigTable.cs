@@ -2,46 +2,69 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "GameData/Stage Config Table")]
-// 各譜面ステージ専用のスクリプタブルオブジェクト
+/// <summary>
+/// 各譜面ステージの設定を管理するScriptableObject
+/// </summary>
 public class StageConfigTable : ScriptableObject
 {
-    //ステージ設定のリスト
-    [SerializeField,Header("ステージ音源のリスト")] 
+    [SerializeField, Header("ステージ音源のリスト")]
     private List<StageConfig> stagesBgmList;
 
-
-    //ステージIDを探してStageConfigデータを返すメソッド
-    internal StageConfig GetStageConfig(string stageid)
+    /// <summary>
+    /// 指定されたステージIDに対応するStageConfigデータを取得
+    /// </summary>
+    /// <param name="id">ステージのID</param>
+    /// <returns>該当するStageConfigデータ、見つからない場合は null</returns>
+    internal StageConfig GetStageConfig(string id)
     {
-        return stagesBgmList.Find(s => s.StageId == stageid);
+        var stageConfig = stagesBgmList.Find(s => s.StageId == id);
+        if (stageConfig == null)
+        {
+            Debug.LogWarning($"ステージID '{id}' に対応するデータが見つかりません。");
+        }
+        return stageConfig;
+    }
+    /// <summary>
+    /// 全ステージ設定を取得（曲一覧に使う）
+    /// </summary>
+    /// <returns></returns>
+    /// 
+    public List<StageConfig> GetAllStageConfigs()
+    {
+        return stagesBgmList;
     }
 
 }
+
 [System.Serializable]
-// ステージ設定クラス
+/// <summary>
+/// ステージ設定データ
+/// </summary>
 public class StageConfig
 {
-    //スプレッドシートで管理しているステージID名
-    [SerializeField, Header("ステージID名")] 
+    [SerializeField, Header("ステージID名")]
     private string stageId;
 
-    //BGM音源の設定内容
-    [SerializeField, Header("BGM音源の設定内容")] 
+    [SerializeField, Header("BGM音源の設定内容")]
     private BGMConfig stageBgm;
 
-    //譜面データJsonファイル名
     [SerializeField, Header("譜面データJsonファイル名")]
     private string chartFileName;
 
+    // 以下はプロパティ
 
-    //ステージ名を読み取りをする為のゲッター
+    /// <summary>
+    /// ステージIDを取得
+    /// </summary>
     internal string StageId => stageId;
 
-    //BGMの名前の読み取りをする為のゲッター
+    /// <summary>
+    /// ステージに対応するBGM設定を取得
+    /// </summary>
     internal BGMConfig StageBgm => stageBgm;
 
-    //譜面ファイル名の読み取りをする為のゲッター
+    /// <summary>
+    /// 譜面データのファイル名を取得
+    /// </summary>
     internal string ChartFileName => chartFileName;
-
 }
-
