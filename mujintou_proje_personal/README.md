@@ -10,9 +10,12 @@
 ![image](https://github.com/user-attachments/assets/bbd7ff3a-2a50-43a3-8771-323f4e31c531) ![image](https://github.com/user-attachments/assets/010c9727-e7ae-464e-a45a-15d836378ecf)
 
 
-# ふりーむ!でのURL  
+# ふりーむ!でのURL 、QRコード
 https://www.freem.ne.jp/win/game/32625  
-※Githubにあげているものはチーム内でふりーむに投稿が終わってから改良したものなので、状況が一部異なります。  
+※Githubにあげているものはチーム内でふりーむに投稿が終わってから改良したものなので、状況が一部異なります。 
+
+![image](https://github.com/user-attachments/assets/bacd2006-63d7-4ab0-956a-022801e2faf7)
+ 
 
 # チーム内での担当箇所
 
