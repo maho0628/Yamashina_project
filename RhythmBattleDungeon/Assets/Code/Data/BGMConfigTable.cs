@@ -7,29 +7,55 @@ using UnityEngine;
 /// </summary>
 public class BGMConfigTable : ScriptableObject
 {
+
     [SerializeField, Header("ゲーム内で使用するBGM設定の一覧")]
     private List<BGMConfig> bgmList;
 
+    private Dictionary<string, BGMConfig> bgmDict;
 
-    /// <summary>
-    /// 全てのBGM設定を取得
-    /// </summary>
+    private void OnEnable()
+    {
+        // ScriptableObject 再読み込み時にも対応
+        InitializeDictionary();
+    }
+
+    private void InitializeDictionary()
+    {
+        bgmDict = new Dictionary<string, BGMConfig>();
+        foreach (var bgm in bgmList)
+        {
+            if (!string.IsNullOrEmpty(bgm.BgmId) && !bgmDict.ContainsKey(bgm.BgmId))
+            {
+                bgmDict.Add(bgm.BgmId, bgm);
+                foreach (var key in bgmDict.Keys)
+                {
+                    Debug.Log($"登録されているBGMキー: {key}");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"[BGMConfigTable] 重複または空のBGM ID: {bgm.BgmId}");
+            }
+        }
+    }
+
     internal List<BGMConfig> GetAll()
     {
         return bgmList;
     }
 
-    /// <summary>
-    /// 指定したIDのBGM設定を取得
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
     internal BGMConfig GetBgmConfig(string id)
     {
-        return bgmList.Find(s => s.BgmId == id);
-    }
+        if (bgmDict == null)
+        {
+            InitializeDictionary();
+        }
 
+        bgmDict.TryGetValue(id, out var config);
+        return config;
+    }
 }
+
 
 
 [System.Serializable]

@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class StageManager : SingletonMonoBehaviour<StageManager>
 {
     // 現在のステージID
@@ -9,12 +8,34 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
     // ステージ設定テーブル
     private StageConfigTable stageConfigTable;
 
+    public StageConfigTable GetStageConfigTable()
+    {
+        return stageConfigTable;
+    }
+
+    public void SetupStageTable(StageConfigTable table)
+    {
+        stageConfigTable = table;
+
+    }
     // ステージをセットアップする
     public void SetupStage(StageConfigTable table, string stageId)
     {
         stageConfigTable = table;
         currentStageId = stageId;
+
+        // ステージ設定を取得
+        StageConfig stageConfig = stageConfigTable.GetStageConfig(currentStageId);
+        if (stageConfig == null)
+        {
+            Debug.LogError($"[StageManager] ステージ設定が見つかりません！ ID: {currentStageId}");
+            return;
+        }
+
+        // ここでステージに関連するBGM、譜面などをセットアップする処理を追加
+        Debug.Log($"ステージ設定完了: {currentStageId}, BGM: {stageConfig.StageBgm.BgmId}, 譜面: {stageConfig.ChartFileName}");
     }
+
 
     // 現在のステージのBGMIDを取得する
     public string GetCurrentStageBGMId()
@@ -54,4 +75,3 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
         return stageConfig.ChartFileName;
     }
 }
-

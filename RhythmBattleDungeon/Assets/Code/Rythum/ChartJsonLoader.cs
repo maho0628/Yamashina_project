@@ -6,6 +6,10 @@ using Newtonsoft.Json;
 /// </summary>
 public static class ChartJsonLoader
 {
+    private static string basePath = "json/charts/";
+
+    
+
     /// <summary>
     /// 指定したパスの JSON ファイルを読み込み、<see cref="ChartData"/> をデシリアライズして返す。
     /// </summary>
@@ -17,8 +21,8 @@ public static class ChartJsonLoader
     /// </returns>
     public static ChartData LoadChartData(string filePath)
     {
-        // Resources フォルダから TextAsset として JSON ファイルを読み込む
-        TextAsset jsonFile = Resources.Load<TextAsset>(filePath);
+        string fullPath = basePath + filePath;
+        TextAsset jsonFile = Resources.Load<TextAsset>(fullPath);
 
         // もしファイルが存在しない場合は、エラーログを出力して null を返す
         if (jsonFile == null)
