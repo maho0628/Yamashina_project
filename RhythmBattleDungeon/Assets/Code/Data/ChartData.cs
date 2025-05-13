@@ -32,6 +32,9 @@ public class Note
     /// </summary>
     [JsonProperty("lane")]
     public int LaneNumber { get; internal set; }
+
+    internal bool IsHit { get; set; } 
+
 }
 
 

@@ -45,7 +45,7 @@ public class SingletonMonoBehaviour<T> : MonoBehaviour where T : Component
     /// <summary>
     /// 重複インスタンスの除去
     /// </summary>
-    public virtual void Awake()
+    protected virtual void Awake()
     {
         // インスタンスがすでに存在するか確認し、存在する場合は自身を破棄
         if (_instance == null)

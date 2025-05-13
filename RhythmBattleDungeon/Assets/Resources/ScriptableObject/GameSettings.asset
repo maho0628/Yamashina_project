@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 459e197dd0923244aa3f01939641da86, type: 3}
-  m_Name: BGMConfig
+  m_Script: {fileID: 11500000, guid: bf06be84389dc4648a0f43b4449e5094, type: 3}
+  m_Name: GameSettings
   m_EditorClassIdentifier: 
-  bgmList:
-  - bgmId: bgm01
-    bgmAudioClip: {fileID: 8300000, guid: e0ed9a9fa64c3b141b45194d7b4ddf13, type: 3}
-    bgmBpm: 0
-    bgmGenre: 
+  maxSeCount: 3
+  initialBgmVolume: 0.5
+  initialSeVolume: 1
+  fadeSpeed: 1

@@ -2,34 +2,46 @@ using UnityEngine;
 
 public class SongSelectUIManager : MonoBehaviour
 {
-    [SerializeField] private StageConfigTable stageConfigTable;
-    [SerializeField] private UIObjectPool<SongItemUI> songItemPool;
+    [SerializeField] private SongItemUIPool songItemPool;
     [SerializeField] private Transform contentParent;
 
+    private bool isInitialized = false;
+
+
+  
     private void Start()
     {
+        GameInitializer.Instance.SetUpGameInitialize(); 
         GenerateSongList();
+       
     }
 
     private void GenerateSongList()
     {
-        foreach (var config in stageConfigTable.GetAllStageConfigs())
+        var allConfigs = StageManager.Instance.GetStageConfigTable().GetAllStageConfigs();
+
+        // 一度だけ生成
+        if (isInitialized) return;
+        isInitialized = true;
+
+        foreach (var config in allConfigs)
         {
             var songUI = songItemPool.Get();
             songUI.transform.SetParent(contentParent, false);
-            songUI.Pool = songItemPool;
             songUI.Setup(config.StageBgm);
-        }
+
+
+       }
     }
 
+    // 今は未使用だが再読み込みしたいとき用に残す
     public void ClearSongList()
     {
         foreach (Transform child in contentParent)
         {
-            if (child.TryGetComponent<SongItemUI>(out var ui))
-            {
-                ui.Deactivate();
-            }
+            Destroy(child.gameObject); // 完全に削除する（任意）
         }
+
+        isInitialized = false;
     }
 }

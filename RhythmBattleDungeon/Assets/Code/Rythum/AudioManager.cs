@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// ゲーム全体の音声再生を管理するシングルトンコンポーネント。
@@ -16,18 +17,10 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
 
     #endregion
 
-    #region プランナー向けパラメータ (Inspector表示)
 
-    [SerializeField, Header("同時に再生できる効果音の数")]
-    private int maxSeCount = 3;
 
-    [SerializeField, Header("初期 BGM 音量 (0.0 - 1.0)")]
-    private float initialBgmVolume = 1f;
 
-    [SerializeField, Header("初期 SE 音量 (0.0 - 1.0)")]
-    private float initialSeVolume = 1f;
 
-    #endregion
 
     #region 内部管理用フィールド
 
@@ -38,23 +31,28 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     private float seVolume;
 
     // 登録されている BGM 設定テーブル
-    private BGMConfigTable bgmConfigTable;
+    private BGMConfigTable bgmConfigTable;                       // ScriptableObjectとして保持（元データ）
+    private Dictionary<string, BGMConfig> bgmConfigDict;         // 検索効率用のキャッシュ
 
     // 登録されている SE 設定テーブル
     private SEConfigTable seConfigTable;
+    private string currentBgmId;
 
     #endregion
 
     /// <summary>
     /// 初期化処理：AudioSource のセットアップと初期音量を設定する。
     /// </summary>
-    public override void Awake()
+    protected override void Awake()
     {
         base.Awake();
+        Debug.Log("AudioManager Awake");
+
         InitializeAudioSources();
 
-        bgmVolume = Mathf.Clamp01(initialBgmVolume);
-        seVolume = Mathf.Clamp01(initialSeVolume);
+        var gameInitializerSetting = GameInitializer.Instance.GetGameSettings();
+        bgmVolume = Mathf.Clamp01(gameInitializerSetting.InitialBgmVolume);
+        seVolume = Mathf.Clamp01(gameInitializerSetting.InitialSeVolume);
         ApplyVolumes();
     }
 
@@ -75,29 +73,48 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     {
         seConfigTable = seTable;
     }
-
     /// <summary>
     /// 指定した BGM ID の曲をループ再生する。
     /// </summary>
     /// <param name="bgmId">BGMConfigTable に登録された識別子</param>
-    public void PlayBGMById(string bgmId)
+    /// <param name="forceReplay">最初からBGMを流しなおすかどうか</param>
+    private void PlayBGMById(string bgmId, bool forceReplay = false)
     {
-        if (bgmConfigTable == null)
-        {
-            Debug.LogError("[AudioManager] BGMConfigTable が未設定です。");
-            return;
-        }
-
         var bgmConfig = bgmConfigTable.GetBgmConfig(bgmId);
         if (bgmConfig == null)
         {
-            Debug.LogError($"[AudioManager] BGMConfig が見つかりません (ID: {bgmId})");
+            Debug.LogError($"[AudioManager] BGM ID '{bgmId}' が見つかりません。");
             return;
         }
 
-        PlayClip(bgmSource, bgmConfig.BgmAudioClip, loop: true);
+        PlayClip(bgmSource, bgmConfig.BgmAudioClip, loop: true, forceReplay: forceReplay);
+        currentBgmId = bgmId;
     }
 
+
+    public void PlayBGMIfNotPlaying(string bgmId)
+    {
+        Debug.Log(bgmId + "PlayBGMIfNotPlayingがもってる");
+        if (string.IsNullOrEmpty(bgmId)) return;
+
+        if (currentBgmId == bgmId && bgmSource.isPlaying)
+        {
+            // 同じ曲が流れていれば何もしない
+            return;
+        }
+
+        PlayBGMById(bgmId, forceReplay: false);
+    }
+    public void ForcePlayBGM(string bgmId)
+    {
+        if (string.IsNullOrEmpty(bgmId)) return;
+
+        PlayBGMById(bgmId, forceReplay: true);
+    }
+    public string GetCurrentBGMId()
+    {
+        return currentBgmId;
+    }
     /// <summary>
     /// 現在再生中の BGM を停止する。
     /// </summary>
@@ -180,16 +197,18 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     /// </summary>
     private void InitializeAudioSources()
     {
+        var gameInitializerSetting = GameInitializer.Instance.GetGameSettings();
+
         bgmSource = gameObject.AddComponent<AudioSource>();
-        seSources = new AudioSource[maxSeCount];
-        for (int i = 0; i < maxSeCount; i++)
+        seSources = new AudioSource[gameInitializerSetting.MaxSeCount];
+        for (int i = 0; i < gameInitializerSetting.MaxSeCount; i++)
             seSources[i] = gameObject.AddComponent<AudioSource>();
     }
 
     /// <summary>
     /// 単一の AudioSource でクリップを再生する共通処理。
     /// </summary>
-    private void PlayClip(AudioSource source, AudioClip clip, bool loop = false)
+    private void PlayClip(AudioSource source, AudioClip clip, bool loop = false, bool forceReplay = false)
     {
         if (clip == null)
         {
@@ -197,7 +216,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
             return;
         }
 
-        if (source.clip == clip && source.isPlaying) return;
+        if (!forceReplay && source.clip == clip && source.isPlaying) return;
 
         source.clip = clip;
         source.loop = loop;
