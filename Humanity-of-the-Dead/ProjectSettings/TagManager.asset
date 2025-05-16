@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Floor
+  - Car
+  - BGM
+  - SE
+  - Enemy
+  - Dorops
+  - GameOver
+  - GameManager
+  - Mosaic
+  - PlayerShoot
+  - EnemyShoot
+  - GameClear
+  - UI
+  - OnTheCar
+  - Button
+  - Destroy
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - HitObject
+  - BG
+  - NoHitObject
+  - Player
+  - Enemy
+  - Car
+  - PlayerShoot
+  - EnemyShoot
+  - Fire
+  - Floor
+  - OnTheCar
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Behind Player
+    uniqueID: 497661923
+    locked: 0
+  - name: Player
+    uniqueID: 2549852151
+    locked: 0
+  - name: BehindUI
+    uniqueID: 375561339
+    locked: 0
+  - name: Before Player
+    uniqueID: 1817916389
+    locked: 0
+  - name: GameOver
+    uniqueID: 2368994759
+    locked: 0
+  - name: All Before
+    uniqueID: 1705519285
+    locked: 0
