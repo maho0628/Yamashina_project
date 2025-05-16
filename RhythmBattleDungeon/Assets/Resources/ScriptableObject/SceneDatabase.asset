@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50678be4c38e3ba4684461160c2d13a6, type: 3}
+  m_Name: SceneDatabase
+  m_EditorClassIdentifier: 
+  scenes:
+  - sceneReference: {fileID: 11400000, guid: ea99e736fae010d409715d6aa055911d, type: 2}
+    nextScene: {fileID: 11400000, guid: 69af19a317f1dbd4489f4584f6e8b79a, type: 2}
+    previousScene: {fileID: 0}
+  - sceneReference: {fileID: 11400000, guid: 69af19a317f1dbd4489f4584f6e8b79a, type: 2}
+    nextScene: {fileID: 11400000, guid: 5bf7d8c90db8b484faecf2186c0639d9, type: 2}
+    previousScene: {fileID: 11400000, guid: ea99e736fae010d409715d6aa055911d, type: 2}
+  - sceneReference: {fileID: 11400000, guid: 5bf7d8c90db8b484faecf2186c0639d9, type: 2}
+    nextScene: {fileID: 11400000, guid: e81f7fcbba128104ebd3875ecab2b287, type: 2}
+    previousScene: {fileID: 11400000, guid: 69af19a317f1dbd4489f4584f6e8b79a, type: 2}
+  - sceneReference: {fileID: 11400000, guid: e81f7fcbba128104ebd3875ecab2b287, type: 2}
+    nextScene: {fileID: 11400000, guid: ea99e736fae010d409715d6aa055911d, type: 2}
+    previousScene: {fileID: 11400000, guid: 5bf7d8c90db8b484faecf2186c0639d9, type: 2}
