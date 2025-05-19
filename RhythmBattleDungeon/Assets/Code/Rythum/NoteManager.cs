@@ -1,25 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NoteManager : MonoBehaviour
+public class NoteManager : SingletonMonoBehaviour<NoteManager>
 {
     [SerializeField] private NoteUIPool notePool;
     [SerializeField] private RectTransform parentRect; // Canvas配下の親RectTransform
     private ChartData chartData;
 
-    [SerializeField, Header("ノーツスクロール設定")] private NoteScrollConfig scrollConfig;
     [SerializeField] private Image[] laneImages;
     [SerializeField] private int laneCount = 4; // 例えば、4レーン
 
-    private void Awake()
-    {
-        if (string.IsNullOrEmpty(StageManager.Instance.GetCurrentStageBGMId()))
-        {
-            // テスト用ステージセットアップ
-            var testTable = Resources.Load<StageConfigTable>("ScriptableObject/stageConfig");
-            StageManager.Instance.SetupStage(testTable, "test");
-        }
-    }
+    private NoteScrollConfig scrollConfig;      
+    
     private void SetupLaneImages()
     {
         int laneCount = laneImages.Length;
@@ -62,14 +54,25 @@ public class NoteManager : MonoBehaviour
 
     private void Start()
     {
-
+        if (!StageManager.Instance.IsStageSelected)
+        {
+            var testTable = Resources.Load<StageConfigTable>("ScriptableObject/stageConfig");
+            StageManager.Instance.SetupStage(testTable, "test");
+        }
+        
         string chartFileName = StageManager.Instance.GetCurrentChartFileName();
         if (string.IsNullOrEmpty(chartFileName))
         {
             Debug.LogWarning("[NoteManager] ChartFileName が設定されていません。シーン遷移前に SetupStage が呼ばれていない可能性があります。");
             return;
         }
+        scrollConfig = StageManager.Instance.GetCurrentStageConfig()?.ScrollConfig;
 
+        if (scrollConfig == null)
+        {
+            Debug.LogError("[NoteManager] scrollConfig が null！ステージの初期化が間に合ってないかも！");
+            return;
+        }
         chartData = ChartJsonLoader.LoadChartData(chartFileName);
         if (chartData == null)
         {
@@ -77,9 +80,9 @@ public class NoteManager : MonoBehaviour
             return;
         }
 
+        SetupLaneImages();
 
         SpawnNotes();
-        SetupLaneImages();
     }
     public void SpawnNotes()
     {
@@ -124,5 +127,26 @@ public class NoteManager : MonoBehaviour
                 note.Deactivate();
             }
         }
+    }
+
+    public Note GetNearestNoteInLane(int laneId, float currentTime, float hitWindow)
+    {
+        if (chartData?.Notes == null) return null;
+
+        Note nearestNote = null;
+        float smallestDiff = hitWindow;
+
+        foreach (var note in chartData.Notes)
+        {
+            if (note.LaneNumber != laneId || note.IsHit) continue;
+
+            float diff = Mathf.Abs(note.SpawnTime - currentTime);
+            if (diff < smallestDiff)
+            {
+                smallestDiff = diff;
+                nearestNote = note;
+            }
+        }
+        return nearestNote;
     }
 }
