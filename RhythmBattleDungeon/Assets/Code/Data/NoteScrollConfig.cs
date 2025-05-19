@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// ノーツのスクロール設定に関するスクリプタブルオブジェクト
+/// </summary>
 [CreateAssetMenu(
     fileName = "NoteScrollConfig",
     menuName = "GameConfig/ノーツ/スクロール設定"
@@ -29,13 +32,21 @@ public class NoteScrollConfig : ScriptableObject
 
     [SerializeField, Tooltip("レーンごとの画像")]
     private Sprite[] laneSprites; // ここでレーンごとの画像を設定
+
+    [Tooltip("レーン数。通常は4。プランナーが変更可能です")]
+    [SerializeField, Min(1)]
+    private int laneCount = 4;
+ 
     // 外部から読み取り専用でアクセスできるようにする
     internal float ScrollDuration => scrollDuration;
     internal float StartY => startY;
     internal float EndY => endY;
     internal float LaneWidth => laneWidth;
     internal float LaneHeight => laneHeight;
-    public Color GetLaneColor(int laneIndex)
+
+    internal int LaneCount => laneCount;
+
+    internal Color GetLaneColor(int laneIndex)
     {
         if (laneIndex >= 0 && laneIndex < laneColors.Length)
         {
@@ -44,7 +55,7 @@ public class NoteScrollConfig : ScriptableObject
         return Color.white; // デフォルトの色
     }
     // レーンの画像を取得
-    public Sprite GetLaneSprite(int laneIndex)
+    internal Sprite GetLaneSprite(int laneIndex)
     {
         if (laneIndex >= 0 && laneIndex < laneSprites.Length)
         {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BGMConfig
   m_EditorClassIdentifier: 
   bgmList:
-  - bgmId: songselect
+  - bgmId: 'Shining Star '
     bgmAudioClip: {fileID: 8300000, guid: 099302f2d20e90043930296fd69a03e8, type: 3}
     bgmBpm: 0
     bgmGenre: 

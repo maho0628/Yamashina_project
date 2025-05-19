@@ -9,7 +9,7 @@ public class SceneBGMConfig
     [SerializeField, Header("Ä¶‚·‚éBGM‚ÌID")]
     private string bgmId;
 
-    public string SceneName => sceneName;
-    public string BgmId => bgmId;
+    internal string SceneName => sceneName;
+    internal string BgmId => bgmId;
 }
 

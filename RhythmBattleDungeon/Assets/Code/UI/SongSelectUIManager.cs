@@ -11,7 +11,6 @@ public class SongSelectUIManager : MonoBehaviour
   
     private void Start()
     {
-        GameInitializer.Instance.SetUpGameInitialize(); 
         GenerateSongList();
        
     }

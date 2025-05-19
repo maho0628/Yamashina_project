@@ -8,6 +8,9 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
     // ステージ設定テーブル
     private StageConfigTable stageConfigTable;
 
+    public bool IsStageSelected => !string.IsNullOrEmpty(currentStageId);
+
+
     public StageConfigTable GetStageConfigTable()
     {
         return stageConfigTable;
@@ -34,6 +37,25 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
 
         // ここでステージに関連するBGM、譜面などをセットアップする処理を追加
         Debug.Log($"ステージ設定完了: {currentStageId}, BGM: {stageConfig.StageBgm.BgmId}, 譜面: {stageConfig.ChartFileName}");
+    }
+
+    internal StageConfig GetCurrentStageConfig()
+    {
+
+        if (stageConfigTable == null)
+        {
+            Debug.LogError("[StageManager] StageConfigTableが設定されていません！");
+            return null;
+        }
+
+        StageConfig stageConfig = stageConfigTable.GetStageConfig(currentStageId);
+        if (stageConfig == null)
+        {
+            Debug.LogError($"[StageManager] ステージ設定が見つかりません！ ID: {currentStageId}");
+            return null;
+        }
+
+        return stageConfig;
     }
 
 

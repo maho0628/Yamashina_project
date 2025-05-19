@@ -24,6 +24,10 @@ public class StageConfigTable : ScriptableObject
         }
         return stageConfig;
     }
+
+
+  
+
     /// <summary>
     /// 全ステージ設定を取得（曲一覧に使う）
     /// </summary>
@@ -51,6 +55,12 @@ public class StageConfig
     [SerializeField, Header("譜面データJsonファイル名")]
     private string chartFileName;
 
+
+    [SerializeField, Header("ノーツのスクロール設定")]
+    private NoteScrollConfig scrollConfig;
+
+    [SerializeField, Header("判定設定（Perfect / Good / Miss など）")]
+    private List<JudgementConfig> judgementConfigs;
     // 以下はプロパティ
 
     /// <summary>
@@ -67,4 +77,7 @@ public class StageConfig
     /// 譜面データのファイル名を取得
     /// </summary>
     internal string ChartFileName => chartFileName;
+
+    internal NoteScrollConfig ScrollConfig => scrollConfig;
+    internal List<JudgementConfig> JudgementConfigs => judgementConfigs;
 }

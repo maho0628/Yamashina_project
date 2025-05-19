@@ -13,11 +13,16 @@ public class GameInitializer : SingletonMonoBehaviour<GameInitializer>
 
     private SceneReference initialScene;
 
+    private SceneBGMConfigTable sceneBGMConfigTable;
     private GameSettings gameSettings;
     public SceneDatabase GetSceneDatabase() { return sceneDatabase; }
     private bool isInitialized = false;
     public bool Initialized => isInitialized;
-    internal GameSettings GetGameSettings() { return gameSettings; }    
+    internal GameSettings GetGameSettings() { return gameSettings; }
+
+    internal SceneBGMConfigTable GetSceneBGMConfigTable() { return sceneBGMConfigTable; }
+
+
     public void SetUpGameInitialize()
     {
         if (isInitialized) return;
@@ -30,12 +35,15 @@ public class GameInitializer : SingletonMonoBehaviour<GameInitializer>
         sceneDatabase = Resources.Load<SceneDatabase>("ScriptableObject/sceneDatabase");
         initialScene = Resources.Load<SceneReference>("ScriptableObject/TitleScene");
         gameSettings = Resources.Load<GameSettings>("ScriptableObject/gameSettings");
+
+        sceneBGMConfigTable = Resources.Load<SceneBGMConfigTable>("ScriptableObject/SceneBGMConfigTable");
         if (initialScene == null)
         {
             Debug.LogError("初期シーンの SceneReference が見つかりません。Resources/Scenes/TitleScene.asset を確認してください。");
             return;
         }
         fadePrefab = Resources.Load<GameObject>("fadePrefab");
+
         // AudioManagerを強制的に先に生成
         var audio = AudioManager.Instance;
 

@@ -50,8 +50,8 @@ public class SongItemUI : MonoBehaviour, IPoolable<SongItemUI>
         string currentSceneName = SceneManager.GetActiveScene().name;
 
         var nextScene = sceneDatabase.GetNextScene(currentSceneName);
-        SceneTransitionManager.Instance.TransitionTo(nextScene);
-        var stageConfigTable = StageManager.Instance.GetStageConfigTable();
+        SceneTransitionManager.Instance.TransitionTo(nextScene); 
+       var stageConfigTable = StageManager.Instance.GetStageConfigTable();
         var allStageConfigs = StageManager.Instance.GetStageConfigTable().GetAllStageConfigs();
         foreach (var stageConfig in allStageConfigs)
         {
@@ -59,7 +59,6 @@ public class SongItemUI : MonoBehaviour, IPoolable<SongItemUI>
             {
                 Debug.Log($"選択されたステージID: {stageConfig.StageId}（曲ID: {songId}）");
                 StageManager.Instance.SetupStage(stageConfigTable, stageConfig.StageId);
-                AudioManager.Instance.ForcePlayBGM(stageConfig.StageBgm.BgmId);
 
                 break; // 見つかったらループ終了
             }
