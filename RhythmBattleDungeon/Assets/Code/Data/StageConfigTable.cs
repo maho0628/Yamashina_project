@@ -7,77 +7,105 @@ using UnityEngine;
 /// </summary>
 public class StageConfigTable : ScriptableObject
 {
+    #region リストやディクショナリ変数
+
+    /// <summary>
+    /// ステージ音源のリスト
+    /// </summary>
     [SerializeField, Header("ステージ音源のリスト")]
-    private List<StageConfig> stagesBgmList;
+    private List<StageConfig> stagesBgmLists;
+
+    /// <summary>
+    /// ゲーム内で使用するSE設定のリストのディクショナリ
+    /// </summary>
+    private Dictionary<string, StageConfig> stagesBgmDict;
+
+    #endregion
+
+
+    #region 読み取り専用プロパティ
+
+    /// <summary>
+    /// ゲーム内で使用するSE設定のリストの読み取り専用
+    /// </summary>
+    internal List<StageConfig> StagesBgmList => stagesBgmLists;
+
+    #endregion
+
+
+    #region ゲッターメソッド
 
     /// <summary>
     /// 指定されたステージIDに対応するStageConfigデータを取得
     /// </summary>
     /// <param name="id">ステージのID</param>
-    /// <returns>該当するStageConfigデータ、見つからない場合は null</returns>
+    /// <returns>StageConfigデータ</returns>
     internal StageConfig GetStageConfig(string id)
     {
-        var stageConfig = stagesBgmList.Find(s => s.StageId == id);
-        if (stageConfig == null)
+        if (stagesBgmDict == null)
         {
-            Debug.LogWarning($"ステージID '{id}' に対応するデータが見つかりません。");
+            InitializeDictionary();
         }
-        return stageConfig;
+
+        stagesBgmDict.TryGetValue(id, out var config);
+        return config;
     }
 
-
-  
-
     /// <summary>
-    /// 全ステージ設定を取得（曲一覧に使う）
+    /// ステージに対応するBGMのリスト情報をすべて返す
     /// </summary>
-    /// <returns></returns>
+    /// <returns>StageConfigデータ</returns>
     /// 
     public List<StageConfig> GetAllStageConfigs()
     {
-        return stagesBgmList;
+        return stagesBgmLists;
     }
 
+    #endregion
+
+
+
+    private void OnEnable()
+    {
+        // ScriptableObject 再読み込み時にも対応
+        InitializeDictionary();
+    }
+
+
+    #region プライベートメソッド
+
+    /// <summary>
+    /// ディクショナリ初期化
+    /// </summary>
+    private void InitializeDictionary()
+    {
+        stagesBgmDict = new Dictionary<string, StageConfig>();
+        foreach (var stageBgm in stagesBgmLists)
+        {
+            //ステージ音源のリストのStageIDに文字列が入ってる＆ディクショナリにその文字列（キー）が含まれていないなら
+            if (!string.IsNullOrEmpty(stageBgm.StageId) && !stagesBgmDict.ContainsKey(stageBgm.StageId))
+            {
+                // ディクショナリにその文字列を追加
+                stagesBgmDict.Add(stageBgm.StageId, stageBgm);
+                foreach (var key in stagesBgmDict.Keys)
+                {
+                    //どのキーが登録されているかのデバッグログ
+                    Debug.Log($"登録されているステージBGMキー: {key}");
+                }
+            }
+            else
+            {
+                //同じキーを登録しようとしているかBGMIDが空白
+                Debug.LogWarning($"[StageConfigTable] 重複または空のBGM ID: {stageBgm.StageId}");
+            }
+        }
+    }
+
+    #endregion
+
 }
 
-[System.Serializable]
-/// <summary>
-/// ステージ設定データ
-/// </summary>
-public class StageConfig
-{
-    [SerializeField, Header("ステージID名")]
-    private string stageId;
-
-    [SerializeField, Header("BGM音源の設定内容")]
-    private BGMConfig stageBgm;
-
-    [SerializeField, Header("譜面データJsonファイル名")]
-    private string chartFileName;
 
 
-    [SerializeField, Header("ノーツのスクロール設定")]
-    private NoteScrollConfig scrollConfig;
 
-    [SerializeField, Header("判定設定（Perfect / Good / Miss など）")]
-    private List<JudgementConfig> judgementConfigs;
-    // 以下はプロパティ
 
-    /// <summary>
-    /// ステージIDを取得
-    /// </summary>
-    internal string StageId => stageId;
-
-    /// <summary>
-    /// ステージに対応するBGM設定を取得
-    /// </summary>
-    internal BGMConfig StageBgm => stageBgm;
-
-    /// <summary>
-    /// 譜面データのファイル名を取得
-    /// </summary>
-    internal string ChartFileName => chartFileName;
-
-    internal NoteScrollConfig ScrollConfig => scrollConfig;
-    internal List<JudgementConfig> JudgementConfigs => judgementConfigs;
-}

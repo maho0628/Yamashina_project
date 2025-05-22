@@ -3,42 +3,108 @@ using UnityEngine;
 
 /// <summary>
 /// ゲーム全体の音声再生を管理するシングルトンコンポーネント。
-/// BGM と SE（効果音）の再生、停止、ボリューム調整を行う。
+/// BGM と SE（効果音）の再生、停止、ボリューム調整などを行う。
 /// </summary>
 public class AudioManager : SingletonMonoBehaviour<AudioManager>
 {
     #region オーディオソース (コード管理／Inspector非表示)
 
-    // BGM 再生用 AudioSource（コードで生成）
+    /// <summary>
+    /// BGM 再生用 AudioSource（コードで生成）
+    /// </summary>
     private AudioSource bgmSource;
 
-    // 同時再生用 SE AudioSource 配列（コードで生成）
+    /// <summary>
+    /// 同時再生用 SE AudioSource 配列（コードで生成）
+    /// </summary>
     private AudioSource[] seSources;
 
     #endregion
 
 
-
-
-
-
     #region 内部管理用フィールド
 
-    // 現在の BGM 音量 (0.0 - 1.0)
+    /// <summary>
+    ///  現在の BGM 音量 (0.0 - 1.0)
+    /// </summary>
     private float bgmVolume;
 
-    // 現在の SE 音量 (0.0 - 1.0)
+    /// <summary>
+    /// 現在の SE 音量 (0.0 - 1.0)
+    /// </summary>
     private float seVolume;
 
-    // 登録されている BGM 設定テーブル
-    private BGMConfigTable bgmConfigTable;                       // ScriptableObjectとして保持（元データ）
-    private Dictionary<string, BGMConfig> bgmConfigDict;         // 検索効率用のキャッシュ
+    /// <summary>
+    /// スタート時のオーディオソースの現在時刻（DspTime)
+    /// </summary>
+    private double bgmStartDspTime;
 
-    // 登録されている SE 設定テーブル
+
+    /// <summary>
+    /// 登録されている BGM 設定テーブル
+    /// ScriptableObjectとして保持（元データ）
+    /// </summary>
+    private BGMConfigTable bgmConfigTable;
+
+    /// <summary>
+    /// 登録されている SE 設定テーブル
+    /// ScriptableObjectとして保持（元データ）
+    /// </summary>
     private SEConfigTable seConfigTable;
     private string currentBgmId;
 
     #endregion
+
+
+    /// <summary>
+    /// 現在の BGM 再生位置（秒）を返す。
+    /// </summary>
+    public float GetCurrentBGMTime()
+    {
+        if (bgmSource == null || bgmSource.clip == null || !bgmSource.isPlaying)
+            return 0f;
+
+        //オーディオシステムの現在時刻-スタート時のオーディオソースのDspTimeを引いて経過時間を計算して返す
+        return (float)(AudioSettings.dspTime - bgmStartDspTime);
+    }
+
+    /// <summary>
+    /// 現在設定されている BGM 音量を返す。
+    /// </summary>
+    public float GetBGMVolume() => bgmVolume;
+
+    /// <summary>
+    /// 現在設定されている SE 音量を返す。
+    /// </summary>
+    public float GetSEVolume() => seVolume;
+
+    /// <summary>
+    /// BGM 音量を設定する (0.0 - 1.0)。
+    /// </summary>
+    /// <param name="volume">音量</param>
+    public void SetBGMVolume(float volume)
+    {
+        bgmVolume = Mathf.Clamp01(volume);
+        if (bgmSource != null)
+            bgmSource.volume = bgmVolume;
+    }
+
+    /// <summary>
+    /// SE 音量を設定する (0.0 - 1.0)。
+    /// </summary>
+    /// <param name="volume">音量</param>
+    public void SetSFXVolume(float volume)
+    {
+        seVolume = Mathf.Clamp01(volume);
+        ApplyVolumes();
+    }
+
+
+
+    public bool IsBGMFinished()
+    {
+        return bgmSource != null && !bgmSource.isPlaying && bgmSource.time > 0;
+    }
 
     /// <summary>
     /// 初期化処理：AudioSource のセットアップと初期音量を設定する。
@@ -110,6 +176,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         if (string.IsNullOrEmpty(bgmId)) return;
 
         PlayBGMById(bgmId, forceReplay: true);
+        bgmSource.loop = false; 
     }
     public string GetCurrentBGMId()
     {
@@ -149,46 +216,6 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         PlayClip(seSources, seConfig.SeAudioClip);
     }
 
-    /// <summary>
-    /// 現在の BGM 再生位置（秒）を返す。
-    /// </summary>
-    public float GetCurrentBGMTime()
-    {
-        return (bgmSource != null && bgmSource.clip != null)
-            ? bgmSource.time
-            : 0f;
-    }
-
-    /// <summary>
-    /// BGM 音量を設定する (0.0 - 1.0)。
-    /// </summary>
-    /// <param name="volume">音量</param>
-    public void SetBGMVolume(float volume)
-    {
-        bgmVolume = Mathf.Clamp01(volume);
-        if (bgmSource != null)
-            bgmSource.volume = bgmVolume;
-    }
-
-    /// <summary>
-    /// SE 音量を設定する (0.0 - 1.0)。
-    /// </summary>
-    /// <param name="volume">音量</param>
-    public void SetSFXVolume(float volume)
-    {
-        seVolume = Mathf.Clamp01(volume);
-        ApplyVolumes();
-    }
-
-    /// <summary>
-    /// 現在設定されている BGM 音量を返す。
-    /// </summary>
-    public float GetBGMVolume() => bgmVolume;
-
-    /// <summary>
-    /// 現在設定されている SE 音量を返す。
-    /// </summary>
-    public float GetSEVolume() => seVolume;
 
     #region プライベートメソッド
 
@@ -220,6 +247,8 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
 
         source.clip = clip;
         source.loop = loop;
+        bgmStartDspTime = AudioSettings.dspTime;
+
         source.Play();
     }
 

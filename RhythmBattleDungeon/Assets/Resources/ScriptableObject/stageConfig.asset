@@ -24,10 +24,25 @@ MonoBehaviour:
     chartFileName: test
     scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
     judgementConfigs:
-    - judgementName: 
-      maxTimeDifference: 0
-      displayColor: {r: 0, g: 0, b: 0, a: 0}
+    - judgementName: Perfect
+      maxTimeDifference: 0.15
+      displayColor: {r: 0.8490566, g: 0.1650053, b: 0.1650053, a: 0}
       displayIcon: {fileID: 0}
+      scoreValue: 30
+      breaksCombo: 0
+    - judgementName: Miss
+      maxTimeDifference: 9999
+      displayColor: {r: 0.8490566, g: 0.1650053, b: 0.1650053, a: 0}
+      displayIcon: {fileID: 0}
+      scoreValue: 0
+      breaksCombo: 1
+    - judgementName: Great
+      maxTimeDifference: 0.25
+      displayColor: {r: 0.8490566, g: 0.1650053, b: 0.1650053, a: 0}
+      displayIcon: {fileID: 0}
+      scoreValue: 1
+      breaksCombo: 0
+    delayBeforeResult: 2
   - stageId: stage2
     stageBgm:
       bgmId: aaaaa
@@ -39,6 +54,7 @@ MonoBehaviour:
     chartFileName: test
     scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
     judgementConfigs: []
+    delayBeforeResult: 2
   - stageId: stage2
     stageBgm:
       bgmId: aaaaa
@@ -50,6 +66,7 @@ MonoBehaviour:
     chartFileName: test
     scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
     judgementConfigs: []
+    delayBeforeResult: 2
   - stageId: stage2
     stageBgm:
       bgmId: aaaaa
@@ -61,6 +78,7 @@ MonoBehaviour:
     chartFileName: 
     scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
     judgementConfigs: []
+    delayBeforeResult: 2
   - stageId: stage2
     stageBgm:
       bgmId: aaaaa
@@ -72,6 +90,7 @@ MonoBehaviour:
     chartFileName: 
     scrollConfig: {fileID: 0}
     judgementConfigs: []
+    delayBeforeResult: 2
   - stageId: stage2
     stageBgm:
       bgmId: aaaaa
@@ -83,6 +102,7 @@ MonoBehaviour:
     chartFileName: 
     scrollConfig: {fileID: 0}
     judgementConfigs: []
+    delayBeforeResult: 2
   - stageId: stage2
     stageBgm:
       bgmId: aaaaa
@@ -94,6 +114,7 @@ MonoBehaviour:
     chartFileName: 
     scrollConfig: {fileID: 0}
     judgementConfigs: []
+    delayBeforeResult: 2
   - stageId: stage2
     stageBgm:
       bgmId: aaaaa
@@ -105,6 +126,7 @@ MonoBehaviour:
     chartFileName: 
     scrollConfig: {fileID: 0}
     judgementConfigs: []
+    delayBeforeResult: 2
   - stageId: stage2
     stageBgm:
       bgmId: aaaaa
@@ -116,6 +138,7 @@ MonoBehaviour:
     chartFileName: 
     scrollConfig: {fileID: 0}
     judgementConfigs: []
+    delayBeforeResult: 2
   - stageId: stage2
     stageBgm:
       bgmId: aaaaa
@@ -127,6 +150,7 @@ MonoBehaviour:
     chartFileName: 
     scrollConfig: {fileID: 0}
     judgementConfigs: []
+    delayBeforeResult: 2
   - stageId: stage2
     stageBgm:
       bgmId: aaaaa
@@ -138,6 +162,7 @@ MonoBehaviour:
     chartFileName: 
     scrollConfig: {fileID: 0}
     judgementConfigs: []
+    delayBeforeResult: 2
   - stageId: stage2
     stageBgm:
       bgmId: aaaaa
@@ -149,6 +174,7 @@ MonoBehaviour:
     chartFileName: 
     scrollConfig: {fileID: 0}
     judgementConfigs: []
+    delayBeforeResult: 2
   - stageId: stage2
     stageBgm:
       bgmId: aaaaa
@@ -160,3 +186,4 @@ MonoBehaviour:
     chartFileName: 
     scrollConfig: {fileID: 0}
     judgementConfigs: []
+    delayBeforeResult: 2

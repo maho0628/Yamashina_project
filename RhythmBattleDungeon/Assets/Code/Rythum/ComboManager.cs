@@ -1,0 +1,36 @@
+using UnityEngine;
+
+public class ComboManager : SingletonMonoBehaviour<ComboManager>
+{
+    private int currentCombo = 0;
+    private int maxCombo = 0;
+
+    public int CurrentCombo => currentCombo;
+    public int MaxCombo => maxCombo;
+
+
+
+    public void IncrementCombo()
+    {
+        currentCombo++;
+        if (currentCombo > maxCombo)
+            maxCombo = currentCombo;
+    }
+
+    public void ResetCombo()
+    {
+        currentCombo = 0;
+    }
+
+
+    public bool IsFullCombo()
+    {
+        return currentCombo == NoteManager.Instance.GetTotalNoteCount(); // ç≈å„Ç‹Ç≈1ìxÇ‡êÿÇÍÇƒÇ»ÇØÇÍÇŒê¨óß
+    }
+
+    public void ResetAll()
+    {
+        currentCombo = 0;
+        maxCombo = 0;
+    }
+}

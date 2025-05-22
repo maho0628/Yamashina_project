@@ -16,3 +16,6 @@ MonoBehaviour:
   - seId: 
     seAudioClip: {fileID: 0}
     description: 
+  - seId: 
+    seAudioClip: {fileID: 0}
+    description: 

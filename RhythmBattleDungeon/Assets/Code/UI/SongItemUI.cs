@@ -59,6 +59,7 @@ public class SongItemUI : MonoBehaviour, IPoolable<SongItemUI>
             {
                 Debug.Log($"選択されたステージID: {stageConfig.StageId}（曲ID: {songId}）");
                 StageManager.Instance.SetupStage(stageConfigTable, stageConfig.StageId);
+                StageManager.Instance.SetStageSelected(true);
 
                 break; // 見つかったらループ終了
             }

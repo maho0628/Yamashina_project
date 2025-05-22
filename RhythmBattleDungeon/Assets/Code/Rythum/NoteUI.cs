@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class NoteUI : MonoBehaviour, IPoolable<NoteUI>
@@ -9,37 +10,41 @@ public class NoteUI : MonoBehaviour, IPoolable<NoteUI>
     private float scrollDuration;
     private Vector2 startPosition;
     private Vector2 endPosition;
+    private Note linkedNote;
 
     private UIObjectPool<NoteUI> pool;
 
-    public void Setup(float targetTime, float scrollDuration, Vector2 startPos, Vector2 endPos)
+    public void Setup(float targetTime, float scrollDuration, Vector2 startPos, Vector2 endPos, Note note)
     {
         this.spawnTime = Time.time;
         this.targetTime = targetTime;
         this.scrollDuration = scrollDuration;
         this.startPosition = startPos;
         this.endPosition = endPos;
+        this.linkedNote = note;
 
         rectTransform.anchoredPosition = startPos;
     }
+    public Note GetLinkedNote() => linkedNote;
 
     private void Update()
     {
-        // 現在の BGM 時間を取得
         float currentBgmTime = AudioManager.Instance.GetCurrentBGMTime();
 
-        // ノーツがヒットするタイミングまでの経過時間
-        float timeSinceSpawn = currentBgmTime - targetTime;
+        float spawnAt = targetTime - scrollDuration;
+        if (currentBgmTime < spawnTime)
+        {
+            return;
+        }
+        float t = Mathf.Clamp01((currentBgmTime - spawnAt) / scrollDuration);
 
-        // ノーツの位置を計算（時間ベースで滑らかに移動）
-        float t = Mathf.Clamp01(timeSinceSpawn / scrollDuration);
-
-        // Lerp を使って位置を計算
         rectTransform.anchoredPosition = Vector2.Lerp(startPosition, endPosition, t);
 
+     
         // 完全にスクロールしたら非表示にする
         if (t >= 1f)
         {
+            if(linkedNote != null)
             Deactivate();
         }
     }
@@ -48,6 +53,10 @@ public class NoteUI : MonoBehaviour, IPoolable<NoteUI>
     {
         gameObject.SetActive(false);
         pool?.Return(this);
+    }
+    public Vector2 GetPosition()
+    {
+        return rectTransform.anchoredPosition;
     }
 
     public void OnCreated(UIObjectPool<NoteUI> pool)

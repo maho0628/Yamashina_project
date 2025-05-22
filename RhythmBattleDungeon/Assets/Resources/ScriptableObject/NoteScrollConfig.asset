@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0adb06a2a94d07847b625575dc435a91, type: 3}
   m_Name: NoteScrollConfig
   m_EditorClassIdentifier: 
-  scrollDuration: 3
+  scrollDuration: 10
   startY: 600
   endY: -450
   laneWidth: 500
@@ -27,3 +27,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  laneCount: 4

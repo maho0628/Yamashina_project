@@ -1,12 +1,12 @@
 using UnityEngine;
 
-[System.Serializable]
 /// <summary>
 /// 単一のBGMに関する設定データ
 /// </summary>
+[System.Serializable]
 public class BGMConfig
 {
-    // === BGMの基本情報 ===
+    #region  BGMの基本情報変数
 
     /// <summary>
     /// BGMのID
@@ -21,7 +21,7 @@ public class BGMConfig
     private AudioClip bgmAudioClip;
 
     /// <summary>
-    /// BPM（Beats Per Minute）
+    /// BPM（Beats Per Minute)
     /// </summary>
     [SerializeField, Header("BPM（Beats Per Minute）")]
     private float bgmBpm;
@@ -44,8 +44,10 @@ public class BGMConfig
     [SerializeField, Header("ジャケット画像")]
     private Sprite bgmJacketImage;
 
+    #endregion
 
-    // === 読み取り専用プロパティ ===
+
+    #region  読み取り専用プロパティ 
 
     /// <summary>
     /// BGMのIDの読み取り専用
@@ -76,4 +78,6 @@ public class BGMConfig
     /// ジャケット画像の読み取り専用
     /// </summary>
     internal Sprite BgmJacketImage => bgmJacketImage;
+    #endregion
+
 }

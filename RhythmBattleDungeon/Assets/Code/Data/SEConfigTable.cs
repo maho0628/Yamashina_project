@@ -2,42 +2,107 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SEConfig", menuName = "GameData/SEConfigTable")]
+
 /// <summary>
 /// ゲーム内で使用するSE（効果音）の設定一覧を管理するScriptableObject
 /// </summary>
 public class SEConfigTable : ScriptableObject
 {
-    [SerializeField, Header("ゲーム内で使用するSE設定のリスト")]
-    private List<SEConfig> seList;
+    #region リストやディクショナリ変数
 
     /// <summary>
-    /// 指定したIDのSE設定を取得
+    /// ゲーム内で使用するSE設定のリスト
     /// </summary>
-    /// <param name="id">SEのID</param>
-    /// <returns>対応するSEConfigデータ</returns>
+    [SerializeField, Header("ゲーム内で使用するSE設定のリスト")]
+    private List<SEConfig> seLists= new List<SEConfig>();
+
+    /// <summary>
+    /// ゲーム内で使用するSE設定のリストのディクショナリ
+    /// </summary>
+    private Dictionary<string, SEConfig> seConfigDict;
+
+    #endregion
+
+
+    #region 読み取り専用プロパティ
+
+    /// <summary>
+    /// ゲーム内で使用するSE設定のリストの読み取り専用
+    /// </summary>
+    internal List<SEConfig> SeLists => seLists;
+
+    #endregion
+
+
+    #region ゲッターメソッド
+
+    /// <summary>
+    /// ゲーム内で使用するSE設定のリスト情報をすべて返す
+    /// </summary>
+    /// <returns>SEConfigのリスト</returns>
+    internal List<SEConfig> GetAllSeConfig()
+    {
+        return seLists;
+    }
+
+    /// <summary>
+    /// リスト内のSEConfigをIDで探して返す
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns>SEConfigのリスト</returns>
     internal SEConfig GetSeConfig(string id)
     {
-        return seList.Find(s => s.SeId == id);
+        if (seConfigDict == null)
+        {
+            InitializeDictionary();
+        }
+
+        seConfigDict.TryGetValue(id, out var config);
+        return config;
     }
+
+    #endregion
+
+
+
+    private void OnEnable()
+    {
+        // ScriptableObject 再読み込み時にも対応
+        InitializeDictionary();
+    }
+
+
+    #region プライベートメソッド
+
+    /// <summary>
+    /// ディクショナリ初期化
+    /// </summary>
+    private void InitializeDictionary()
+    {
+        seConfigDict = new Dictionary<string, SEConfig>();
+        foreach (var se in seLists)
+        {
+            //SE設定の一覧のリストのSeIdに文字列が入ってる＆ディクショナリにその文字列（キー）が含まれていないなら
+            if (!string.IsNullOrEmpty(se.SeId) && !seConfigDict.ContainsKey(se.SeId))
+            {
+                // ディクショナリにその文字列を追加
+                seConfigDict.Add(se.SeId, se);
+                foreach (var key in seConfigDict.Keys)
+                {
+                    //どのキーが登録されているかのデバッグログ
+                    Debug.Log($"登録されているSEキー: {key}");
+                }
+            }
+            else
+            {
+                //同じキーを登録しようとしているかJudgementNameが空白
+                Debug.LogWarning($"[SEConfigTable] 重複または空のBGM ID: {se.SeId}");
+            }
+        }
+    }
+
+    #endregion
+
 }
 
-[System.Serializable]
-/// <summary>
-/// 単一のSE（効果音）の設定データ
-/// </summary>
-public class SEConfig
-{
-    [SerializeField, Header("SEのID名")]
-    private string seId;
 
-    [SerializeField, Header("使用するオーディオクリップ")]
-    private AudioClip seAudioClip;
-
-    [SerializeField, Header("SEの説明（任意）")]
-    private string description;  // 例：「ボタン押下音」など
-
-    // 以下は読み取り専用プロパティ
-    internal string SeId => seId;
-    internal AudioClip SeAudioClip => seAudioClip;
-    internal string Description => description;
-}
