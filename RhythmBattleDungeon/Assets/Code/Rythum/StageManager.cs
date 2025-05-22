@@ -8,9 +8,14 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
     // ステージ設定テーブル
     private StageConfigTable stageConfigTable;
 
-    public bool IsStageSelected => !string.IsNullOrEmpty(currentStageId);
+    private bool isStageSelected;
+    public bool IsStageSelected => isStageSelected;
 
 
+    public void SetStageSelected(bool stageSelected )
+    {
+        isStageSelected = stageSelected;    
+    }
     public StageConfigTable GetStageConfigTable()
     {
         return stageConfigTable;

@@ -1,24 +1,38 @@
+ï»¿using System;
+using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class NoteManager : SingletonMonoBehaviour<NoteManager>
 {
     [SerializeField] private NoteUIPool notePool;
-    [SerializeField] private RectTransform parentRect; // Canvas”z‰º‚ÌeRectTransform
+    [SerializeField] private RectTransform parentRect; // Canvasé…ä¸‹ã®è¦ªRectTransform
     private ChartData chartData;
+    public event Action OnNotesSpawned;
 
     [SerializeField] private Image[] laneImages;
-    [SerializeField] private int laneCount = 4; // —á‚¦‚ÎA4ƒŒ[ƒ“
 
-    private NoteScrollConfig scrollConfig;      
-    
+    private NoteScrollConfig scrollConfig;
+
+    private bool notesSpawned = false;
+
+    public bool NotesSpawned => notesSpawned;
+
+    public event Action OnInitialized; // â† æ–°ã—ã„ã‚¤ãƒ™ãƒ³ãƒˆ
+    private bool isInitialized = false;
+
+    private int totalNoteCount ;
+
+    internal int TotalNoteCount =>totalNoteCount;
+
     private void SetupLaneImages()
     {
         int laneCount = laneImages.Length;
 
         if (laneCount == 0)
         {
-            Debug.LogError("[NoteManager] laneImages ‚ª‹ó‚Å‚·B");
+            Debug.LogError("[NoteManager] laneImages ãŒç©ºã§ã™ã€‚");
             return;
         }
 
@@ -26,26 +40,26 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
         float laneWidth = totalWidth / laneCount;
         float startX = -totalWidth / 2f + laneWidth / 2f;
 
-        // scrollConfig.StartY ‚ğg—p‚µ‚ÄƒŒ[ƒ“‚ÌŠJnˆÊ’uiY²j‚ğ’²®
-        float startYPosition = scrollConfig.StartY; // ã‚©‚ç‚ÌˆÊ’u
-        float endYPosition = scrollConfig.EndY;     // ‰º‚©‚ç‚ÌˆÊ’u
+        // scrollConfig.StartY ã‚’ä½¿ç”¨ã—ã¦ãƒ¬ãƒ¼ãƒ³ã®é–‹å§‹ä½ç½®ï¼ˆYè»¸ï¼‰ã‚’èª¿æ•´
+        float startYPosition = scrollConfig.StartY; // ä¸Šã‹ã‚‰ã®ä½ç½®
+        float endYPosition = scrollConfig.EndY;     // ä¸‹ã‹ã‚‰ã®ä½ç½®
 
         for (int i = 0; i < laneCount; i++)
         {
             RectTransform laneRect = laneImages[i].rectTransform;
-            // ƒŒ[ƒ“‚Ì‰æ‘œ‚ğİ’è
+            // ãƒ¬ãƒ¼ãƒ³ã®ç”»åƒã‚’è¨­å®š
             Sprite laneSprite = scrollConfig.GetLaneSprite(i);
             if (laneSprite != null)
             {
-                laneImages[i].sprite = laneSprite; // ‰æ‘œ‚ğİ’è
+                laneImages[i].sprite = laneSprite; // ç”»åƒã‚’è¨­å®š
             }
-            // ƒŒ[ƒ“‚ÌF‚ğİ’è
+            // ãƒ¬ãƒ¼ãƒ³ã®è‰²ã‚’è¨­å®š
             laneImages[i].color = scrollConfig.GetLaneColor(i);
-            // ƒŒ[ƒ“‚Ì Y À•WistartY‚Æ endY‚ÌŠÔ‚Å’²®j
-            // YˆÊ’u‚ğ’²®‚·‚é‚½‚ßAscrollConfig.endYPosition ‚ğg‚Á‚Ä”z’u
+            // ãƒ¬ãƒ¼ãƒ³ã® Y åº§æ¨™ï¼ˆstartYã¨ endYã®é–“ã§èª¿æ•´ï¼‰
+            // Yä½ç½®ã‚’èª¿æ•´ã™ã‚‹ãŸã‚ã€scrollConfig.endYPosition ã‚’ä½¿ã£ã¦é…ç½®
             laneRect.anchoredPosition = new Vector2(startX + i * laneWidth, endYPosition);
 
-            // •K—v‚É‰‚¶‚ÄƒTƒCƒY‚ğ’²®
+            // å¿…è¦ã«å¿œã˜ã¦ã‚µã‚¤ã‚ºã‚’èª¿æ•´
             laneRect.sizeDelta = new Vector2(laneWidth, scrollConfig.LaneHeight);
         }
     }
@@ -54,35 +68,46 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
 
     private void Start()
     {
+        StartCoroutine(InitializeRoutine());
+    }
+
+    private IEnumerator InitializeRoutine()
+    {
+        // ã‚¹ãƒ†ãƒ¼ã‚¸æœªåˆæœŸåŒ–ãªã‚‰ã€ãƒ†ã‚¹ãƒˆç”¨ã‚¹ãƒ†ãƒ¼ã‚¸ã‚’å¼·åˆ¶ãƒ­ãƒ¼ãƒ‰
         if (!StageManager.Instance.IsStageSelected)
         {
             var testTable = Resources.Load<StageConfigTable>("ScriptableObject/stageConfig");
             StageManager.Instance.SetupStage(testTable, "test");
         }
-        
+
         string chartFileName = StageManager.Instance.GetCurrentChartFileName();
         if (string.IsNullOrEmpty(chartFileName))
         {
-            Debug.LogWarning("[NoteManager] ChartFileName ‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñBƒV[ƒ“‘JˆÚ‘O‚É SetupStage ‚ªŒÄ‚Î‚ê‚Ä‚¢‚È‚¢‰Â”\«‚ª‚ ‚è‚Ü‚·B");
-            return;
+            Debug.LogWarning("[NoteManager] ChartFileName ãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
+            yield break;
         }
-        scrollConfig = StageManager.Instance.GetCurrentStageConfig()?.ScrollConfig;
 
+        scrollConfig = StageManager.Instance.GetCurrentStageConfig()?.ScrollConfig;
         if (scrollConfig == null)
         {
-            Debug.LogError("[NoteManager] scrollConfig ‚ª nullIƒXƒe[ƒW‚Ì‰Šú‰»‚ªŠÔ‚É‡‚Á‚Ä‚È‚¢‚©‚àI");
-            return;
+            Debug.LogError("[NoteManager] scrollConfig ãŒ nullï¼");
+            yield break;
         }
+
         chartData = ChartJsonLoader.LoadChartData(chartFileName);
         if (chartData == null)
         {
-            Debug.LogError("[NoteManager] ƒ`ƒƒ[ƒgƒf[ƒ^‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½");
-            return;
+            Debug.LogError("[NoteManager] ãƒãƒ£ãƒ¼ãƒˆãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ");
+            yield break;
         }
 
-        SetupLaneImages();
+        totalNoteCount = chartData?.Notes?.Length ?? 0;
 
+        SetupLaneImages();
         SpawnNotes();
+
+        isInitialized = true;
+        OnInitialized?.Invoke(); // â† åˆæœŸåŒ–å®Œäº†ã‚’é€šçŸ¥
     }
     public void SpawnNotes()
     {
@@ -90,34 +115,76 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
 
         foreach (var note in chartData.Notes)
         {
-            SpawnNote(note.SpawnTime, note.LaneNumber);  // ƒm[ƒc‚ÌoŒ»ƒ^ƒCƒ~ƒ“ƒO‚ÆƒŒ[ƒ“‚ÅƒXƒ|[ƒ“
+            SpawnNote(note);  // ãƒãƒ¼ãƒ„ã®å‡ºç¾ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã¨ãƒ¬ãƒ¼ãƒ³ã§ã‚¹ãƒãƒ¼ãƒ³
         }
+        notesSpawned = true; // ãƒ•ãƒ©ã‚°ã‚’ç«‹ã¦ã‚‹
+
+        Debug.Log(OnNotesSpawned);
+        OnNotesSpawned?.Invoke();
+        Debug.Log("Invoke ã™ã¹ã¦ã®ãƒãƒ¼ãƒ„");
     }
 
 
 
-    public void SpawnNote(float offsetTime, int lane)
+    public void SpawnNote(Note noteData)
     {
-        if (lane < 0 || lane >= laneCount)
+        int lane = noteData.LaneNumber;
+        float offsetTime = noteData.SpawnTime;
+
+        if (lane < 0 || lane >= scrollConfig.LaneCount)
         {
-            Debug.LogWarning($"[NoteManager] –³Œø‚ÈƒŒ[ƒ“”Ô†: {lane}");
+            Debug.LogWarning($"[NoteManager] ç„¡åŠ¹ãªãƒ¬ãƒ¼ãƒ³ç•ªå·: {lane}");
             return;
         }
 
-        float totalWidth = parentRect.GetComponent<RectTransform>().rect.width;
-        float laneWidth = totalWidth / laneCount;
+        float totalWidth = parentRect.rect.width;
+        float laneWidth = totalWidth / scrollConfig.LaneCount;
         float startX = -totalWidth / 2f + laneWidth / 2f + lane * laneWidth;
 
         Vector2 startPos = new Vector2(startX, scrollConfig.StartY);
         Vector2 endPos = new Vector2(startX, scrollConfig.EndY);
 
-        var note = notePool.Get();
-        note.transform.SetParent(parentRect, false);
+        var noteUI = notePool.Get();
+        noteUI.transform.SetParent(parentRect, false);
 
-        // Setup ‚É•K—v‚Èî•ñ‚ğ“n‚·
-        note.Setup(offsetTime, scrollConfig.ScrollDuration, startPos, endPos);
+        // noteData ã‚’ NoteUI ã«æ¸¡ã™
+        noteUI.Setup(offsetTime, scrollConfig.ScrollDuration, startPos, endPos, noteData);
     }
 
+    public RectTransform GetNoteParentTransform()
+    {
+        Debug.Log($"parentRect:{parentRect}");
+        return parentRect;
+
+    }
+    public Note GetNearestNoteByAction(string actionName, float currentTime, float maxJudgementTime)
+    {
+        int laneIndex = GetLaneIndexFromAction(actionName);
+        if (laneIndex < 0) return null;
+
+        return GetNearestNoteInLane(laneIndex, currentTime, maxJudgementTime);
+    }
+
+    private int GetLaneIndexFromAction(string actionName)
+    {
+        if (actionName.StartsWith("Lane"))
+        {
+            string numberStr = actionName.Substring("Lane".Length);
+            if (int.TryParse(numberStr, out int num))
+            {
+                int index = num - 1;
+                if (index >= 0 && index < scrollConfig.LaneCount)
+                    return index;
+            }
+        }
+        Debug.LogWarning($"[NoteManager] ç„¡åŠ¹ãªã‚¢ã‚¯ã‚·ãƒ§ãƒ³å: {actionName}");
+        return -1;
+    }
+
+    public int GetTotalNoteCount()
+    {
+        return totalNoteCount;  
+    }
     public void ClearAllNotes()
     {
         foreach (Transform child in parentRect)
@@ -128,8 +195,15 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
             }
         }
     }
+    public Vector2 GetLanePosition(int lane)
+    {
+        float totalWidth = parentRect.rect.width;
+        float laneWidth = totalWidth / scrollConfig.LaneCount;
+        float startX = -totalWidth / 2f + laneWidth / 2f + lane * laneWidth;
+        return new Vector2(startX, scrollConfig.EndY);
+    }
 
-    public Note GetNearestNoteInLane(int laneId, float currentTime, float hitWindow)
+    private Note GetNearestNoteInLane(int laneId, float currentTime, float hitWindow)
     {
         if (chartData?.Notes == null) return null;
 

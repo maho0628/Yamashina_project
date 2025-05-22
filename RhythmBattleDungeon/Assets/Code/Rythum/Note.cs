@@ -22,6 +22,11 @@ public class Note
     [JsonProperty("lane")]
     public int LaneNumber { get; internal set; }
 
+
+    [JsonProperty("key")]
+
+    public string AssignedKeyAction { get; internal set; } 
+
     /// <summary>
     /// ノーツがヒットしたかどうかを示すフラグです。
     /// プレイヤーがノーツをヒットした場合に更新されますが、ゲームロジック内でのみ使用されます。

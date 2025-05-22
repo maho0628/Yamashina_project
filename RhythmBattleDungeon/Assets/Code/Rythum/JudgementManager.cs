@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -8,65 +9,46 @@ public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
 {
     private List<JudgementConfig> judgementConfigs;
 
-    
-    /// <summary>
-    /// ステージの設定に応じた判定データをセットアップ
-    /// </summary>
     public void Setup(List<JudgementConfig> configs)
     {
-        if (configs == null || configs.Count == 0)
+        judgementConfigs = new List<JudgementConfig>(configs);
+
+        // Miss を含まない場合は fallback を追加
+        if (!judgementConfigs.Exists(j => j.JudgementName == "Miss"))
         {
-            Debug.LogError("[JudgementManager] 判定設定が渡されていません！");
-            return;
+            Debug.LogWarning("[JudgementManager] Miss 判定が未登録、fallback を追加");
+            judgementConfigs.Add(JudgementConfig.CreateFallbackMiss());
         }
 
-        judgementConfigs = configs;
+        // 判定ウィンドウが小さい順に並び替え（Perfect → Great → Good → Miss）
+        judgementConfigs.Sort((a, b) => a.MaxTimeDifference.CompareTo(b.MaxTimeDifference));
     }
 
-    /// <summary>
-    /// 指定ノーツの判定結果を返す
-    /// </summary>
     public JudgementConfig GetJudgement(float timeDifference)
     {
         foreach (var config in judgementConfigs)
         {
             if (Mathf.Abs(timeDifference) <= config.MaxTimeDifference)
-            {
                 return config;
-            }
         }
 
-        return null; // Miss などに対応した fallback を作ってもいい
+        return null; // fallback で Miss を追加していれば null にはならない想定
     }
 
-
-    public List<JudgementConfig> GetJudgementsWithFallback()
+    public float GetMaxJudgementTime()
     {
-        var listCopy = new List<JudgementConfig>(judgementConfigs);
-
-        // Miss が含まれているかチェック
-        bool hasMiss = listCopy.Exists(j => j.JudgementName == "Miss");
-
-        if (!hasMiss)
+            if (judgementConfigs == null || !judgementConfigs.Any())
         {
-            Debug.LogWarning("[JudgementConfigTable] Miss 判定が設定されていません。デフォルトを追加します。");
-
-            // フォールバック用 Miss 判定を追加
-            var fallbackMiss = new JudgementConfig();
-
-            typeof(JudgementConfig).GetField("judgementName", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-      ?.SetValue(fallbackMiss, "Miss");
-
-            typeof(JudgementConfig).GetField("maxTimeDifference", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-                ?.SetValue(fallbackMiss, 999f);
-
-            typeof(JudgementConfig).GetField("displayColor", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-                ?.SetValue(fallbackMiss, Color.gray);
-
-            listCopy.Add(fallbackMiss);
+            Debug.LogError("[JudgementManager] 判定データが初期化されていません");
+            return 0f;
         }
-
-        return listCopy;
+        return judgementConfigs.Max(j => j.MaxTimeDifference);
+    }
+    public JudgementConfig GetMissJudgement()
+    {
+        return judgementConfigs.FirstOrDefault(j => j.JudgementName == "Miss");
     }
 
+    public List<JudgementConfig> GetAll() => new List<JudgementConfig>(judgementConfigs);
 }
+
