@@ -1,113 +1,113 @@
 using UnityEngine;
 
 /// <summary>
-/// �������̐ݒ���̃f�[�^
-/// ���薼�A���e�^�C�~���O�A�\���F�A�\���p�A�C�R�����Ǘ����܂��B
+/// 判定一つ分の設定情報のデータ
+/// 判定名、許容タイミング、表示色、表示用アイコンを管理します。
 /// </summary>
 [System.Serializable]
 public class JudgementConfig
 {
-    #region ����̊�{���ϐ�
+    #region 判定の基本情報変数
 
     /// <summary>
-    /// ����̖��O�i��: Perfect, Great, Miss�Ȃǁj
+    /// 判定の名前（例: Perfect, Great, Missなど）
     /// </summary>
-    [SerializeField, Header("����̖��O�i��: Perfect / Great / Miss �Ȃǁj")]
+    [SerializeField, Header("判定の名前（例: Perfect / Great / Miss など）")]
     private string judgementName;
 
     /// <summary>
-    /// ���肪�������鋖�e���ԁi���z�^�C�~���O����}���b�ȓ����j
-    /// ��F0.05�b�Ȃ痝�z�^�C�~���O�̑O��0.05�b�ȓ��ł��̔���ɂȂ�B
+    /// 判定が成立する許容時間（理想タイミングから±何秒以内か）
+    /// 例：0.05秒なら理想タイミングの前後0.05秒以内でこの判定になる。
     /// </summary>
-    [Tooltip("���̕b���ȓ��ɉ����΂��̔���ɂȂ�܂��i��: 0.05 = �}0.05�b�j")]
-    [SerializeField, Header("����̋��e���ԁi���z�^�C�~���O���牽�b�Y���Ă�OK���j")]
+    [Tooltip("この秒数以内に押せばこの判定になります（例: 0.05 = ±0.05秒）")]
+    [SerializeField, Header("判定の許容時間（理想タイミングから何秒ズレてもOKか）")]
     private float maxTimeDifference;
 
     #endregion
 
 
-    #region ����̌����ڂ̐ݒ�ϐ�
+    #region 判定の見た目の設定変数
 
     /// <summary>
-    /// ����̕\���Ɏg���J���[�BUI�̐F�����Ȃǂɗ��p�B
+    /// 判定の表示に使うカラー。UIの色分けなどに利用。
     /// </summary>
-    [SerializeField, Header("����̕\���J���[�iUI�ȂǂɎg�p�j")]
+    [SerializeField, Header("判定の表示カラー（UIなどに使用）")]
     private Color displayColor;
 
     /// <summary>
-    /// ����̃A�C�R���摜�i�C�Ӂj
-    /// �ݒ肪�Ȃ��ꍇ�͖��O�̂ݕ\���B
+    /// 判定のアイコン画像（任意）
+    /// 設定がない場合は名前のみ表示。
     /// </summary>
-    [Tooltip("�\���p�̉摜�B�ݒ肵�Ȃ��ꍇ�͖��O�����\������܂��B")]
-    [SerializeField, Header("����̃A�C�R���i�C�Ӂj")]
+    [Tooltip("表示用の画像。設定しない場合は名前だけ表示されます。")]
+    [SerializeField, Header("判定のアイコン（任意）")]
     private Sprite displayIcon;
 
     #endregion
 
-    #region �X�R�A�E�R���{�֘A�̏��ϐ�
+    #region スコア・コンボ関連の情報変数
 
     /// <summary>
-    /// ���莞�ɉ��Z����X�R�A
+    /// 判定時に加算するスコア
     /// </summary>
-    [SerializeField, Header("���̔��莞�ɉ��Z����X�R�A")]
+    [SerializeField, Header("この判定時に加算するスコア")]
     private int scoreValue;
 
     /// <summary>
-    /// ���̔���ŃR���{��؂邩�ǂ����A��F�~�X�Ȃ�R���{��؂�Ȃ�
+    /// この判定でコンボを切るかどうか、例：ミスならコンボを切るなど
     /// </summary>
-    [SerializeField, Header("���̔���ŃR���{��؂邩�A��F�~�X�Ȃ�R���{��؂�Ȃ�")]
+    [SerializeField, Header("この判定でコンボを切るか、例：ミスならコンボを切るなど")]
     private bool breaksCombo;
 
     #endregion
 
 
-    #region �ǂݎ���p�v���p�e�B(����̊�{���ϐ�)
+    #region 読み取り専用プロパティ(判定の基本情報変数)
 
     /// <summary>
-    /// ���薼�̓ǂݎ���p
+    /// 判定名の読み取り専用
     /// </summary>
     internal string JudgementName => judgementName;
 
     /// <summary>
-    /// ����̋��e���Ԃ̓ǂݎ���p
+    /// 判定の許容時間の読み取り専用
     /// </summary>
     internal float MaxTimeDifference => maxTimeDifference;
     #endregion
 
 
-    #region �ǂݎ���p�v���p�e�B(����̌����ڂ̐ݒ�ϐ�)
+    #region 読み取り専用プロパティ(判定の見た目の設定変数)
 
     /// <summary>
-    /// ����\���p�J���[�̓ǂݎ���p
+    /// 判定表示用カラーの読み取り専用
     /// </summary>
     internal Color DisplayColor => displayColor;
 
     /// <summary>
-    /// ����\���p�A�C�R���̓ǂݎ���p
+    /// 判定表示用アイコンの読み取り専用
     /// </summary>
     internal Sprite DisplayIcon => displayIcon;
     #endregion
 
 
-    #region �ǂݎ���p�v���p�e�B(�R���{�֘A�̏��ϐ�)
+    #region 読み取り専用プロパティ(コンボ関連の情報変数)
 
     /// <summary>
-    /// ���̔���ŉ��Z�����X�R�A�l�̓ǂݎ���p
+    /// この判定で加算されるスコア値の読み取り専用
     /// </summary>
     internal int ScoreValue => scoreValue;
 
     /// <summary>
-    /// ���̔���ŃR���{���؂�邩�ǂ����̓ǂݎ���p
+    /// この判定でコンボが切れるかどうかの読み取り専用
     /// </summary>
     internal bool BreaksCombo => breaksCombo;
 
     #endregion
 
 
-    #region �R���X�g���N�^�Ȃ�
+    #region コンストラクタなど
 
     /// <summary>
-    /// Fallback Miss �𐶐����邽�߂� static factory
+    /// Fallback Miss を生成するための static factory
     /// </summary>
     /// <returns>JudgementConfig</returns>
     public static JudgementConfig CreateFallbackMiss()
@@ -126,15 +126,15 @@ public class JudgementConfig
     }
 
     /// <summary>
-    /// �t�H�[���o�b�N�p�R���X�g���N�^
+    /// フォールバック用コンストラクタ
     /// </summary>
-    /// <param name="name">���薼</param>
-    /// <param name="maxDiff"> ���肪�������鋖�e����</param>
-    /// <param name="col">����̕\���Ɏg���J���[</param>
-    /// <param name="icon">����̃A�C�R���摜</param>
-    /// <param name="score">�X�R�A�̒l</param>
-    /// <param name="breakCom">�R���{���r�؂�邩�ǂ���</param>
-    /// <param name="breakCom">�R���{���r�؂�邩�ǂ���</param>
+    /// <param name="name">判定名</param>
+    /// <param name="maxDiff"> 判定が成立する許容時間</param>
+    /// <param name="col">判定の表示に使うカラー</param>
+    /// <param name="icon">判定のアイコン画像</param>
+    /// <param name="score">スコアの値</param>
+    /// <param name="breakCom">コンボが途切れるかどうか</param>
+    /// <param name="breakCom">コンボが途切れるかどうか</param>
     public JudgementConfig(string name, float maxDiff, bool breakCom, int score, Color col, Sprite icon = null)
     {
         judgementName = name;
@@ -146,7 +146,7 @@ public class JudgementConfig
     }
 
     /// <summary>
-    /// JudgementConfig��New����p
+    /// JudgementConfigをNewする用
     /// </summary>
     public JudgementConfig() { }
 

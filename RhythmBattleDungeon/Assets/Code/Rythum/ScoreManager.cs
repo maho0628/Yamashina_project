@@ -17,20 +17,18 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
 
     private IEnumerator WaitAndSubscribe()
     {
-        while (NoteManager.Instance == null)
-
-            // ƒtƒŒ[ƒ€Œ×‚¢‚Å NoteManager ‚Ì Start ‚ªŠ®—¹‚·‚é‚Ì‚ğ‘Ò‚Â
+        while (NoteManager.Instance == null || !NoteManager.Instance.IsInitialized)
             yield return null;
 
         NoteManager.Instance.OnNotesSpawned += CalculateMaxScore;
 
         if (NoteManager.Instance.NotesSpawned)
         {
-            Debug.Log("[ScoreManager] ƒm[ƒc‚ÍŠù‚É¶¬‚³‚ê‚Ä‚¢‚½‚½‚ßA‘¦À‚ÉƒXƒRƒA‚ğŒvZ‚µ‚Ü‚·B");
+            Debug.Log("[ScoreManager] ï¿½mï¿½[ï¿½cï¿½ÍŠï¿½ï¿½Éï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßAï¿½ï¿½ï¿½ï¿½ï¿½ÉƒXï¿½Rï¿½Aï¿½ï¿½ï¿½vï¿½Zï¿½ï¿½ï¿½Ü‚ï¿½ï¿½B");
             CalculateMaxScore();
         }
 
-        Debug.Log("[ScoreManager] ƒCƒxƒ“ƒgw“ÇŠ®—¹");
+        Debug.Log("[ScoreManager] ï¿½Cï¿½xï¿½ï¿½ï¿½gï¿½wï¿½ÇŠï¿½ï¿½ï¿½");
     }
 
     public void Initialize()
@@ -41,7 +39,7 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
     public void AddScore(int score)
     {
         currentScore += score;
-        // UIXV‚ª‚ ‚ê‚Î‚±‚±‚ÅŒÄ‚Ô
+        // UIï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î‚ï¿½ï¿½ï¿½ï¿½ÅŒÄ‚ï¿½
         //ScoreUI.Instance?.UpdateScore(currentScore, maxScore);
     }
 
@@ -54,15 +52,20 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
 
     public void CalculateMaxScore()
     {
-        Debug.Log("[ScoreManager] CalculateMaxScore ŒÄ‚Î‚ê‚½");
+        if (maxScore > 0)
+        {
+            Debug.Log("[ScoreManager] ï¿½ï¿½ï¿½Å‚ï¿½ maxScore ï¿½vï¿½Zï¿½Ï‚İ‚Ì‚ï¿½ï¿½ßƒXï¿½Lï¿½bï¿½v");
+            return;
+        }
+        Debug.Log("[ScoreManager] CalculateMaxScore ï¿½Ä‚Î‚ê‚½");
 
         var config = StageManager.Instance.GetCurrentStageConfig();
         var perfectConfig = config?.JudgementConfigs.FirstOrDefault(j => j.JudgementName == "Perfect");
 
         if (perfectConfig == null)
         {
-            Debug.LogError("[ScoreManager] JudgementConfig ‚É 'Perfect' ”»’è‚ª‘¶İ‚µ‚Ü‚¹‚ñ");
-            throw new System.Exception("Perfect ”»’è‚ª‘¶İ‚µ‚È‚¢‚½‚ßAƒXƒRƒAŒvZ‚ª‚Å‚«‚Ü‚¹‚ñ");
+            Debug.LogError("[ScoreManager] JudgementConfig ï¿½ï¿½ 'Perfect' ï¿½ï¿½ï¿½è‚ªï¿½ï¿½ï¿½İ‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½");
+            throw new System.Exception("Perfect ï¿½ï¿½ï¿½è‚ªï¿½ï¿½ï¿½İ‚ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ßAï¿½Xï¿½Rï¿½Aï¿½vï¿½Zï¿½ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½");
         }
         int bestScore = perfectConfig.ScoreValue;
         int totalNotes = NoteManager.Instance.TotalNoteCount;

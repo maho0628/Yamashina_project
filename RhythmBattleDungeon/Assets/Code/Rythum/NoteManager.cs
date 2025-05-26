@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,23 +9,30 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
 {
     [SerializeField] private NoteUIPool notePool;
     [SerializeField] private RectTransform parentRect; // Canvas配下の親RectTransform
-    private ChartData chartData;
-    public event Action OnNotesSpawned;
-
     [SerializeField] private Image[] laneImages;
+    private List<Note> pendingNotes = new List<Note>();
+    private List<Note> activeNotes = new List<Note>();
+    private Dictionary<Note, NoteUI> noteToUIMap = new Dictionary<Note, NoteUI>();
+
+    private ChartData chartData;
+
 
     private NoteScrollConfig scrollConfig;
+    private JudgementConfig missJudgementConfig;
 
     private bool notesSpawned = false;
-
-    public bool NotesSpawned => notesSpawned;
-
-    public event Action OnInitialized; // ← 新しいイベント
     private bool isInitialized = false;
 
-    private int totalNoteCount ;
+    public bool NotesSpawned => notesSpawned;
+    public bool IsInitialized => isInitialized;
 
-    internal int TotalNoteCount =>totalNoteCount;
+
+
+    public event Action OnNotesSpawned;
+
+    public event Action OnInitialized; // ← 新しいイベント
+
+
 
     private void SetupLaneImages()
     {
@@ -64,12 +72,13 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
         }
     }
 
-
-
-    private void Start()
+    public void Initialize()
     {
         StartCoroutine(InitializeRoutine());
     }
+
+
+
 
     private IEnumerator InitializeRoutine()
     {
@@ -87,6 +96,7 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
             yield break;
         }
 
+        missJudgementConfig = JudgementManager.Instance.GetMissJudgement();
         scrollConfig = StageManager.Instance.GetCurrentStageConfig()?.ScrollConfig;
         if (scrollConfig == null)
         {
@@ -101,21 +111,50 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
             yield break;
         }
 
-        totalNoteCount = chartData?.Notes?.Length ?? 0;
+        pendingNotes = chartData.Notes.ToList();
 
         SetupLaneImages();
-        SpawnNotes();
 
         isInitialized = true;
         OnInitialized?.Invoke(); // ← 初期化完了を通知
     }
-    public void SpawnNotes()
-    {
-        if (chartData == null || chartData.Notes == null) return;
 
-        foreach (var note in chartData.Notes)
+
+
+    private void Update()
+    {
+        if (!isInitialized) return; foreach (var note in chartData.Notes)
         {
-            SpawnNote(note);  // ノーツの出現タイミングとレーンでスポーン
+            Debug.Log($"Note targetTime: {note.SpawnTime}");
+        }
+
+        float currentTime = AudioManager.Instance.GetCurrentBGMTime();
+        SpawnNotesIfNeeded(currentTime);
+        CheckMissNotes(currentTime);
+        Debug.Log($"[ScoreManager] TotalNoteCount: {TotalNoteCount}");
+        Debug.Log($"[ScoreManager] 実際の chartData.Notes.Length: {chartData.Notes.Length}");
+
+    }
+
+    /// <summary>
+    /// 時間になったノーツを出す（Updateから呼ばれる）
+    /// </summary>
+    private void SpawnNotesIfNeeded(float currentTime)
+    {
+        // NOTE: pendingNotes は SpawnTime が昇順で並んでいる前提
+        while (pendingNotes.Count > 0 && pendingNotes[0].SpawnTime - currentTime <= scrollConfig.ScrollDuration)
+        {
+            var note = pendingNotes[0];
+            pendingNotes.RemoveAt(0);
+            SpawnNote(note);
+            activeNotes.Add(note);
+        }
+        if (!notesSpawned && pendingNotes.Count == 0)
+        {
+            notesSpawned = true;
+            Debug.Log($"[NoteManager] ActiveNotes.Count: {activeNotes.Count}, TotalNoteCount: {TotalNoteCount}");
+
+            OnNotesSpawned?.Invoke();
         }
         notesSpawned = true; // フラグを立てる
 
@@ -123,8 +162,6 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
         OnNotesSpawned?.Invoke();
         Debug.Log("Invoke すべてのノーツ");
     }
-
-
 
     public void SpawnNote(Note noteData)
     {
@@ -150,6 +187,25 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
         // noteData を NoteUI に渡す
         noteUI.Setup(offsetTime, scrollConfig.ScrollDuration, startPos, endPos, noteData);
     }
+    private void CheckMissNotes(float currentTime)
+    {
+
+        float missWindow = missJudgementConfig.MaxTimeDifference;
+
+        for (int i = activeNotes.Count - 1; i >= 0; i--)
+        {
+            var note = activeNotes[i];
+            
+            if (note.IsHit) continue;
+
+            if (currentTime - note.SpawnTime > missWindow)
+            {
+                JudgementManager.Instance.ApplyJudgement(missJudgementConfig, activeNotes[i].LaneNumber);
+                activeNotes.RemoveAt(i);
+            }
+        }
+
+    }
 
     public RectTransform GetNoteParentTransform()
     {
@@ -162,7 +218,21 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
         int laneIndex = GetLaneIndexFromAction(actionName);
         if (laneIndex < 0) return null;
 
-        return GetNearestNoteInLane(laneIndex, currentTime, maxJudgementTime);
+        Note nearest = null;
+        float closest = maxJudgementTime;
+
+        foreach (var note in activeNotes)
+        {
+            if (note.IsHit || note.LaneNumber != laneIndex) continue;
+
+            float diff = Mathf.Abs(note.SpawnTime - currentTime);
+            if (diff < closest)
+            {
+                closest = diff;
+                nearest = note;
+            }
+        }
+        return nearest;
     }
 
     private int GetLaneIndexFromAction(string actionName)
@@ -181,20 +251,9 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
         return -1;
     }
 
-    public int GetTotalNoteCount()
-    {
-        return totalNoteCount;  
-    }
-    public void ClearAllNotes()
-    {
-        foreach (Transform child in parentRect)
-        {
-            if (child.TryGetComponent<NoteUI>(out var note))
-            {
-                note.Deactivate();
-            }
-        }
-    }
+    public int TotalNoteCount => chartData?.Notes?.Length ?? 0;
+
+ 
     public Vector2 GetLanePosition(int lane)
     {
         float totalWidth = parentRect.rect.width;
@@ -203,24 +262,4 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
         return new Vector2(startX, scrollConfig.EndY);
     }
 
-    private Note GetNearestNoteInLane(int laneId, float currentTime, float hitWindow)
-    {
-        if (chartData?.Notes == null) return null;
-
-        Note nearestNote = null;
-        float smallestDiff = hitWindow;
-
-        foreach (var note in chartData.Notes)
-        {
-            if (note.LaneNumber != laneId || note.IsHit) continue;
-
-            float diff = Mathf.Abs(note.SpawnTime - currentTime);
-            if (diff < smallestDiff)
-            {
-                smallestDiff = diff;
-                nearestNote = note;
-            }
-        }
-        return nearestNote;
-    }
 }

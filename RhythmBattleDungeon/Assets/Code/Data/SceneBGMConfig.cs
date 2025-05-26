@@ -1,37 +1,37 @@
 using UnityEngine;
 
 /// <summary>
-/// ƒV[ƒ“‚²‚Æ‚ÌBGM‚ÌÝ’èƒf[ƒ^
+/// ï¿½Vï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½BGMï¿½ÌÝ’ï¿½fï¿½[ï¿½^
 /// </summary>
 [System.Serializable]
 public class SceneBGMConfig
 {
-    #region ƒV[ƒ“BGM‚ÌÝ’è‚ÉŠÖ‚·‚é•Ï”
+    #region ï¿½Vï¿½[ï¿½ï¿½BGMï¿½ÌÝ’ï¿½ÉŠÖ‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½pï¿½Ïï¿½
 
     /// <summary>
-    /// ‘ÎÛ‚ÌƒV[ƒ“–¼
+    /// ï¿½ÎÛ‚ÌƒVï¿½[ï¿½ï¿½ï¿½ï¿½
     /// </summary>
-    [SerializeField, Header("‘ÎÛ‚ÌƒV[ƒ“–¼")]
+    [SerializeField, Header("ï¿½ÎÛ‚ÌƒVï¿½[ï¿½ï¿½ï¿½ï¿½")]
     private string sceneName;
 
     /// <summary>
-    /// Ä¶‚·‚éBGM‚ÌID
+    /// ï¿½Äï¿½ï¿½ï¿½ï¿½ï¿½BGMï¿½ï¿½ID
     /// </summary>
-    [SerializeField, Header("Ä¶‚·‚éBGM‚ÌID")]
+    [SerializeField, Header("ï¿½Äï¿½ï¿½ï¿½ï¿½ï¿½BGMï¿½ï¿½ID")]
     private string bgmId;
 
     #endregion
 
 
-    #region “Ç‚ÝŽæ‚èê—pƒvƒƒpƒeƒB(ƒV[ƒ“BGM‚ÌÝ’è‚ÉŠÖ‚·‚é•Ï”)
+    #region ï¿½Ç‚ÝŽï¿½ï¿½ï¿½pï¿½vï¿½ï¿½ï¿½pï¿½eï¿½B(ï¿½Vï¿½[ï¿½ï¿½BGMï¿½ÌÝ’ï¿½ÉŠÖ‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½pï¿½Ïï¿½)
 
     /// <summary>
-    /// ‘ÎÛ‚ÌƒV[ƒ“–¼‚Ì“Ç‚ÝŽæ‚èê—p
+    /// ï¿½ÎÛ‚ÌƒVï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Ì“Ç‚ÝŽï¿½ï¿½ï¿½p
     /// </summary>
     internal string SceneName => sceneName;
 
     /// <summary>
-    /// Ä¶‚·‚éBGM‚ÌID‚Ì“Ç‚ÝŽæ‚èê—p
+    /// ï¿½Äï¿½ï¿½ï¿½ï¿½ï¿½BGMï¿½ï¿½IDï¿½Ì“Ç‚ÝŽï¿½ï¿½ï¿½p
     /// </summary>
     internal string BgmId => bgmId;
 

@@ -5,18 +5,18 @@ public class NoteUI : MonoBehaviour, IPoolable<NoteUI>
 {
     [SerializeField] private RectTransform rectTransform;
 
-    private float spawnTime;
+   
     private float targetTime;
     private float scrollDuration;
     private Vector2 startPosition;
     private Vector2 endPosition;
     private Note linkedNote;
 
-    private UIObjectPool<NoteUI> pool;
+    private UIObjectPool<NoteUI> noteUIPool;
 
     public void Setup(float targetTime, float scrollDuration, Vector2 startPos, Vector2 endPos, Note note)
     {
-        this.spawnTime = Time.time;
+        
         this.targetTime = targetTime;
         this.scrollDuration = scrollDuration;
         this.startPosition = startPos;
@@ -27,40 +27,47 @@ public class NoteUI : MonoBehaviour, IPoolable<NoteUI>
     }
     public Note GetLinkedNote() => linkedNote;
 
+
     private void Update()
     {
         float currentBgmTime = AudioManager.Instance.GetCurrentBGMTime();
+        float spawnAt = Mathf.Max(0f, targetTime - scrollDuration);
 
-        float spawnAt = targetTime - scrollDuration;
-        if (currentBgmTime < spawnTime)
+        if (currentBgmTime < spawnAt)
         {
             return;
         }
-        float t = Mathf.Clamp01((currentBgmTime - spawnAt) / scrollDuration);
 
+
+        float t = Mathf.Clamp01((currentBgmTime - spawnAt) / scrollDuration);
         rectTransform.anchoredPosition = Vector2.Lerp(startPosition, endPosition, t);
 
-     
-        // Š®‘S‚ÉƒXƒNƒ[ƒ‹‚µ‚½‚ç”ñ•\¦‚É‚·‚é
-        if (t >= 1f)
+       
+        if (t >= 1f || (linkedNote != null && linkedNote.IsHit))
         {
             if(linkedNote != null)
             Deactivate();
+            // Update ã§è¿½åŠ ï¿½Eï¿½ãƒ‡ãƒãƒƒã‚°ç”¨ï¿½Eï¿½E
+            Debug.Log($"NoteUI t={t:F2}, Current={currentBgmTime:F2}, Target={targetTime:F2}, Pos={rectTransform.anchoredPosition}");
+
         }
     }
 
-    public void Deactivate()
+    private void Deactivate()
     {
         gameObject.SetActive(false);
-        pool?.Return(this);
+        noteUIPool?.Return(this);
+        linkedNote = null; // å¿µã®ãŸã‚ã€ï¿½Eåˆ©ç”¨æ™‚ï¿½Eå®‰ï¿½Eæ€§
     }
+
     public Vector2 GetPosition()
     {
         return rectTransform.anchoredPosition;
     }
+  
 
     public void OnCreated(UIObjectPool<NoteUI> pool)
     {
-        this.pool = pool;
+        this.noteUIPool = pool;
     }
 }

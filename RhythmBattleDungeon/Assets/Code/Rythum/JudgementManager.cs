@@ -2,53 +2,90 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-/// <summary>
-/// ƒm[ƒc”»’è‚ğs‚¤ƒ}ƒl[ƒWƒƒ[
-/// </summary>
 public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
 {
     private List<JudgementConfig> judgementConfigs;
 
+    /// <summary>
+    /// ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ç”»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½bï¿½gï¿½Aï¿½bï¿½v
+    /// </summary>
     public void Setup(List<JudgementConfig> configs)
     {
         judgementConfigs = new List<JudgementConfig>(configs);
 
-        // Miss ‚ğŠÜ‚Ü‚È‚¢ê‡‚Í fallback ‚ğ’Ç‰Á
+        // Miss ï¿½ï¿½ï¿½Ü‚Ü‚È‚ï¿½ï¿½ê‡ï¿½ï¿½ fallback ï¿½ï¿½Ç‰ï¿½
         if (!judgementConfigs.Exists(j => j.JudgementName == "Miss"))
         {
-            Debug.LogWarning("[JudgementManager] Miss ”»’è‚ª–¢“o˜^Afallback ‚ğ’Ç‰Á");
+            Debug.LogWarning("[JudgementManager] Miss ï¿½ï¿½ï¿½è‚ªï¿½ï¿½ï¿½oï¿½^ï¿½Afallback ï¿½ï¿½Ç‰ï¿½");
             judgementConfigs.Add(JudgementConfig.CreateFallbackMiss());
         }
 
-        // ”»’èƒEƒBƒ“ƒhƒE‚ª¬‚³‚¢‡‚É•À‚Ñ‘Ö‚¦iPerfect ¨ Great ¨ Good ¨ Missj
+        // ï¿½ï¿½ï¿½ï¿½Eï¿½Bï¿½ï¿½ï¿½hï¿½Eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É•ï¿½ï¿½Ñ‘Ö‚ï¿½ï¿½iPerfect ï¿½ï¿½ Great ï¿½ï¿½ Good ï¿½ï¿½ Missï¿½j
         judgementConfigs.Sort((a, b) => a.MaxTimeDifference.CompareTo(b.MaxTimeDifference));
     }
 
-    public JudgementConfig GetJudgement(float timeDifference)
+    /// <summary>
+    /// ï¿½Sï¿½ï¿½ï¿½èƒŠï¿½Xï¿½gï¿½ï¿½ï¿½æ“¾
+    /// </summary>
+    public List<JudgementConfig> GetAllJudgements() => judgementConfigs;
+
+    /// <summary>
+    /// ï¿½~ï¿½Xï¿½ï¿½ï¿½ï¿½iï¿½Å‘åï¿½Ôjï¿½ï¿½ï¿½æ“¾
+    /// </summary>
+    public JudgementConfig GetMissJudgement()
     {
-        foreach (var config in judgementConfigs)
+        var miss = judgementConfigs.FirstOrDefault(j => j.JudgementName == "Miss");
+        if (miss == null)
         {
-            if (Mathf.Abs(timeDifference) <= config.MaxTimeDifference)
-                return config;
+            Debug.LogError("[JudgementManager] Miss ï¿½ï¿½ï¿½è‚ªï¿½æ“¾ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½");
+        }
+        return miss;
+    }
+
+    /// <summary>
+    /// ï¿½ï¿½ï¿½Íƒ^ï¿½Cï¿½~ï¿½ï¿½ï¿½Oï¿½É‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô‚ï¿½
+    /// </summary>
+    public JudgementConfig EvaluateTiming(float timeDifference)
+    {
+        foreach (var judgement in judgementConfigs)
+        {
+            if (Mathf.Abs(timeDifference) <= judgement.MaxTimeDifference)
+            {
+                return judgement;
+            }
         }
 
-        return null; // fallback ‚Å Miss ‚ğ’Ç‰Á‚µ‚Ä‚¢‚ê‚Î null ‚É‚Í‚È‚ç‚È‚¢‘z’è
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚Å—ï¿½ï¿½ï¿½ï¿½ï¿½Miss
+        return GetMissJudgement();
     }
 
     public float GetMaxJudgementTime()
     {
-            if (judgementConfigs == null || !judgementConfigs.Any())
+        if (judgementConfigs == null || !judgementConfigs.Any())
         {
-            Debug.LogError("[JudgementManager] ”»’èƒf[ƒ^‚ª‰Šú‰»‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
+            Debug.LogError("[JudgementManager] ï¿½ï¿½ï¿½ï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½");
             return 0f;
         }
         return judgementConfigs.Max(j => j.MaxTimeDifference);
     }
-    public JudgementConfig GetMissJudgement()
+    /// <summary>
+    /// ï¿½Xï¿½Rï¿½Aï¿½Aï¿½Rï¿½ï¿½ï¿½{ï¿½Aï¿½Gï¿½tï¿½Fï¿½Nï¿½gï¿½È‚Ç‚Ìï¿½ï¿½ï¿½
+    /// </summary>
+    public void ApplyJudgement(JudgementConfig config, int laneNumber)
     {
-        return judgementConfigs.FirstOrDefault(j => j.JudgementName == "Miss");
+        // ï¿½Xï¿½Rï¿½Aï¿½ï¿½ï¿½ï¿½
+        ScoreManager.Instance.AddScore(config.ScoreValue);
+
+        // ï¿½Rï¿½ï¿½ï¿½{ï¿½ï¿½ï¿½ï¿½
+        if (config.BreaksCombo)
+        {
+            ComboManager.Instance.ResetCombo();
+        }
+        else
+        {
+            ComboManager.Instance.IncrementCombo();
+        }
+
+        // ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½
     }
-
-    public List<JudgementConfig> GetAll() => new List<JudgementConfig>(judgementConfigs);
 }
-

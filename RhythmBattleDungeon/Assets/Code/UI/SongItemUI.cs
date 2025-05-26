@@ -3,27 +3,79 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// 楽曲選択画面
+/// 
+/// </summary>
 public class SongItemUI : MonoBehaviour, IPoolable<SongItemUI>
 {
-    [SerializeField] private Image jacketImage;
+
+    #region フィールド定義
+
+    /// <summary>
+    /// ジャケット画像コンポーネントを設定するインスペクターで設定しない場合は自動取得
+    /// </summary>
+    [SerializeField,Header("ジャケット画像のイメージコンポーネントを設定")] private Image jacketImage;
+
+    /// <summary>
+    /// 
+    /// </summary>
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private Button selectButton;
 
     private string songId;
-    private UIObjectPool<SongItemUI> pool;
+    private UIObjectPool<SongItemUI> songItemUiPool;
 
+    #endregion
     private void Awake()
     {
+
         if (jacketImage == null)
+        {
             jacketImage = transform.Find("BgmJacketImage")?.GetComponent<Image>();
 
+            if (jacketImage == null)
+            {
+                Debug.LogError($"[{gameObject.name}] BgmJacketImageが見つかりません。子オブジェクトの名前とImageコンポーネントを確認してください。");
+            }
+            else if (jacketImage.gameObject.name != "BgmJacketImage")
+            {
+                Debug.LogWarning($"[{gameObject.name}] オブジェクト名が'{jacketImage.gameObject.name}'です。'BgmJacketImage'に変更するかインスペクターで設定してください。");
+            }
+            else
+            {
+                Debug.Log($"[{gameObject.name}] BgmJacketImage取得完了");
+            }
+        }
         if (titleText == null)
+        {
             titleText = transform.Find("BGMName")?.GetComponent<TextMeshProUGUI>();
-        Debug.Log(titleText.text);
+
+            if (titleText == null)
+            {
+                Debug.LogError($"[{gameObject.name}] BGMNameが見つかりません。子オブジェクトの名前とTextMeshProUGUIコンポーネントを確認してください。");
+            }
+            else
+            {
+                Debug.Log($"[{gameObject.name}] BGMName取得完了: {titleText.text}");
+            }
+        }
+
         if (selectButton == null)
+        {
             selectButton = GetComponent<Button>();
 
-        selectButton.onClick.AddListener(OnSelectButtonClicked);
+            if (selectButton == null)
+            {
+                Debug.LogError($"[{gameObject.name}] Buttonコンポーネントが見つかりません。");
+            }
+            else
+            {
+                Debug.Log($"[{gameObject.name}] Button取得完了");
+            }
+        }
+
+            selectButton.onClick.AddListener(OnSelectButtonClicked);
     }
 
     public void Setup(BGMConfig config)
@@ -71,7 +123,7 @@ public class SongItemUI : MonoBehaviour, IPoolable<SongItemUI>
 
     public void OnCreated(UIObjectPool<SongItemUI> pool)
     {
-        this.pool = pool;
+        this.songItemUiPool = pool;
     }
 
 
