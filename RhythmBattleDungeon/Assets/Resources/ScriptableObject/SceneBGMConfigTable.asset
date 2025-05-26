@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac99115720de99d4e99e3d3395233223, type: 3}
   m_Name: SceneBGMConfigTable
   m_EditorClassIdentifier: 
-  sceneBgmConfigs:
-  - sceneName: TitleScene
-    bgmId: 'Shining Star '
+  sceneBgmConfigLists:
   - sceneName: SongSelectScene
     bgmId: 'Shining Star '
   - sceneName: ResultScene

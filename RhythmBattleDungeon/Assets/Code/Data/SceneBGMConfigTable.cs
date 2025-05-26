@@ -1,50 +1,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// ƒV[ƒ“‚É‘Î‰‚·‚éBGMİ’è‚Ìˆê——‚ğ•Û‚·‚é ScriptableObject
+/// ï¿½Vï¿½[ï¿½ï¿½ï¿½É‘Î‰ï¿½ï¿½ï¿½ï¿½ï¿½BGMï¿½İ’ï¿½Ìˆê——ï¿½ï¿½Ûï¿½ï¿½ï¿½ï¿½ï¿½ ScriptableObject
 /// </summary>
 public class SceneBGMConfigTable : ScriptableObject
 {
-    #region ƒŠƒXƒg‚âƒfƒBƒNƒVƒ‡ƒiƒŠ•Ï”
+    #region ï¿½Vï¿½[ï¿½ï¿½BGMï¿½Ìƒï¿½ï¿½Xï¿½gï¿½ï¿½fï¿½Bï¿½Nï¿½Vï¿½ï¿½ï¿½iï¿½ï¿½ï¿½Ì“ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½pï¿½Ïï¿½
 
     /// <summary>
-    /// ƒV[ƒ“‚É‘Î‰‚·‚éBGM‚ÌƒŠƒXƒg
+    /// ï¿½Vï¿½[ï¿½ï¿½ï¿½É‘Î‰ï¿½ï¿½ï¿½ï¿½ï¿½BGMï¿½Ìƒï¿½ï¿½Xï¿½g
     /// </summary>
-    [SerializeField, Header("ƒV[ƒ“‚É‘Î‰‚·‚éBGM‚ÌƒŠƒXƒg")]
+    [SerializeField, Header("ï¿½Vï¿½[ï¿½ï¿½ï¿½É‘Î‰ï¿½ï¿½ï¿½ï¿½ï¿½BGMï¿½Ìƒï¿½ï¿½Xï¿½g")]
     private List<SceneBGMConfig> sceneBgmConfigLists= new List<SceneBGMConfig>();
 
 
     /// <summary>
-    /// ƒV[ƒ“‚É‘Î‰‚·‚éBGM‚ÌƒŠƒXƒg‚ÌƒfƒBƒNƒVƒ‡ƒiƒŠ
+    /// ï¿½Vï¿½[ï¿½ï¿½ï¿½É‘Î‰ï¿½ï¿½ï¿½ï¿½ï¿½BGMï¿½Ìƒï¿½ï¿½Xï¿½gï¿½Ìƒfï¿½Bï¿½Nï¿½Vï¿½ï¿½ï¿½iï¿½ï¿½
     /// </summary>
     private Dictionary<string, string> sceneToBgmIdDict;
 
     #endregion
 
 
-    #region “Ç‚İæ‚èê—pƒvƒƒpƒeƒB
+    #region ï¿½Ç‚İï¿½ï¿½ï¿½pï¿½vï¿½ï¿½ï¿½pï¿½eï¿½Bï¿½iï¿½Vï¿½[ï¿½ï¿½BGMï¿½Ìƒï¿½ï¿½Xï¿½gï¿½ï¿½fï¿½Bï¿½Nï¿½Vï¿½ï¿½ï¿½iï¿½ï¿½ï¿½Ì“ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½pï¿½Ïï¿½)
 
     /// <summary>
-    /// ƒV[ƒ“‚É‘Î‰‚·‚éBGM‚ÌƒŠƒXƒg‚Ì“Ç‚İæ‚èê—p
+    /// ï¿½Vï¿½[ï¿½ï¿½ï¿½É‘Î‰ï¿½ï¿½ï¿½ï¿½ï¿½BGMï¿½Ìƒï¿½ï¿½Xï¿½gï¿½Ì“Ç‚İï¿½ï¿½ï¿½p
     /// </summary>
     internal List<SceneBGMConfig> SceneBgmConfigLists=> sceneBgmConfigLists;
 
     #endregion
 
 
-    #region ƒQƒbƒ^[ƒƒ\ƒbƒh
+    #region ï¿½Qï¿½bï¿½^ï¿½[ï¿½ï¿½ï¿½\ï¿½bï¿½h
 
     /// <summary>
-    /// ƒV[ƒ“‚É‘Î‰‚·‚éBGM‚ÌƒŠƒXƒgî•ñ‚ğ‚·‚×‚Ä•Ô‚·
+    /// ï¿½Vï¿½[ï¿½ï¿½ï¿½É‘Î‰ï¿½ï¿½ï¿½ï¿½ï¿½BGMï¿½Ìƒï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×‚Ä•Ô‚ï¿½
     /// </summary>
-    /// <returns>SceneBGMConfig‚ÌList</returns>
+    /// <returns>SceneBGMConfigï¿½ï¿½List</returns>
     internal List<SceneBGMConfig> GetAllSceneBGMConfig()
     {
         return sceneBgmConfigLists;
     }
 
     /// <summary>
-    /// sceneName‚É‘Î‰‚µ‚½BGMID‚ğ•Ô‚·
+    /// sceneNameï¿½É‘Î‰ï¿½ï¿½ï¿½ï¿½ï¿½BGMIDï¿½ï¿½Ô‚ï¿½
     /// </summary>
     /// <param name="sceneName"></param>
     /// <returns>string</returns>
@@ -65,35 +65,35 @@ public class SceneBGMConfigTable : ScriptableObject
 
     private void OnEnable()
     {
-        // ScriptableObject Ä“Ç‚İ‚İ‚É‚à‘Î‰
+        // ScriptableObject ï¿½Ä“Ç‚İï¿½ï¿½İï¿½ï¿½É‚ï¿½ï¿½Î‰ï¿½
         InitializeDictionary();
     }
 
 
-    #region ƒvƒ‰ƒCƒx[ƒgƒƒ\ƒbƒh
+    #region ï¿½vï¿½ï¿½ï¿½Cï¿½xï¿½[ï¿½gï¿½ï¿½ï¿½\ï¿½bï¿½h
 
     /// <summary>
-    /// ƒfƒBƒNƒVƒ‡ƒiƒŠ‚Ì‰Šú‰»
+    /// ï¿½fï¿½Bï¿½Nï¿½Vï¿½ï¿½ï¿½iï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     private void InitializeDictionary()
     {
         sceneToBgmIdDict = new Dictionary<string, string>();
         foreach (var sceneBgm in sceneBgmConfigLists)
         {
-            //ƒRƒ“ƒtƒBƒO‚ÌƒV[ƒ“‚Ì–¼‘O‚ÆBgmId‚ª—¼•û‚Æ‚à‹ó—“‚Å‚È‚¢‚È‚ç
+            //ï¿½Rï¿½ï¿½ï¿½tï¿½Bï¿½Oï¿½ÌƒVï¿½[ï¿½ï¿½ï¿½Ì–ï¿½ï¿½Oï¿½ï¿½BgmIdï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½ó—“‚Å‚È‚ï¿½ï¿½È‚ï¿½
             if (!string.IsNullOrEmpty(sceneBgm.SceneName) && !string.IsNullOrEmpty(sceneBgm.BgmId))
             {
-                //ƒfƒBƒNƒVƒ‡ƒiƒŠ“à‚ÉSceneName‚ª‚È‚¢‚È‚ç
+                //ï¿½fï¿½Bï¿½Nï¿½Vï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SceneNameï¿½ï¿½ï¿½È‚ï¿½ï¿½È‚ï¿½
                 if (!sceneToBgmIdDict.ContainsKey(sceneBgm.SceneName))
                 {
-                    // ƒfƒBƒNƒVƒ‡ƒiƒŠ“à‚ÉSceneName‚ÆBgmId‚ğ’Ç‰Á
+                    // ï¿½fï¿½Bï¿½Nï¿½Vï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SceneNameï¿½ï¿½BgmIdï¿½ï¿½Ç‰ï¿½
 
                     sceneToBgmIdDict.Add(sceneBgm.SceneName, sceneBgm.BgmId);
                 }
                 else
                 {
-                    //ƒGƒ‰[o‚µ‚ÄI—¹
-                    Debug.LogWarning($"[SceneBGMConfigTable] ƒV[ƒ“ '{sceneBgm.SceneName}' ‚ÍŠù‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚·B");
+                    //ï¿½Gï¿½ï¿½ï¿½[ï¿½oï¿½ï¿½ï¿½ÄIï¿½ï¿½
+                    Debug.LogWarning($"[SceneBGMConfigTable] ï¿½Vï¿½[ï¿½ï¿½ '{sceneBgm.SceneName}' ï¿½ÍŠï¿½ï¿½É“oï¿½^ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½B");
                 }
             }
         }

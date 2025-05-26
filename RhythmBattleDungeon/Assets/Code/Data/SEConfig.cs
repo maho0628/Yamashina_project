@@ -1,48 +1,48 @@
 using UnityEngine;
 
 /// <summary>
-/// ’Pˆê‚ÌSEiŒø‰Ê‰¹j‚Ìİ’èƒf[ƒ^
+/// ï¿½Pï¿½ï¿½ï¿½SEï¿½iï¿½ï¿½ï¿½Ê‰ï¿½ï¿½jï¿½Ìİ’ï¿½fï¿½[ï¿½^
 /// </summary>
 [System.Serializable]
 public class SEConfig
 {
-    #region SEİ’è‚ÉŠÖ‚·‚éî•ñ•Ï”
+    #region SEï¿½İ’ï¿½ÉŠÖ‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½pï¿½Ïï¿½
 
     /// <summary>
-    /// SE‚ÌID–¼
+    /// SEï¿½ï¿½IDï¿½ï¿½
     /// </summary>
-    [SerializeField, Header("SE‚ÌID–¼")]
+    [SerializeField, Header("SEï¿½ï¿½IDï¿½ï¿½")]
     private string seId;
 
     /// <summary>
-    /// g—p‚·‚éSEƒI[ƒfƒBƒIƒNƒŠƒbƒv
+    /// ï¿½gï¿½pï¿½ï¿½ï¿½ï¿½SEï¿½Iï¿½[ï¿½fï¿½Bï¿½Iï¿½Nï¿½ï¿½ï¿½bï¿½v
     /// </summary>
-    [SerializeField, Header("g—p‚·‚éSEƒI[ƒfƒBƒIƒNƒŠƒbƒv")]
+    [SerializeField, Header("ï¿½gï¿½pï¿½ï¿½ï¿½ï¿½SEï¿½Iï¿½[ï¿½fï¿½Bï¿½Iï¿½Nï¿½ï¿½ï¿½bï¿½v")]
     private AudioClip seAudioClip;
 
     /// <summary>
-    /// SE‚Ìà–¾
+    /// SEï¿½Ìï¿½ï¿½ï¿½
     /// </summary>
-    [SerializeField, Header("SE‚Ìà–¾")]
-    private string description;  // —áFuƒ{ƒ^ƒ“‰Ÿ‰º‰¹v‚È‚Ç
+    [SerializeField, Header("SEï¿½Ìï¿½ï¿½ï¿½")]
+    private string description;  // ï¿½ï¿½Fï¿½uï¿½{ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½vï¿½È‚ï¿½
 
     #endregion
 
 
-    #region “Ç‚İæ‚èê—pƒvƒƒpƒeƒB(SEİ’è‚ÉŠÖ‚·‚éî•ñ•Ï”)
+    #region ï¿½Ç‚İï¿½ï¿½ï¿½pï¿½vï¿½ï¿½ï¿½pï¿½eï¿½B(SEï¿½İ’ï¿½ÉŠÖ‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½pï¿½Ïï¿½)
 
     /// <summary>
-    /// SE‚ÌID–¼‚Ì“Ç‚İæ‚èê—p
+    /// SEï¿½ï¿½IDï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½p
     /// </summary>
     internal string SeId => seId;
 
     /// <summary>
-    /// g—p‚·‚éSEƒI[ƒfƒBƒIƒNƒŠƒbƒv‚Ì“Ç‚İæ‚èê—p
+    /// ï¿½gï¿½pï¿½ï¿½ï¿½ï¿½SEï¿½Iï¿½[ï¿½fï¿½Bï¿½Iï¿½Nï¿½ï¿½ï¿½bï¿½vï¿½Ì“Ç‚İï¿½ï¿½ï¿½p
     /// </summary>
     internal AudioClip SeAudioClip => seAudioClip;
 
     /// <summary>
-    /// SE‚Ìà–¾‚Ì“Ç‚İæ‚èê—p
+    /// SEï¿½Ìï¿½ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½p
     /// </summary>
     internal string Description => description;
 

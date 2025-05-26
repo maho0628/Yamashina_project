@@ -3,80 +3,80 @@ using UnityEngine;
 
 [System.Serializable]
 /// <summary>
-/// ƒXƒe[ƒW‚Ìİ’èƒf[ƒ^
+/// ï¿½Xï¿½eï¿½[ï¿½Wï¿½Ìİ’ï¿½fï¿½[ï¿½^
 /// </summary>
 public class StageConfig
 {
-    #region  ƒXƒe[ƒWİ’è‚ÉŠÖ‚·‚éî•ñ•Ï”
+    #region  ï¿½Xï¿½eï¿½[ï¿½Wï¿½İ’ï¿½ÉŠÖ‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½pï¿½Ïï¿½
 
     /// <summary>
-    /// ƒXƒe[ƒWID–¼
+    /// ï¿½Xï¿½eï¿½[ï¿½WIDï¿½ï¿½
     /// </summary>
-    [SerializeField, Header("•ˆ–ÊID–¼")]
+    [SerializeField, Header("ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½")]
     private string stageId;
 
     /// <summary>
-    /// ƒXƒe[ƒW‚Å–Â‚ç‚·BGM‰¹Œ¹‚Ìİ’è“à—e
+    /// ï¿½Xï¿½eï¿½[ï¿½Wï¿½Å–Â‚ç‚·BGMï¿½ï¿½ï¿½ï¿½ï¿½Ìİ’ï¿½ï¿½ï¿½e
     /// </summary>
-    [SerializeField, Header("BGM‰¹Œ¹‚Ìİ’è“à—e")]
+    [SerializeField, Header("BGMï¿½ï¿½ï¿½ï¿½ï¿½Ìİ’ï¿½ï¿½ï¿½e")]
     private BGMConfig stageBgm;
 
     /// <summary>
-    /// •ˆ–Êƒf[ƒ^Jsonƒtƒ@ƒCƒ‹–¼
+    /// ï¿½ï¿½ï¿½Êƒfï¿½[ï¿½^Jsonï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½
     /// </summary>
-    [SerializeField, Header("•ˆ–Êƒf[ƒ^Jsonƒtƒ@ƒCƒ‹–¼")]
+    [SerializeField, Header("ï¿½ï¿½ï¿½Êƒfï¿½[ï¿½^Jsonï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½")]
     private string chartFileName;
 
     /// <summary>
-    /// ƒm[ƒc‚ÌƒXƒNƒ[ƒ‹İ’è
+    /// ï¿½mï¿½[ï¿½cï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½İ’ï¿½
     /// </summary>
-    [SerializeField, Header("ƒm[ƒc‚ÌƒXƒNƒ[ƒ‹İ’è")]
+    [SerializeField, Header("ï¿½mï¿½[ï¿½cï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½İ’ï¿½")]
     private NoteScrollConfig scrollConfig;
 
     /// <summary>
-    /// ”»’èİ’èiPerfect / Good / Miss ‚È‚Çj
+    /// ï¿½ï¿½ï¿½ï¿½İ’ï¿½iPerfect / Good / Miss ï¿½È‚Çj
     /// </summary>
-    [SerializeField, Header("”»’èİ’èiPerfect / Good / Miss ‚È‚Çj")]
+    [SerializeField, Header("ï¿½ï¿½ï¿½ï¿½İ’ï¿½iPerfect / Good / Miss ï¿½È‚Çj")]
     private List<JudgementConfig> judgementConfigs;
 
     /// <summary>
-    /// Šy‹ÈI—¹Œã‚Ì‘JˆÚ‘Ò‹@•b”
+    /// ï¿½yï¿½ÈIï¿½ï¿½ï¿½ï¿½Ì‘Jï¿½Ú‘Ò‹@ï¿½bï¿½ï¿½
     /// </summary>
-    [SerializeField, Header("Šy‹ÈI—¹Œã‚Ì‘JˆÚ‘Ò‹@•b”")]
+    [SerializeField, Header("ï¿½yï¿½ÈIï¿½ï¿½ï¿½ï¿½Ì‘Jï¿½Ú‘Ò‹@ï¿½bï¿½ï¿½")]
     private float delayBeforeResult = 2.0f;
 
     #endregion
 
 
-    #region “Ç‚İæ‚èê—pƒvƒƒpƒeƒB(ƒXƒe[ƒWİ’è‚ÉŠÖ‚·‚éî•ñ•Ï”)
+    #region ï¿½Ç‚İï¿½ï¿½ï¿½pï¿½vï¿½ï¿½ï¿½pï¿½eï¿½B(ï¿½Xï¿½eï¿½[ï¿½Wï¿½İ’ï¿½ÉŠÖ‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½pï¿½Ïï¿½)
 
     /// <summary>
-    /// •ˆ–ÊID–¼‚Ì“Ç‚İæ‚èê—p
+    /// ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½p
     /// </summary>
     internal string StageId => stageId;
 
     /// <summary>
-    /// •ˆ–ÊBGM‰¹Œ¹‚Ìİ’è“à—e‚Ì“Ç‚İæ‚èê—p
+    /// ï¿½ï¿½ï¿½ï¿½BGMï¿½ï¿½ï¿½ï¿½ï¿½Ìİ’ï¿½ï¿½ï¿½eï¿½Ì“Ç‚İï¿½ï¿½ï¿½p
     /// </summary>
     internal BGMConfig StageBgm => stageBgm;
 
     /// <summary>
-    /// •ˆ–Êƒf[ƒ^Jsonƒtƒ@ƒCƒ‹–¼‚Ì“Ç‚İæ‚èê—p
+    /// ï¿½ï¿½ï¿½Êƒfï¿½[ï¿½^Jsonï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½p
     /// </summary>
     internal string ChartFileName => chartFileName;
 
     /// <summary>
-    /// ƒm[ƒc‚ÌƒXƒNƒ[ƒ‹İ’è‚Ì“Ç‚İæ‚èê—p
+    /// ï¿½mï¿½[ï¿½cï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½İ’ï¿½Ì“Ç‚İï¿½ï¿½ï¿½p
     /// </summary>
     internal NoteScrollConfig ScrollConfig => scrollConfig;
 
     /// <summary>
-    ///  ”»’èİ’èiPerfect / Good / Miss ‚È‚Çj‚Ì“Ç‚İæ‚èê—p
+    ///  ï¿½ï¿½ï¿½ï¿½İ’ï¿½iPerfect / Good / Miss ï¿½È‚Çjï¿½Ì“Ç‚İï¿½ï¿½ï¿½p
     /// </summary>
     internal List<JudgementConfig> JudgementConfigs => judgementConfigs;
 
     /// <summary>
-    /// Šy‹ÈI—¹Œã‚Ì‘JˆÚ‘Ò‹@•b”‚Ì“Ç‚İæ‚èê—p
+    /// ï¿½yï¿½ÈIï¿½ï¿½ï¿½ï¿½Ì‘Jï¿½Ú‘Ò‹@ï¿½bï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½p
     /// </summary>
     internal float DelayBeforeResult => delayBeforeResult;
 

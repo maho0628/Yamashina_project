@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da8addd456cd9f4a91bd5d970e92139, type: 3}
   m_Name: stageConfig
   m_EditorClassIdentifier: 
-  stagesBgmList:
-  - stageId: stage1
+  stagesBgmLists:
+  - stageId: 'Shining Star '
     stageBgm:
       bgmId: 'Shining Star '
       bgmAudioClip: {fileID: 8300000, guid: 099302f2d20e90043930296fd69a03e8, type: 3}
       bgmBpm: 0
-      bgmGenre: aaaa
+      bgmGenre: 
       bgmDisplayName: "\u30B7\u30E3\u30A4\u30CB\u30F3\u30B0\u30B9\u30BF\u30FC"
+<<<<<<< HEAD
       bgmJacketImage: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
     chartFileName: test
     scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
@@ -56,15 +57,42 @@ MonoBehaviour:
     judgementConfigs: []
     delayBeforeResult: 2
   - stageId: stage2
-    stageBgm:
-      bgmId: aaaaa
-      bgmAudioClip: {fileID: 8300000, guid: 8830af80d8c785843bc62458eb6f8e99, type: 3}
-      bgmBpm: 0
-      bgmGenre: 
-      bgmDisplayName: 
+=======
       bgmJacketImage: {fileID: 0}
     chartFileName: test
     scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
+    judgementConfigs:
+    - judgementName: Perfect
+      maxTimeDifference: 0.2
+      displayColor: {r: 0, g: 0, b: 0, a: 0}
+      displayIcon: {fileID: 0}
+      scoreValue: 100
+      breaksCombo: 0
+    - judgementName: Great
+      maxTimeDifference: 0.5
+      displayColor: {r: 0, g: 0, b: 0, a: 0}
+      displayIcon: {fileID: 0}
+      scoreValue: 50
+      breaksCombo: 0
+    - judgementName: Miss
+      maxTimeDifference: 5
+      displayColor: {r: 0, g: 0, b: 0, a: 0}
+      displayIcon: {fileID: 0}
+      scoreValue: 0
+      breaksCombo: 1
+    delayBeforeResult: 0.2
+  - stageId: bbbb
+>>>>>>> b23cc46 (判定バグ修正途中とリファクタリング)
+    stageBgm:
+      bgmId: 'Shining Star '
+      bgmAudioClip: {fileID: 8300000, guid: 099302f2d20e90043930296fd69a03e8, type: 3}
+      bgmBpm: 0
+      bgmGenre: 
+      bgmDisplayName: "\u30B7\u30E3\u30A4\u30CB\u30F3\u30B0\u30B9\u30BF\u30FC"
+      bgmJacketImage: {fileID: 0}
+    chartFileName: test
+    scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
+<<<<<<< HEAD
     judgementConfigs: []
     delayBeforeResult: 2
   - stageId: stage2
@@ -187,3 +215,25 @@ MonoBehaviour:
     scrollConfig: {fileID: 0}
     judgementConfigs: []
     delayBeforeResult: 2
+=======
+    judgementConfigs:
+    - judgementName: Perfect
+      maxTimeDifference: 0.2
+      displayColor: {r: 0, g: 0, b: 0, a: 0}
+      displayIcon: {fileID: 0}
+      scoreValue: 100
+      breaksCombo: 0
+    - judgementName: Great
+      maxTimeDifference: 0.5
+      displayColor: {r: 0, g: 0, b: 0, a: 0}
+      displayIcon: {fileID: 0}
+      scoreValue: 50
+      breaksCombo: 0
+    - judgementName: Miss
+      maxTimeDifference: 5
+      displayColor: {r: 0, g: 0, b: 0, a: 0}
+      displayIcon: {fileID: 0}
+      scoreValue: 0
+      breaksCombo: 1
+    delayBeforeResult: 0.2
+>>>>>>> b23cc46 (判定バグ修正途中とリファクタリング)

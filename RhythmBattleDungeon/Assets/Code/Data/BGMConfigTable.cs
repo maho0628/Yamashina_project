@@ -1,51 +1,53 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 /// <summary>
-/// ƒQ[ƒ€“à‚Åg—p‚·‚éBGMİ’è‚Ìˆê——‚ğ•Û‚·‚é ScriptableObject
+/// ã‚²ãƒ¼ãƒ å†…ã§ä½¿ç”¨ã™ã‚‹BGMè¨­å®šã®ä¸€è¦§ã‚’ä¿æŒã™ã‚‹ ScriptableObject
 /// </summary>
 [CreateAssetMenu(fileName = "BGMConfig", menuName = "GameData/BGMConfigTable")]
 public class BGMConfigTable : ScriptableObject
 {
-    #region ƒŠƒXƒg‚ÆƒfƒBƒNƒVƒ‡ƒiƒŠ•Ï”
+    #region BGMã®ãƒªã‚¹ãƒˆã‚„ãƒ‡ã‚£ã‚¯ã‚·ãƒ§ãƒŠãƒªã®å†…éƒ¨ç®¡ç†ç”¨å¤‰æ•°
 
     /// <summary>
-    /// ƒQ[ƒ€“à‚Åg—p‚·‚éBGMİ’è‚Ìˆê——‚ÌƒŠƒXƒg
+    /// ã‚²ãƒ¼ãƒ å†…ã§ä½¿ç”¨ã™ã‚‹BGMè¨­å®šã®ä¸€è¦§ã®ãƒªã‚¹ãƒˆ
     /// </summary>
-    [SerializeField, Header("ƒQ[ƒ€“à‚Åg—p‚·‚éBGMİ’è‚Ìˆê——")]
+    [SerializeField, Header("ã‚²ãƒ¼ãƒ å†…ã§ä½¿ç”¨ã™ã‚‹BGMè¨­å®šã®ä¸€è¦§")]
     private List<BGMConfig> bgmLists = new List<BGMConfig>();
 
     /// <summary>
-    /// BGM‚ÌƒfƒBƒNƒVƒ‡ƒiƒŠ
+    /// BGMã®ãƒ‡ã‚£ã‚¯ã‚·ãƒ§ãƒŠãƒª
     /// </summary>
     private Dictionary<string, BGMConfig> bgmDict;
 
     #endregion
 
 
-    #region “Ç‚İæ‚èê—pƒvƒƒpƒeƒB
+    #region èª­ã¿å–ã‚Šå°‚ç”¨ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼ˆBGMã®ãƒªã‚¹ãƒˆã‚„ãƒ‡ã‚£ã‚¯ã‚·ãƒ§ãƒŠãƒªã®å†…éƒ¨ç®¡ç†ç”¨å¤‰æ•°)
 
     /// <summary>
-    /// ƒQ[ƒ€“à‚Åg—p‚·‚éBGMİ’è‚Ìˆê——‚Ì“Ç‚İæ‚èê—p
+    /// ã‚²ãƒ¼ãƒ å†…ã§ä½¿ç”¨ã™ã‚‹BGMè¨­å®šã®ä¸€è¦§ã®èª­ã¿å–ã‚Šå°‚ç”¨
     /// </summary>
     internal List<BGMConfig> BgmLists => bgmLists;
 
     #endregion
 
 
-    #region ƒQƒbƒ^[ƒƒ\ƒbƒh
+    #region ã‚²ãƒƒã‚¿ãƒ¼ãƒ¡ã‚½ãƒƒãƒ‰
 
     /// <summary>
-    ///BGM‚ÌƒŠƒXƒgî•ñ‚ğ‚·‚×‚Ä•Ô‚·  
+    ///BGMã®ãƒªã‚¹ãƒˆæƒ…å ±ã‚’ã™ã¹ã¦è¿”ã™  
     /// </summary>
-    /// <returns>BGMConfig‚ÌList</returns>
+    /// <returns>BGMConfigã®List</returns>
     internal List<BGMConfig> GetAllBgmConfigs()
     {
         return bgmLists;
     }
 
     /// <summary>
-    /// ƒŠƒXƒg“à‚ÌBGMConfig‚ğID‚Å’T‚µ‚Ä•Ô‚·
+    /// ãƒªã‚¹ãƒˆå†…ã®BGMConfigã‚’IDã§æ¢ã—ã¦è¿”ã™
     /// </summary>
     /// <param name="id">BGMID</param>
     /// <returns>BGMConfig</returns>
@@ -66,36 +68,36 @@ public class BGMConfigTable : ScriptableObject
 
     private void OnEnable()
     {
-        // ScriptableObject Ä“Ç‚İ‚İ‚É‚à‘Î‰
+        // ScriptableObject å†èª­ã¿è¾¼ã¿æ™‚ã«ã‚‚å¯¾å¿œ
         InitializeDictionary();
     }
 
 
-    #region ƒvƒ‰ƒCƒx[ƒgƒƒ\ƒbƒh
+    #region ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆãƒ¡ã‚½ãƒƒãƒ‰
 
     /// <summary>
-    /// ƒfƒBƒNƒVƒ‡ƒiƒŠ‰Šú‰»
+    /// ãƒ‡ã‚£ã‚¯ã‚·ãƒ§ãƒŠãƒªåˆæœŸåŒ–
     /// </summary>
     private void InitializeDictionary()
     {
         bgmDict = new Dictionary<string, BGMConfig>();
         foreach (var bgm in bgmLists)
         {
-            //BGMƒŠƒXƒg‚ÌBGMID‚É•¶š—ñ‚ª“ü‚Á‚Ä‚é•ƒfƒBƒNƒVƒ‡ƒiƒŠ‚É‚»‚Ì•¶š—ñiƒL[j‚ªŠÜ‚Ü‚ê‚Ä‚¢‚È‚¢‚È‚ç
+            //BGMãƒªã‚¹ãƒˆã®BGMIDã«æ–‡å­—åˆ—ãŒå…¥ã£ã¦ã‚‹ï¼†ãƒ‡ã‚£ã‚¯ã‚·ãƒ§ãƒŠãƒªã«ãã®æ–‡å­—åˆ—ï¼ˆã‚­ãƒ¼ï¼‰ãŒå«ã¾ã‚Œã¦ã„ãªã„ãªã‚‰
             if (!string.IsNullOrEmpty(bgm.BgmId) && !bgmDict.ContainsKey(bgm.BgmId))
             {
-                // ƒfƒBƒNƒVƒ‡ƒiƒŠ‚É‚»‚Ì•¶š—ñ‚ğ’Ç‰Á
+                // ãƒ‡ã‚£ã‚¯ã‚·ãƒ§ãƒŠãƒªã«ãã®æ–‡å­—åˆ—ã‚’è¿½åŠ 
                 bgmDict.Add(bgm.BgmId, bgm);
                 foreach (var key in bgmDict.Keys)
                 {
-                    //‚Ç‚ÌƒL[‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚©‚ÌƒfƒoƒbƒOƒƒO
-                    Debug.Log($"“o˜^‚³‚ê‚Ä‚¢‚éBGMƒL[: {key}");
+                    //ã©ã®ã‚­ãƒ¼ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‹ã®ãƒ‡ãƒãƒƒã‚°ãƒ­ã‚°
+                    Debug.Log($"ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹BGMã‚­ãƒ¼: {key}");
                 }
             }
             else
             {
-                //“¯‚¶ƒL[‚ğ“o˜^‚µ‚æ‚¤‚Æ‚µ‚Ä‚¢‚é‚©BGMID‚ª‹ó”’
-                Debug.LogWarning($"[BGMConfigTable] d•¡‚Ü‚½‚Í‹ó‚ÌBGM ID: {bgm.BgmId}");
+                //åŒã˜ã‚­ãƒ¼ã‚’ç™»éŒ²ã—ã‚ˆã†ã¨ã—ã¦ã„ã‚‹ã‹BGMIDãŒç©ºç™½
+                Debug.LogWarning($"[BGMConfigTable] é‡è¤‡ã¾ãŸã¯ç©ºã®BGM ID: {bgm.BgmId}");
             }
         }
     }
@@ -104,9 +106,3 @@ public class BGMConfigTable : ScriptableObject
 
 
 }
-
-
-
-
-
-

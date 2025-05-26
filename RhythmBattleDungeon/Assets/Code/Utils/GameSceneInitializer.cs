@@ -1,8 +1,10 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameSceneInitializer : MonoBehaviour
 {
+    private StageConfig currentStage;
 
     private void Awake()
     {
@@ -11,28 +13,33 @@ public class GameSceneInitializer : MonoBehaviour
         {
             GameInitializer.Instance.SetUpGameInitialize();
         }
-       
+
     }
 
 
     private void Start()
     {
+
         if (StageManager.Instance.IsStageSelected)
         {
-            var currentStage = StageManager.Instance.GetCurrentStageConfig();
+            currentStage = StageManager.Instance.GetCurrentStageConfig();
+
             var judgementConfigs = currentStage.JudgementConfigs;
-            Debug.Log(judgementConfigs.ToString()); 
+            Debug.Log(judgementConfigs.ToString());
             JudgementManager.Instance.Setup(judgementConfigs);
-            FindAnyObjectByType<InputHandler>()?.Initialize();
-
-
             if (currentStage != null)
             {
-                // ƒXƒe[ƒW—p‚ÌBGM‚ª‚ ‚é‚È‚ç‚»‚ê‚ğÄ¶
+                // ï¿½Xï¿½eï¿½[ï¿½Wï¿½pï¿½ï¿½BGMï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ç‚»ï¿½ï¿½ï¿½ï¿½Äï¿½
                 AudioManager.Instance.ForcePlayBGM(currentStage.StageBgm.BgmId);
 
-                Debug.Log($"[GameSceneInitializer] ƒXƒe[ƒW—pBGM‚ğÄ¶: {currentStage.StageBgm.BgmId}");
+                Debug.Log($"[GameSceneInitializer] ï¿½Xï¿½eï¿½[ï¿½Wï¿½pBGMï¿½ï¿½ï¿½Äï¿½: {currentStage.StageBgm.BgmId}");
             }
+            StartCoroutine(WaitForBGMThenInitialize());
+
+
+
+
+
 
         }
         else
@@ -40,12 +47,28 @@ public class GameSceneInitializer : MonoBehaviour
             string sceneName = SceneManager.GetActiveScene().name;
             SceneBGMConfigTable sceneBgmConfigTable = GameInitializer.Instance.GetSceneBGMConfigTable();
             string bgmId = sceneBgmConfigTable.GetSceneBgmConfigName(sceneName);
-            Debug.Log($"ƒV[ƒ“–¼: {sceneName}, BGM ID: {bgmId}");
+            Debug.Log($"ï¿½Vï¿½[ï¿½ï¿½ï¿½ï¿½: {sceneName}, BGM ID: {bgmId}");
             AudioManager.Instance.PlayBGMIfNotPlaying(bgmId);
-            Debug.LogWarning("ƒXƒe[ƒW‚ª‚Ü‚¾‘I‘ğ‚³‚ê‚Ä‚¢‚Ü‚¹‚ñI");
+            Debug.LogWarning("ï¿½Xï¿½eï¿½[ï¿½Wï¿½ï¿½ï¿½Ü‚ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½I");
             return;
         }
 
     }
+    private IEnumerator WaitForBGMThenInitialize()
+    {
+        // BGMï¿½ï¿½ï¿½Äï¿½ï¿½ï¿½ï¿½ï¿½ÄAscrollDurationï¿½bï¿½Èï¿½oï¿½Â‚Ü‚Å‘Ò‚ï¿½
+        var scrollDuration = currentStage.ScrollConfig.ScrollDuration;
+        yield return new WaitUntil(() => AudioManager.Instance.GetCurrentBGMTime() > scrollDuration);
+
+        // BGMï¿½ï¿½ï¿½mï¿½ï¿½ï¿½Énï¿½Ü‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÆANoteManagerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        NoteManager.Instance.Initialize();
+        Debug.Log("NoteManager ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+
+        // ï¿½Cï¿½ï¿½ï¿½vï¿½bï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        FindAnyObjectByType<InputHandler>()?.InitializeInput();
+    }
+
+
+ 
 
 }

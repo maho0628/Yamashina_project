@@ -1,118 +1,118 @@
 using UnityEngine;
 
 /// <summary>
-/// ƒm[ƒc‚ÌƒXƒNƒ[ƒ‹İ’è‚ÉŠÖ‚·‚éƒXƒNƒŠƒvƒ^ƒuƒ‹ƒIƒuƒWƒFƒNƒg
+/// ï¿½mï¿½[ï¿½cï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½İ’ï¿½ÉŠÖ‚ï¿½ï¿½ï¿½Xï¿½Nï¿½ï¿½ï¿½vï¿½^ï¿½uï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½g
 /// </summary>
 [CreateAssetMenu(
     fileName = "NoteScrollConfig",
-    menuName = "GameConfig/ƒm[ƒc/ƒXƒNƒ[ƒ‹İ’è"
+    menuName = "GameConfig/ï¿½mï¿½[ï¿½c/ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½İ’ï¿½"
 )]
 public class NoteScrollConfig : ScriptableObject
 {
-    #region ƒm[ƒcƒXƒNƒ[ƒ‹İ’è‚ÉŠÖ‚·‚é•Ï”
+    #region ï¿½mï¿½[ï¿½cï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½İ’ï¿½ÉŠÖ‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½pï¿½Ïï¿½
+
+    /// <summary> 1ï¿½`ï¿½Qï¿½ï¿½ï¿½Pï¿½ï¿½ï¿½Ã“ï¿½
+    /// ï¿½mï¿½[ï¿½cï¿½ï¿½ï¿½ï¿½ï¿½èƒ‰ï¿½Cï¿½ï¿½ï¿½É“ï¿½ï¿½Bï¿½ï¿½ï¿½ï¿½Ü‚Å‚Ìï¿½ï¿½Ôiï¿½bï¿½j
+    /// </summary>
+    [Tooltip("ï¿½mï¿½[ï¿½cï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½İ’ï¿½")]
+    [SerializeField, Header("ï¿½mï¿½[ï¿½cï¿½ï¿½ï¿½ï¿½ï¿½èƒ‰ï¿½Cï¿½ï¿½ï¿½É“ï¿½ï¿½Bï¿½ï¿½ï¿½ï¿½Ü‚Å‚Ìï¿½ï¿½Ôiï¿½bï¿½j ï¿½A1ï¿½`ï¿½Qï¿½bï¿½ÌŠÔ‚ï¿½ï¿½Ã“ï¿½")]
+    private float scrollDuration = 2f;
 
     /// <summary>
-    /// ƒm[ƒc‚ª”»’èƒ‰ƒCƒ“‚É“’B‚·‚é‚Ü‚Å‚ÌŠÔi•bj
+    /// ï¿½mï¿½[ï¿½cï¿½Ìoï¿½ï¿½Yï¿½ï¿½ï¿½Wï¿½iï¿½ï¿½j
     /// </summary>
-    [Tooltip("ƒm[ƒcƒXƒNƒ[ƒ‹İ’è")]
-    [SerializeField, Header("ƒm[ƒc‚ª”»’èƒ‰ƒCƒ“‚É“’B‚·‚é‚Ü‚Å‚ÌŠÔi•bj")]
-    private float scrollDuration = 3f;
-
-    /// <summary>
-    /// ƒm[ƒc‚ÌoŒ»YÀ•Wiãj
-    /// </summary>
-    [SerializeField, Header("ƒm[ƒc‚ÌoŒ»YÀ•Wiãj")]
+    [SerializeField, Header("ï¿½mï¿½[ï¿½cï¿½Ìoï¿½ï¿½Yï¿½ï¿½ï¿½Wï¿½iï¿½ï¿½j")]
     private float startY = 500f;
 
     /// <summary>
-    /// ƒm[ƒc‚ÌI—¹YÀ•Wi‰ºj
+    /// ï¿½mï¿½[ï¿½cï¿½ÌIï¿½ï¿½Yï¿½ï¿½ï¿½Wï¿½iï¿½ï¿½ï¿½j
     /// </summary>
-    [SerializeField, Header("ƒm[ƒc‚ÌI—¹YÀ•Wi‰ºj")]
+    [SerializeField, Header("ï¿½mï¿½[ï¿½cï¿½ÌIï¿½ï¿½Yï¿½ï¿½ï¿½Wï¿½iï¿½ï¿½ï¿½j")]
     private float endY = -100f;
 
     #endregion
 
 
-    #region ƒŒ[ƒ“‚Ìî•ñ‚ÉŠÖ‚·‚é•Ï”
+    #region ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ìï¿½ï¿½ÉŠÖ‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½pï¿½Ïï¿½
 
     /// <summary>
-    /// ŠeƒŒ[ƒ“‚Ì‰¡•ipxj
+    /// ï¿½eï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ì‰ï¿½ï¿½ï¿½ï¿½ipxï¿½j
     /// </summary>
-    [SerializeField, Header("ŠeƒŒ[ƒ“‚Ì‰¡•ipxj")]
+    [SerializeField, Header("ï¿½eï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ì‰ï¿½ï¿½ï¿½ï¿½ipxï¿½j")]
     private float laneWidth = 100f;
 
     /// <summary>
-    /// ŠeƒŒ[ƒ“‚Ì‚‚³
+    /// ï¿½eï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
     /// </summary>
-    [SerializeField, Header("ŠeƒŒ[ƒ“‚Ì‚‚³")]
+    [SerializeField, Header("ï¿½eï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½")]
     private float laneHeight;
 
     /// <summary>
-    /// ƒŒ[ƒ“‚ÌF‚ğİ’è
+    /// ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ÌFï¿½ï¿½İ’ï¿½
     /// </summary>
-    [SerializeField, Header("ƒŒ[ƒ“‚ÌF‚ğİ’è")]
+    [SerializeField, Header("ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ÌFï¿½ï¿½İ’ï¿½")]
     private Color[] laneColors;
 
     /// <summary>
-    /// ƒŒ[ƒ“‚²‚Æ‚Ì‰æ‘œ
+    /// ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚Ì‰æ‘œ
     /// </summary>
-    [SerializeField, Header("ƒŒ[ƒ“‚²‚Æ‚Ì‰æ‘œ")]
+    [SerializeField, Header("ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚Ì‰æ‘œ")]
     private Sprite[] laneSprites;
 
     /// <summary>
-    /// ƒŒ[ƒ“”B‰Šúİ’è‚Í4
+    /// ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Bï¿½ï¿½ï¿½ï¿½ï¿½İ’ï¿½ï¿½4
     /// </summary>
-    [SerializeField, Header("ƒŒ[ƒ“”B‰Šúİ’è‚Í4")]
+    [SerializeField, Header("ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Bï¿½ï¿½ï¿½ï¿½ï¿½İ’ï¿½ï¿½4")]
     [Min(1)]
     private int laneCount = 4;
 
     #endregion
 
 
-    #region “Ç‚İæ‚èê—pƒvƒƒpƒeƒB(ƒm[ƒcƒXƒNƒ[ƒ‹İ’è‚ÉŠÖ‚·‚é•Ï”)
+    #region ï¿½Ç‚İï¿½ï¿½ï¿½pï¿½vï¿½ï¿½ï¿½pï¿½eï¿½B(ï¿½mï¿½[ï¿½cï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½İ’ï¿½ÉŠÖ‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½pï¿½Ïï¿½)
 
     /// <summary>
-    /// ƒm[ƒc‚ª”»’èƒ‰ƒCƒ“‚É“’B‚·‚é‚Ü‚Å‚ÌŠÔi•bj‚Ì“Ç‚İæ‚èê—p
+    /// ï¿½mï¿½[ï¿½cï¿½ï¿½ï¿½ï¿½ï¿½èƒ‰ï¿½Cï¿½ï¿½ï¿½É“ï¿½ï¿½Bï¿½ï¿½ï¿½ï¿½Ü‚Å‚Ìï¿½ï¿½Ôiï¿½bï¿½jï¿½Ì“Ç‚İï¿½ï¿½ï¿½p
     /// </summary>
     internal float ScrollDuration => scrollDuration;
 
     /// <summary>
-    /// ƒm[ƒc‚ÌoŒ»YÀ•Wiãj‚Ì“Ç‚İæ‚èê—p
+    /// ï¿½mï¿½[ï¿½cï¿½Ìoï¿½ï¿½Yï¿½ï¿½ï¿½Wï¿½iï¿½ï¿½jï¿½Ì“Ç‚İï¿½ï¿½ï¿½p
     /// </summary>
     internal float StartY => startY;
 
     /// <summary>
-    /// ƒm[ƒc‚ÌI—¹YÀ•Wi‰ºj‚Ì“Ç‚İæ‚èê—p
+    /// ï¿½mï¿½[ï¿½cï¿½ÌIï¿½ï¿½Yï¿½ï¿½ï¿½Wï¿½iï¿½ï¿½ï¿½jï¿½Ì“Ç‚İï¿½ï¿½ï¿½p
     /// </summary>
     internal float EndY => endY;
 
     #endregion
 
 
-    #region “Ç‚İæ‚èê—pƒvƒƒpƒeƒB(ƒŒ[ƒ“‚Ìî•ñ‚ÉŠÖ‚·‚é•Ï”)
+    #region ï¿½Ç‚İï¿½ï¿½ï¿½pï¿½vï¿½ï¿½ï¿½pï¿½eï¿½B(ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ìï¿½ï¿½ÉŠÖ‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½pï¿½Ïï¿½)
 
     /// <summary>
-    ///  ŠeƒŒ[ƒ“‚Ì‰¡•ipxj‚Ì“Ç‚İæ‚èê—p
+    ///  ï¿½eï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ì‰ï¿½ï¿½ï¿½ï¿½ipxï¿½jï¿½Ì“Ç‚İï¿½ï¿½ï¿½p
     /// </summary>
     internal float LaneWidth => laneWidth;
 
     /// <summary>
-    /// ŠeƒŒ[ƒ“‚Ì‚‚³‚Ì“Ç‚İæ‚èê—p
+    /// ï¿½eï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½p
     /// </summary>
     internal float LaneHeight => laneHeight;
 
     /// <summary>
-    /// ƒŒ[ƒ“”‚Ì“Ç‚İæ‚èê—p
+    /// ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½p
     /// </summary>
     internal int LaneCount => laneCount;
 
     #endregion
 
 
-    #region ƒQƒbƒ^[ƒƒ\ƒbƒh
+    #region ï¿½Qï¿½bï¿½^ï¿½[ï¿½ï¿½ï¿½\ï¿½bï¿½h
 
     /// <summary>
-    /// laneIndex‚ÌƒŒ[ƒ“‚ÌF‚ğ•Ô‚·
+    /// laneIndexï¿½Ìƒï¿½ï¿½[ï¿½ï¿½ï¿½ÌFï¿½ï¿½Ô‚ï¿½
     /// </summary>
     /// <param name="laneIndex"></param>
     /// <returns>Color</returns>
@@ -124,7 +124,7 @@ public class NoteScrollConfig : ScriptableObject
     }
 
     /// <summary>
-    /// laneIndex‚ÌƒŒ[ƒ“‚²‚Æ‚Ì‰æ‘œ‚ğ•Ô‚·
+    /// laneIndexï¿½Ìƒï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚Ì‰æ‘œï¿½ï¿½Ô‚ï¿½
     /// </summary>
     /// <param name="laneIndex"></param>
     /// <returns>Sprite</returns>

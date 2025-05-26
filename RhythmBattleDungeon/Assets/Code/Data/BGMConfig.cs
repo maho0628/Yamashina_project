@@ -1,83 +1,82 @@
 using UnityEngine;
 
 /// <summary>
-/// ’Pˆê‚ÌBGM‚ÉŠÖ‚·‚éİ’èƒf[ƒ^
+/// å˜ä¸€ã®BGMã«é–¢ã™ã‚‹è¨­å®šãƒ‡ãƒ¼ã‚¿
 /// </summary>
 [System.Serializable]
 public class BGMConfig
 {
-    #region  BGM‚ÌŠî–{î•ñ•Ï”
+    #region  BGMã®å†…éƒ¨ç®¡ç†ç”¨å¤‰æ•°
 
     /// <summary>
-    /// BGM‚ÌID
+    /// BGMã®ID
     /// </summary>
-    [SerializeField, Header("BGM‚ÌID")]
+    [SerializeField, Header("BGMã®ID")]
     private string bgmId;
 
     /// <summary>
-    /// g—p‚·‚éƒI[ƒfƒBƒIƒNƒŠƒbƒv
+    /// ä½¿ç”¨ã™ã‚‹ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªã‚¯ãƒªãƒƒãƒ—
     /// </summary>
-    [SerializeField, Header("g—p‚·‚éƒI[ƒfƒBƒIƒNƒŠƒbƒv")]
+    [SerializeField, Header("ä½¿ç”¨ã™ã‚‹ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªã‚¯ãƒªãƒƒãƒ—")]
     private AudioClip bgmAudioClip;
 
     /// <summary>
-    /// BPMiBeats Per Minute)
+    /// BPMï¼ˆBeats Per Minute)
     /// </summary>
-    [SerializeField, Header("BPMiBeats Per Minutej")]
+    [SerializeField, Header("BPMï¼ˆBeats Per Minuteï¼‰")]
     private float bgmBpm;
 
     /// <summary>
-    /// ƒWƒƒƒ“ƒ‹–¼
+    /// ã‚¸ãƒ£ãƒ³ãƒ«å
     /// </summary>
-    [SerializeField, Header("ƒWƒƒƒ“ƒ‹–¼")]
+    [SerializeField, Header("ã‚¸ãƒ£ãƒ³ãƒ«å")]
     private string bgmGenre;
 
     /// <summary>
-    /// •\¦—p‚Ì‹È–¼
+    /// è¡¨ç¤ºç”¨ã®æ›²å
     /// </summary>
-    [SerializeField, Header("•\¦—p‚Ì‹È–¼")]
+    [SerializeField, Header("è¡¨ç¤ºç”¨ã®æ›²å")]
     private string bgmDisplayName;
 
     /// <summary>
-    /// ƒWƒƒƒPƒbƒg‰æ‘œ
+    /// ã‚¸ãƒ£ã‚±ãƒƒãƒˆç”»åƒ
     /// </summary>
-    [SerializeField, Header("ƒWƒƒƒPƒbƒg‰æ‘œ")]
+    [SerializeField, Header("ã‚¸ãƒ£ã‚±ãƒƒãƒˆç”»åƒ")]
     private Sprite bgmJacketImage;
 
     #endregion
 
 
-    #region  “Ç‚İæ‚èê—pƒvƒƒpƒeƒB 
+    #region  èª­ã¿å–ã‚Šå°‚ç”¨ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ (BGMã®å†…éƒ¨ç®¡ç†ç”¨å¤‰æ•°)
 
     /// <summary>
-    /// BGM‚ÌID‚Ì“Ç‚İæ‚èê—p
+    /// BGMã®IDã®èª­ã¿å–ã‚Šå°‚ç”¨
     /// </summary>
     internal string BgmId => bgmId;
 
     /// <summary>
-    /// g—p‚·‚éƒI[ƒfƒBƒIƒNƒŠƒbƒv‚Ì“Ç‚İæ‚èê—p
+    /// ä½¿ç”¨ã™ã‚‹ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªã‚¯ãƒªãƒƒãƒ—ã®èª­ã¿å–ã‚Šå°‚ç”¨
     /// </summary>
     internal AudioClip BgmAudioClip => bgmAudioClip;
 
     /// <summary>
-    /// BPMiBeats Per Minutej‚Ì“Ç‚İæ‚èê—p
+    /// BPMï¼ˆBeats Per Minuteï¼‰ã®èª­ã¿å–ã‚Šå°‚ç”¨
     /// </summary>
     internal float BgmBpm => bgmBpm;
 
     /// <summary>
-    /// ƒWƒƒƒ“ƒ‹–¼‚Ì“Ç‚İæ‚èê—p
+    /// ã‚¸ãƒ£ãƒ³ãƒ«åã®èª­ã¿å–ã‚Šå°‚ç”¨
     /// </summary>
     internal string BgmGenre => bgmGenre;
 
     /// <summary>
-    /// •\¦—p‚Ì‹È–¼‚Ì“Ç‚İæ‚èê—p
+    /// è¡¨ç¤ºç”¨ã®æ›²åã®èª­ã¿å–ã‚Šå°‚ç”¨
     /// </summary>
     internal string BgmDisplayName => bgmDisplayName;
 
     /// <summary>
-    /// ƒWƒƒƒPƒbƒg‰æ‘œ‚Ì“Ç‚İæ‚èê—p
+    /// ã‚¸ãƒ£ã‚±ãƒƒãƒˆç”»åƒã®èª­ã¿å–ã‚Šå°‚ç”¨
     /// </summary>
     internal Sprite BgmJacketImage => bgmJacketImage;
     #endregion
-
 }

@@ -1,17 +1,61 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
+/// <summary>
+/// ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ì“ï¿½ï¿½Í‚ï¿½ï¿½ó‚¯ï¿½ï¿½Aï¿½Î‰ï¿½ï¿½ï¿½ï¿½éƒŒï¿½[ï¿½ï¿½ï¿½Ìƒmï¿½[ï¿½cï¿½Æ‚Ìƒ^ï¿½Cï¿½~ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½Xï¿½B
+/// </summary>
 public class InputHandler : MonoBehaviour
 {
+    #region ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ì“ï¿½ï¿½ÍŠÖ˜Aï¿½Ì“ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½pï¿½Ïï¿½
+
+    /// <summary>
+    /// Unity Input Systemï¿½Åï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ÍƒAï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ÌƒCï¿½ï¿½ï¿½Xï¿½^ï¿½ï¿½ï¿½Xï¿½B
+    /// ï¿½Qï¿½[ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ÍiLane1, Lane2ï¿½ï¿½ï¿½jï¿½Ìƒ}ï¿½bï¿½sï¿½ï¿½ï¿½Oï¿½Æï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½B
+    /// </summary>
     private PlayerInputActions inputActions;
+
+    /// <summary>
+    ///  ï¿½eï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½É‘Î‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÍƒAï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Ì”zï¿½ï¿½B
+    /// ï¿½Cï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ôï¿½ï¿½É‘Î‰ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ÍƒCï¿½xï¿½ï¿½ï¿½gï¿½Ìwï¿½Ç‚ÆŠÇ—ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½B
+    /// </summary>
     private InputAction[] laneInputs;
 
+    /// <summary>
+    ///  ï¿½ï¿½ï¿½İ‚ÌƒXï¿½eï¿½[ï¿½Wï¿½İ’è‚©ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½B
+    /// ï¿½ï¿½ï¿½ÍƒAï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½zï¿½ï¿½ÌƒTï¿½Cï¿½Yï¿½ï¿½ï¿½ï¿½Égï¿½pï¿½ï¿½ï¿½ï¿½ï¿½B
+    /// </summary>
     private int laneCount;
-    private float maxJudgementTime; // Å‚àŠÉ‚¢”»’è‚ÌŠÔ·iMiss ”»’èj
 
-    private void Awake()
+    /// <summary>
+    /// ï¿½Å‚ï¿½ï¿½É‚ï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½Ôï¿½ï¿½iMiss ï¿½ï¿½ï¿½ï¿½j
+    /// </summary>
+    private float maxJudgementTime;
+
+    #endregion
+
+
+
+    /// <summary>
+    /// ï¿½Xï¿½Nï¿½ï¿½ï¿½vï¿½gï¿½ï¿½ï¿½jï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ï¿½ï¿½ÌƒAï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    /// </summary>
+    private void OnDestroy()
     {
+        foreach (var action in laneInputs)
+        {
+            if (action != null)
+                action.Disable();
+        }
+    }
+
+    #regionï¿½@ï¿½Oï¿½ï¿½ï¿½ÅŒÄ‚Ñoï¿½ï¿½ï¿½Â”\ï¿½ÈŠÖï¿½(ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ì“ï¿½ï¿½ÍŠÖ˜Aï¿½j
+
+    /// <summary>
+    /// ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ì“ï¿½ï¿½Íï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+    /// </summary>
+    public void InitializeInput()
+    {
+
+        maxJudgementTime = JudgementManager.Instance.GetMaxJudgementTime();
         inputActions = new PlayerInputActions();
         inputActions.Gameplay.Enable();
 
@@ -22,78 +66,58 @@ public class InputHandler : MonoBehaviour
         for (int i = 0; i < laneCount; i++)
         {
             string actionName = $"Lane{i + 1}";
-            Debug.Log(actionName);  
+            Debug.Log(actionName);
+            //actionNameï¿½É‘Î‰ï¿½ï¿½ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½vï¿½bï¿½gï¿½Aï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Tï¿½ï¿½
             laneInputs[i] = inputActions.FindAction(actionName);
             if (laneInputs[i] != null)
             {
-                Debug.Log(laneInputs[i]+ "laneInputs");   
-                string actionCopy = actionName; // ƒNƒ[ƒWƒƒ‘Î‰
+
+                Debug.Log(laneInputs[i] + "laneInputs");
+
+                //ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Í•Ïï¿½ï¿½Ìuï¿½lï¿½vï¿½Å‚Í‚È‚ï¿½ï¿½uï¿½Qï¿½Ævï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½vï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚Å“ï¿½ï¿½ï¿½iï¿½ï¿½ï¿½Qï¿½Æ‚ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½Ì‚Åˆï¿½xï¿½ï¿½ï¿½[ï¿½Jï¿½ï¿½ï¿½Ïï¿½ï¿½ÉƒRï¿½sï¿½[
+                string actionCopy = actionName;
+
                 laneInputs[i].performed += ctx => TryHitNoteByAction(actionCopy);
             }
             else
             {
-                Debug.LogWarning($"[InputHandler] ƒAƒNƒVƒ‡ƒ“ {actionName} ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ");
+                Debug.LogWarning($"[InputHandler] ï¿½Aï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ {actionName} ï¿½ï¿½ï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½");
             }
         }
-
     }
 
-    public void Initialize()
-    {
-        maxJudgementTime = JudgementManager.Instance.GetMaxJudgementTime();
-    }
+    #endregion
 
+    /// <summary>
+    /// ï¿½ï¿½ï¿½Í‚É‘Î‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½mï¿½[ï¿½cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é‚©ï¿½ï¿½ï¿½mï¿½Fï¿½ï¿½ï¿½ï¿½Öï¿½
+    /// </summary>
+    /// <param name="actionName">ï¿½Cï¿½ï¿½ï¿½vï¿½bï¿½gï¿½Aï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</param>
     private void TryHitNoteByAction(string actionName)
     {
         float currentTime = AudioManager.Instance.GetCurrentBGMTime();
+
+        //
         var note = NoteManager.Instance.GetNearestNoteByAction(actionName, currentTime, maxJudgementTime);
 
+        //ï¿½ß‚ï¿½ï¿½mï¿½[ï¿½cï¿½ï¿½ï¿½È‚ï¿½ï¿½Ì‚Åƒï¿½ï¿½^ï¿½[ï¿½ï¿½
         if (note == null) return;
 
         float diff = Mathf.Abs(note.SpawnTime - currentTime);
-        var judgement = JudgementManager.Instance.GetJudgement(diff);
-        Debug.Log($"”»’è: {judgement.JudgementName} (·•ª: {diff})");
 
-        if (judgement != null)
-        {
-            note.IsHit = true;
-            int score = judgement.ScoreValue; 
+        //ï¿½ï¿½ï¿½Íƒ^ï¿½Cï¿½~ï¿½ï¿½ï¿½Oï¿½É‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ“¾
+        var judgement = JudgementManager.Instance.EvaluateTiming(diff); 
 
-            ScoreManager.Instance.AddScore(score);
+        //ï¿½ï¿½ï¿½èŒ‹ï¿½Ê‚ï¿½ï¿½È‚ï¿½ï¿½Ì‚Åƒï¿½ï¿½^ï¿½[ï¿½ï¿½
+        if (judgement == null) return;
 
-            if (judgement.BreaksCombo)
-            {
-                ComboManager.Instance.ResetCombo(); 
-            }
-            else
-            {
-                ComboManager.Instance.IncrementCombo();
-                // ‘Î‰‚·‚é NoteUI ‚ğíœ
-                foreach (Transform child in NoteManager.Instance.GetNoteParentTransform())
-                {
-                    if (child.TryGetComponent<NoteUI>(out var ui))
-                    {
-                        if (ui.GetLinkedNote() == note)
-                        {
-                            ui.Deactivate();
-                            break;
-                        }
-                    }
-                }
-            }
-                
-        }
+        
+        note.IsHit = true;
+
+        //ï¿½ï¿½ï¿½èŒ‹ï¿½Ê‚ï¿½JudgementManagerï¿½É“nï¿½ï¿½ï¿½ÄƒXï¿½Rï¿½Aï¿½È‚Ç‚ğ”½‰fï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ç‚¤
+        JudgementManager.Instance.ApplyJudgement(judgement, note.LaneNumber);
     }
 
 
- 
 
-    private void OnDestroy()
-    {
-        foreach (var action in laneInputs)
-        {
-            if (action != null)
-                action.Disable();
-        }
-    }
+
 }

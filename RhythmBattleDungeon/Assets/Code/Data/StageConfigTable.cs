@@ -3,43 +3,43 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "GameData/Stage Config Table")]
 /// <summary>
-/// Še•ˆ–ÊƒXƒe[ƒW‚Ìİ’è‚ğŠÇ—‚·‚éScriptableObject
+/// ï¿½eï¿½ï¿½ï¿½ÊƒXï¿½eï¿½[ï¿½Wï¿½Ìİ’ï¿½ï¿½ï¿½Ç—ï¿½ï¿½ï¿½ï¿½ï¿½ScriptableObject
 /// </summary>
 public class StageConfigTable : ScriptableObject
 {
-    #region ƒŠƒXƒg‚âƒfƒBƒNƒVƒ‡ƒiƒŠ•Ï”
+    #region ï¿½Xï¿½eï¿½[ï¿½Wï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½fï¿½Bï¿½Nï¿½Vï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½pï¿½Ïï¿½
 
     /// <summary>
-    /// ƒXƒe[ƒW‰¹Œ¹‚ÌƒŠƒXƒg
+    /// ï¿½Xï¿½eï¿½[ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½Ìƒï¿½ï¿½Xï¿½g
     /// </summary>
-    [SerializeField, Header("ƒXƒe[ƒW‰¹Œ¹‚ÌƒŠƒXƒg")]
+    [SerializeField, Header("ï¿½Xï¿½eï¿½[ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½Ìƒï¿½ï¿½Xï¿½g")]
     private List<StageConfig> stagesBgmLists;
 
     /// <summary>
-    /// ƒQ[ƒ€“à‚Åg—p‚·‚éSEİ’è‚ÌƒŠƒXƒg‚ÌƒfƒBƒNƒVƒ‡ƒiƒŠ
+    /// ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Ågï¿½pï¿½ï¿½ï¿½ï¿½SEï¿½İ’ï¿½Ìƒï¿½ï¿½Xï¿½gï¿½Ìƒfï¿½Bï¿½Nï¿½Vï¿½ï¿½ï¿½iï¿½ï¿½
     /// </summary>
     private Dictionary<string, StageConfig> stagesBgmDict;
 
     #endregion
 
 
-    #region “Ç‚İæ‚èê—pƒvƒƒpƒeƒB
+    #region ï¿½Ç‚İï¿½ï¿½ï¿½pï¿½vï¿½ï¿½ï¿½pï¿½eï¿½B(ï¿½Xï¿½eï¿½[ï¿½Wï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½fï¿½Bï¿½Nï¿½Vï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½pï¿½Ïï¿½)
 
     /// <summary>
-    /// ƒQ[ƒ€“à‚Åg—p‚·‚éSEİ’è‚ÌƒŠƒXƒg‚Ì“Ç‚İæ‚èê—p
+    /// ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Ågï¿½pï¿½ï¿½ï¿½ï¿½SEï¿½İ’ï¿½Ìƒï¿½ï¿½Xï¿½gï¿½Ì“Ç‚İï¿½ï¿½ï¿½p
     /// </summary>
     internal List<StageConfig> StagesBgmList => stagesBgmLists;
 
     #endregion
 
 
-    #region ƒQƒbƒ^[ƒƒ\ƒbƒh
+    #region ï¿½Qï¿½bï¿½^ï¿½[ï¿½ï¿½ï¿½\ï¿½bï¿½h
 
     /// <summary>
-    /// w’è‚³‚ê‚½ƒXƒe[ƒWID‚É‘Î‰‚·‚éStageConfigƒf[ƒ^‚ğæ“¾
+    /// ï¿½wï¿½è‚³ï¿½ê‚½ï¿½Xï¿½eï¿½[ï¿½WIDï¿½É‘Î‰ï¿½ï¿½ï¿½ï¿½ï¿½StageConfigï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½æ“¾
     /// </summary>
-    /// <param name="id">ƒXƒe[ƒW‚ÌID</param>
-    /// <returns>StageConfigƒf[ƒ^</returns>
+    /// <param name="id">ï¿½Xï¿½eï¿½[ï¿½Wï¿½ï¿½ID</param>
+    /// <returns>StageConfigï¿½fï¿½[ï¿½^</returns>
     internal StageConfig GetStageConfig(string id)
     {
         if (stagesBgmDict == null)
@@ -52,11 +52,11 @@ public class StageConfigTable : ScriptableObject
     }
 
     /// <summary>
-    /// ƒXƒe[ƒW‚É‘Î‰‚·‚éBGM‚ÌƒŠƒXƒgî•ñ‚ğ‚·‚×‚Ä•Ô‚·
+    /// ï¿½Xï¿½eï¿½[ï¿½Wï¿½É‘Î‰ï¿½ï¿½ï¿½ï¿½ï¿½BGMï¿½Ìƒï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×‚Ä•Ô‚ï¿½
     /// </summary>
-    /// <returns>StageConfigƒf[ƒ^</returns>
+    /// <returns>StageConfigï¿½fï¿½[ï¿½^</returns>
     /// 
-    public List<StageConfig> GetAllStageConfigs()
+    internal List<StageConfig> GetAllStageConfigs()
     {
         return stagesBgmLists;
     }
@@ -67,36 +67,36 @@ public class StageConfigTable : ScriptableObject
 
     private void OnEnable()
     {
-        // ScriptableObject Ä“Ç‚İ‚İ‚É‚à‘Î‰
+        // ScriptableObject ï¿½Ä“Ç‚İï¿½ï¿½İï¿½ï¿½É‚ï¿½ï¿½Î‰ï¿½
         InitializeDictionary();
     }
 
 
-    #region ƒvƒ‰ƒCƒx[ƒgƒƒ\ƒbƒh
+    #region ï¿½vï¿½ï¿½ï¿½Cï¿½xï¿½[ï¿½gï¿½ï¿½ï¿½\ï¿½bï¿½h
 
     /// <summary>
-    /// ƒfƒBƒNƒVƒ‡ƒiƒŠ‰Šú‰»
+    /// ï¿½fï¿½Bï¿½Nï¿½Vï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     private void InitializeDictionary()
     {
         stagesBgmDict = new Dictionary<string, StageConfig>();
         foreach (var stageBgm in stagesBgmLists)
         {
-            //ƒXƒe[ƒW‰¹Œ¹‚ÌƒŠƒXƒg‚ÌStageID‚É•¶š—ñ‚ª“ü‚Á‚Ä‚é•ƒfƒBƒNƒVƒ‡ƒiƒŠ‚É‚»‚Ì•¶š—ñiƒL[j‚ªŠÜ‚Ü‚ê‚Ä‚¢‚È‚¢‚È‚ç
+            //ï¿½Xï¿½eï¿½[ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½Ìƒï¿½ï¿½Xï¿½gï¿½ï¿½StageIDï¿½É•ï¿½ï¿½ï¿½ï¿½ñ‚ª“ï¿½ï¿½ï¿½ï¿½Ä‚é•ï¿½fï¿½Bï¿½Nï¿½Vï¿½ï¿½ï¿½iï¿½ï¿½ï¿½É‚ï¿½ï¿½Ì•ï¿½ï¿½ï¿½ï¿½ï¿½iï¿½Lï¿½[ï¿½jï¿½ï¿½ï¿½Ü‚Ü‚ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½È‚ï¿½
             if (!string.IsNullOrEmpty(stageBgm.StageId) && !stagesBgmDict.ContainsKey(stageBgm.StageId))
             {
-                // ƒfƒBƒNƒVƒ‡ƒiƒŠ‚É‚»‚Ì•¶š—ñ‚ğ’Ç‰Á
+                // ï¿½fï¿½Bï¿½Nï¿½Vï¿½ï¿½ï¿½iï¿½ï¿½ï¿½É‚ï¿½ï¿½Ì•ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç‰ï¿½
                 stagesBgmDict.Add(stageBgm.StageId, stageBgm);
                 foreach (var key in stagesBgmDict.Keys)
                 {
-                    //‚Ç‚ÌƒL[‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚©‚ÌƒfƒoƒbƒOƒƒO
-                    Debug.Log($"“o˜^‚³‚ê‚Ä‚¢‚éƒXƒe[ƒWBGMƒL[: {key}");
+                    //ï¿½Ç‚ÌƒLï¿½[ï¿½ï¿½ï¿½oï¿½^ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½é‚©ï¿½Ìƒfï¿½oï¿½bï¿½Oï¿½ï¿½ï¿½O
+                    Debug.Log($"ï¿½oï¿½^ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½Xï¿½eï¿½[ï¿½WBGMï¿½Lï¿½[: {key}");
                 }
             }
             else
             {
-                //“¯‚¶ƒL[‚ğ“o˜^‚µ‚æ‚¤‚Æ‚µ‚Ä‚¢‚é‚©BGMID‚ª‹ó”’
-                Debug.LogWarning($"[StageConfigTable] d•¡‚Ü‚½‚Í‹ó‚ÌBGM ID: {stageBgm.StageId}");
+                //ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½[ï¿½ï¿½oï¿½^ï¿½ï¿½ï¿½æ‚¤ï¿½Æ‚ï¿½ï¿½Ä‚ï¿½ï¿½é‚©BGMIDï¿½ï¿½ï¿½ï¿½
+                Debug.LogWarning($"[StageConfigTable] ï¿½dï¿½ï¿½ï¿½Ü‚ï¿½ï¿½Í‹ï¿½ï¿½BGM ID: {stageBgm.StageId}");
             }
         }
     }

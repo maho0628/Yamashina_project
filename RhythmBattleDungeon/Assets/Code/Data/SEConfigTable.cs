@@ -4,52 +4,52 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SEConfig", menuName = "GameData/SEConfigTable")]
 
 /// <summary>
-/// ƒQ[ƒ€“à‚ÅŽg—p‚·‚éSEiŒø‰Ê‰¹j‚ÌÝ’èˆê——‚ðŠÇ—‚·‚éScriptableObject
+/// ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ÅŽgï¿½pï¿½ï¿½ï¿½ï¿½SEï¿½iï¿½ï¿½ï¿½Ê‰ï¿½ï¿½jï¿½ÌÝ’ï¿½ê——ï¿½ï¿½ï¿½Ç—ï¿½ï¿½ï¿½ï¿½ï¿½ScriptableObject
 /// </summary>
 public class SEConfigTable : ScriptableObject
 {
-    #region ƒŠƒXƒg‚âƒfƒBƒNƒVƒ‡ƒiƒŠ•Ï”
+    #region SEï¿½Ìƒï¿½ï¿½Xï¿½gï¿½ï¿½fï¿½Bï¿½Nï¿½Vï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½pï¿½Ïï¿½
 
     /// <summary>
-    /// ƒQ[ƒ€“à‚ÅŽg—p‚·‚éSEÝ’è‚ÌƒŠƒXƒg
+    /// ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ÅŽgï¿½pï¿½ï¿½ï¿½ï¿½SEï¿½Ý’ï¿½Ìƒï¿½ï¿½Xï¿½g
     /// </summary>
-    [SerializeField, Header("ƒQ[ƒ€“à‚ÅŽg—p‚·‚éSEÝ’è‚ÌƒŠƒXƒg")]
+    [SerializeField, Header("ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ÅŽgï¿½pï¿½ï¿½ï¿½ï¿½SEï¿½Ý’ï¿½Ìƒï¿½ï¿½Xï¿½g")]
     private List<SEConfig> seLists= new List<SEConfig>();
 
     /// <summary>
-    /// ƒQ[ƒ€“à‚ÅŽg—p‚·‚éSEÝ’è‚ÌƒŠƒXƒg‚ÌƒfƒBƒNƒVƒ‡ƒiƒŠ
+    /// ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ÅŽgï¿½pï¿½ï¿½ï¿½ï¿½SEï¿½Ý’ï¿½Ìƒï¿½ï¿½Xï¿½gï¿½Ìƒfï¿½Bï¿½Nï¿½Vï¿½ï¿½ï¿½iï¿½ï¿½
     /// </summary>
     private Dictionary<string, SEConfig> seConfigDict;
 
     #endregion
 
 
-    #region “Ç‚ÝŽæ‚èê—pƒvƒƒpƒeƒB
+    #region ï¿½Ç‚ÝŽï¿½ï¿½ï¿½pï¿½vï¿½ï¿½ï¿½pï¿½eï¿½B(SEï¿½Ìƒï¿½ï¿½Xï¿½gï¿½ï¿½fï¿½Bï¿½Nï¿½Vï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½pï¿½Ïï¿½)
 
     /// <summary>
-    /// ƒQ[ƒ€“à‚ÅŽg—p‚·‚éSEÝ’è‚ÌƒŠƒXƒg‚Ì“Ç‚ÝŽæ‚èê—p
+    /// ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ÅŽgï¿½pï¿½ï¿½ï¿½ï¿½SEï¿½Ý’ï¿½Ìƒï¿½ï¿½Xï¿½gï¿½Ì“Ç‚ÝŽï¿½ï¿½ï¿½p
     /// </summary>
     internal List<SEConfig> SeLists => seLists;
 
     #endregion
 
 
-    #region ƒQƒbƒ^[ƒƒ\ƒbƒh
+    #region ï¿½Qï¿½bï¿½^ï¿½[ï¿½ï¿½ï¿½\ï¿½bï¿½h
 
     /// <summary>
-    /// ƒQ[ƒ€“à‚ÅŽg—p‚·‚éSEÝ’è‚ÌƒŠƒXƒgî•ñ‚ð‚·‚×‚Ä•Ô‚·
+    /// ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ÅŽgï¿½pï¿½ï¿½ï¿½ï¿½SEï¿½Ý’ï¿½Ìƒï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×‚Ä•Ô‚ï¿½
     /// </summary>
-    /// <returns>SEConfig‚ÌƒŠƒXƒg</returns>
+    /// <returns>SEConfigï¿½Ìƒï¿½ï¿½Xï¿½g</returns>
     internal List<SEConfig> GetAllSeConfig()
     {
         return seLists;
     }
 
     /// <summary>
-    /// ƒŠƒXƒg“à‚ÌSEConfig‚ðID‚Å’T‚µ‚Ä•Ô‚·
+    /// ï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½ï¿½SEConfigï¿½ï¿½IDï¿½Å’Tï¿½ï¿½ï¿½Ä•Ô‚ï¿½
     /// </summary>
     /// <param name="id"></param>
-    /// <returns>SEConfig‚ÌƒŠƒXƒg</returns>
+    /// <returns>SEConfigï¿½Ìƒï¿½ï¿½Xï¿½g</returns>
     internal SEConfig GetSeConfig(string id)
     {
         if (seConfigDict == null)
@@ -67,36 +67,36 @@ public class SEConfigTable : ScriptableObject
 
     private void OnEnable()
     {
-        // ScriptableObject Ä“Ç‚Ýž‚ÝŽž‚É‚à‘Î‰ž
+        // ScriptableObject ï¿½Ä“Ç‚Ýï¿½ï¿½ÝŽï¿½ï¿½É‚ï¿½ï¿½Î‰ï¿½
         InitializeDictionary();
     }
 
 
-    #region ƒvƒ‰ƒCƒx[ƒgƒƒ\ƒbƒh
+    #region ï¿½vï¿½ï¿½ï¿½Cï¿½xï¿½[ï¿½gï¿½ï¿½ï¿½\ï¿½bï¿½h
 
     /// <summary>
-    /// ƒfƒBƒNƒVƒ‡ƒiƒŠ‰Šú‰»
+    /// ï¿½fï¿½Bï¿½Nï¿½Vï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     private void InitializeDictionary()
     {
         seConfigDict = new Dictionary<string, SEConfig>();
         foreach (var se in seLists)
         {
-            //SEÝ’è‚Ìˆê——‚ÌƒŠƒXƒg‚ÌSeId‚É•¶Žš—ñ‚ª“ü‚Á‚Ä‚é•ƒfƒBƒNƒVƒ‡ƒiƒŠ‚É‚»‚Ì•¶Žš—ñiƒL[j‚ªŠÜ‚Ü‚ê‚Ä‚¢‚È‚¢‚È‚ç
+            //SEï¿½Ý’ï¿½Ìˆê——ï¿½Ìƒï¿½ï¿½Xï¿½gï¿½ï¿½SeIdï¿½É•ï¿½ï¿½ï¿½ï¿½ñ‚ª“ï¿½ï¿½ï¿½ï¿½Ä‚é•ï¿½fï¿½Bï¿½Nï¿½Vï¿½ï¿½ï¿½iï¿½ï¿½ï¿½É‚ï¿½ï¿½Ì•ï¿½ï¿½ï¿½ï¿½ï¿½iï¿½Lï¿½[ï¿½jï¿½ï¿½ï¿½Ü‚Ü‚ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½È‚ï¿½
             if (!string.IsNullOrEmpty(se.SeId) && !seConfigDict.ContainsKey(se.SeId))
             {
-                // ƒfƒBƒNƒVƒ‡ƒiƒŠ‚É‚»‚Ì•¶Žš—ñ‚ð’Ç‰Á
+                // ï¿½fï¿½Bï¿½Nï¿½Vï¿½ï¿½ï¿½iï¿½ï¿½ï¿½É‚ï¿½ï¿½Ì•ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç‰ï¿½
                 seConfigDict.Add(se.SeId, se);
                 foreach (var key in seConfigDict.Keys)
                 {
-                    //‚Ç‚ÌƒL[‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚©‚ÌƒfƒoƒbƒOƒƒO
-                    Debug.Log($"“o˜^‚³‚ê‚Ä‚¢‚éSEƒL[: {key}");
+                    //ï¿½Ç‚ÌƒLï¿½[ï¿½ï¿½ï¿½oï¿½^ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½é‚©ï¿½Ìƒfï¿½oï¿½bï¿½Oï¿½ï¿½ï¿½O
+                    Debug.Log($"ï¿½oï¿½^ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½SEï¿½Lï¿½[: {key}");
                 }
             }
             else
             {
-                //“¯‚¶ƒL[‚ð“o˜^‚µ‚æ‚¤‚Æ‚µ‚Ä‚¢‚é‚©JudgementName‚ª‹ó”’
-                Debug.LogWarning($"[SEConfigTable] d•¡‚Ü‚½‚Í‹ó‚ÌBGM ID: {se.SeId}");
+                //ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½[ï¿½ï¿½oï¿½^ï¿½ï¿½ï¿½æ‚¤ï¿½Æ‚ï¿½ï¿½Ä‚ï¿½ï¿½é‚©JudgementNameï¿½ï¿½ï¿½ï¿½
+                Debug.LogWarning($"[SEConfigTable] ï¿½dï¿½ï¿½ï¿½Ü‚ï¿½ï¿½Í‹ï¿½ï¿½BGM ID: {se.SeId}");
             }
         }
     }
