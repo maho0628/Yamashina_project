@@ -78,5 +78,6 @@ public class BGMConfig
     /// ジャケット画像の読み取り専用
     /// </summary>
     internal Sprite BgmJacketImage => bgmJacketImage;
+
     #endregion
 }

@@ -1,50 +1,52 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.STP;
+
 /// <summary>
-/// �V�[���ɑΉ�����BGM�ݒ�̈ꗗ��ێ����� ScriptableObject
+/// シーンに対応するBGM設定の一覧を保持する ScriptableObject
 /// </summary>
 public class SceneBGMConfigTable : ScriptableObject
 {
-    #region �V�[��BGM�̃��X�g��f�B�N�V���i���̓����Ǘ��p�ϐ�
+    #region シーンBGMのリストやディクショナリの内部管理用変数
 
     /// <summary>
-    /// �V�[���ɑΉ�����BGM�̃��X�g
+    /// シーンに対応するBGMのリスト
     /// </summary>
-    [SerializeField, Header("�V�[���ɑΉ�����BGM�̃��X�g")]
-    private List<SceneBGMConfig> sceneBgmConfigLists= new List<SceneBGMConfig>();
+    [SerializeField, Header("シーンに対応するBGMのリスト")]
+    private List<SceneBGMConfig> sceneBgmConfigLists = new List<SceneBGMConfig>();
 
 
     /// <summary>
-    /// �V�[���ɑΉ�����BGM�̃��X�g�̃f�B�N�V���i��
+    /// シーンに対応するBGMのリストのディクショナリ
     /// </summary>
     private Dictionary<string, string> sceneToBgmIdDict;
 
     #endregion
 
 
-    #region �ǂݎ���p�v���p�e�B�i�V�[��BGM�̃��X�g��f�B�N�V���i���̓����Ǘ��p�ϐ�)
+    #region 読み取り専用プロパティ(シーンBGMのリストやディクショナリの内部管理用変数)
 
     /// <summary>
-    /// �V�[���ɑΉ�����BGM�̃��X�g�̓ǂݎ���p
+    /// シーンに対応するBGMのリストの読み取り専用
     /// </summary>
-    internal List<SceneBGMConfig> SceneBgmConfigLists=> sceneBgmConfigLists;
+    internal List<SceneBGMConfig> SceneBgmConfigLists => sceneBgmConfigLists;
 
     #endregion
 
 
-    #region �Q�b�^�[���\�b�h
+    #region ゲッターメソッド
 
     /// <summary>
-    /// �V�[���ɑΉ�����BGM�̃��X�g�������ׂĕԂ�
+    /// シーンに対応するBGMのリスト情報をすべて返す
     /// </summary>
-    /// <returns>SceneBGMConfig��List</returns>
+    /// <returns>SceneBGMConfigのList</returns>
     internal List<SceneBGMConfig> GetAllSceneBGMConfig()
     {
         return sceneBgmConfigLists;
     }
 
     /// <summary>
-    /// sceneName�ɑΉ�����BGMID��Ԃ�
+    /// sceneNameに対応したBGMIDを返す
     /// </summary>
     /// <param name="sceneName"></param>
     /// <returns>string</returns>
@@ -61,44 +63,40 @@ public class SceneBGMConfigTable : ScriptableObject
 
     #endregion
 
-
-
     private void OnEnable()
     {
-        // ScriptableObject �ēǂݍ��ݎ��ɂ��Ή�
+        // ScriptableObject 再読み込み時にも対応
         InitializeDictionary();
     }
 
 
-    #region �v���C�x�[�g���\�b�h
-
+    #region プライベートメソッド
     /// <summary>
-    /// �f�B�N�V���i���̏�����
+    /// ディクショナリの初期化
     /// </summary>
     private void InitializeDictionary()
     {
         sceneToBgmIdDict = new Dictionary<string, string>();
         foreach (var sceneBgm in sceneBgmConfigLists)
         {
-            //�R���t�B�O�̃V�[���̖��O��BgmId�������Ƃ��󗓂łȂ��Ȃ�
+            //コンフィグのシーンの名前とBgmIdが両方とも空欄でないなら
             if (!string.IsNullOrEmpty(sceneBgm.SceneName) && !string.IsNullOrEmpty(sceneBgm.BgmId))
             {
-                //�f�B�N�V���i������SceneName���Ȃ��Ȃ�
+                //ディクショナリ内にSceneNameがないなら
                 if (!sceneToBgmIdDict.ContainsKey(sceneBgm.SceneName))
                 {
-                    // �f�B�N�V���i������SceneName��BgmId��ǉ�
+                    // ディクショナリ内にSceneNameとBgmIdを追加
 
                     sceneToBgmIdDict.Add(sceneBgm.SceneName, sceneBgm.BgmId);
                 }
                 else
                 {
-                    //�G���[�o���ďI��
-                    Debug.LogWarning($"[SceneBGMConfigTable] �V�[�� '{sceneBgm.SceneName}' �͊��ɓo�^����Ă��܂��B");
+                    //エラー出して終了
+                    Debug.LogWarning($"[SceneBGMConfigTable] シーン '{sceneBgm.SceneName}' は既に登録されています。");
                 }
             }
         }
     }
-
     #endregion
 
 

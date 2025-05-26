@@ -12,13 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0adb06a2a94d07847b625575dc435a91, type: 3}
   m_Name: NoteScrollConfig
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  scrollDuration: 10
-=======
   scrollDuration: 1
->>>>>>> b23cc46 (判定バグ修正途中とリファクタリング)
   startY: 600
-  endY: -450
+  endY: -392
   laneWidth: 500
   laneHeight: 100
   laneColors:

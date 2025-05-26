@@ -12,11 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459e197dd0923244aa3f01939641da86, type: 3}
   m_Name: BGMConfig
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  bgmList:
-=======
   bgmLists:
->>>>>>> b23cc46 (判定バグ修正途中とリファクタリング)
   - bgmId: 'Shining Star '
     bgmAudioClip: {fileID: 8300000, guid: 099302f2d20e90043930296fd69a03e8, type: 3}
     bgmBpm: 0

@@ -104,5 +104,4 @@ public class BGMConfigTable : ScriptableObject
 
     #endregion
 
-
 }

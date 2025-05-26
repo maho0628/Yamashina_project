@@ -6,7 +6,7 @@ public class ComboManager : SingletonMonoBehaviour<ComboManager>
     #region コンボ関連の
 
     /// <summary>
-    /// ���݂̃R���{��
+    /// 現在のコンボ数
     /// </summary>
     private int currentCombo = 0;
 

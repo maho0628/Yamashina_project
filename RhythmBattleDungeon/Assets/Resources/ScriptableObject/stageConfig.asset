@@ -20,44 +20,6 @@ MonoBehaviour:
       bgmBpm: 0
       bgmGenre: 
       bgmDisplayName: "\u30B7\u30E3\u30A4\u30CB\u30F3\u30B0\u30B9\u30BF\u30FC"
-<<<<<<< HEAD
-      bgmJacketImage: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-    chartFileName: test
-    scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
-    judgementConfigs:
-    - judgementName: Perfect
-      maxTimeDifference: 0.15
-      displayColor: {r: 0.8490566, g: 0.1650053, b: 0.1650053, a: 0}
-      displayIcon: {fileID: 0}
-      scoreValue: 30
-      breaksCombo: 0
-    - judgementName: Miss
-      maxTimeDifference: 9999
-      displayColor: {r: 0.8490566, g: 0.1650053, b: 0.1650053, a: 0}
-      displayIcon: {fileID: 0}
-      scoreValue: 0
-      breaksCombo: 1
-    - judgementName: Great
-      maxTimeDifference: 0.25
-      displayColor: {r: 0.8490566, g: 0.1650053, b: 0.1650053, a: 0}
-      displayIcon: {fileID: 0}
-      scoreValue: 1
-      breaksCombo: 0
-    delayBeforeResult: 2
-  - stageId: stage2
-    stageBgm:
-      bgmId: aaaaa
-      bgmAudioClip: {fileID: 8300000, guid: 8352ea025788cf942a8cd9fd1df6ff03, type: 3}
-      bgmBpm: 0
-      bgmGenre: 
-      bgmDisplayName: 
-      bgmJacketImage: {fileID: 0}
-    chartFileName: test
-    scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
-    judgementConfigs: []
-    delayBeforeResult: 2
-  - stageId: stage2
-=======
       bgmJacketImage: {fileID: 0}
     chartFileName: test
     scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
@@ -82,7 +44,6 @@ MonoBehaviour:
       breaksCombo: 1
     delayBeforeResult: 0.2
   - stageId: bbbb
->>>>>>> b23cc46 (判定バグ修正途中とリファクタリング)
     stageBgm:
       bgmId: 'Shining Star '
       bgmAudioClip: {fileID: 8300000, guid: 099302f2d20e90043930296fd69a03e8, type: 3}
@@ -92,130 +53,6 @@ MonoBehaviour:
       bgmJacketImage: {fileID: 0}
     chartFileName: test
     scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
-<<<<<<< HEAD
-    judgementConfigs: []
-    delayBeforeResult: 2
-  - stageId: stage2
-    stageBgm:
-      bgmId: aaaaa
-      bgmAudioClip: {fileID: 8300000, guid: e0ed9a9fa64c3b141b45194d7b4ddf13, type: 3}
-      bgmBpm: 0
-      bgmGenre: 
-      bgmDisplayName: 
-      bgmJacketImage: {fileID: 0}
-    chartFileName: 
-    scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
-    judgementConfigs: []
-    delayBeforeResult: 2
-  - stageId: stage2
-    stageBgm:
-      bgmId: aaaaa
-      bgmAudioClip: {fileID: 8300000, guid: e0ed9a9fa64c3b141b45194d7b4ddf13, type: 3}
-      bgmBpm: 0
-      bgmGenre: 
-      bgmDisplayName: 
-      bgmJacketImage: {fileID: 0}
-    chartFileName: 
-    scrollConfig: {fileID: 0}
-    judgementConfigs: []
-    delayBeforeResult: 2
-  - stageId: stage2
-    stageBgm:
-      bgmId: aaaaa
-      bgmAudioClip: {fileID: 8300000, guid: e0ed9a9fa64c3b141b45194d7b4ddf13, type: 3}
-      bgmBpm: 0
-      bgmGenre: 
-      bgmDisplayName: 
-      bgmJacketImage: {fileID: 0}
-    chartFileName: 
-    scrollConfig: {fileID: 0}
-    judgementConfigs: []
-    delayBeforeResult: 2
-  - stageId: stage2
-    stageBgm:
-      bgmId: aaaaa
-      bgmAudioClip: {fileID: 8300000, guid: e0ed9a9fa64c3b141b45194d7b4ddf13, type: 3}
-      bgmBpm: 0
-      bgmGenre: 
-      bgmDisplayName: 
-      bgmJacketImage: {fileID: 0}
-    chartFileName: 
-    scrollConfig: {fileID: 0}
-    judgementConfigs: []
-    delayBeforeResult: 2
-  - stageId: stage2
-    stageBgm:
-      bgmId: aaaaa
-      bgmAudioClip: {fileID: 8300000, guid: e0ed9a9fa64c3b141b45194d7b4ddf13, type: 3}
-      bgmBpm: 0
-      bgmGenre: 
-      bgmDisplayName: 
-      bgmJacketImage: {fileID: 0}
-    chartFileName: 
-    scrollConfig: {fileID: 0}
-    judgementConfigs: []
-    delayBeforeResult: 2
-  - stageId: stage2
-    stageBgm:
-      bgmId: aaaaa
-      bgmAudioClip: {fileID: 8300000, guid: e0ed9a9fa64c3b141b45194d7b4ddf13, type: 3}
-      bgmBpm: 0
-      bgmGenre: 
-      bgmDisplayName: 
-      bgmJacketImage: {fileID: 0}
-    chartFileName: 
-    scrollConfig: {fileID: 0}
-    judgementConfigs: []
-    delayBeforeResult: 2
-  - stageId: stage2
-    stageBgm:
-      bgmId: aaaaa
-      bgmAudioClip: {fileID: 8300000, guid: e0ed9a9fa64c3b141b45194d7b4ddf13, type: 3}
-      bgmBpm: 0
-      bgmGenre: 
-      bgmDisplayName: 
-      bgmJacketImage: {fileID: 0}
-    chartFileName: 
-    scrollConfig: {fileID: 0}
-    judgementConfigs: []
-    delayBeforeResult: 2
-  - stageId: stage2
-    stageBgm:
-      bgmId: aaaaa
-      bgmAudioClip: {fileID: 8300000, guid: e0ed9a9fa64c3b141b45194d7b4ddf13, type: 3}
-      bgmBpm: 0
-      bgmGenre: 
-      bgmDisplayName: 
-      bgmJacketImage: {fileID: 0}
-    chartFileName: 
-    scrollConfig: {fileID: 0}
-    judgementConfigs: []
-    delayBeforeResult: 2
-  - stageId: stage2
-    stageBgm:
-      bgmId: aaaaa
-      bgmAudioClip: {fileID: 8300000, guid: e0ed9a9fa64c3b141b45194d7b4ddf13, type: 3}
-      bgmBpm: 0
-      bgmGenre: 
-      bgmDisplayName: 
-      bgmJacketImage: {fileID: 0}
-    chartFileName: 
-    scrollConfig: {fileID: 0}
-    judgementConfigs: []
-    delayBeforeResult: 2
-  - stageId: stage2
-    stageBgm:
-      bgmId: aaaaa
-      bgmAudioClip: {fileID: 8300000, guid: e0ed9a9fa64c3b141b45194d7b4ddf13, type: 3}
-      bgmBpm: 0
-      bgmGenre: 
-      bgmDisplayName: 
-      bgmJacketImage: {fileID: 0}
-    chartFileName: 
-    scrollConfig: {fileID: 0}
-    judgementConfigs: []
-    delayBeforeResult: 2
-=======
     judgementConfigs:
     - judgementName: Perfect
       maxTimeDifference: 0.2
@@ -236,4 +73,3 @@ MonoBehaviour:
       scoreValue: 0
       breaksCombo: 1
     delayBeforeResult: 0.2
->>>>>>> b23cc46 (判定バグ修正途中とリファクタリング)

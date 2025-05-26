@@ -3,43 +3,45 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "GameData/Stage Config Table")]
 /// <summary>
-/// �e���ʃX�e�[�W�̐ݒ���Ǘ�����ScriptableObject
+//ステージ設定に関するScriptableObject
 /// </summary>
 public class StageConfigTable : ScriptableObject
 {
-    #region �X�e�[�W���X�g��f�B�N�V���i�������Ǘ��p�ϐ�
+    #region リストやディクショナリ変数
 
     /// <summary>
-    /// �X�e�[�W�����̃��X�g
+    /// ステージ音源のリスト
     /// </summary>
-    [SerializeField, Header("�X�e�[�W�����̃��X�g")]
+    [SerializeField, Header("ステージ音源のリスト")]
     private List<StageConfig> stagesBgmLists;
 
     /// <summary>
-    /// �Q�[�����Ŏg�p����SE�ݒ�̃��X�g�̃f�B�N�V���i��
+    /// ゲーム内で使用するSE設定のリストのディクショナリ
     /// </summary>
     private Dictionary<string, StageConfig> stagesBgmDict;
 
     #endregion
 
 
-    #region �ǂݎ���p�v���p�e�B(�X�e�[�W���X�g��f�B�N�V���i�������Ǘ��p�ϐ�)
+    #region 読み取り専用プロパティ
 
     /// <summary>
-    /// �Q�[�����Ŏg�p����SE�ݒ�̃��X�g�̓ǂݎ���p
+    /// ゲーム内で使用するSE設定のリストの読み取り専用
     /// </summary>
     internal List<StageConfig> StagesBgmList => stagesBgmLists;
 
     #endregion
 
 
-    #region �Q�b�^�[���\�b�h
+    #region ゲッターメソッド
+
 
     /// <summary>
-    /// �w�肳�ꂽ�X�e�[�WID�ɑΉ�����StageConfig�f�[�^���擾
+    /// 指定されたステージIDに対応するStageConfigデータを取得
     /// </summary>
-    /// <param name="id">�X�e�[�W��ID</param>
-    /// <returns>StageConfig�f�[�^</returns>
+    /// <param name="id">ステージのID</param>
+    /// <returns>該当するStageConfigデータ、見つからない場合は null</returns>
+
     internal StageConfig GetStageConfig(string id)
     {
         if (stagesBgmDict == null)
@@ -52,10 +54,9 @@ public class StageConfigTable : ScriptableObject
     }
 
     /// <summary>
-    /// �X�e�[�W�ɑΉ�����BGM�̃��X�g�������ׂĕԂ�
+    /// ステージに対応するBGMのリスト情報をすべて返す
     /// </summary>
-    /// <returns>StageConfig�f�[�^</returns>
-    /// 
+    /// <returns>StageConfigデータ</returns>    
     internal List<StageConfig> GetAllStageConfigs()
     {
         return stagesBgmLists;
@@ -67,12 +68,12 @@ public class StageConfigTable : ScriptableObject
 
     private void OnEnable()
     {
-        // ScriptableObject �ēǂݍ��ݎ��ɂ��Ή�
+        // ScriptableObject 再読み込み時にも対応
         InitializeDictionary();
     }
 
 
-    #region �v���C�x�[�g���\�b�h
+    #region プライベートメソッド
 
     /// <summary>
     /// �f�B�N�V���i��������
@@ -82,21 +83,21 @@ public class StageConfigTable : ScriptableObject
         stagesBgmDict = new Dictionary<string, StageConfig>();
         foreach (var stageBgm in stagesBgmLists)
         {
-            //�X�e�[�W�����̃��X�g��StageID�ɕ����񂪓����Ă違�f�B�N�V���i���ɂ��̕�����i�L�[�j���܂܂�Ă��Ȃ��Ȃ�
+            //ステージ音源のリストのStageIDに文字列が入ってる＆ディクショナリにその文字列（キー）が含まれていないなら
             if (!string.IsNullOrEmpty(stageBgm.StageId) && !stagesBgmDict.ContainsKey(stageBgm.StageId))
             {
-                // �f�B�N�V���i���ɂ��̕������ǉ�
+                // ディクショナリにその文字列を追加
                 stagesBgmDict.Add(stageBgm.StageId, stageBgm);
                 foreach (var key in stagesBgmDict.Keys)
                 {
-                    //�ǂ̃L�[���o�^����Ă��邩�̃f�o�b�O���O
-                    Debug.Log($"�o�^����Ă���X�e�[�WBGM�L�[: {key}");
+                    //どのキーが登録されているかのデバッグログ
+                    Debug.Log($"登録されているステージBGMキー: {key}");
                 }
             }
             else
             {
-                //�����L�[��o�^���悤�Ƃ��Ă��邩BGMID����
-                Debug.LogWarning($"[StageConfigTable] �d���܂��͋��BGM ID: {stageBgm.StageId}");
+                //同じキーを登録しようとしているかBGMIDが空白
+                Debug.LogWarning($"[StageConfigTable] 重複または空のBGM ID: {stageBgm.StageId}");
             }
         }
     }

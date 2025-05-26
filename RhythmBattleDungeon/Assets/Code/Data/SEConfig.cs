@@ -1,48 +1,48 @@
 using UnityEngine;
 
 /// <summary>
-/// �P���SE�i���ʉ��j�̐ݒ�f�[�^
+/// 単一のSE（効果音）の設定データ
 /// </summary>
 [System.Serializable]
 public class SEConfig
 {
-    #region SE�ݒ�Ɋւ�������Ǘ��p�ϐ�
+    #region SE設定に関する情報変数
 
     /// <summary>
-    /// SE��ID��
+    /// SEのID名
     /// </summary>
-    [SerializeField, Header("SE��ID��")]
+    [SerializeField, Header("SEのID名")]
     private string seId;
 
     /// <summary>
-    /// �g�p����SE�I�[�f�B�I�N���b�v
+    /// 使用するSEオーディオクリップ
     /// </summary>
-    [SerializeField, Header("�g�p����SE�I�[�f�B�I�N���b�v")]
+    [SerializeField, Header("使用するSEオーディオクリップ")]
     private AudioClip seAudioClip;
 
     /// <summary>
-    /// SE�̐���
+    /// SEの説明
     /// </summary>
-    [SerializeField, Header("SE�̐���")]
-    private string description;  // ��F�u�{�^���������v�Ȃ�
+    [SerializeField, Header("SEの説明")]
+    private string description;  // 例：「ボタン押下音」など
 
     #endregion
 
 
-    #region �ǂݎ���p�v���p�e�B(SE�ݒ�Ɋւ�������Ǘ��p�ϐ�)
+    #region 読み取り専用プロパティ(SE設定に関する情報変数)
 
     /// <summary>
-    /// SE��ID���̓ǂݎ���p
+    /// SEのID名の読み取り専用
     /// </summary>
     internal string SeId => seId;
 
     /// <summary>
-    /// �g�p����SE�I�[�f�B�I�N���b�v�̓ǂݎ���p
+    /// 使用するSEオーディオクリップの読み取り専用
     /// </summary>
     internal AudioClip SeAudioClip => seAudioClip;
 
     /// <summary>
-    /// SE�̐����̓ǂݎ���p
+    /// SEの説明の読み取り専用
     /// </summary>
     internal string Description => description;
 
