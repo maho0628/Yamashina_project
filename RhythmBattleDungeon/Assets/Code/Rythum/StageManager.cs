@@ -2,76 +2,158 @@ using UnityEngine;
 
 public class StageManager : SingletonMonoBehaviour<StageManager>
 {
-    // Œ»İ‚ÌƒXƒe[ƒWID
+    #region ï¿½Xï¿½eï¿½[ï¿½Wï¿½ğ§Œä‚·ï¿½é‚½ï¿½ß‚É•Kï¿½vï¿½È•Ïï¿½
+
+    /// <summary>
+    /// ï¿½ï¿½ï¿½İ‚ÌƒXï¿½eï¿½[ï¿½WID
+    /// </summary>
     private string currentStageId;
 
-    // ƒXƒe[ƒWİ’èƒe[ƒuƒ‹
+    /// <summary>
+    /// ï¿½Xï¿½eï¿½[ï¿½Wï¿½İ’ï¿½eï¿½[ï¿½uï¿½ï¿½
+    /// </summary>
     private StageConfigTable stageConfigTable;
 
+    /// <summary>
+    /// ï¿½Xï¿½eï¿½[ï¿½Wï¿½ï¿½ï¿½Zï¿½ï¿½ï¿½Nï¿½gï¿½ï¿½ï¿½ê‚½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½
+    /// </summary>
+    private bool isStageSelected;
+
+    #endregion
+
+    #region ï¿½Xï¿½eï¿½[ï¿½Wï¿½ğ§Œä‚·ï¿½é‚½ï¿½ß‚É•Kï¿½vï¿½È•Ïï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½p
+
+    /// <summary>
+    /// ï¿½Xï¿½eï¿½[ï¿½Wï¿½ï¿½ï¿½Zï¿½ï¿½ï¿½Nï¿½gï¿½ï¿½ï¿½ê‚½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½ï¿½p
+    /// </summary>
+    public bool IsStageSelected => isStageSelected;
+
+    #endregion
+
+    #region ï¿½Qï¿½bï¿½^ï¿½[
+
+    /// <summary>
+    /// ï¿½Xï¿½eï¿½[ï¿½Wï¿½İ’èƒŠï¿½Xï¿½gï¿½ï¿½Ô‚ï¿½
+    /// </summary>
+    /// <returns>StageConfigTable</returns>
     public StageConfigTable GetStageConfigTable()
     {
         return stageConfigTable;
     }
 
-    public void SetupStageTable(StageConfigTable table)
+    /// <summary>
+    /// ï¿½ï¿½ï¿½İ‚ÌƒXï¿½eï¿½[ï¿½Wï¿½İ’ï¿½ï¿½ï¿½ï¿½Ô‚ï¿½
+    /// </summary>
+    /// <returns>StageConfig</returns>
+    internal StageConfig GetCurrentStageConfig()
     {
-        stageConfigTable = table;
 
-    }
-    // ƒXƒe[ƒW‚ğƒZƒbƒgƒAƒbƒv‚·‚é
-    public void SetupStage(StageConfigTable table, string stageId)
-    {
-        stageConfigTable = table;
-        currentStageId = stageId;
-
-        // ƒXƒe[ƒWİ’è‚ğæ“¾
-        StageConfig stageConfig = stageConfigTable.GetStageConfig(currentStageId);
-        if (stageConfig == null)
-        {
-            Debug.LogError($"[StageManager] ƒXƒe[ƒWİ’è‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñI ID: {currentStageId}");
-            return;
-        }
-
-        // ‚±‚±‚ÅƒXƒe[ƒW‚ÉŠÖ˜A‚·‚éBGMA•ˆ–Ê‚È‚Ç‚ğƒZƒbƒgƒAƒbƒv‚·‚éˆ—‚ğ’Ç‰Á
-        Debug.Log($"ƒXƒe[ƒWİ’èŠ®—¹: {currentStageId}, BGM: {stageConfig.StageBgm.BgmId}, •ˆ–Ê: {stageConfig.ChartFileName}");
-    }
-
-
-    // Œ»İ‚ÌƒXƒe[ƒW‚ÌBGMID‚ğæ“¾‚·‚é
-    public string GetCurrentStageBGMId()
-    {
         if (stageConfigTable == null)
         {
-            Debug.LogError("[StageManager] StageConfigTable‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñI");
+            Debug.LogError("[StageManager] StageConfigTableï¿½ï¿½ï¿½İ’è‚³ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½I");
             return null;
         }
 
         StageConfig stageConfig = stageConfigTable.GetStageConfig(currentStageId);
         if (stageConfig == null)
         {
-            Debug.LogError($"[StageManager] ƒXƒe[ƒWİ’è‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñI ID: {currentStageId}");
+            Debug.LogError($"[StageManager] ï¿½Xï¿½eï¿½[ï¿½Wï¿½İ’è‚ªï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½I ID: {currentStageId}");
+            return null;
+        }
+
+        return stageConfig;
+    }
+
+    /// <summary>
+    /// ï¿½ï¿½ï¿½İ‚ÌƒXï¿½eï¿½[ï¿½Wï¿½ï¿½BGMIDï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
+    /// </summary>
+    /// <returns>string</returns>
+    public string GetCurrentStageBGMId()
+    {
+        if (stageConfigTable == null)
+        {
+            Debug.LogError("[StageManager] StageConfigTableï¿½ï¿½ï¿½İ’è‚³ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½I");
+            return null;
+        }
+
+        StageConfig stageConfig = stageConfigTable.GetStageConfig(currentStageId);
+        if (stageConfig == null)
+        {
+            Debug.LogError($"[StageManager] ï¿½Xï¿½eï¿½[ï¿½Wï¿½İ’è‚ªï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½I ID: {currentStageId}");
             return null;
         }
 
         return stageConfig.StageBgm.BgmId;
     }
 
-    // Œ»İ‚Ì•ˆ–Êƒtƒ@ƒCƒ‹–¼‚ğæ“¾‚·‚é
+    /// <summary>
+    /// ï¿½ï¿½ï¿½İ‚Ì•ï¿½ï¿½Êƒtï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
+    /// </summary>
+    /// <returns>string</returns>
     public string GetCurrentChartFileName()
     {
         if (stageConfigTable == null)
         {
-            Debug.LogError("[StageManager] StageConfigTable‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñI");
+            Debug.LogError("[StageManager] StageConfigTableï¿½ï¿½ï¿½İ’è‚³ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½I");
             return null;
         }
 
         StageConfig stageConfig = stageConfigTable.GetStageConfig(currentStageId);
         if (stageConfig == null)
         {
-            Debug.LogError($"[StageManager] ƒXƒe[ƒWİ’è‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñI ID: {currentStageId}");
+            Debug.LogError($"[StageManager] ï¿½Xï¿½eï¿½[ï¿½Wï¿½İ’è‚ªï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½I ID: {currentStageId}");
             return null;
         }
 
         return stageConfig.ChartFileName;
     }
+
+    #endregion
+
+
+    #region ï¿½Zï¿½bï¿½^ï¿½[
+
+    /// <summary>
+    /// ï¿½Xï¿½eï¿½[ï¿½Wï¿½ï¿½ï¿½Zï¿½ï¿½ï¿½Nï¿½gï¿½ï¿½ï¿½ê‚½ï¿½ï¿½ï¿½ï¿½İ’è‚·ï¿½ï¿½Öï¿½
+    /// </summary>
+    /// <param name="stageSelected">ï¿½Xï¿½eï¿½[ï¿½Wï¿½ï¿½ï¿½Zï¿½ï¿½ï¿½Nï¿½gï¿½ï¿½ï¿½ê‚½ï¿½ï¿½</param>
+    public void SetStageSelected(bool stageSelected)
+    {
+        isStageSelected = stageSelected;
+    }
+
+    /// <summary>
+    /// ï¿½Xï¿½eï¿½[ï¿½Wï¿½İ’ï¿½eï¿½[ï¿½uï¿½ï¿½ï¿½ï¿½İ’è‚·ï¿½ï¿½Öï¿½
+    /// </summary>
+    /// <param name="table"></param>
+    public void SetupStageTable(StageConfigTable table)
+    {
+        stageConfigTable = table;
+
+    }
+
+    /// <summary>
+    /// ï¿½Xï¿½eï¿½[ï¿½Wï¿½ï¿½ï¿½ï¿½İ’è‚·ï¿½ï¿½Öï¿½
+    /// </summary>
+    /// <param name="table">ï¿½Xï¿½eï¿½[ï¿½Wï¿½ï¿½ï¿½</param>
+    /// <param name="stageId">ï¿½Xï¿½eï¿½[ï¿½WID</param>
+    public void SetupStage(StageConfigTable table, string stageId)
+    {
+        stageConfigTable = table;
+        currentStageId = stageId;
+
+        // ï¿½Xï¿½eï¿½[ï¿½Wï¿½İ’ï¿½ï¿½ï¿½æ“¾
+        StageConfig stageConfig = stageConfigTable.GetStageConfig(currentStageId);
+        if (stageConfig == null)
+        {
+            Debug.LogError($"[StageManager] ï¿½Xï¿½eï¿½[ï¿½Wï¿½İ’è‚ªï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½I ID: {currentStageId}");
+            return;
+        }
+
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ÅƒXï¿½eï¿½[ï¿½Wï¿½ÉŠÖ˜Aï¿½ï¿½ï¿½ï¿½BGMï¿½Aï¿½ï¿½ï¿½Ê‚È‚Ç‚ï¿½ï¿½Zï¿½bï¿½gï¿½Aï¿½bï¿½vï¿½ï¿½ï¿½éˆï¿½ï¿½ï¿½ï¿½Ç‰ï¿½
+        Debug.Log($"ï¿½Xï¿½eï¿½[ï¿½Wï¿½İ’èŠ®ï¿½ï¿½: {currentStageId}, BGM: {stageConfig.StageBgm.BgmId}, ï¿½ï¿½ï¿½ï¿½: {stageConfig.ChartFileName}");
+    }
+
+    #endregion
+
 }

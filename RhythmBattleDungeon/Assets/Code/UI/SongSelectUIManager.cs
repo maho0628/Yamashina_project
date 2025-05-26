@@ -11,7 +11,6 @@ public class SongSelectUIManager : MonoBehaviour
   
     private void Start()
     {
-        GameInitializer.Instance.SetUpGameInitialize(); 
         GenerateSongList();
        
     }
@@ -34,14 +33,5 @@ public class SongSelectUIManager : MonoBehaviour
        }
     }
 
-    // 今は未使用だが再読み込みしたいとき用に残す
-    public void ClearSongList()
-    {
-        foreach (Transform child in contentParent)
-        {
-            Destroy(child.gameObject); // 完全に削除する（任意）
-        }
-
-        isInitialized = false;
-    }
+    
 }

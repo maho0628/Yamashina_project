@@ -1,49 +1,56 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BGMConfig", menuName = "GameData/BGMConfigTable")]
+
+
 /// <summary>
-/// �Q�[�����Ŏg�p����BGM�ݒ�̈ꗗ��ێ����� ScriptableObject
+/// ゲーム内で使用するBGM設定の一覧を保持する ScriptableObject
 /// </summary>
+[CreateAssetMenu(fileName = "BGMConfig", menuName = "GameData/BGMConfigTable")]
 public class BGMConfigTable : ScriptableObject
 {
+    #region BGMのリストやディクショナリの内部管理用変数
 
-    [SerializeField, Header("�Q�[�����Ŏg�p����BGM�ݒ�̈ꗗ")]
-    private List<BGMConfig> bgmList;
+    /// <summary>
+    /// ゲーム内で使用するBGM設定の一覧のリスト
+    /// </summary>
+    [SerializeField, Header("ゲーム内で使用するBGM設定の一覧")]
+    private List<BGMConfig> bgmLists = new List<BGMConfig>();
 
+    /// <summary>
+    /// BGMのディクショナリ
+    /// </summary>
     private Dictionary<string, BGMConfig> bgmDict;
 
-    private void OnEnable()
+    #endregion
+
+
+    #region 読み取り専用プロパティ（BGMのリストやディクショナリの内部管理用変数)
+
+    /// <summary>
+    /// ゲーム内で使用するBGM設定の一覧の読み取り専用
+    /// </summary>
+    internal List<BGMConfig> BgmLists => bgmLists;
+
+    #endregion
+
+
+    #region ゲッターメソッド
+
+    /// <summary>
+    ///BGMのリスト情報をすべて返す  
+    /// </summary>
+    /// <returns>BGMConfigのList</returns>
+    internal List<BGMConfig> GetAllBgmConfigs()
     {
-        // ScriptableObject �ēǂݍ��ݎ��ɂ��Ή�
-        InitializeDictionary();
+        return bgmLists;
     }
 
-    private void InitializeDictionary()
-    {
-        bgmDict = new Dictionary<string, BGMConfig>();
-        foreach (var bgm in bgmList)
-        {
-            if (!string.IsNullOrEmpty(bgm.BgmId) && !bgmDict.ContainsKey(bgm.BgmId))
-            {
-                bgmDict.Add(bgm.BgmId, bgm);
-                foreach (var key in bgmDict.Keys)
-                {
-                    Debug.Log($"�o�^����Ă���BGM�L�[: {key}");
-                }
-            }
-            else
-            {
-                Debug.LogWarning($"[BGMConfigTable] �d���܂��͋��BGM ID: {bgm.BgmId}");
-            }
-        }
-    }
-
-    internal List<BGMConfig> GetAll()
-    {
-        return bgmList;
-    }
-
+    /// <summary>
+    /// リスト内のBGMConfigをIDで探して返す
+    /// </summary>
+    /// <param name="id">BGMID</param>
+    /// <returns>BGMConfig</returns>
     internal BGMConfig GetBgmConfig(string id)
     {
         if (bgmDict == null)
@@ -54,43 +61,47 @@ public class BGMConfigTable : ScriptableObject
         bgmDict.TryGetValue(id, out var config);
         return config;
     }
+
+    #endregion
+
+
+
+    private void OnEnable()
+    {
+        // ScriptableObject 再読み込み時にも対応
+        InitializeDictionary();
+    }
+
+
+    #region プライベートメソッド
+
+    /// <summary>
+    /// ディクショナリ初期化
+    /// </summary>
+    private void InitializeDictionary()
+    {
+        bgmDict = new Dictionary<string, BGMConfig>();
+        foreach (var bgm in bgmLists)
+        {
+            //BGMリストのBGMIDに文字列が入ってる＆ディクショナリにその文字列（キー）が含まれていないなら
+            if (!string.IsNullOrEmpty(bgm.BgmId) && !bgmDict.ContainsKey(bgm.BgmId))
+            {
+                // ディクショナリにその文字列を追加
+                bgmDict.Add(bgm.BgmId, bgm);
+                foreach (var key in bgmDict.Keys)
+                {
+                    //どのキーが登録されているかのデバッグログ
+                    Debug.Log($"登録されているBGMキー: {key}");
+                }
+            }
+            else
+            {
+                //同じキーを登録しようとしているかBGMIDが空白
+                Debug.LogWarning($"[BGMConfigTable] 重複または空のBGM ID: {bgm.BgmId}");
+            }
+        }
+    }
+
+    #endregion
+
 }
-
-
-
-[System.Serializable]
-/// <summary>
-/// �P���BGM�Ɋւ���ݒ�f�[�^
-/// </summary>
-
-public class BGMConfig
-{
-    [SerializeField, Header("BGM��ID")]
-    private string bgmId;
-
-    [SerializeField, Header("�g�p����I�[�f�B�I�N���b�v")]
-    private AudioClip bgmAudioClip;
-
-    [SerializeField, Header("BPM�iBeats Per Minute�j")]
-    private float bgmBpm;
-
-    [SerializeField, Header("�W��������")]
-    private string bgmGenre;
-
-    [SerializeField, Header("�\���p�̋Ȗ�")]
-    private string bgmDisplayName;
-
-    [SerializeField, Header("�W���P�b�g�摜")]
-    private Sprite bgmJacketImage;
-
-    // �ȉ��͊e�f�[�^�̓ǂݎ���p�v���p�e�B
-
-    internal string BgmId => bgmId;
-    internal AudioClip BgmAudioClip => bgmAudioClip;
-    internal float BgmBpm => bgmBpm;
-    internal string BgmGenre => bgmGenre;
-    internal string BgmDisplayName => bgmDisplayName;
-    internal Sprite BgmJacketImage => bgmJacketImage;
-}
-
-

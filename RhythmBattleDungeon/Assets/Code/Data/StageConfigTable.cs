@@ -3,68 +3,110 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "GameData/Stage Config Table")]
 /// <summary>
-/// Še•ˆ–ÊƒXƒe[ƒW‚Ìİ’è‚ğŠÇ—‚·‚éScriptableObject
+//ã‚¹ãƒ†ãƒ¼ã‚¸è¨­å®šã«é–¢ã™ã‚‹ScriptableObject
 /// </summary>
 public class StageConfigTable : ScriptableObject
 {
-    [SerializeField, Header("ƒXƒe[ƒW‰¹Œ¹‚ÌƒŠƒXƒg")]
-    private List<StageConfig> stagesBgmList;
+    #region ãƒªã‚¹ãƒˆã‚„ãƒ‡ã‚£ã‚¯ã‚·ãƒ§ãƒŠãƒªå¤‰æ•°
 
     /// <summary>
-    /// w’è‚³‚ê‚½ƒXƒe[ƒWID‚É‘Î‰‚·‚éStageConfigƒf[ƒ^‚ğæ“¾
+    /// ã‚¹ãƒ†ãƒ¼ã‚¸éŸ³æºã®ãƒªã‚¹ãƒˆ
     /// </summary>
-    /// <param name="id">ƒXƒe[ƒW‚ÌID</param>
-    /// <returns>ŠY“–‚·‚éStageConfigƒf[ƒ^AŒ©‚Â‚©‚ç‚È‚¢ê‡‚Í null</returns>
+    [SerializeField, Header("ã‚¹ãƒ†ãƒ¼ã‚¸éŸ³æºã®ãƒªã‚¹ãƒˆ")]
+    private List<StageConfig> stagesBgmLists;
+
+    /// <summary>
+    /// ã‚²ãƒ¼ãƒ å†…ã§ä½¿ç”¨ã™ã‚‹SEè¨­å®šã®ãƒªã‚¹ãƒˆã®ãƒ‡ã‚£ã‚¯ã‚·ãƒ§ãƒŠãƒª
+    /// </summary>
+    private Dictionary<string, StageConfig> stagesBgmDict;
+
+    #endregion
+
+
+    #region èª­ã¿å–ã‚Šå°‚ç”¨ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
+
+    /// <summary>
+    /// ã‚²ãƒ¼ãƒ å†…ã§ä½¿ç”¨ã™ã‚‹SEè¨­å®šã®ãƒªã‚¹ãƒˆã®èª­ã¿å–ã‚Šå°‚ç”¨
+    /// </summary>
+    internal List<StageConfig> StagesBgmList => stagesBgmLists;
+
+    #endregion
+
+
+    #region ã‚²ãƒƒã‚¿ãƒ¼ãƒ¡ã‚½ãƒƒãƒ‰
+
+
+    /// <summary>
+    /// æŒ‡å®šã•ã‚ŒãŸã‚¹ãƒ†ãƒ¼ã‚¸IDã«å¯¾å¿œã™ã‚‹StageConfigãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
+    /// </summary>
+    /// <param name="id">ã‚¹ãƒ†ãƒ¼ã‚¸ã®ID</param>
+    /// <returns>è©²å½“ã™ã‚‹StageConfigãƒ‡ãƒ¼ã‚¿ã€è¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã¯ null</returns>
+
     internal StageConfig GetStageConfig(string id)
     {
-        var stageConfig = stagesBgmList.Find(s => s.StageId == id);
-        if (stageConfig == null)
+        if (stagesBgmDict == null)
         {
-            Debug.LogWarning($"ƒXƒe[ƒWID '{id}' ‚É‘Î‰‚·‚éƒf[ƒ^‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB");
+            InitializeDictionary();
         }
-        return stageConfig;
+
+        stagesBgmDict.TryGetValue(id, out var config);
+        return config;
     }
+
     /// <summary>
-    /// ‘SƒXƒe[ƒWİ’è‚ğæ“¾i‹Èˆê——‚Ég‚¤j
+    /// ã‚¹ãƒ†ãƒ¼ã‚¸ã«å¯¾å¿œã™ã‚‹BGMã®ãƒªã‚¹ãƒˆæƒ…å ±ã‚’ã™ã¹ã¦è¿”ã™
     /// </summary>
-    /// <returns></returns>
-    /// 
-    public List<StageConfig> GetAllStageConfigs()
+    /// <returns>StageConfigãƒ‡ãƒ¼ã‚¿</returns>    
+    internal List<StageConfig> GetAllStageConfigs()
     {
-        return stagesBgmList;
+        return stagesBgmLists;
     }
 
+    #endregion
+
+
+
+    private void OnEnable()
+    {
+        // ScriptableObject å†èª­ã¿è¾¼ã¿æ™‚ã«ã‚‚å¯¾å¿œ
+        InitializeDictionary();
+    }
+
+
+    #region ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆãƒ¡ã‚½ãƒƒãƒ‰
+
+    /// <summary>
+    /// ï¿½fï¿½Bï¿½Nï¿½Vï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    /// </summary>
+    private void InitializeDictionary()
+    {
+        stagesBgmDict = new Dictionary<string, StageConfig>();
+        foreach (var stageBgm in stagesBgmLists)
+        {
+            //ã‚¹ãƒ†ãƒ¼ã‚¸éŸ³æºã®ãƒªã‚¹ãƒˆã®StageIDã«æ–‡å­—åˆ—ãŒå…¥ã£ã¦ã‚‹ï¼†ãƒ‡ã‚£ã‚¯ã‚·ãƒ§ãƒŠãƒªã«ãã®æ–‡å­—åˆ—ï¼ˆã‚­ãƒ¼ï¼‰ãŒå«ã¾ã‚Œã¦ã„ãªã„ãªã‚‰
+            if (!string.IsNullOrEmpty(stageBgm.StageId) && !stagesBgmDict.ContainsKey(stageBgm.StageId))
+            {
+                // ãƒ‡ã‚£ã‚¯ã‚·ãƒ§ãƒŠãƒªã«ãã®æ–‡å­—åˆ—ã‚’è¿½åŠ 
+                stagesBgmDict.Add(stageBgm.StageId, stageBgm);
+                foreach (var key in stagesBgmDict.Keys)
+                {
+                    //ã©ã®ã‚­ãƒ¼ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‹ã®ãƒ‡ãƒãƒƒã‚°ãƒ­ã‚°
+                    Debug.Log($"ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚¹ãƒ†ãƒ¼ã‚¸BGMã‚­ãƒ¼: {key}");
+                }
+            }
+            else
+            {
+                //åŒã˜ã‚­ãƒ¼ã‚’ç™»éŒ²ã—ã‚ˆã†ã¨ã—ã¦ã„ã‚‹ã‹BGMIDãŒç©ºç™½
+                Debug.LogWarning($"[StageConfigTable] é‡è¤‡ã¾ãŸã¯ç©ºã®BGM ID: {stageBgm.StageId}");
+            }
+        }
+    }
+
+    #endregion
+
 }
 
-[System.Serializable]
-/// <summary>
-/// ƒXƒe[ƒWİ’èƒf[ƒ^
-/// </summary>
-public class StageConfig
-{
-    [SerializeField, Header("ƒXƒe[ƒWID–¼")]
-    private string stageId;
 
-    [SerializeField, Header("BGM‰¹Œ¹‚Ìİ’è“à—e")]
-    private BGMConfig stageBgm;
 
-    [SerializeField, Header("•ˆ–Êƒf[ƒ^Jsonƒtƒ@ƒCƒ‹–¼")]
-    private string chartFileName;
 
-    // ˆÈ‰º‚ÍƒvƒƒpƒeƒB
 
-    /// <summary>
-    /// ƒXƒe[ƒWID‚ğæ“¾
-    /// </summary>
-    internal string StageId => stageId;
-
-    /// <summary>
-    /// ƒXƒe[ƒW‚É‘Î‰‚·‚éBGMİ’è‚ğæ“¾
-    /// </summary>
-    internal BGMConfig StageBgm => stageBgm;
-
-    /// <summary>
-    /// •ˆ–Êƒf[ƒ^‚Ìƒtƒ@ƒCƒ‹–¼‚ğæ“¾
-    /// </summary>
-    internal string ChartFileName => chartFileName;
-}

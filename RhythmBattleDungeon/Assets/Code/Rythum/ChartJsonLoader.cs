@@ -6,6 +6,10 @@ using Newtonsoft.Json;
 /// </summary>
 public static class ChartJsonLoader
 {
+    /// <summary>
+    /// Resourcesフォルダ内でのチャートJSONファイルの基準ディレクトリパス。
+    /// LoadChartData()で指定されるファイルパスの前に自動的に付加される。
+    /// </summary>
     private static string basePath = "json/charts/";
 
     
