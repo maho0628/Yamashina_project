@@ -1,36 +1,83 @@
 using UnityEngine;
 
-[System.Serializable]
 /// <summary>
-/// �P���BGM�Ɋւ���ݒ�f�[�^
+/// 単一のBGMに関する設定データ
 /// </summary>
-
+[System.Serializable]
 public class BGMConfig
 {
-    [SerializeField, Header("BGM��ID")]
+    #region  BGMの内部管理用変数
+
+    /// <summary>
+    /// BGMのID
+    /// </summary>
+    [SerializeField, Header("BGMのID")]
     private string bgmId;
 
-    [SerializeField, Header("�g�p����I�[�f�B�I�N���b�v")]
+    /// <summary>
+    /// 使用するオーディオクリップ
+    /// </summary>
+    [SerializeField, Header("使用するオーディオクリップ")]
     private AudioClip bgmAudioClip;
 
-    [SerializeField, Header("BPM�iBeats Per Minute�j")]
+    /// <summary>
+    /// BPM（Beats Per Minute)
+    /// </summary>
+    [SerializeField, Header("BPM（Beats Per Minute）")]
     private float bgmBpm;
 
-    [SerializeField, Header("�W��������")]
+    /// <summary>
+    /// ジャンル名
+    /// </summary>
+    [SerializeField, Header("ジャンル名")]
     private string bgmGenre;
 
-    [SerializeField, Header("�\���p�̋Ȗ�")]
+    /// <summary>
+    /// 表示用の曲名
+    /// </summary>
+    [SerializeField, Header("表示用の曲名")]
     private string bgmDisplayName;
 
-    [SerializeField, Header("�W���P�b�g�摜")]
+    /// <summary>
+    /// ジャケット画像
+    /// </summary>
+    [SerializeField, Header("ジャケット画像")]
     private Sprite bgmJacketImage;
 
-    // �ȉ��͊e�f�[�^�̓ǂݎ���p�v���p�e�B
+    #endregion
 
+
+    #region  読み取り専用プロパティ (BGMの内部管理用変数)
+
+    /// <summary>
+    /// BGMのIDの読み取り専用
+    /// </summary>
     internal string BgmId => bgmId;
+
+    /// <summary>
+    /// 使用するオーディオクリップの読み取り専用
+    /// </summary>
     internal AudioClip BgmAudioClip => bgmAudioClip;
+
+    /// <summary>
+    /// BPM（Beats Per Minute）の読み取り専用
+    /// </summary>
     internal float BgmBpm => bgmBpm;
+
+    /// <summary>
+    /// ジャンル名の読み取り専用
+    /// </summary>
     internal string BgmGenre => bgmGenre;
+
+    /// <summary>
+    /// 表示用の曲名の読み取り専用
+    /// </summary>
     internal string BgmDisplayName => bgmDisplayName;
+
+    /// <summary>
+    /// ジャケット画像の読み取り専用
+    /// </summary>
     internal Sprite BgmJacketImage => bgmJacketImage;
+
+    #endregion
 }
