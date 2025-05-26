@@ -43,12 +43,13 @@ public class NoteUI : MonoBehaviour, IPoolable<NoteUI>
         rectTransform.anchoredPosition = Vector2.Lerp(startPosition, endPosition, t);
 
        
-        if (t >= 1f || (linkedNote != null && linkedNote.IsHit))
+        if (t >= 1f )
         {
             if(linkedNote != null)
             Deactivate();
-            // Update で追加�E�デバッグ用�E�E
             Debug.Log($"NoteUI t={t:F2}, Current={currentBgmTime:F2}, Target={targetTime:F2}, Pos={rectTransform.anchoredPosition}");
+            Debug.Log($"🧪 Note消滅: Time={currentBgmTime:F2}, PosY={rectTransform.anchoredPosition.y:F2} ← EndY={endPosition.y}");
+
 
         }
     }

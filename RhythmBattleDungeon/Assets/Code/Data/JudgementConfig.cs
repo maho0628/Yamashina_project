@@ -7,7 +7,7 @@ using UnityEngine;
 [System.Serializable]
 public class JudgementConfig
 {
-    #region 判定の基本情報変数
+    #region 判定の内部管理用変数
 
     /// <summary>
     /// 判定の名前（例: Perfect, Great, Missなど）
@@ -26,7 +26,7 @@ public class JudgementConfig
     #endregion
 
 
-    #region 判定の見た目の設定変数
+    #region 判定の見た目の設定の内部管理用変数
 
     /// <summary>
     /// 判定の表示に使うカラー。UIの色分けなどに利用。
@@ -42,9 +42,12 @@ public class JudgementConfig
     [SerializeField, Header("判定のアイコン（任意）")]
     private Sprite displayIcon;
 
+    [SerializeField, Header("プレイ中に表示される判定の表示名")]
+    private string displayJudgementName;
+
     #endregion
 
-    #region スコア・コンボ関連の情報変数
+    #region スコア・コンボ関連の内部管理用変数
 
     /// <summary>
     /// 判定時に加算するスコア
@@ -61,12 +64,17 @@ public class JudgementConfig
     #endregion
 
 
-    #region 読み取り専用プロパティ(判定の基本情報変数)
+    #region 読み取り専用プロパティ(判定の内部管理用変数)
 
     /// <summary>
     /// 判定名の読み取り専用
     /// </summary>
     internal string JudgementName => judgementName;
+
+    /// <summary>
+    /// プレイ中に表示される判定の表示名の読み取り専用
+    /// </summary>
+    internal　string DisplayJudgementName => displayJudgementName;   
 
     /// <summary>
     /// 判定の許容時間の読み取り専用
@@ -75,7 +83,7 @@ public class JudgementConfig
     #endregion
 
 
-    #region 読み取り専用プロパティ(判定の見た目の設定変数)
+    #region 読み取り専用プロパティ(判定の見た目の設定の内部管理用変数)
 
     /// <summary>
     /// 判定表示用カラーの読み取り専用
@@ -89,7 +97,7 @@ public class JudgementConfig
     #endregion
 
 
-    #region 読み取り専用プロパティ(コンボ関連の情報変数)
+    #region 読み取り専用プロパティ(コンボ関連の内部管理用変数)
 
     /// <summary>
     /// この判定で加算されるスコア値の読み取り専用

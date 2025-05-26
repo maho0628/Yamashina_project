@@ -4,52 +4,51 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SEConfig", menuName = "GameData/SEConfigTable")]
 
 /// <summary>
-/// �Q�[�����Ŏg�p����SE�i���ʉ��j�̐ݒ�ꗗ���Ǘ�����ScriptableObject
+/// ゲーム内で使用するSE（効果音）の設定一覧を管理するScriptableObject
 /// </summary>
 public class SEConfigTable : ScriptableObject
 {
-    #region SE�̃��X�g��f�B�N�V���i�������Ǘ��p�ϐ�
+    #region SEのリストやディクショナリ変数
 
     /// <summary>
-    /// �Q�[�����Ŏg�p����SE�ݒ�̃��X�g
+    /// ゲーム内で使用するSE設定のリスト
     /// </summary>
-    [SerializeField, Header("�Q�[�����Ŏg�p����SE�ݒ�̃��X�g")]
+    [SerializeField, Header("ゲーム内で使用するSE設定のリスト")]
     private List<SEConfig> seLists= new List<SEConfig>();
 
     /// <summary>
-    /// �Q�[�����Ŏg�p����SE�ݒ�̃��X�g�̃f�B�N�V���i��
+    /// ゲーム内で使用するSE設定のリストのディクショナリ
     /// </summary>
     private Dictionary<string, SEConfig> seConfigDict;
 
     #endregion
 
 
-    #region �ǂݎ���p�v���p�e�B(SE�̃��X�g��f�B�N�V���i�������Ǘ��p�ϐ�)
+    #region 読み取り専用プロパティ
 
     /// <summary>
-    /// �Q�[�����Ŏg�p����SE�ݒ�̃��X�g�̓ǂݎ���p
+    /// ゲーム内で使用するSE設定のリストの読み取り専用
     /// </summary>
     internal List<SEConfig> SeLists => seLists;
 
     #endregion
 
-
-    #region �Q�b�^�[���\�b�h
+    #region ゲッターメソッド
 
     /// <summary>
-    /// �Q�[�����Ŏg�p����SE�ݒ�̃��X�g�������ׂĕԂ�
+    /// ゲーム内で使用するSE設定のリスト情報をすべて返す
     /// </summary>
-    /// <returns>SEConfig�̃��X�g</returns>
+    /// <returns>SEConfigのリスト</returns>
     internal List<SEConfig> GetAllSeConfig()
     {
         return seLists;
     }
 
     /// <summary>
-    /// ���X�g����SEConfig��ID�ŒT���ĕԂ�
+    /// リスト内のSEConfigをIDで探して返す
     /// </summary>
     /// <param name="id"></param>
-    /// <returns>SEConfig�̃��X�g</returns>
+    /// <returns>SEConfigのリスト</returns>
     internal SEConfig GetSeConfig(string id)
     {
         if (seConfigDict == null)
@@ -67,41 +66,42 @@ public class SEConfigTable : ScriptableObject
 
     private void OnEnable()
     {
-        // ScriptableObject �ēǂݍ��ݎ��ɂ��Ή�
+        // ScriptableObject 再読み込み時にも対応
         InitializeDictionary();
     }
 
 
-    #region �v���C�x�[�g���\�b�h
+    #region プライベートメソッド
 
     /// <summary>
-    /// �f�B�N�V���i��������
+    /// ディクショナリ初期化
     /// </summary>
     private void InitializeDictionary()
     {
         seConfigDict = new Dictionary<string, SEConfig>();
         foreach (var se in seLists)
         {
-            //SE�ݒ�̈ꗗ�̃��X�g��SeId�ɕ����񂪓����Ă違�f�B�N�V���i���ɂ��̕�����i�L�[�j���܂܂�Ă��Ȃ��Ȃ�
+            //SE設定の一覧のリストのSeIdに文字列が入ってる＆ディクショナリにその文字列（キー）が含まれていないなら
             if (!string.IsNullOrEmpty(se.SeId) && !seConfigDict.ContainsKey(se.SeId))
             {
-                // �f�B�N�V���i���ɂ��̕������ǉ�
+                // ディクショナリにその文字列を追加
                 seConfigDict.Add(se.SeId, se);
                 foreach (var key in seConfigDict.Keys)
                 {
-                    //�ǂ̃L�[���o�^����Ă��邩�̃f�o�b�O���O
-                    Debug.Log($"�o�^����Ă���SE�L�[: {key}");
+                    //どのキーが登録されているかのデバッグログ
+                    Debug.Log($"登録されているSEキー: {key}");
                 }
             }
             else
             {
-                //�����L�[��o�^���悤�Ƃ��Ă��邩JudgementName����
-                Debug.LogWarning($"[SEConfigTable] �d���܂��͋��BGM ID: {se.SeId}");
+                //同じキーを登録しようとしているかJudgementNameが空白
+                Debug.LogWarning($"[SEConfigTable] 重複または空のBGM ID: {se.SeId}");
             }
         }
     }
 
     #endregion
+
 
 }
 

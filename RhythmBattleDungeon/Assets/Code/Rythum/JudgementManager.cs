@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -5,6 +6,10 @@ using UnityEngine;
 public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
 {
     private List<JudgementConfig> judgementConfigs;
+
+    private Dictionary<string, int> judgementCounts = new();
+
+    public event Action OnJudgementApplied;
 
     /// <summary>
     /// �O�����画������Z�b�g�A�b�v
@@ -54,7 +59,6 @@ public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
                 return judgement;
             }
         }
-
         // �����܂ŗ�����Miss
         return GetMissJudgement();
     }
@@ -73,6 +77,12 @@ public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
     /// </summary>
     public void ApplyJudgement(JudgementConfig config, int laneNumber)
     {
+        if (!judgementCounts.ContainsKey(config.JudgementName))
+            judgementCounts[config.JudgementName] = 0;
+
+        judgementCounts[config.JudgementName]++;
+        OnJudgementApplied?.Invoke();
+        Debug.Log(config.JudgementName.ToString());   
         // �X�R�A����
         ScoreManager.Instance.AddScore(config.ScoreValue);
 
@@ -87,5 +97,9 @@ public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
         }
 
         // ���o����
+    }
+    public int GetJudgementCount(string label)
+    {
+        return judgementCounts.TryGetValue(label, out int count) ? count : 0;
     }
 }

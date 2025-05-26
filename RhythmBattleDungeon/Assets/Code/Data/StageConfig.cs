@@ -1,82 +1,82 @@
+
 using System.Collections.Generic;
 using UnityEngine;
-
-[System.Serializable]
 /// <summary>
-/// �X�e�[�W�̐ݒ�f�[�^
+/// ステージの設定データ
 /// </summary>
+[System.Serializable]
 public class StageConfig
 {
-    #region  �X�e�[�W�ݒ�Ɋւ�������Ǘ��p�ϐ�
+    #region  ステージ設定に関する情報変数
 
     /// <summary>
-    /// �X�e�[�WID��
+    /// ステージID名
     /// </summary>
-    [SerializeField, Header("����ID��")]
+    [SerializeField, Header("譜面ID名")]
     private string stageId;
 
     /// <summary>
-    /// �X�e�[�W�Ŗ炷BGM�����̐ݒ���e
+    /// ステージで鳴らすBGM音源の設定内容
     /// </summary>
-    [SerializeField, Header("BGM�����̐ݒ���e")]
+    [SerializeField, Header("BGM音源の設定内容")]
     private BGMConfig stageBgm;
 
     /// <summary>
-    /// ���ʃf�[�^Json�t�@�C����
+    /// 譜面データJsonファイル名
     /// </summary>
-    [SerializeField, Header("���ʃf�[�^Json�t�@�C����")]
+    [SerializeField, Header("譜面データJsonファイル名")]
     private string chartFileName;
 
     /// <summary>
-    /// �m�[�c�̃X�N���[���ݒ�
+    /// ノーツのスクロール設定
     /// </summary>
-    [SerializeField, Header("�m�[�c�̃X�N���[���ݒ�")]
+    [SerializeField, Header("ノーツのスクロール設定")]
     private NoteScrollConfig scrollConfig;
 
     /// <summary>
-    /// ����ݒ�iPerfect / Good / Miss �Ȃǁj
+    /// 判定設定（Perfect / Good / Miss など）
     /// </summary>
-    [SerializeField, Header("����ݒ�iPerfect / Good / Miss �Ȃǁj")]
+    [SerializeField, Header("判定設定（Perfect / Good / Miss など）")]
     private List<JudgementConfig> judgementConfigs;
 
     /// <summary>
-    /// �y�ȏI����̑J�ڑҋ@�b��
+    /// 楽曲終了後の遷移待機秒数
     /// </summary>
-    [SerializeField, Header("�y�ȏI����̑J�ڑҋ@�b��")]
+    [SerializeField, Header("楽曲終了後の遷移待機秒数")]
     private float delayBeforeResult = 2.0f;
 
     #endregion
 
 
-    #region �ǂݎ���p�v���p�e�B(�X�e�[�W�ݒ�Ɋւ�������Ǘ��p�ϐ�)
+    #region 読み取り専用プロパティ(ステージ設定に関する情報変数)
 
     /// <summary>
-    /// ����ID���̓ǂݎ���p
+    /// 譜面ID名の読み取り専用
     /// </summary>
     internal string StageId => stageId;
 
     /// <summary>
-    /// ����BGM�����̐ݒ���e�̓ǂݎ���p
+    /// 譜面BGM音源の設定内容の読み取り専用
     /// </summary>
     internal BGMConfig StageBgm => stageBgm;
 
     /// <summary>
-    /// ���ʃf�[�^Json�t�@�C�����̓ǂݎ���p
+    /// 譜面データJsonファイル名の読み取り専用
     /// </summary>
     internal string ChartFileName => chartFileName;
 
     /// <summary>
-    /// �m�[�c�̃X�N���[���ݒ�̓ǂݎ���p
+    /// ノーツのスクロール設定の読み取り専用
     /// </summary>
     internal NoteScrollConfig ScrollConfig => scrollConfig;
 
     /// <summary>
-    ///  ����ݒ�iPerfect / Good / Miss �Ȃǁj�̓ǂݎ���p
+    ///  判定設定（Perfect / Good / Miss など）の読み取り専用
     /// </summary>
     internal List<JudgementConfig> JudgementConfigs => judgementConfigs;
 
     /// <summary>
-    /// �y�ȏI����̑J�ڑҋ@�b���̓ǂݎ���p
+    /// 楽曲終了後の遷移待機秒数の読み取り専用
     /// </summary>
     internal float DelayBeforeResult => delayBeforeResult;
 

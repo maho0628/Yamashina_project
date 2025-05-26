@@ -1,40 +1,39 @@
 using UnityEngine;
 
 /// <summary>
-/// �V�[�����Ƃ�BGM�̐ݒ�f�[�^
+/// シーンごとのBGMの設定データ
 /// </summary>
 [System.Serializable]
 public class SceneBGMConfig
 {
-    #region �V�[��BGM�̐ݒ�Ɋւ�������Ǘ��p�ϐ�
+    #region シーンBGMの設定に関する内部管理用変数
 
     /// <summary>
-    /// �Ώۂ̃V�[����
+    /// 対象のシーン名
     /// </summary>
-    [SerializeField, Header("�Ώۂ̃V�[����")]
+    [SerializeField, Header("対象のシーン名")]
     private string sceneName;
 
     /// <summary>
-    /// �Đ�����BGM��ID
+    /// 再生するBGMのID
     /// </summary>
-    [SerializeField, Header("�Đ�����BGM��ID")]
+    [SerializeField, Header("再生するBGMのID")]
     private string bgmId;
 
     #endregion
 
 
-    #region �ǂݎ���p�v���p�e�B(�V�[��BGM�̐ݒ�Ɋւ�������Ǘ��p�ϐ�)
+    #region 読み取り専用プロパティ(シーンBGMの設定に関する内部管理用変数)
 
     /// <summary>
-    /// �Ώۂ̃V�[�����̓ǂݎ���p
+    /// 対象のシーン名の読み取り専用
     /// </summary>
     internal string SceneName => sceneName;
 
     /// <summary>
-    /// �Đ�����BGM��ID�̓ǂݎ���p
+    /// 再生するBGMのIDの読み取り専用
     /// </summary>
     internal string BgmId => bgmId;
 
     #endregion
 }
-

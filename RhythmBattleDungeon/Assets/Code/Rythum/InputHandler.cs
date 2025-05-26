@@ -105,7 +105,7 @@ public class InputHandler : MonoBehaviour
         float diff = Mathf.Abs(note.SpawnTime - currentTime);
 
         //���̓^�C�~���O�ɉ�����������擾
-        var judgement = JudgementManager.Instance.EvaluateTiming(diff); 
+        var judgement = JudgementManager.Instance.EvaluateTiming(diff);
 
         //���茋�ʂ��Ȃ��̂Ń��^�[��
         if (judgement == null) return;
