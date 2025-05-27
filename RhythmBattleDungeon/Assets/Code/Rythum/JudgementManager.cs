@@ -19,14 +19,14 @@ public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
         judgementConfigs = new List<JudgementConfig>(configs);
 
         // Miss ���܂܂Ȃ��ꍇ�� fallback ��ǉ�
-        if (!judgementConfigs.Exists(j => j.JudgementName == "Miss"))
+        if (!judgementConfigs.Exists(j => j.Logic.SetJudgementName == "Miss"))
         {
             Debug.LogWarning("[JudgementManager] Miss ���肪���o�^�Afallback ��ǉ�");
             judgementConfigs.Add(JudgementConfig.CreateFallbackMiss());
         }
 
         // ����E�B���h�E�����������ɕ��ёւ��iPerfect �� Great �� Good �� Miss�j
-        judgementConfigs.Sort((a, b) => a.MaxTimeDifference.CompareTo(b.MaxTimeDifference));
+        judgementConfigs.Sort((a, b) => a.Logic.SetMaxTimeDifference.CompareTo(b.Logic.SetMaxTimeDifference));
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
     /// </summary>
     public JudgementConfig GetMissJudgement()
     {
-        var miss = judgementConfigs.FirstOrDefault(j => j.JudgementName == "Miss");
+        var miss = judgementConfigs.FirstOrDefault(j => j.Logic.JudgementName == "Miss");
         if (miss == null)
         {
             Debug.LogError("[JudgementManager] Miss ���肪�擾�ł��܂���ł���");
@@ -54,7 +54,7 @@ public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
     {
         foreach (var judgement in judgementConfigs)
         {
-            if (Mathf.Abs(timeDifference) <= judgement.MaxTimeDifference)
+            if (Mathf.Abs(timeDifference) <= judgement.Logic.SetMaxTimeDifference)
             {
                 return judgement;
             }
@@ -70,24 +70,24 @@ public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
             Debug.LogError("[JudgementManager] ����f�[�^������������Ă��܂���");
             return 0f;
         }
-        return judgementConfigs.Max(j => j.MaxTimeDifference);
+        return judgementConfigs.Max(j => j.Logic.SetMaxTimeDifference);
     }
     /// <summary>
     /// �X�R�A�A�R���{�A�G�t�F�N�g�Ȃǂ̏���
     /// </summary>
     public void ApplyJudgement(JudgementConfig config, int laneNumber)
     {
-        if (!judgementCounts.ContainsKey(config.JudgementName))
-            judgementCounts[config.JudgementName] = 0;
+        if (!judgementCounts.ContainsKey(config.Logic.JudgementName))
+            judgementCounts[config.Logic.JudgementName] = 0;
 
-        judgementCounts[config.JudgementName]++;
+        judgementCounts[config.Logic.JudgementName]++;
         OnJudgementApplied?.Invoke();
-        Debug.Log(config.JudgementName.ToString());   
+        Debug.Log(config.Logic.JudgementName.ToString());   
         // �X�R�A����
-        ScoreManager.Instance.AddScore(config.ScoreValue);
+        ScoreManager.Instance.AddScore(config.Logic.SetScoreValue);
 
         // �R���{����
-        if (config.BreaksCombo)
+        if (config.Logic.SetBreaksCombo)
         {
             ComboManager.Instance.ResetCombo();
         }
