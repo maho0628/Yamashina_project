@@ -60,14 +60,14 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
         Debug.Log("[ScoreManager] CalculateMaxScore �Ă΂ꂽ");
 
         var config = StageManager.Instance.GetCurrentStageConfig();
-        var perfectConfig = config?.JudgementConfigs.FirstOrDefault(j => j.JudgementName == "Perfect");
+        var perfectConfig = config?.JudgementConfigs.FirstOrDefault(j => j.Logic.SetJudgementName == "Perfect");
 
         if (perfectConfig == null)
         {
             Debug.LogError("[ScoreManager] JudgementConfig �� 'Perfect' ���肪���݂��܂���");
             throw new System.Exception("Perfect ���肪���݂��Ȃ����߁A�X�R�A�v�Z���ł��܂���");
         }
-        int bestScore = perfectConfig.ScoreValue;
+        int bestScore = perfectConfig.Logic.SetScoreValue;
         int totalNotes = NoteManager.Instance.TotalNoteCount;
 
         maxScore = bestScore * totalNotes;
