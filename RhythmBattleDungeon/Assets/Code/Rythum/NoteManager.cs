@@ -190,7 +190,7 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
     private void CheckMissNotes(float currentTime)
     {
 
-        float missWindow = missJudgementConfig.MaxTimeDifference;
+        float missWindow = missJudgementConfig.Logic.SetMaxTimeDifference;
 
         for (int i = activeNotes.Count - 1; i >= 0; i--)
         {

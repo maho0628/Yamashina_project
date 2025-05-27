@@ -10,9 +10,8 @@ using UnityEngine;
 public class JudgementConfigTable : ScriptableObject
 {
     #region 判定のリストやディクショナリの内部管理用変数
-
     /// <summary>
-    ///ゲーム内で使用する判定関連の一覧のリスト
+    /// ゲーム内で使用する判定関連の一覧のリスト
     /// </summary>
     [SerializeField, Header("ゲーム内で使用する判定関連の一覧")]
     private List<JudgementConfig> judgementLists = new List<JudgementConfig>();
@@ -21,24 +20,18 @@ public class JudgementConfigTable : ScriptableObject
     /// ゲーム内で使用する判定関連のディクショナリ
     /// </summary>
     private Dictionary<string, JudgementConfig> judgementConfigDict;
-
     #endregion
 
-
     #region 読み取り専用プロパティ
-
     /// <summary>
     /// 判定関連のリストの読み取り専用
     /// </summary>
     internal List<JudgementConfig> JudgementLists => judgementLists;
-
     #endregion
 
-
     #region ゲッターメソッド
-
     /// <summary>
-    ///判定関連のリスト情報をすべて返す 
+    /// 判定関連のリスト情報をすべて返す 
     /// </summary>
     /// <returns>JudgementConfigのList</returns>
     internal List<JudgementConfig> GetAllJudgementConfig()
@@ -49,60 +42,123 @@ public class JudgementConfigTable : ScriptableObject
     /// <summary>
     /// リスト内のJudgementConfigをIDで探して返す
     /// </summary>
-    /// <param name="id"></param>
-    /// <returns>JudgementConfig</returns>
-    internal JudgementConfig GetJudgementConfig(string id)
+    /// <param name="judgementName">判定名</param>
+    /// <returns>JudgementConfig（見つからない場合はnull）</returns>
+    internal JudgementConfig GetJudgementConfig(string judgementName)
     {
         if (judgementConfigDict == null)
         {
             InitializeDictionary();
         }
 
-        judgementConfigDict.TryGetValue(id, out var config);
+        judgementConfigDict.TryGetValue(judgementName, out var config);
         return config;
     }
 
+    /// <summary>
+    /// 指定した判定名が存在するかチェック
+    /// </summary>
+    /// <param name="judgementName">判定名</param>
+    /// <returns>存在する場合true</returns>
+    internal bool HasJudgementConfig(string judgementName)
+    {
+        if (judgementConfigDict == null)
+        {
+            InitializeDictionary();
+        }
+
+        return judgementConfigDict.ContainsKey(judgementName);
+    }
+
+    /// <summary>
+    /// 登録されている判定名の一覧を取得
+    /// </summary>
+    /// <returns>判定名の配列</returns>
+    internal string[] GetAllJudgementNames()
+    {
+        if (judgementConfigDict == null)
+        {
+            InitializeDictionary();
+        }
+
+        var names = new string[judgementConfigDict.Count];
+        judgementConfigDict.Keys.CopyTo(names, 0);
+        return names;
+    }
     #endregion
 
-
-
+    #region Unity イベント
     private void OnEnable()
     {
         // ScriptableObject 再読み込み時にも対応
         InitializeDictionary();
     }
 
+    private void OnValidate()
+    {
+        // Inspector での変更時にディクショナリを再構築
+        if (Application.isPlaying)
+        {
+            InitializeDictionary();
+        }
+    }
+    #endregion
 
     #region プライベートメソッド
-
     /// <summary>
     /// ディクショナリの初期化
     /// </summary>
     private void InitializeDictionary()
     {
         judgementConfigDict = new Dictionary<string, JudgementConfig>();
+
+        if (judgementLists == null || judgementLists.Count == 0)
+        {
+            Debug.LogWarning($"[JudgementConfigTable] 判定リストが空です: {name}");
+            return;
+        }
+
         foreach (var judgement in judgementLists)
         {
-            //判定関連の一覧のリストのJudgementNameに文字列が入ってる＆ディクショナリにその文字列（キー）が含まれていないなら
-            if (!string.IsNullOrEmpty(judgement.JudgementName) && !judgementConfigDict.ContainsKey(judgement.JudgementName))
+            if (judgement == null)
+            {
+                Debug.LogWarning($"[JudgementConfigTable] nullの判定設定が含まれています: {name}");
+                continue;
+            }
+
+            if (judgement.Logic == null)
+            {
+                Debug.LogWarning($"[JudgementConfigTable] LogicConfigがnullの判定設定があります: {name}");
+                continue;
+            }
+
+            string judgementName = judgement.Logic.JudgementName;
+
+            // 判定関連の一覧のリストのJudgementNameに文字列が入ってる＆ディクショナリにその文字列（キー）が含まれていないなら
+            if (!string.IsNullOrEmpty(judgementName) && !judgementConfigDict.ContainsKey(judgementName))
             {
                 // ディクショナリにその文字列を追加
-                judgementConfigDict.Add(judgement.JudgementName, judgement);
-                foreach (var key in judgementConfigDict.Keys)
-                {
-                    //どのキーが登録されているかのデバッグログ
-                    Debug.Log($"登録されているJudgementName: {key}");
-                }
+                judgementConfigDict.Add(judgementName, judgement);
+                Debug.Log($"[JudgementConfigTable] 登録されたJudgementName: {judgementName}");
             }
             else
             {
-                //同じキーを登録しようとしているかJudgementNameが空白
-                Debug.LogWarning($"[JudgementConfigTable] 重複または空のBGM ID: {judgement.JudgementName}");
+                // 同じキーを登録しようとしているかJudgementNameが空白
+                if (string.IsNullOrEmpty(judgementName))
+                {
+                    Debug.LogWarning($"[JudgementConfigTable] JudgementNameが空または null です: {name}");
+                }
+                else
+                {
+                    Debug.LogWarning($"[JudgementConfigTable] 重複したJudgementName: {judgementName} in {name}");
+                }
             }
         }
+
+        Debug.Log($"[JudgementConfigTable] 初期化完了。登録数: {judgementConfigDict.Count}");
     }
-
     #endregion
-
 }
+
+  
 
