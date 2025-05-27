@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -8,110 +9,17 @@ using UnityEngine;
 public class JudgementConfig
 {
     #region 判定の内部管理用変数
+    [SerializeField, Header(" ロジック判定設定")]
 
-    /// <summary>
-    /// 判定の名前（例: Perfect, Great, Missなど）
-    /// </summary>
-    [SerializeField, Header("判定の名前（例: Perfect / Great / Miss など）")]
-    private string judgementName;
+    private JudgementLogicConfig logic;
+    [SerializeField, Header(" 見た目・演出設定")]
 
-    /// <summary>
-    /// 判定が成立する許容時間（理想タイミングから±何秒以内か）
-    /// 例：0.05秒なら理想タイミングの前後0.05秒以内でこの判定になる。
-    /// </summary>
-    [Tooltip("この秒数以内に押せばこの判定になります（例: 0.05 = ±0.05秒）")]
-    [SerializeField, Header("判定の許容時間（理想タイミングから何秒ズレてもOKか）")]
-    private float maxTimeDifference;
+    private JudgementVisualConfig visual;
 
     #endregion
 
-
-    #region 判定の見た目の設定の内部管理用変数
-
-    /// <summary>
-    /// 判定の表示に使うカラー。UIの色分けなどに利用。
-    /// </summary>
-    [SerializeField, Header("判定の表示カラー（UIなどに使用）")]
-    private Color displayColor;
-
-    /// <summary>
-    /// 判定のアイコン画像（任意）
-    /// 設定がない場合は名前のみ表示。
-    /// </summary>
-    [Tooltip("表示用の画像。設定しない場合は名前だけ表示されます。")]
-    [SerializeField, Header("判定のアイコン（任意）")]
-    private Sprite displayIcon;
-
-    [SerializeField, Header("プレイ中に表示される判定の表示名")]
-    private string displayJudgementName;
-
-    #endregion
-
-    #region スコア・コンボ関連の内部管理用変数
-
-    /// <summary>
-    /// 判定時に加算するスコア
-    /// </summary>
-    [SerializeField, Header("この判定時に加算するスコア")]
-    private int scoreValue;
-
-    /// <summary>
-    /// この判定でコンボを切るかどうか、例：ミスならコンボを切るなど
-    /// </summary>
-    [SerializeField, Header("この判定でコンボを切るか、例：ミスならコンボを切るなど")]
-    private bool breaksCombo;
-
-    #endregion
-
-
-    #region 読み取り専用プロパティ(判定の内部管理用変数)
-
-    /// <summary>
-    /// 判定名の読み取り専用
-    /// </summary>
-    internal string JudgementName => judgementName;
-
-    /// <summary>
-    /// プレイ中に表示される判定の表示名の読み取り専用
-    /// </summary>
-    internal　string DisplayJudgementName => displayJudgementName;   
-
-    /// <summary>
-    /// 判定の許容時間の読み取り専用
-    /// </summary>
-    internal float MaxTimeDifference => maxTimeDifference;
-    #endregion
-
-
-    #region 読み取り専用プロパティ(判定の見た目の設定の内部管理用変数)
-
-    /// <summary>
-    /// 判定表示用カラーの読み取り専用
-    /// </summary>
-    internal Color DisplayColor => displayColor;
-
-    /// <summary>
-    /// 判定表示用アイコンの読み取り専用
-    /// </summary>
-    internal Sprite DisplayIcon => displayIcon;
-    #endregion
-
-
-    #region 読み取り専用プロパティ(コンボ関連の内部管理用変数)
-
-    /// <summary>
-    /// この判定で加算されるスコア値の読み取り専用
-    /// </summary>
-    internal int ScoreValue => scoreValue;
-
-    /// <summary>
-    /// この判定でコンボが切れるかどうかの読み取り専用
-    /// </summary>
-    internal bool BreaksCombo => breaksCombo;
-
-    #endregion
-
-
+    internal JudgementLogicConfig Logic { get { return logic; } }
+    internal JudgementVisualConfig Visual { get { return visual; } }
     #region コンストラクタなど
 
     /// <summary>
@@ -122,12 +30,13 @@ public class JudgementConfig
     {
         return new JudgementConfig
         {
-            judgementName = "Miss",
-            maxTimeDifference = 999f,
-            displayColor = Color.gray,
-            displayIcon = null,
-            scoreValue = 0,
-            breaksCombo = false
+            logic = new JudgementLogicConfig
+            {
+                SetJudgementName = "Miss",
+                SetBreaksCombo = true,
+                SetMaxTimeDifference = 99f
+                
+            }
 
 
         };
@@ -143,20 +52,41 @@ public class JudgementConfig
     /// <param name="score">スコアの値</param>
     /// <param name="breakCom">コンボが途切れるかどうか</param>
     /// <param name="breakCom">コンボが途切れるかどうか</param>
-    public JudgementConfig(string name, float maxDiff, bool breakCom, int score, Color col, Sprite icon = null)
+
+    /// <summary>
+    /// ロジック設定のみを初期化するコンストラクタ
+    /// </summary>
+    public JudgementConfig(string name, float maxDiff, int score, bool breakCom)
     {
-        judgementName = name;
-        maxTimeDifference = maxDiff;
-        displayColor = col;
-        displayIcon = icon;
-        scoreValue = score;
-        breaksCombo = breakCom;
+        logic = new JudgementLogicConfig(name, maxDiff, score, breakCom);
+        visual = new JudgementVisualConfig(); // デフォルト値で初期化
     }
 
     /// <summary>
+    /// ビジュアル設定を設定するメソッド
+    /// </summary>
+    /// <param name="name">表示名</param>
+    /// <param name="col">表示色</param>
+    /// <param name="icon">表示アイコン（任意）</param>
+    /// <param name="showTime">表示時間（デフォルト: 0.5f）</param>
+    /// <param name="fadeTime">フェードアウト時間（デフォルト: 0.3f）</param>
+    /// <returns>JudgementConfig（メソッドチェーン用）</returns>
+    public JudgementConfig SetVisual(string name, Color col, Sprite icon = null, float showTime = 0.5f, float fadeTime = 0.3f)
+    {
+        visual = new JudgementVisualConfig(name, col, icon, showTime, fadeTime);
+        return this; // メソッドチェーン用
+    }
+
+
+    // デフォルトコンストラクタ
+    public JudgementConfig()
+    {
+        logic = new JudgementLogicConfig();
+        visual = new JudgementVisualConfig();
+    }
+    /// <summary>
     /// JudgementConfigをNewする用
     /// </summary>
-    public JudgementConfig() { }
 
     #endregion
 }

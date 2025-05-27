@@ -28,18 +28,21 @@ MonoBehaviour:
       maxTimeDifference: 0.2
       displayColor: {r: 0, g: 0, b: 0, a: 0}
       displayIcon: {fileID: 0}
+      displayJudgementName: 
       scoreValue: 100
       breaksCombo: 0
     - judgementName: Great
       maxTimeDifference: 0.5
       displayColor: {r: 0, g: 0, b: 0, a: 0}
       displayIcon: {fileID: 0}
+      displayJudgementName: 
       scoreValue: 50
       breaksCombo: 0
     - judgementName: Miss
       maxTimeDifference: 5
       displayColor: {r: 0, g: 0, b: 0, a: 0}
       displayIcon: {fileID: 0}
+      displayJudgementName: 
       scoreValue: 0
       breaksCombo: 1
     delayBeforeResult: 0.2
@@ -58,18 +61,21 @@ MonoBehaviour:
       maxTimeDifference: 0.2
       displayColor: {r: 0, g: 0, b: 0, a: 0}
       displayIcon: {fileID: 0}
+      displayJudgementName: 
       scoreValue: 100
       breaksCombo: 0
     - judgementName: Great
       maxTimeDifference: 0.5
       displayColor: {r: 0, g: 0, b: 0, a: 0}
       displayIcon: {fileID: 0}
+      displayJudgementName: 
       scoreValue: 50
       breaksCombo: 0
     - judgementName: Miss
       maxTimeDifference: 5
       displayColor: {r: 0, g: 0, b: 0, a: 0}
       displayIcon: {fileID: 0}
+      displayJudgementName: 
       scoreValue: 0
       breaksCombo: 1
     delayBeforeResult: 0.2
