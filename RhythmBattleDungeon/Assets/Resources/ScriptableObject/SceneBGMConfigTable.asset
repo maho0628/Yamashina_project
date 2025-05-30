@@ -17,3 +17,5 @@ MonoBehaviour:
     bgmId: 'Shining Star '
   - sceneName: ResultScene
     bgmId: bbbb
+  - sceneName: TitleScene
+    bgmId: bbbb
