@@ -24,27 +24,45 @@ MonoBehaviour:
     chartFileName: test
     scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
     judgementConfigs:
-    - judgementName: Perfect
-      maxTimeDifference: 0.2
-      displayColor: {r: 0, g: 0, b: 0, a: 0}
-      displayIcon: {fileID: 0}
-      displayJudgementName: 
-      scoreValue: 100
-      breaksCombo: 0
-    - judgementName: Great
-      maxTimeDifference: 0.5
-      displayColor: {r: 0, g: 0, b: 0, a: 0}
-      displayIcon: {fileID: 0}
-      displayJudgementName: 
-      scoreValue: 50
-      breaksCombo: 0
-    - judgementName: Miss
-      maxTimeDifference: 5
-      displayColor: {r: 0, g: 0, b: 0, a: 0}
-      displayIcon: {fileID: 0}
-      displayJudgementName: 
-      scoreValue: 0
-      breaksCombo: 1
+    - logic:
+        judgementName: Perfect
+        maxTimeDifference: 0.05
+        scoreValue: 100
+        breaksCombo: 0
+      visual:
+        displayName: PERFECT
+        displayColor: {r: 0.9764706, g: 0.16078429, b: 0.8414409, a: 1}
+        displayIcon: {fileID: 0}
+        showDuration: 0.5
+        fadeOutDuration: 0.3
+        scaleInTime: 0.2
+        scaleEase: 27
+    - logic:
+        judgementName: Great
+        maxTimeDifference: 0.05
+        scoreValue: 100
+        breaksCombo: 0
+      visual:
+        displayName: GREAT
+        displayColor: {r: 0.16793872, g: 0.47111237, b: 0.86415094, a: 1}
+        displayIcon: {fileID: 0}
+        showDuration: 0.5
+        fadeOutDuration: 0.3
+        scaleInTime: 0.2
+        scaleEase: 27
+    - logic:
+        judgementName: Miss
+        maxTimeDifference: 0.05
+        scoreValue: 0
+        breaksCombo: 1
+      visual:
+        displayName: MISS
+        displayColor: {r: 0.96981126, g: 0.16651474, b: 0.16651474, a: 1}
+        displayIcon: {fileID: 0}
+        showDuration: 0.1
+        fadeOutDuration: 0.1
+        scaleInTime: 0.2
+        scaleEase: 0
     delayBeforeResult: 0.2
   - stageId: bbbb
     stageBgm:
@@ -57,25 +75,43 @@ MonoBehaviour:
     chartFileName: test
     scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
     judgementConfigs:
-    - judgementName: Perfect
-      maxTimeDifference: 0.2
-      displayColor: {r: 0, g: 0, b: 0, a: 0}
-      displayIcon: {fileID: 0}
-      displayJudgementName: 
-      scoreValue: 100
-      breaksCombo: 0
-    - judgementName: Great
-      maxTimeDifference: 0.5
-      displayColor: {r: 0, g: 0, b: 0, a: 0}
-      displayIcon: {fileID: 0}
-      displayJudgementName: 
-      scoreValue: 50
-      breaksCombo: 0
-    - judgementName: Miss
-      maxTimeDifference: 5
-      displayColor: {r: 0, g: 0, b: 0, a: 0}
-      displayIcon: {fileID: 0}
-      displayJudgementName: 
-      scoreValue: 0
-      breaksCombo: 1
+    - logic:
+        judgementName: 
+        maxTimeDifference: 0.05
+        scoreValue: 100
+        breaksCombo: 0
+      visual:
+        displayName: PERFECT
+        displayColor: {r: 1, g: 1, b: 1, a: 1}
+        displayIcon: {fileID: 0}
+        showDuration: 0.5
+        fadeOutDuration: 0.3
+        scaleInTime: 0.2
+        scaleEase: 27
+    - logic:
+        judgementName: 
+        maxTimeDifference: 0.05
+        scoreValue: 100
+        breaksCombo: 0
+      visual:
+        displayName: PERFECT
+        displayColor: {r: 1, g: 1, b: 1, a: 1}
+        displayIcon: {fileID: 0}
+        showDuration: 0.5
+        fadeOutDuration: 0.3
+        scaleInTime: 0.2
+        scaleEase: 27
+    - logic:
+        judgementName: 
+        maxTimeDifference: 0.05
+        scoreValue: 100
+        breaksCombo: 0
+      visual:
+        displayName: PERFECT
+        displayColor: {r: 1, g: 1, b: 1, a: 1}
+        displayIcon: {fileID: 0}
+        showDuration: 0.5
+        fadeOutDuration: 0.3
+        scaleInTime: 0.2
+        scaleEase: 27
     delayBeforeResult: 0.2
