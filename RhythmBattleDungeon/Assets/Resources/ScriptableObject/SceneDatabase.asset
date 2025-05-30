@@ -15,7 +15,7 @@ MonoBehaviour:
   scenes:
   - sceneReference: {fileID: 11400000, guid: ea99e736fae010d409715d6aa055911d, type: 2}
     nextScene: {fileID: 11400000, guid: 69af19a317f1dbd4489f4584f6e8b79a, type: 2}
-    previousScene: {fileID: 0}
+    previousScene: {fileID: 11400000, guid: ea99e736fae010d409715d6aa055911d, type: 2}
   - sceneReference: {fileID: 11400000, guid: 69af19a317f1dbd4489f4584f6e8b79a, type: 2}
     nextScene: {fileID: 11400000, guid: 5bf7d8c90db8b484faecf2186c0639d9, type: 2}
     previousScene: {fileID: 11400000, guid: ea99e736fae010d409715d6aa055911d, type: 2}
