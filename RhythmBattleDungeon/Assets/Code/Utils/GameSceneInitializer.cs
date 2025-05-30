@@ -29,10 +29,12 @@ public class GameSceneInitializer : MonoBehaviour
             JudgementManager.Instance.Setup(judgementConfigs);
             if (currentStage != null)
             {
-                // �X�e�[�W�p��BGM������Ȃ炻����Đ�
+                // ステージ用のBGMがあるならそれを再生
+
                 AudioManager.Instance.ForcePlayBGM(currentStage.StageBgm.BgmId);
 
-                Debug.Log($"[GameSceneInitializer] �X�e�[�W�pBGM���Đ�: {currentStage.StageBgm.BgmId}");
+                Debug.Log($"[GameSceneInitializer] ステージ用BGMを再生: {currentStage.StageBgm.BgmId}");
+
             }
             StartCoroutine(WaitForBGMThenInitialize());
 
@@ -49,22 +51,20 @@ public class GameSceneInitializer : MonoBehaviour
             string bgmId = sceneBgmConfigTable.GetSceneBgmConfigName(sceneName);
             Debug.Log($"�V�[����: {sceneName}, BGM ID: {bgmId}");
             AudioManager.Instance.PlayBGMIfNotPlaying(bgmId);
-            Debug.LogWarning("�X�e�[�W���܂��I������Ă��܂���I");
+            Debug.LogWarning("ステージがまだ選択されていません！");
+
             return;
         }
 
     }
     private IEnumerator WaitForBGMThenInitialize()
     {
-        // BGM���Đ�����āAscrollDuration�b�ȏ�o�܂ő҂�
         var scrollDuration = currentStage.ScrollConfig.ScrollDuration;
         yield return new WaitUntil(() => AudioManager.Instance.GetCurrentBGMTime() > scrollDuration);
 
-        // BGM���m���Ɏn�܂������ƁANoteManager������
         NoteManager.Instance.Initialize();
         Debug.Log("NoteManager ��������");
 
-        // �C���v�b�g��������
         FindAnyObjectByType<InputHandler>()?.InitializeInput();
     }
 

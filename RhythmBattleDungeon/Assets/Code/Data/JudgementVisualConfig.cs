@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 /// <summary>
@@ -22,6 +23,11 @@ public class JudgementVisualConfig
     [SerializeField, Header("フェードアウト時間（秒）")]
     private float fadeOutDuration = 0.3f;
     #endregion
+    [Header("スケーリング")]
+    [SerializeField] private float scaleInTime = 0.2f;
+    [SerializeField] private Ease scaleEase = Ease.OutBack;
+
+
 
     #region 読み取り専用プロパティ
     /// <summary>
@@ -50,6 +56,8 @@ public class JudgementVisualConfig
     internal float FadeOutDuration => fadeOutDuration;
     #endregion
 
+    internal float SetScaleInTime => scaleInTime;
+    internal Ease SetScaleEase => scaleEase;
     #region 設定用プロパティ（必要に応じて）
     /// <summary>
     /// 表示名の設定用プロパティ
