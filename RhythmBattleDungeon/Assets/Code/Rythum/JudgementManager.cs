@@ -94,6 +94,9 @@ public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
         else
         {
             ComboManager.Instance.IncrementCombo();
+            AnimationManager.Instance.ShowComboEffect(config);
+
+
         }
 
         // ���o����

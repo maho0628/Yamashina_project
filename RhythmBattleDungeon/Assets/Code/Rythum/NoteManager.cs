@@ -201,6 +201,8 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
             if (currentTime - note.SpawnTime > missWindow)
             {
                 JudgementManager.Instance.ApplyJudgement(missJudgementConfig, activeNotes[i].LaneNumber);
+                AnimationManager.Instance.ShowScoreEffect(missJudgementConfig);
+                AnimationManager.Instance.ShowJudgeEffect(missJudgementConfig);
                 activeNotes.RemoveAt(i);
             }
         }

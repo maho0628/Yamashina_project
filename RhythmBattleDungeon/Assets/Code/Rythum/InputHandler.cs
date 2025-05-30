@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.STP;
 
 /// <summary>
 /// �v���C���[�̓��͂��󂯎��A�Ή����郌�[���̃m�[�c�Ƃ̃^�C�~���O������s���N���X�B
@@ -7,6 +8,7 @@ using UnityEngine.InputSystem;
 public class InputHandler : MonoBehaviour
 {
     #region �v���C���[�̓��͊֘A�̓����Ǘ��p�ϐ�
+
 
     /// <summary>
     /// Unity Input System�Ő������ꂽ�v���C���[���̓A�N�V�����̃C���X�^���X�B
@@ -31,6 +33,9 @@ public class InputHandler : MonoBehaviour
     /// </summary>
     private float maxJudgementTime;
 
+  
+       
+       
     #endregion
 
 
@@ -54,8 +59,9 @@ public class InputHandler : MonoBehaviour
     /// </summary>
     public void InitializeInput()
     {
+        
 
-        maxJudgementTime = JudgementManager.Instance.GetMaxJudgementTime();
+    maxJudgementTime = JudgementManager.Instance.GetMaxJudgementTime();
         inputActions = new PlayerInputActions();
         inputActions.Gameplay.Enable();
 
@@ -84,6 +90,7 @@ public class InputHandler : MonoBehaviour
                 Debug.LogWarning($"[InputHandler] �A�N�V���� {actionName} ��������܂���");
             }
         }
+     
     }
 
     #endregion
@@ -115,6 +122,10 @@ public class InputHandler : MonoBehaviour
 
         //���茋�ʂ�JudgementManager�ɓn���ăX�R�A�Ȃǂ𔽉f���Ă��炤
         JudgementManager.Instance.ApplyJudgement(judgement, note.LaneNumber);
+        AnimationManager.Instance.ShowScoreEffect(judgement);
+        AnimationManager.Instance.ShowJudgeEffect(judgement);
+
+
     }
 
 

@@ -7,18 +7,20 @@ public class TitleManager : MonoBehaviour
 
     private Button titleButton;
 
-    
-    
-    private void Awake()
+    /// <summary>
+    ///  GameInitializer.Instanceがイニシャライズされるまで待つ
+    /// </summary>
+
+    private void Start()
     {
         titleButton = GameObject.Find("TitleButton").GetComponent<Button>();
-        
+
         //
-        NextScene();
+        OnTitleButtonClicked();
     }
 
 
-    private void NextScene()
+    private void OnTitleButtonClicked()
     {
 
         SceneDatabase sceneDatabase = GameInitializer.Instance.GetSceneDatabase();
