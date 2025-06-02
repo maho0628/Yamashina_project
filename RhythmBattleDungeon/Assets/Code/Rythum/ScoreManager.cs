@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Linq;
 using UnityEditor.TerrainTools;
@@ -9,6 +10,7 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
     private int currentScore = 0;
     private int maxScore = 0;
 
+    public event Action<int> OnScoreChanged;
 
     private void Start()
     {
@@ -39,8 +41,9 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
     public void AddScore(int score)
     {
         currentScore += score;
+        OnScoreChanged?.Invoke(currentScore);
+
         // UI�X�V������΂����ŌĂ�
-        //ScoreUI.Instance?.UpdateScore(currentScore, maxScore);
     }
 
     public int GetCurrentScore() => currentScore;
