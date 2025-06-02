@@ -87,7 +87,7 @@ public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
         ScoreManager.Instance.AddScore(config.Logic.SetScoreValue);
 
         // �R���{����
-        if (config.Logic.SetBreaksCombo)
+        if (config.Logic.ShouldBreakCombo)
         {
             ComboManager.Instance.ResetCombo();
         }

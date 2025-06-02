@@ -17,7 +17,7 @@ public class JudgementLogicConfig
     private int scoreValue = 100;
 
     [SerializeField, Header("この判定でコンボを切るか？")]
-    private bool breaksCombo = false;
+    private bool shouldBreakCombo = false;
     #endregion
 
     #region 読み取り専用プロパティ
@@ -36,10 +36,7 @@ public class JudgementLogicConfig
     /// </summary>
     internal int ScoreValue => scoreValue;
 
-    /// <summary>
-    /// この判定でコンボが切れるかどうかの読み取り専用
-    /// </summary>
-    internal bool BreaksCombo => breaksCombo;
+
     #endregion
 
     #region 設定用プロパティ（必要に応じて）
@@ -61,7 +58,7 @@ public class JudgementLogicConfig
     /// <summary>
     /// コンボを切るかどうかの設定用プロパティ
     /// </summary>
-    internal bool SetBreaksCombo { get => breaksCombo; set => breaksCombo = value; }
+    internal bool ShouldBreakCombo { get => shouldBreakCombo; set => shouldBreakCombo = value; }
     #endregion
 
     #region コンストラクタ
@@ -107,7 +104,7 @@ public class JudgementLogicConfig
         judgementName = name;
         maxTimeDifference = maxDiff;
         scoreValue = score;
-        breaksCombo = breakCombo;
+        shouldBreakCombo = breakCombo;
     }
     #endregion
 }

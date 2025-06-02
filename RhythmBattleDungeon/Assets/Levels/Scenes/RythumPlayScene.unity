@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 516605425}
   - component: {fileID: 516605424}
   m_Layer: 0
-  m_Name: GameObject (7)
+  m_Name: ComboEffectController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -824,7 +824,7 @@ GameObject:
   - component: {fileID: 1267966030}
   - component: {fileID: 1267966029}
   m_Layer: 0
-  m_Name: GameObject (8)
+  m_Name: ComboEffectPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1073,7 +1073,7 @@ GameObject:
   - component: {fileID: 1506899347}
   - component: {fileID: 1506899346}
   m_Layer: 0
-  m_Name: GameObject (4)
+  m_Name: ScoreEffectController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1281,7 +1281,7 @@ GameObject:
   - component: {fileID: 1683274916}
   - component: {fileID: 1683274915}
   m_Layer: 0
-  m_Name: GameObject (6)
+  m_Name: JudgeEffectPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1326,7 +1326,7 @@ GameObject:
   - component: {fileID: 1683358193}
   - component: {fileID: 1683358192}
   m_Layer: 0
-  m_Name: GameObject (5)
+  m_Name: ScoreEffectPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
