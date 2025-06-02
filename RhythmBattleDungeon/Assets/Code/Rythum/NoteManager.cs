@@ -123,10 +123,7 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
 
     private void Update()
     {
-        if (!isInitialized) return; foreach (var note in chartData.Notes)
-        {
-            Debug.Log($"Note targetTime: {note.SpawnTime}");
-        }
+        if (!isInitialized) return; 
 
         float currentTime = AudioManager.Instance.GetCurrentBGMTime();
         SpawnNotesIfNeeded(currentTime);

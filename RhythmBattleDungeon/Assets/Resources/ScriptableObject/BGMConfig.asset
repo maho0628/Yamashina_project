@@ -19,3 +19,9 @@ MonoBehaviour:
     bgmGenre: 
     bgmDisplayName: "\u30B7\u30E3\u30A4\u30CB\u30F3\u30B0\u30B9\u30BF\u30FC"
     bgmJacketImage: {fileID: 0}
+  - bgmId: bbbb
+    bgmAudioClip: {fileID: 8300000, guid: 099302f2d20e90043930296fd69a03e8, type: 3}
+    bgmBpm: 0
+    bgmGenre: 
+    bgmDisplayName: "\u30B7\u30E3\u30A4\u30CB\u30F3\u30B0\u30B9\u30BF\u30FC"
+    bgmJacketImage: {fileID: 0}

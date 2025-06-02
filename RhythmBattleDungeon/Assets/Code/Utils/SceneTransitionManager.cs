@@ -9,6 +9,7 @@ public class SceneTransitionManager : SingletonMonoBehaviour<SceneTransitionMana
     private bool isTransitioning = false;
     private SceneReference initialScene;
 
+    internal bool IsTransitioning { get { return isTransitioning; } }   
    
    
 

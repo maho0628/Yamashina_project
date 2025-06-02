@@ -33,7 +33,7 @@ public class JudgementConfig
             logic = new JudgementLogicConfig
             {
                 SetJudgementName = "Miss",
-                SetBreaksCombo = true,
+                ShouldBreakCombo = true,
                 SetMaxTimeDifference = 99f
                 
             }

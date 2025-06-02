@@ -4,9 +4,10 @@ using UnityEngine.UI;
 
 public class TitleManager : MonoBehaviour
 {
-
+    [SerializeField, Header("スタートボタン、設定されていない場合自動で設定")]
     private Button titleButton;
-
+    [SerializeField, Header("終了ボタン、設定されていない場合自動で設定")]
+    private Button quitButton;
     /// <summary>
     ///  GameInitializer.Instanceがイニシャライズされるまで待つ
     /// </summary>
@@ -14,7 +15,8 @@ public class TitleManager : MonoBehaviour
     private void Start()
     {
         titleButton = GameObject.Find("TitleButton").GetComponent<Button>();
-
+        quitButton = GameObject.Find("QuitButton").GetComponent<Button>();
+        quitButton.onClick.AddListener(()=>GameExitManager.Instance.RequestExit());   
         //
         OnTitleButtonClicked();
     }

@@ -40,11 +40,19 @@ public class StageConfig
     private List<JudgementConfig> judgementConfigs;
 
     /// <summary>
+    /// スコアゲージの演出・見た目設定
+    /// </summary>
+    [SerializeField, Header("スコアゲージの設定")]
+    private GaugeConfig gaugeConfig;
+    /// <summary>
     /// 楽曲終了後の遷移待機秒数
     /// </summary>
     [SerializeField, Header("楽曲終了後の遷移待機秒数")]
     private float delayBeforeResult = 2.0f;
 
+  
+
+   
     #endregion
 
 
@@ -76,9 +84,14 @@ public class StageConfig
     internal List<JudgementConfig> JudgementConfigs => judgementConfigs;
 
     /// <summary>
+    /// スコアゲージの設定の読み取り専用
+    /// </summary>
+    internal GaugeConfig GaugeConfig => gaugeConfig;
+    /// <summary>
     /// 楽曲終了後の遷移待機秒数の読み取り専用
     /// </summary>
     internal float DelayBeforeResult => delayBeforeResult;
+
 
     #endregion
 }
