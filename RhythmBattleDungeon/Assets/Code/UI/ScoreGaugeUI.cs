@@ -1,0 +1,83 @@
+using UnityEngine;
+using UnityEngine.UI;
+using Cysharp.Threading.Tasks;
+
+public class ScoreGaugeUI : MonoBehaviour
+{
+    [SerializeField, Header("ÉQÅ[ÉWUIñ{ëÃ")]
+    private Image gaugeImage;
+
+    [SerializeField, Header("ÉQÅ[ÉWîwåiâÊëú")]
+    private Image backgroundImage;
+
+    private float currentFill = 0f;
+    private float targetFill = 0f;
+    private bool isAnimating = false;
+
+    private GaugeConfig config;
+
+    private void Start()
+    {
+        config = GaugeManager.Instance.GetCurrentConfig();
+
+        if (backgroundImage != null)
+        {
+            backgroundImage.color = config.GaugeBackgroundColor;
+        }
+        currentFill = config.DebugInitialValue;
+        gaugeImage.fillAmount = currentFill;
+        gaugeImage.color = config.GaugeFillColor;
+
+        ScoreManager.Instance.OnScoreChanged += OnScoreChanged;
+    }
+
+    private void OnDestroy()
+    {
+        ScoreManager.Instance.OnScoreChanged -= OnScoreChanged;
+    }
+
+    private void OnScoreChanged(int newScore)
+    {
+        float maxScore = ScoreManager.Instance.GetMaxScore();
+        Debug.Log($"[ScoreGauge] newScore: {newScore}, maxScore: {maxScore}");
+
+        if (maxScore == 0)
+        {
+            Debug.LogError("[ScoreGauge] MaxScore is 0! Cannot calculate fill amount.");
+            return;
+        }
+
+        targetFill = Mathf.Clamp01((float)newScore / maxScore);
+        Debug.Log($"[ScoreGauge] targetFill: {targetFill}");
+        AnimateGaugeAsync().Forget();
+    }
+
+    private async UniTask AnimateGaugeAsync()
+    {
+        if (isAnimating && !config.DebugAlwaysAnimate) return;
+
+        isAnimating = true;
+        float time = 0f;
+        float startFill = currentFill;
+        float duration = config.GaugeLerpDuration;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = Mathf.Clamp01(time / duration);
+            float evaluatedT = config.UseEasing ? config.GaugeAnimationCurve.Evaluate(t) : t;
+            currentFill = Mathf.Lerp(startFill, targetFill, evaluatedT);
+            gaugeImage.fillAmount = currentFill;
+            await UniTask.Yield();
+        }
+
+        currentFill = targetFill;
+        gaugeImage.fillAmount = targetFill;
+        isAnimating = false;
+
+        if (!Mathf.Approximately(currentFill, targetFill))
+        {
+            await AnimateGaugeAsync();
+        }
+    }
+}

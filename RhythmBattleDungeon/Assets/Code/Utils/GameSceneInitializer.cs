@@ -1,4 +1,5 @@
 using System.Collections;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -63,6 +64,9 @@ public class GameSceneInitializer : MonoBehaviour
         yield return new WaitUntil(() => AudioManager.Instance.GetCurrentBGMTime() > scrollDuration);
 
         NoteManager.Instance.Initialize();
+        yield return UIManager.Instance.ShowReadyGoAsync().ToCoroutine();
+        NoteManager.Instance.AllowNoteSpawning();
+
         Debug.Log("NoteManager ��������");
 
         FindAnyObjectByType<InputHandler>()?.InitializeInput();

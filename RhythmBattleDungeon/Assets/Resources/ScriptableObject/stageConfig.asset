@@ -28,7 +28,7 @@ MonoBehaviour:
         judgementName: Perfect
         maxTimeDifference: 0.05
         scoreValue: 100
-        breaksCombo: 0
+        shouldBreakCombo: 0
       visual:
         displayName: PERFECT
         displayColor: {r: 0.9764706, g: 0.16078429, b: 0.8414409, a: 1}
@@ -41,7 +41,7 @@ MonoBehaviour:
         judgementName: Great
         maxTimeDifference: 0.05
         scoreValue: 100
-        breaksCombo: 0
+        shouldBreakCombo: 0
       visual:
         displayName: GREAT
         displayColor: {r: 0.16793872, g: 0.47111237, b: 0.86415094, a: 1}
@@ -54,7 +54,7 @@ MonoBehaviour:
         judgementName: Miss
         maxTimeDifference: 0.05
         scoreValue: 0
-        breaksCombo: 1
+        shouldBreakCombo: 1
       visual:
         displayName: MISS
         displayColor: {r: 0.96981126, g: 0.16651474, b: 0.16651474, a: 1}
@@ -63,6 +63,7 @@ MonoBehaviour:
         fadeOutDuration: 0.1
         scaleInTime: 0.2
         scaleEase: 0
+    gaugeConfig: {fileID: 0}
     delayBeforeResult: 0.2
   - stageId: bbbb
     stageBgm:
@@ -79,7 +80,7 @@ MonoBehaviour:
         judgementName: 
         maxTimeDifference: 0.05
         scoreValue: 100
-        breaksCombo: 0
+        shouldBreakCombo: 0
       visual:
         displayName: PERFECT
         displayColor: {r: 1, g: 1, b: 1, a: 1}
@@ -92,7 +93,7 @@ MonoBehaviour:
         judgementName: 
         maxTimeDifference: 0.05
         scoreValue: 100
-        breaksCombo: 0
+        shouldBreakCombo: 0
       visual:
         displayName: PERFECT
         displayColor: {r: 1, g: 1, b: 1, a: 1}
@@ -105,7 +106,7 @@ MonoBehaviour:
         judgementName: 
         maxTimeDifference: 0.05
         scoreValue: 100
-        breaksCombo: 0
+        shouldBreakCombo: 0
       visual:
         displayName: PERFECT
         displayColor: {r: 1, g: 1, b: 1, a: 1}
@@ -114,6 +115,7 @@ MonoBehaviour:
         fadeOutDuration: 0.3
         scaleInTime: 0.2
         scaleEase: 27
+    gaugeConfig: {fileID: 0}
     delayBeforeResult: 0.2
   - stageId: cccc
     stageBgm:
@@ -130,7 +132,7 @@ MonoBehaviour:
         judgementName: 
         maxTimeDifference: 0.05
         scoreValue: 100
-        breaksCombo: 0
+        shouldBreakCombo: 0
       visual:
         displayName: PERFECT
         displayColor: {r: 1, g: 1, b: 1, a: 1}
@@ -143,7 +145,7 @@ MonoBehaviour:
         judgementName: 
         maxTimeDifference: 0.05
         scoreValue: 100
-        breaksCombo: 0
+        shouldBreakCombo: 0
       visual:
         displayName: PERFECT
         displayColor: {r: 1, g: 1, b: 1, a: 1}
@@ -156,7 +158,7 @@ MonoBehaviour:
         judgementName: 
         maxTimeDifference: 0.05
         scoreValue: 100
-        breaksCombo: 0
+        shouldBreakCombo: 0
       visual:
         displayName: PERFECT
         displayColor: {r: 1, g: 1, b: 1, a: 1}
@@ -165,4 +167,5 @@ MonoBehaviour:
         fadeOutDuration: 0.3
         scaleInTime: 0.2
         scaleEase: 27
+    gaugeConfig: {fileID: 0}
     delayBeforeResult: 0.2

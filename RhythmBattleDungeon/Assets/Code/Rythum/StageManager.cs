@@ -50,14 +50,12 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
 
         if (stageConfigTable == null)
         {
-            Debug.LogError("[StageManager] StageConfigTable���ݒ肳��Ă��܂���I");
             return null;
         }
 
         StageConfig stageConfig = stageConfigTable.GetStageConfig(currentStageId);
         if (stageConfig == null)
         {
-            Debug.LogError($"[StageManager] �X�e�[�W�ݒ肪������܂���I ID: {currentStageId}");
             return null;
         }
 
@@ -72,14 +70,12 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
     {
         if (stageConfigTable == null)
         {
-            Debug.LogError("[StageManager] StageConfigTable���ݒ肳��Ă��܂���I");
             return null;
         }
 
         StageConfig stageConfig = stageConfigTable.GetStageConfig(currentStageId);
         if (stageConfig == null)
         {
-            Debug.LogError($"[StageManager] �X�e�[�W�ݒ肪������܂���I ID: {currentStageId}");
             return null;
         }
 
@@ -94,14 +90,12 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
     {
         if (stageConfigTable == null)
         {
-            Debug.LogError("[StageManager] StageConfigTable���ݒ肳��Ă��܂���I");
             return null;
         }
 
         StageConfig stageConfig = stageConfigTable.GetStageConfig(currentStageId);
         if (stageConfig == null)
         {
-            Debug.LogError($"[StageManager] �X�e�[�W�ݒ肪������܂���I ID: {currentStageId}");
             return null;
         }
 
@@ -146,12 +140,10 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
         StageConfig stageConfig = stageConfigTable.GetStageConfig(currentStageId);
         if (stageConfig == null)
         {
-            Debug.LogError($"[StageManager] �X�e�[�W�ݒ肪������܂���I ID: {currentStageId}");
             return;
         }
 
         // �����ŃX�e�[�W�Ɋ֘A����BGM�A���ʂȂǂ��Z�b�g�A�b�v���鏈����ǉ�
-        Debug.Log($"�X�e�[�W�ݒ芮��: {currentStageId}, BGM: {stageConfig.StageBgm.BgmId}, ����: {stageConfig.ChartFileName}");
     }
 
     #endregion
