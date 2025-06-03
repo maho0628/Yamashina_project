@@ -19,20 +19,36 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
 
     private IEnumerator WaitAndSubscribe()
     {
-        while (NoteManager.Instance == null || !NoteManager.Instance.IsInitialized)
-            yield return null;
+        Debug.LogError("[ScoreManager] WaitAndSubscribe START!!!");
 
+        int waitCount = 0;
+        while (NoteManager.Instance == null || !NoteManager.Instance.IsInitialized)
+        {
+            waitCount++;
+            if (waitCount % 60 == 0) // 1秒ごとに表示
+            {
+                Debug.Log($"[ScoreManager] Still waiting... {waitCount} frames (NoteManager: {NoteManager.Instance != null}, IsInitialized: {NoteManager.Instance?.IsInitialized})");
+            }
+            yield return null;
+        }
+
+        Debug.LogError("[ScoreManager] NoteManager ready! Subscribing to events...");
         NoteManager.Instance.OnNotesSpawned += CalculateMaxScore;
+
+        Debug.Log($"[ScoreManager] NotesSpawned status: {NoteManager.Instance.NotesSpawned}");
 
         if (NoteManager.Instance.NotesSpawned)
         {
-            Debug.Log("[ScoreManager] �m�[�c�͊��ɐ�������Ă������߁A�����ɃX�R�A���v�Z���܂��B");
+            Debug.LogError("[ScoreManager] Calling CalculateMaxScore manually!!!");
             CalculateMaxScore();
         }
+        else
+        {
+            Debug.LogError("[ScoreManager] NotesSpawned is FALSE, waiting for event...");
+        }
 
-        Debug.Log("[ScoreManager] �C�x���g�w�Ǌ���");
+        Debug.LogError("[ScoreManager] WaitAndSubscribe COMPLETE!!!");
     }
-
     public void Initialize()
     {
         currentScore = 0;
@@ -55,26 +71,58 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
 
     public void CalculateMaxScore()
     {
+        Debug.Log($"[ScoreManager] CalculateMaxScore() START - Current maxScore: {maxScore}");
+
         if (maxScore > 0)
         {
-            Debug.Log("[ScoreManager] ���ł� maxScore �v�Z�ς݂̂��߃X�L�b�v");
+            Debug.Log($"[ScoreManager] 既に maxScore 計算済みのためスキップ (maxScore: {maxScore})");
             return;
         }
-        Debug.Log("[ScoreManager] CalculateMaxScore �Ă΂ꂽ");
+
+        Debug.Log("[ScoreManager] CalculateMaxScore 呼ばれた");
+
+        if (NoteManager.Instance == null)
+        {
+            Debug.LogError("[ScoreManager] NoteManager.Instance is null!");
+            return;
+        }
 
         var config = StageManager.Instance.GetCurrentStageConfig();
+        Debug.Log($"[ScoreManager] StageConfig: {(config != null ? "Found" : "NULL")}"); // ←追加
+
+        if (config == null)
+        {
+            Debug.LogError("[ScoreManager] StageConfig is null!");
+            return;
+        }
+
+        Debug.Log($"[ScoreManager] JudgementConfigs count: {config.JudgementConfigs?.Count?? 0}"); // ←追加
+
         var perfectConfig = config?.JudgementConfigs.FirstOrDefault(j => j.Logic.SetJudgementName == "Perfect");
+        Debug.Log($"[ScoreManager] PerfectConfig: {(perfectConfig != null ? "Found" : "NULL")}"); // ←追加
 
         if (perfectConfig == null)
         {
-            Debug.LogError("[ScoreManager] JudgementConfig �� 'Perfect' ���肪���݂��܂���");
-            throw new System.Exception("Perfect ���肪���݂��Ȃ����߁A�X�R�A�v�Z���ł��܂���");
+            Debug.LogError("[ScoreManager] JudgementConfig で 'Perfect' 設定が見つかりません");
+            // 利用可能な判定名を表示
+            if (config.JudgementConfigs != null)
+            {
+                foreach (var judgement in config.JudgementConfigs)
+                {
+                    Debug.Log($"[ScoreManager] Available judgement: {judgement.Logic.SetJudgementName}");
+                }
+            }
+            return;
         }
+
         int bestScore = perfectConfig.Logic.SetScoreValue;
         int totalNotes = NoteManager.Instance.TotalNoteCount;
 
+        Debug.Log($"[ScoreManager] bestScore: {bestScore}, totalNotes: {totalNotes}"); // ←追加
+
         maxScore = bestScore * totalNotes;
 
+        Debug.Log($"[ScoreManager] MaxScore calculated: {maxScore} (bestScore: {bestScore}, totalNotes: {totalNotes})");
     }
     public float GetScoreRate()
     {

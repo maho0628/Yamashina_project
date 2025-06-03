@@ -47,9 +47,7 @@ public class NoteUI : MonoBehaviour, IPoolable<NoteUI>
         {
             if(linkedNote != null)
             Deactivate();
-            Debug.Log($"NoteUI t={t:F2}, Current={currentBgmTime:F2}, Target={targetTime:F2}, Pos={rectTransform.anchoredPosition}");
-            Debug.Log($"🧪 Note消滅: Time={currentBgmTime:F2}, PosY={rectTransform.anchoredPosition.y:F2} ← EndY={endPosition.y}");
-
+         
 
         }
     }
@@ -58,7 +56,7 @@ public class NoteUI : MonoBehaviour, IPoolable<NoteUI>
     {
         gameObject.SetActive(false);
         noteUIPool?.Return(this);
-        linkedNote = null; // 念のため、�E利用時�E安�E性
+        linkedNote = null; 
     }
 
     public Vector2 GetPosition()

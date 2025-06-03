@@ -15,10 +15,12 @@ MonoBehaviour:
   scrollDuration: 1
   startY: 600
   endY: -392
-  laneWidth: 500
+  laneWidth: 250
   laneHeight: 100
   laneColors:
   - {r: 0.32135987, g: 0.4462624, b: 0.5773585, a: 1}
+  - {r: 0.32156864, g: 0.44705883, b: 0.5764706, a: 1}
+  - {r: 0.32156864, g: 0.44705883, b: 0.5764706, a: 1}
   - {r: 0.32156864, g: 0.44705883, b: 0.5764706, a: 1}
   - {r: 0.32156864, g: 0.44705883, b: 0.5764706, a: 1}
   - {r: 0.32156864, g: 0.44705883, b: 0.5764706, a: 1}
@@ -27,4 +29,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  laneCount: 4
+  - {fileID: 0}
+  - {fileID: 0}
+  laneCount: 6

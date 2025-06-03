@@ -15,6 +15,7 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
     private Dictionary<Note, NoteUI> noteToUIMap = new Dictionary<Note, NoteUI>();
 
     private ChartData chartData;
+    private bool canSpawnNotes = false;
 
 
     private NoteScrollConfig scrollConfig;
@@ -36,18 +37,18 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
 
     private void SetupLaneImages()
     {
-        int laneCount = laneImages.Length;
+        int laneCount = scrollConfig.LaneCount;
 
-        if (laneCount == 0)
+        if (laneCount == 0||laneCount!= laneImages.Length)
         {
-            Debug.LogError("[NoteManager] laneImages が空です。");
+            Debug.LogError("[NoteManager] laneImages が空かイメージの個数がレーンの個数と異なります。");
             return;
         }
+        float parentOffsetX = parentRect.anchoredPosition.x; // 216
 
         float totalWidth = parentRect.rect.width;
-        float laneWidth = totalWidth / laneCount;
-        float startX = -totalWidth / 2f + laneWidth / 2f;
-
+        float laneWidth = scrollConfig.LaneWidth;  // UI設定値を使用
+        float startX = -totalWidth / 2f + laneWidth / 2f+ parentOffsetX; 
         // scrollConfig.StartY を使用してレーンの開始位置（Y軸）を調整
         float startYPosition = scrollConfig.StartY; // 上からの位置
         float endYPosition = scrollConfig.EndY;     // 下からの位置
@@ -70,13 +71,14 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
             // 必要に応じてサイズを調整
             laneRect.sizeDelta = new Vector2(laneWidth, scrollConfig.LaneHeight);
         }
+
     }
 
     public void Initialize()
     {
         StartCoroutine(InitializeRoutine());
     }
-
+    public void AllowNoteSpawning() => canSpawnNotes = true;
 
 
 
@@ -110,10 +112,10 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
             Debug.LogError("[NoteManager] チャートデータの読み込みに失敗しました");
             yield break;
         }
+        SetupLaneImages();
 
         pendingNotes = chartData.Notes.ToList();
 
-        SetupLaneImages();
 
         isInitialized = true;
         OnInitialized?.Invoke(); // ← 初期化完了を通知
@@ -123,7 +125,7 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
 
     private void Update()
     {
-        if (!isInitialized) return; 
+        if (!isInitialized || !canSpawnNotes) return;
 
         float currentTime = AudioManager.Instance.GetCurrentBGMTime();
         SpawnNotesIfNeeded(currentTime);
@@ -153,11 +155,7 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
 
             OnNotesSpawned?.Invoke();
         }
-        notesSpawned = true; // フラグを立てる
-
-        Debug.Log(OnNotesSpawned);
-        OnNotesSpawned?.Invoke();
-        Debug.Log("Invoke すべてのノーツ");
+        
     }
 
     public void SpawnNote(Note noteData)
@@ -172,14 +170,21 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
         }
 
         float totalWidth = parentRect.rect.width;
-        float laneWidth = totalWidth / scrollConfig.LaneCount;
-        float startX = -totalWidth / 2f + laneWidth / 2f + lane * laneWidth;
+        float laneWidth = scrollConfig.LaneWidth;
+        float parentOffsetX = parentRect.anchoredPosition.x; // 216
 
-        Vector2 startPos = new Vector2(startX, scrollConfig.StartY);
-        Vector2 endPos = new Vector2(startX, scrollConfig.EndY);
+        // レーン内での相対位置を計算
+        float relativeStartX = -totalWidth / 2f + laneWidth / 2f + lane * laneWidth;
 
+        // parentRect のオフセットは考慮しない（親の座標系内で計算）
+        Vector2 startPos = new Vector2(relativeStartX, scrollConfig.StartY);
+        Vector2 endPos = new Vector2(relativeStartX, scrollConfig.EndY);
         var noteUI = notePool.Get();
         noteUI.transform.SetParent(parentRect, false);
+
+        noteUI.GetComponent<RectTransform>().anchoredPosition = startPos;
+
+
 
         // noteData を NoteUI に渡す
         noteUI.Setup(offsetTime, scrollConfig.ScrollDuration, startPos, endPos, noteData);
