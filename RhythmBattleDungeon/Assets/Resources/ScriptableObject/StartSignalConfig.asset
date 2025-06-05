@@ -15,13 +15,13 @@ MonoBehaviour:
   readyConfig:
     text: Ready
     textColor: {r: 1, g: 1, b: 1, a: 1}
-    fontSize: 48
+    fontSize: 120
     animationType: 0
     fadeInDuration: 0.3
     displayDuration: 0.6
     fadeOutDuration: 0.1
     initialScale: 0.5
-    targetScale: 1
+    targetScale: 2.5
     scaleDuration: 0.5
     punchPower: {x: 0.2, y: 0.2, z: 0}
     punchDuration: 0.6
@@ -32,14 +32,14 @@ MonoBehaviour:
     durationCheck: "\u2705 \u9069\u5207\u306A\u9577\u3055"
   goConfig:
     text: Go!
-    textColor: {r: 1, g: 0, b: 0, a: 1}
-    fontSize: 48
+    textColor: {r: 0.04150939, g: 0.03970804, b: 0.03970804, a: 1}
+    fontSize: 120
     animationType: 1
     fadeInDuration: 0.2
     displayDuration: 0.6
     fadeOutDuration: 0.4
     initialScale: 0.3
-    targetScale: 1.2
+    targetScale: 2.5
     scaleDuration: 0.4
     punchPower: {x: 0.3, y: 0.3, z: 0}
     punchDuration: 0.6

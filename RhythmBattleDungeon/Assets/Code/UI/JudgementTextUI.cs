@@ -19,7 +19,7 @@ public class JudgementTextUI : MonoBehaviour,IResultEntryUI
         foreach (var text in texts)
         {
             if (text.name.Contains("Name")) judgeNameText = text;
-            else if (text.name.Contains("Count")) judgeNameText = text;
+            else if (text.name.Contains("Count")) judgeCountText = text;
         }
 
         if (judgeNameText == null || judgeCountText == null)
@@ -30,6 +30,7 @@ public class JudgementTextUI : MonoBehaviour,IResultEntryUI
     public void Setup(string label, int value)
     {
         judgeNameText.text = label;
+        Debug.Log(label);
         judgeCountText.text = value.ToString();
     }
 

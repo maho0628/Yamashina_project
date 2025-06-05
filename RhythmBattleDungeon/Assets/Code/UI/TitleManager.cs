@@ -16,7 +16,7 @@ public class TitleManager : MonoBehaviour
     {
         titleButton = GameObject.Find("TitleButton").GetComponent<Button>();
         quitButton = GameObject.Find("QuitButton").GetComponent<Button>();
-        quitButton.onClick.AddListener(()=>GameExitManager.Instance.RequestExit());   
+        quitButton.onClick.AddListener(()=>GameExitManager.Instance.InitializeConfirmSettings());   
         //
         OnTitleButtonClicked();
     }

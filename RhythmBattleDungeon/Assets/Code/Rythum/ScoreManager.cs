@@ -14,7 +14,9 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
 
     private void Start()
     {
+
         StartCoroutine(WaitAndSubscribe());
+
     }
 
     private IEnumerator WaitAndSubscribe()
@@ -33,14 +35,12 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
         }
 
         Debug.LogError("[ScoreManager] NoteManager ready! Subscribing to events...");
-        NoteManager.Instance.OnNotesSpawned += CalculateMaxScore;
 
         Debug.Log($"[ScoreManager] NotesSpawned status: {NoteManager.Instance.NotesSpawned}");
 
         if (NoteManager.Instance.NotesSpawned)
         {
             Debug.LogError("[ScoreManager] Calling CalculateMaxScore manually!!!");
-            CalculateMaxScore();
         }
         else
         {

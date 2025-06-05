@@ -33,17 +33,18 @@ public class ScoreGaugeUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        ScoreManager.Instance.OnScoreChanged -= OnScoreChanged;
+        if (ScoreManager.Instance)
+        {
+            ScoreManager.Instance.OnScoreChanged -= OnScoreChanged;
+        }
     }
 
     private void OnScoreChanged(int newScore)
     {
         float maxScore = ScoreManager.Instance.GetMaxScore();
-        Debug.Log($"[ScoreGauge] newScore: {newScore}, maxScore: {maxScore}");
 
         if (maxScore == 0)
         {
-            Debug.LogError("[ScoreGauge] MaxScore is 0! Cannot calculate fill amount.");
             return;
         }
 
@@ -51,7 +52,23 @@ public class ScoreGaugeUI : MonoBehaviour
         Debug.Log($"[ScoreGauge] targetFill: {targetFill}");
         AnimateGaugeAsync().Forget();
     }
+    public void ResetGauge()
+    {
+        config = GaugeManager.Instance.GetCurrentConfig();
 
+        if (backgroundImage != null)
+        {
+            backgroundImage.color = config.GaugeBackgroundColor;
+        }
+
+        currentFill = config.DebugInitialValue;
+        targetFill = config.DebugInitialValue;
+
+        gaugeImage.fillAmount = currentFill;
+        gaugeImage.color = config.GaugeFillColor;
+
+        isAnimating = false;
+    }
     private async UniTask AnimateGaugeAsync()
     {
         if (isAnimating && !config.DebugAlwaysAnimate) return;

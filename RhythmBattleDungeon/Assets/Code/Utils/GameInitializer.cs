@@ -21,7 +21,7 @@ public class GameInitializer : SingletonMonoBehaviour<GameInitializer>
 
     internal void SetUpGameInitialize()
     {
-        if (isInitialized) return;
+        if (isInitialized)return;   
         Debug.Log("GameInitializer Awake");
 
         // 既存のリソースロード
@@ -60,6 +60,8 @@ public class GameInitializer : SingletonMonoBehaviour<GameInitializer>
         var sceneTransition = SceneTransitionManager.Instance;
         sceneTransition.SetFadePrefab(fadePrefab);
         sceneTransition.SetInitialScene(initialScene);
+
+        GameManagerRetryExtensions.ClearRetryInfo();
 
         isInitialized = true;
     }
