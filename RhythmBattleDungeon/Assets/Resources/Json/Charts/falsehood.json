@@ -1,0 +1,48 @@
+{
+  "notes": [
+    { "time": 2.0, "lane": 2, "key": "Lane3" },
+    { "time": 4.5, "lane": 4, "key": "Lane5" },
+    { "time": 7.0, "lane": 1, "key": "Lane2" },
+    { "time": 9.5, "lane": 3, "key": "Lane4" },
+    { "time": 12.0, "lane": 0, "key": "Lane1" },
+    { "time": 14.5, "lane": 5, "key": "Lane6" },
+    { "time": 17.0, "lane": 2, "key": "Lane3" },
+    { "time": 19.5, "lane": 4, "key": "Lane5" },
+
+    { "time": 22.0, "lane": 1, "key": "Lane2" },
+    { "time": 24.5, "lane": 3, "key": "Lane4" },
+    { "time": 27.0, "lane": 0, "key": "Lane1" },
+    { "time": 29.5, "lane": 5, "key": "Lane6" },
+    { "time": 32.0, "lane": 2, "key": "Lane3" },
+    { "time": 34.5, "lane": 4, "key": "Lane5" },
+    { "time": 37.0, "lane": 1, "key": "Lane2" },
+    { "time": 39.5, "lane": 3, "key": "Lane4" },
+
+    { "time": 42.0, "lane": 0, "key": "Lane1" },
+    { "time": 44.0, "lane": 5, "key": "Lane6" },
+    { "time": 46.0, "lane": 2, "key": "Lane3" },
+    { "time": 48.0, "lane": 4, "key": "Lane5" },
+    { "time": 50.0, "lane": 1, "key": "Lane2" },
+    { "time": 52.0, "lane": 3, "key": "Lane4" },
+    { "time": 54.0, "lane": 0, "key": "Lane1" },
+    { "time": 56.0, "lane": 5, "key": "Lane6" },
+
+    { "time": 58.0, "lane": 2, "key": "Lane3" },
+    { "time": 60.0, "lane": 4, "key": "Lane5" },
+    { "time": 62.0, "lane": 1, "key": "Lane2" },
+    { "time": 64.0, "lane": 3, "key": "Lane4" },
+    { "time": 66.0, "lane": 0, "key": "Lane1" },
+    { "time": 68.0, "lane": 5, "key": "Lane6" },
+    { "time": 70.0, "lane": 2, "key": "Lane3" },
+    { "time": 72.0, "lane": 4, "key": "Lane5" },
+
+    { "time": 74.0, "lane": 1, "key": "Lane2" },
+    { "time": 76.0, "lane": 3, "key": "Lane4" },
+    { "time": 78.0, "lane": 0, "key": "Lane1" },
+    { "time": 80.0, "lane": 5, "key": "Lane6" },
+    { "time": 82.0, "lane": 2, "key": "Lane3" },
+    { "time": 84.0, "lane": 4, "key": "Lane5" },
+    { "time": 86.0, "lane": 1, "key": "Lane2" },
+    { "time": 88.0, "lane": 3, "key": "Lane4" }
+  ]
+}
