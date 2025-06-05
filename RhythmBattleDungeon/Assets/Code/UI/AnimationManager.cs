@@ -11,10 +11,7 @@ private UIObjectPool<ComboEffectController> comboEffectPool;
     protected override void Awake()
     {
         base.Awake();
-        judgeEffectPool = FindAnyObjectByType<UIObjectPool<JudgeEffectController>>();
-        scoreEffectPool = FindAnyObjectByType<UIObjectPool<ScoreEffectController>>();
-        comboEffectPool = FindAnyObjectByType<UIObjectPool<ComboEffectController>>();
-
+        InitEffectController();
     }
     
 
@@ -22,6 +19,17 @@ private UIObjectPool<ComboEffectController> comboEffectPool;
     {
         titleAnimator = animator;
     }
+    public void InitResultAnimator(Animator animator)
+    {
+        resultAnimator = animator;
+    }
+    public void InitEffectController()
+    {
+        judgeEffectPool = FindAnyObjectByType<UIObjectPool<JudgeEffectController>>();
+        scoreEffectPool = FindAnyObjectByType<UIObjectPool<ScoreEffectController>>();
+        comboEffectPool = FindAnyObjectByType<UIObjectPool<ComboEffectController>>();
+    }
+
 
 
     public void ShowJudgeEffect(JudgementConfig config)
@@ -68,6 +76,6 @@ private UIObjectPool<ComboEffectController> comboEffectPool;
     public void PlayResultInAnimation()
     {
         if (resultAnimator == null) return;
-        resultAnimator.SetTrigger("In");
+        resultAnimator.SetTrigger("Idle");
     }
 }

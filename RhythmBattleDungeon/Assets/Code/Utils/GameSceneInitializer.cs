@@ -1,4 +1,5 @@
 using System.Collections;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,12 @@ public class GameSceneInitializer : MonoBehaviour
         if (!GameInitializer.Instance.Initialized)
         {
             GameInitializer.Instance.SetUpGameInitialize();
+        }
+        if (StageManager.Instance.IsStageSelected)
+        {
+            NoteManager.Instance?.ResetForNewScene();
+            AnimationManager.Instance.InitEffectController();   
+
         }
 
     }
@@ -59,12 +66,14 @@ public class GameSceneInitializer : MonoBehaviour
     }
     private IEnumerator WaitForBGMThenInitialize()
     {
-        var scrollDuration = currentStage.ScrollConfig.ScrollDuration;
-        yield return new WaitUntil(() => AudioManager.Instance.GetCurrentBGMTime() > scrollDuration);
+        var scrollDuration = currentStage.ScrollConfig.GetNoteTimingConfig().ScrollDuration;
 
         NoteManager.Instance.Initialize();
-        Debug.Log("NoteManager ��������");
+        yield return UIManager.Instance.ShowReadyGoAsync().ToCoroutine();
+        yield return new WaitUntil(() => AudioManager.Instance.GetCurrentBGMTime() > scrollDuration);
 
+        NoteManager.Instance.AllowNoteSpawning();
+        ScoreManager.Instance.CalculateMaxScore();  
         FindAnyObjectByType<InputHandler>()?.InitializeInput();
     }
 

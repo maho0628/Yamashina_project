@@ -65,7 +65,7 @@ public class InputHandler : MonoBehaviour
         inputActions = new PlayerInputActions();
         inputActions.Gameplay.Enable();
 
-        laneCount = StageManager.Instance.GetCurrentStageConfig()?.ScrollConfig?.LaneCount ?? 4;
+        laneCount = StageManager.Instance.GetCurrentStageConfig()?.ScrollConfig?.GetLaneVisualConfig().LaneCount ?? 4;
 
         laneInputs = new InputAction[laneCount];
 

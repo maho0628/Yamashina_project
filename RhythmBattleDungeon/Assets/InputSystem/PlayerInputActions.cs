@@ -92,15 +92,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             ""id"": ""f5d3ba43-9e43-45a7-82b5-e4adf6e3089a"",
             ""actions"": [
                 {
-                    ""name"": ""Lane0"",
-                    ""type"": ""Button"",
-                    ""id"": ""83dc9fd7-bb89-44f6-a5e7-b5347a3886d7"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Lane1"",
                     ""type"": ""Button"",
                     ""id"": ""31dd7867-bf6f-40a8-8e33-706e4c1df265"",
@@ -144,13 +135,22 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Lane6"",
+                    ""type"": ""Button"",
+                    ""id"": ""2732d976-36d8-41df-948e-7638cec714c1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""b99bdad5-01f6-41c4-b51d-67ca4396ad87"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -160,19 +160,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b510369b-30ce-433d-a7bd-95c331266e07"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Lane0"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""9c16d6f2-c34d-4149-9a47-0b4e68d6aab9"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -183,7 +172,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2d4e092e-fa5d-43a0-b2a8-9dcce74175fe"",
-                    ""path"": ""<Keyboard>/j"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -194,7 +183,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""1d752de8-78c8-4c59-a2e7-30e4ca358ee2"",
-                    ""path"": ""<Keyboard>/k"",
+                    ""path"": ""<Keyboard>/j"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -205,11 +194,22 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""af96cec9-6b3c-4bbc-9e82-804d57b2869d"",
-                    ""path"": ""<Keyboard>/l"",
+                    ""path"": ""<Keyboard>/k"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Lane5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c57ae22f-92a9-4427-8284-a8b9c16d0e67"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Lane6"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -279,12 +279,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
 }");
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
-        m_Gameplay_Lane0 = m_Gameplay.FindAction("Lane0", throwIfNotFound: true);
         m_Gameplay_Lane1 = m_Gameplay.FindAction("Lane1", throwIfNotFound: true);
         m_Gameplay_Lane2 = m_Gameplay.FindAction("Lane2", throwIfNotFound: true);
         m_Gameplay_Lane3 = m_Gameplay.FindAction("Lane3", throwIfNotFound: true);
         m_Gameplay_Lane4 = m_Gameplay.FindAction("Lane4", throwIfNotFound: true);
         m_Gameplay_Lane5 = m_Gameplay.FindAction("Lane5", throwIfNotFound: true);
+        m_Gameplay_Lane6 = m_Gameplay.FindAction("Lane6", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Exit = m_UI.FindAction("Exit", throwIfNotFound: true);
@@ -370,12 +370,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     // Gameplay
     private readonly InputActionMap m_Gameplay;
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
-    private readonly InputAction m_Gameplay_Lane0;
     private readonly InputAction m_Gameplay_Lane1;
     private readonly InputAction m_Gameplay_Lane2;
     private readonly InputAction m_Gameplay_Lane3;
     private readonly InputAction m_Gameplay_Lane4;
     private readonly InputAction m_Gameplay_Lane5;
+    private readonly InputAction m_Gameplay_Lane6;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gameplay".
     /// </summary>
@@ -387,10 +387,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
         public GameplayActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-        /// <summary>
-        /// Provides access to the underlying input action "Gameplay/Lane0".
-        /// </summary>
-        public InputAction @Lane0 => m_Wrapper.m_Gameplay_Lane0;
         /// <summary>
         /// Provides access to the underlying input action "Gameplay/Lane1".
         /// </summary>
@@ -411,6 +407,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Gameplay/Lane5".
         /// </summary>
         public InputAction @Lane5 => m_Wrapper.m_Gameplay_Lane5;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/Lane6".
+        /// </summary>
+        public InputAction @Lane6 => m_Wrapper.m_Gameplay_Lane6;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -437,9 +437,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_GameplayActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_GameplayActionsCallbackInterfaces.Add(instance);
-            @Lane0.started += instance.OnLane0;
-            @Lane0.performed += instance.OnLane0;
-            @Lane0.canceled += instance.OnLane0;
             @Lane1.started += instance.OnLane1;
             @Lane1.performed += instance.OnLane1;
             @Lane1.canceled += instance.OnLane1;
@@ -455,6 +452,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Lane5.started += instance.OnLane5;
             @Lane5.performed += instance.OnLane5;
             @Lane5.canceled += instance.OnLane5;
+            @Lane6.started += instance.OnLane6;
+            @Lane6.performed += instance.OnLane6;
+            @Lane6.canceled += instance.OnLane6;
         }
 
         /// <summary>
@@ -466,9 +466,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="GameplayActions" />
         private void UnregisterCallbacks(IGameplayActions instance)
         {
-            @Lane0.started -= instance.OnLane0;
-            @Lane0.performed -= instance.OnLane0;
-            @Lane0.canceled -= instance.OnLane0;
             @Lane1.started -= instance.OnLane1;
             @Lane1.performed -= instance.OnLane1;
             @Lane1.canceled -= instance.OnLane1;
@@ -484,6 +481,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Lane5.started -= instance.OnLane5;
             @Lane5.performed -= instance.OnLane5;
             @Lane5.canceled -= instance.OnLane5;
+            @Lane6.started -= instance.OnLane6;
+            @Lane6.performed -= instance.OnLane6;
+            @Lane6.canceled -= instance.OnLane6;
         }
 
         /// <summary>
@@ -658,13 +658,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     public interface IGameplayActions
     {
         /// <summary>
-        /// Method invoked when associated input action "Lane0" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnLane0(InputAction.CallbackContext context);
-        /// <summary>
         /// Method invoked when associated input action "Lane1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
@@ -699,6 +692,13 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnLane5(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Lane6" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLane6(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
