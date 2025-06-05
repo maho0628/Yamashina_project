@@ -1,0 +1,184 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da8addd456cd9f4a91bd5d970e92139, type: 3}
+  m_Name: stageConfig
+  m_EditorClassIdentifier: 
+  stagesBgmLists:
+  - stageId: Beginning!
+    stageBgm:
+      bgmId: Beginning!
+      bgmAudioClip: {fileID: 8300000, guid: 099302f2d20e90043930296fd69a03e8, type: 3}
+      bgmBpm: 0
+      bgmGenre: 
+      bgmDisplayName: Beginning!
+      bgmJacketImage: {fileID: 0}
+    chartFileName: test
+    scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
+    judgementConfigs:
+    - logic:
+        judgementName: Perfect
+        maxTimeDifference: 0.05
+        scoreValue: 100
+        shouldBreakCombo: 0
+      visual:
+        displayName: PERFECT
+        displayColor: {r: 0.9764706, g: 0.16078429, b: 0.8414409, a: 1}
+        displayIcon: {fileID: 0}
+        showDuration: 0.5
+        fadeOutDuration: 0.3
+        scaleInTime: 0.2
+        scaleEase: 27
+    - logic:
+        judgementName: Great
+        maxTimeDifference: 0.05
+        scoreValue: 100
+        shouldBreakCombo: 0
+      visual:
+        displayName: GREAT
+        displayColor: {r: 0.16793872, g: 0.47111237, b: 0.86415094, a: 1}
+        displayIcon: {fileID: 0}
+        showDuration: 0.5
+        fadeOutDuration: 0.3
+        scaleInTime: 0.2
+        scaleEase: 27
+    - logic:
+        judgementName: Miss
+        maxTimeDifference: 0.05
+        scoreValue: 0
+        shouldBreakCombo: 1
+      visual:
+        displayName: MISS
+        displayColor: {r: 0.96981126, g: 0.16651474, b: 0.16651474, a: 1}
+        displayIcon: {fileID: 0}
+        showDuration: 0.1
+        fadeOutDuration: 0.1
+        scaleInTime: 0.2
+        scaleEase: 0
+    gaugeConfig: {fileID: 0}
+    delayBeforeResult: 0.2
+  - stageId: AC Ryhm
+    stageBgm:
+      bgmId: AC Ryhm
+      bgmAudioClip: {fileID: 8300000, guid: 881af67b20a0c6e49a4e6b4049ddc503, type: 3}
+      bgmBpm: 135
+      bgmGenre: "\u30A8\u30EC\u30AF\u30C8\u30ED\u30CB\u30AB"
+      bgmDisplayName: AC Ryhm
+      bgmJacketImage: {fileID: 21300000, guid: 07c1e0f78b0c2fd4f9b3e42a68622b88, type: 3}
+    chartFileName: test
+    scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
+    judgementConfigs:
+    - logic:
+        judgementName: Perfect
+        maxTimeDifference: 0.05
+        scoreValue: 100
+        shouldBreakCombo: 0
+      visual:
+        displayName: PERFECT
+        displayColor: {r: 0.44935617, g: 0.93207544, b: 0.096724704, a: 1}
+        displayIcon: {fileID: 0}
+        showDuration: 0.5
+        fadeOutDuration: 0.3
+        scaleInTime: 0.2
+        scaleEase: 27
+    - logic:
+        judgementName: Great
+        maxTimeDifference: 0.06
+        scoreValue: 30
+        shouldBreakCombo: 0
+      visual:
+        displayName: GREAT
+        displayColor: {r: 0.8792453, g: 0.058063243, b: 0.77297944, a: 1}
+        displayIcon: {fileID: 0}
+        showDuration: 0.5
+        fadeOutDuration: 0.3
+        scaleInTime: 0.2
+        scaleEase: 27
+    - logic:
+        judgementName: Miss
+        maxTimeDifference: 0.05
+        scoreValue: 0
+        shouldBreakCombo: 1
+      visual:
+        displayName: MISS
+        displayColor: {r: 0.93207544, g: 0.06858658, b: 0.06858658, a: 1}
+        displayIcon: {fileID: 0}
+        showDuration: 0.5
+        fadeOutDuration: 0.3
+        scaleInTime: 0.2
+        scaleEase: 27
+    gaugeConfig: {fileID: 11400000, guid: c99b943deb19c194bac7a17694c7fd6c, type: 2}
+    delayBeforeResult: 0.2
+  - stageId: "\u865A\u507D"
+    stageBgm:
+      bgmId: "\u865A\u507D"
+      bgmAudioClip: {fileID: 8300000, guid: 69751661d8d66e7438a0601e1172da2d, type: 3}
+      bgmBpm: 0
+      bgmGenre: 
+      bgmDisplayName: "\u865A\u507D"
+      bgmJacketImage: {fileID: 21300000, guid: 44059bac7034b014cbfdfd2969182d69, type: 3}
+    chartFileName: test
+    scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
+    judgementConfigs:
+    - logic:
+        judgementName: PerFect
+        maxTimeDifference: 0.05
+        scoreValue: 100
+        shouldBreakCombo: 0
+      visual:
+        displayName: PERFECT
+        displayColor: {r: 0.1866257, g: 0.9169811, b: 0.060555227, a: 1}
+        displayIcon: {fileID: 0}
+        showDuration: 0.5
+        fadeOutDuration: 0.3
+        scaleInTime: 0.2
+        scaleEase: 27
+    - logic:
+        judgementName: Great
+        maxTimeDifference: 0.05
+        scoreValue: 100
+        shouldBreakCombo: 0
+      visual:
+        displayName: GREAT
+        displayColor: {r: 0.86415094, g: 0.19402625, b: 0.7375522, a: 1}
+        displayIcon: {fileID: 0}
+        showDuration: 0.5
+        fadeOutDuration: 0.3
+        scaleInTime: 0.2
+        scaleEase: 27
+    - logic:
+        judgementName: Good
+        maxTimeDifference: 0.05
+        scoreValue: 100
+        shouldBreakCombo: 0
+      visual:
+        displayName: GOOD
+        displayColor: {r: 0.13296534, g: 0.5230522, b: 0.93962264, a: 1}
+        displayIcon: {fileID: 0}
+        showDuration: 0.5
+        fadeOutDuration: 0.3
+        scaleInTime: 0.2
+        scaleEase: 27
+    - logic:
+        judgementName: Miss
+        maxTimeDifference: 0.05
+        scoreValue: 0
+        shouldBreakCombo: 0
+      visual:
+        displayName: MISS
+        displayColor: {r: 0.9622642, g: 0.041758526, b: 0.041758526, a: 1}
+        displayIcon: {fileID: 0}
+        showDuration: 0.48
+        fadeOutDuration: 0.3
+        scaleInTime: 0.2
+        scaleEase: 27
+    gaugeConfig: {fileID: 11400000, guid: c99b943deb19c194bac7a17694c7fd6c, type: 2}
+    delayBeforeResult: 0.2
