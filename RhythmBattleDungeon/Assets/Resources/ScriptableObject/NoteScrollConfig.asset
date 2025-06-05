@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0adb06a2a94d07847b625575dc435a91, type: 3}
+  m_Name: NoteScrollConfig
+  m_EditorClassIdentifier: 
+  timingConfig: {fileID: 11400000, guid: 9afb9e43a46f68a40b088d14ff7138ac, type: 2}
+  laneVisualConfig: {fileID: 11400000, guid: 6e8868b62ecef8f44a51173e0f7889e0, type: 2}
+  keyLabelConfig: {fileID: 11400000, guid: 03809a7802f30254784c6b20e80e91f4, type: 2}
