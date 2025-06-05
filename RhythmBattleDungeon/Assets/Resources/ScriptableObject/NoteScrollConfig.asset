@@ -12,19 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0adb06a2a94d07847b625575dc435a91, type: 3}
   m_Name: NoteScrollConfig
   m_EditorClassIdentifier: 
-  scrollDuration: 1
-  startY: 600
-  endY: -392
-  laneWidth: 500
-  laneHeight: 100
-  laneColors:
-  - {r: 0.32135987, g: 0.4462624, b: 0.5773585, a: 1}
-  - {r: 0.32156864, g: 0.44705883, b: 0.5764706, a: 1}
-  - {r: 0.32156864, g: 0.44705883, b: 0.5764706, a: 1}
-  - {r: 0.32156864, g: 0.44705883, b: 0.5764706, a: 1}
-  laneSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  laneCount: 4
+  timingConfig: {fileID: 11400000, guid: 9afb9e43a46f68a40b088d14ff7138ac, type: 2}
+  laneVisualConfig: {fileID: 11400000, guid: 6e8868b62ecef8f44a51173e0f7889e0, type: 2}
+  keyLabelConfig: {fileID: 11400000, guid: 03809a7802f30254784c6b20e80e91f4, type: 2}

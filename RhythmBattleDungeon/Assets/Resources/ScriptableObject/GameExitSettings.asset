@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2aad8dff6e837f468734126d01e7169, type: 3}
+  m_Name: GameExitSettings
+  m_EditorClassIdentifier: 
+  showConfirmDialog: 1
+  dialogSettings:
+    messageObjectName: MessageText
+    confirmButtonName: ConfirmButton
+    cancelButtonName: CancelButton
+    messageText: "\u30B2\u30FC\u30E0\u3092\u7D42\u4E86\u3057\u307E\u3059\u304B\uFF1F"
+    confirmButtonText: "\u306F\u3044"
+    cancelButtonText: "\u3044\u3044\u3048"
+    useCustomColors: 1
+    confirmButtonColor: {r: 0.07924521, g: 0.07924521, b: 0.07924521, a: 1}
+    cancelButtonColor: {r: 0, g: 0, b: 0, a: 1}
+    messageTextColor: {r: 0.11698109, g: 0.1101388, b: 0.1101388, a: 1}
+    useCustomFontSize: 1
+    messageFontSize: 100
+    cancelFontSize: 100
+    confirmFontSize: 100
+  confirmDialogPrefab: {fileID: 497707639946610065, guid: 80afcb0252e825e40b857624d0a64032, type: 3}

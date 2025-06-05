@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: SceneBGMConfigTable
   m_EditorClassIdentifier: 
   sceneBgmConfigLists:
-  - sceneName: SongSelectScene
-    bgmId: 'Shining Star '
-  - sceneName: ResultScene
-    bgmId: bbbb
   - sceneName: TitleScene
-    bgmId: bbbb
+    bgmId: Beginning!
+  - sceneName: SongSelectScene
+    bgmId: AC Ryhm
+  - sceneName: ResultScene
+    bgmId: "\u865A\u507D"

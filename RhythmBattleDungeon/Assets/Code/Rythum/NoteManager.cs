@@ -2,22 +2,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class NoteManager : SingletonMonoBehaviour<NoteManager>
 {
     [SerializeField] private NoteUIPool notePool;
-    [SerializeField] private RectTransform parentRect; // Canvas配下の親RectTransform
-    [SerializeField] private Image[] laneImages;
+    [SerializeField] private List<Image> laneImages = new List<Image>();
+    [SerializeField] private List<TextMeshProUGUI> laneLabels = new List<TextMeshProUGUI>();
+
+    [Header("▼ レーン生成用プレハブ設定")]
+    [Tooltip("レーンの背景画像プレハブ (Image付き)")]
+    [SerializeField] private GameObject laneImagePrefab;
+
+    [Tooltip("レーンラベルのプレハブ (TextMeshPro付き)")]
+    [SerializeField] private GameObject laneLabelPrefab;
+
+    [Tooltip("生成したレーン要素の親になる RectTransform")]
+    [SerializeField] private RectTransform laneContainer;
+
+    [SerializeField] private RectTransform parentRect;
+
+
     private List<Note> pendingNotes = new List<Note>();
     private List<Note> activeNotes = new List<Note>();
     private Dictionary<Note, NoteUI> noteToUIMap = new Dictionary<Note, NoteUI>();
 
     private ChartData chartData;
-
+    private bool canSpawnNotes = false;
 
     private NoteScrollConfig scrollConfig;
+
+    private LaneVisualConfig laneVisualConfig;
+
+    private NoteTimingConfig noteTimingConfig;
     private JudgementConfig missJudgementConfig;
 
     private bool notesSpawned = false;
@@ -34,55 +53,56 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
 
 
 
-    private void SetupLaneImages()
+    private void CreateLanesAndLabels()
     {
-        int laneCount = laneImages.Length;
+        laneImages.Clear();
+        laneLabels.Clear();
 
-        if (laneCount == 0)
-        {
-            Debug.LogError("[NoteManager] laneImages が空です。");
-            return;
-        }
-
+        int laneCount = laneVisualConfig.LaneCount;
+        float laneWidth = laneVisualConfig.LaneWidth;
+        float laneHeight = laneVisualConfig.LaneHeight;
         float totalWidth = parentRect.rect.width;
-        float laneWidth = totalWidth / laneCount;
         float startX = -totalWidth / 2f + laneWidth / 2f;
-
-        // scrollConfig.StartY を使用してレーンの開始位置（Y軸）を調整
-        float startYPosition = scrollConfig.StartY; // 上からの位置
-        float endYPosition = scrollConfig.EndY;     // 下からの位置
 
         for (int i = 0; i < laneCount; i++)
         {
-            RectTransform laneRect = laneImages[i].rectTransform;
-            // レーンの画像を設定
-            Sprite laneSprite = scrollConfig.GetLaneSprite(i);
-            if (laneSprite != null)
-            {
-                laneImages[i].sprite = laneSprite; // 画像を設定
-            }
-            // レーンの色を設定
-            laneImages[i].color = scrollConfig.GetLaneColor(i);
-            // レーンの Y 座標（startYと endYの間で調整）
-            // Y位置を調整するため、scrollConfig.endYPosition を使って配置
-            laneRect.anchoredPosition = new Vector2(startX + i * laneWidth, endYPosition);
+            float posX = startX + i * laneWidth;
 
-            // 必要に応じてサイズを調整
-            laneRect.sizeDelta = new Vector2(laneWidth, scrollConfig.LaneHeight);
+            // Lane Image
+            GameObject laneGO = Instantiate(laneImagePrefab, laneContainer);
+            RectTransform laneRT = laneGO.GetComponent<RectTransform>();
+            laneRT.anchoredPosition = new Vector2(posX, noteTimingConfig.EndY);
+            laneRT.sizeDelta = new Vector2(laneWidth, laneHeight);
+
+            Image laneImage = laneGO.GetComponent<Image>();
+            laneImage.sprite = laneVisualConfig.GetLaneSprite(i);
+            laneImage.color = laneVisualConfig.GetLaneColor(i);
+            laneImages.Add(laneImage);
+
+            // Lane Label
+            if (laneLabelPrefab != null)
+            {
+                GameObject labelGO = Instantiate(laneLabelPrefab, laneContainer);
+                RectTransform labelRT = labelGO.GetComponent<RectTransform>();
+                labelRT.anchoredPosition = new Vector2(posX, noteTimingConfig.EndY - laneVisualConfig.LaneLabelYOffset);
+                labelRT.sizeDelta = laneVisualConfig.LaneLabelSize;
+
+                TextMeshProUGUI labelText = labelGO.GetComponent<TextMeshProUGUI>();
+                labelText.text = string.Format(laneVisualConfig.LaneLabelFormat, i + 1);
+                laneLabels.Add(labelText);
+            }
         }
     }
-
     public void Initialize()
     {
         StartCoroutine(InitializeRoutine());
     }
-
+    public void AllowNoteSpawning() => canSpawnNotes = true;
 
 
 
     private IEnumerator InitializeRoutine()
     {
-        // ステージ未初期化なら、テスト用ステージを強制ロード
         if (!StageManager.Instance.IsStageSelected)
         {
             var testTable = Resources.Load<StageConfigTable>("ScriptableObject/stageConfig");
@@ -96,8 +116,11 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
             yield break;
         }
 
-        missJudgementConfig = JudgementManager.Instance.GetMissJudgement();
         scrollConfig = StageManager.Instance.GetCurrentStageConfig()?.ScrollConfig;
+        laneVisualConfig = scrollConfig.GetLaneVisualConfig();
+        noteTimingConfig = scrollConfig.GetNoteTimingConfig();
+        missJudgementConfig = JudgementManager.Instance.GetMissJudgement();
+
         if (scrollConfig == null)
         {
             Debug.LogError("[NoteManager] scrollConfig が null！");
@@ -111,26 +134,77 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
             yield break;
         }
 
+        CreateLanesAndLabels();
+
         pendingNotes = chartData.Notes.ToList();
-
-        SetupLaneImages();
-
         isInitialized = true;
-        OnInitialized?.Invoke(); // ← 初期化完了を通知
+        OnInitialized?.Invoke();
     }
 
+    private void OnDestroy()
+    {
+        // クリーンアップ処理
+        if (noteToUIMap != null)
+        {
+            noteToUIMap.Clear();
+        }
 
+        pendingNotes?.Clear();
+        activeNotes?.Clear();
+
+        // フラグをリセット
+        notesSpawned = false;
+        isInitialized = false;
+        canSpawnNotes = false;
+    }
+
+    // シーン変更時の初期化リセット
+    public void ResetForNewScene()
+    {
+        // 状態をリセット
+        notesSpawned = false;
+        isInitialized = false;
+        canSpawnNotes = false;
+
+        // リストをクリア
+        pendingNotes?.Clear();
+        activeNotes?.Clear();
+        noteToUIMap?.Clear();
+
+        // 必要に応じてシリアライズフィールドの再取得
+        RefreshSerializedReferences();
+    }
+
+    private void RefreshSerializedReferences()
+    {
+        // シリアライズフィールドが null の場合、再取得を試みる
+        if (notePool == null)
+        {
+            notePool = FindAnyObjectByType<NoteUIPool>();
+        }
+
+        var parentGO = GameObject.Find("Noteparent"); // 明示的に子の GameObject 名
+        if (parentGO != null)
+        {
+            parentRect = parentGO.GetComponent<RectTransform>();
+            Debug.Log("[NoteManager] parentRect 再取得成功: " + parentRect.name);
+        }
+        else
+        {
+            Debug.LogError("NoteParent が見つかりませんでした");
+        }
+
+       
+    }
 
     private void Update()
     {
-        if (!isInitialized) return; 
+        if (!isInitialized || !canSpawnNotes) return;
 
         float currentTime = AudioManager.Instance.GetCurrentBGMTime();
         SpawnNotesIfNeeded(currentTime);
         CheckMissNotes(currentTime);
-        Debug.Log($"[ScoreManager] TotalNoteCount: {TotalNoteCount}");
-        Debug.Log($"[ScoreManager] 実際の chartData.Notes.Length: {chartData.Notes.Length}");
-
+      
     }
 
     /// <summary>
@@ -139,7 +213,7 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
     private void SpawnNotesIfNeeded(float currentTime)
     {
         // NOTE: pendingNotes は SpawnTime が昇順で並んでいる前提
-        while (pendingNotes.Count > 0 && pendingNotes[0].SpawnTime - currentTime <= scrollConfig.ScrollDuration)
+        while (pendingNotes.Count > 0 && pendingNotes[0].SpawnTime - currentTime <= noteTimingConfig.ScrollDuration)
         {
             var note = pendingNotes[0];
             pendingNotes.RemoveAt(0);
@@ -153,11 +227,7 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
 
             OnNotesSpawned?.Invoke();
         }
-        notesSpawned = true; // フラグを立てる
-
-        Debug.Log(OnNotesSpawned);
-        OnNotesSpawned?.Invoke();
-        Debug.Log("Invoke すべてのノーツ");
+        
     }
 
     public void SpawnNote(Note noteData)
@@ -165,24 +235,31 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
         int lane = noteData.LaneNumber;
         float offsetTime = noteData.SpawnTime;
 
-        if (lane < 0 || lane >= scrollConfig.LaneCount)
+        if (lane < 0 || lane >= laneVisualConfig.LaneCount)
         {
             Debug.LogWarning($"[NoteManager] 無効なレーン番号: {lane}");
             return;
         }
 
         float totalWidth = parentRect.rect.width;
-        float laneWidth = totalWidth / scrollConfig.LaneCount;
-        float startX = -totalWidth / 2f + laneWidth / 2f + lane * laneWidth;
+        float laneWidth = laneVisualConfig.LaneWidth;
+        float parentOffsetX = parentRect.anchoredPosition.x; // 216
 
-        Vector2 startPos = new Vector2(startX, scrollConfig.StartY);
-        Vector2 endPos = new Vector2(startX, scrollConfig.EndY);
+        // レーン内での相対位置を計算
+        float relativeStartX = -totalWidth / 2f + laneWidth / 2f + lane * laneWidth;
 
+        // parentRect のオフセットは考慮しない（親の座標系内で計算）
+        Vector2 startPos = new Vector2(relativeStartX, noteTimingConfig.StartY);
+        Vector2 endPos = new Vector2(relativeStartX, noteTimingConfig.EndY);
         var noteUI = notePool.Get();
         noteUI.transform.SetParent(parentRect, false);
 
+        noteUI.GetComponent<RectTransform>().anchoredPosition = startPos;
+
+
+
         // noteData を NoteUI に渡す
-        noteUI.Setup(offsetTime, scrollConfig.ScrollDuration, startPos, endPos, noteData);
+        noteUI.Setup(offsetTime, scrollConfig.GetNoteTimingConfig().ScrollDuration, startPos, endPos, noteData);
     }
     private void CheckMissNotes(float currentTime)
     {
@@ -242,7 +319,7 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
             if (int.TryParse(numberStr, out int num))
             {
                 int index = num - 1;
-                if (index >= 0 && index < scrollConfig.LaneCount)
+                if (index >= 0 && index <laneVisualConfig.LaneCount)
                     return index;
             }
         }
@@ -256,9 +333,9 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
     public Vector2 GetLanePosition(int lane)
     {
         float totalWidth = parentRect.rect.width;
-        float laneWidth = totalWidth / scrollConfig.LaneCount;
+        float laneWidth = totalWidth / laneVisualConfig.LaneCount;
         float startX = -totalWidth / 2f + laneWidth / 2f + lane * laneWidth;
-        return new Vector2(startX, scrollConfig.EndY);
+        return new Vector2(startX, noteTimingConfig.EndY);
     }
 
 }
