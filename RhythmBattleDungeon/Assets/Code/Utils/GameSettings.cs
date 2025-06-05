@@ -15,10 +15,14 @@ public class GameSettings : ScriptableObject
 
     [SerializeField, Header("フェードの速度")] 
     private float fadeSpeed = 1f;
+    [SerializeField, Header("リトライ時などの待機時間 (ms)")]
+    private int retryDelayMilliseconds = 100;
 
     internal int MaxSeCount => maxSeCount;
     internal float InitialBgmVolume => initialBgmVolume;
     internal float InitialSeVolume => initialSeVolume;
 
-    internal float FadeSpeed => fadeSpeed;  
+    internal float FadeSpeed => fadeSpeed;
+    internal int RetryDelayMilliseconds => retryDelayMilliseconds;
+
 }

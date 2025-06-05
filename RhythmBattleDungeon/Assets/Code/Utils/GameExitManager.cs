@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.InputSystem;
 using Cysharp.Threading.Tasks;
 using System.Threading;
@@ -6,189 +6,140 @@ using TMPro;
 using UnityEngine.UI;
 
 /// <summary>
-/// ƒQ[ƒ€I—¹ˆ—‚ğŠÇ—‚·‚é”Ä—pƒNƒ‰ƒX
+/// ã‚²ãƒ¼ãƒ çµ‚äº†å‡¦ç†ã‚’ç®¡ç†ã™ã‚‹æ±ç”¨ã‚¯ãƒ©ã‚¹
 /// </summary>
 public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
 {
-    [Header("“ü—Íİ’è")]
-    private PlayerInputActions inputActions;
-    private InputAction exitAction;
-    private InputAction menuAction;
+  
 
-    [Header("UIİ’èiƒIƒvƒVƒ‡ƒ“j")]
-    [SerializeField, Tooltip("Šm”Fƒ_ƒCƒAƒƒO‚ğ¶¬‚·‚éeƒLƒƒƒ“ƒoƒXB–¢İ’è‚Ìê‡‚Í©“®ŒŸo")]
+    [Header("UIè¨­å®šï¼ˆã‚ªãƒ—ã‚·ãƒ§ãƒ³ï¼‰")]
+    [SerializeField, Tooltip("ç¢ºèªãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’ç”Ÿæˆã™ã‚‹è¦ªã‚­ãƒ£ãƒ³ãƒã‚¹ã€‚æœªè¨­å®šã®å ´åˆã¯è‡ªå‹•æ¤œå‡º")]
     private Canvas targetCanvas;
 
-    // İ’èŠÖ˜AiƒXƒNƒŠƒvƒ^ƒuƒ‹ƒIƒuƒWƒFƒNƒg‚©‚çæ“¾j
+    // è¨­å®šé–¢é€£ï¼ˆã‚¹ã‚¯ãƒªãƒ—ã‚¿ãƒ–ãƒ«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰å–å¾—ï¼‰
     private GameExitSettings settings;
 
-    // UIQÆi“®“I‚É¶¬j
+    // UIå‚ç…§ï¼ˆå‹•çš„ã«ç”Ÿæˆï¼‰
     private GameObject confirmDialog;
 
-    // ƒLƒƒƒ“ƒZƒŒ[ƒVƒ‡ƒ“ƒg[ƒNƒ“
-    private CancellationTokenSource cancellationTokenSource;
+    
 
-    /// <summary>
-    /// •Û‘¶êŠ‚Ì‘I‘ğˆ
-    /// </summary>
-    public enum SaveLocation
+    public void InitializeConfirmSettings()
     {
-        PersistentDataPath,    // Application.persistentDataPath
-        DataPath,             // Application.dataPath
-        StreamingAssetsPath,  // Application.streamingAssetsPath
-        TemporaryCachePath,   // Application.temporaryCachePath
-        Custom                // ƒJƒXƒ^ƒ€ƒpƒX
-    }
-
-    protected override void Awake()
-    {
-        base.Awake();
-        cancellationTokenSource = new CancellationTokenSource();
-
-        // GameInitializer‚Ì‰Šú‰»‚ğ‘Ò‚Â
+        // GameInitializerã®åˆæœŸåŒ–ã‚’å¾…ã¤
         InitializeAsync().Forget();
     }
 
     /// <summary>
-    /// ”ñ“¯Šú‰Šú‰»ˆ—
+    /// éåŒæœŸåˆæœŸåŒ–å‡¦ç†
     /// </summary>
     private async UniTaskVoid InitializeAsync()
     {
-        // GameInitializer‚Ì‰Šú‰»Š®—¹‚ğ‘Ò‹@
+        // GameInitializerã®åˆæœŸåŒ–å®Œäº†ã‚’å¾…æ©Ÿ
         await UniTask.WaitUntil(() => GameInitializer.Instance != null && GameInitializer.Instance.Initialized);
 
-        // İ’è‚ğæ“¾
+        // è¨­å®šã‚’å–å¾—
         LoadSettings();
 
-        // “ü—ÍƒAƒNƒVƒ‡ƒ“‚ğ‰Šú‰»
-        InitializeInputActions();
+  
 
-        // Šm”Fƒ_ƒCƒAƒƒO‚ğ€”õ
+        // ç¢ºèªãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’æº–å‚™
         SetupConfirmDialog();
+        confirmDialog.SetActive(true);
 
-        Debug.Log("GameExitManager‰Šú‰»Š®—¹");
+        Debug.Log("GameExitManageråˆæœŸåŒ–å®Œäº†");
     }
 
+  
     /// <summary>
-    /// İ’è‚ğGameInitializer‚©‚çæ“¾
+    /// è¨­å®šã‚’GameInitializerã‹ã‚‰å–å¾—
     /// </summary>
     private void LoadSettings()
     {
         if (GameInitializer.Instance != null)
         {
             settings = GameInitializer.Instance.GetGameExitSettings();
+        }
 
-            if (settings == null)
-            {
-                Debug.LogWarning("GameExitSettings‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñBƒfƒtƒHƒ‹ƒgİ’è‚ğg—p‚µ‚Ü‚·B");
-                // ƒfƒtƒHƒ‹ƒgİ’è‚Æ‚µ‚ÄAİ’è€–Ú‚ğ’¼Úg—p
-            }
+        // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆè¨­å®šã‚’ä½œæˆ
+        if (settings == null)
+        {
+            Debug.LogWarning("GameExitSettingsãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆè¨­å®šã‚’ä½œæˆã—ã¾ã™ã€‚");
+            CreateDefaultSettings();
         }
     }
 
     /// <summary>
-    /// Šm”Fƒ_ƒCƒAƒƒO‚Ì€”õ
+    /// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆè¨­å®šã‚’ä½œæˆ
+    /// </summary>
+    private void CreateDefaultSettings()
+    {
+        // ScriptableObjectã¨ã—ã¦ä½œæˆï¼ˆå®Ÿéš›ã«ã¯è¨­å®šå€¤ã ã‘ã‚’ä½¿ç”¨ï¼‰
+        settings = ScriptableObject.CreateInstance<GameExitSettings>();
+
+        // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ€ã‚¤ã‚¢ãƒ­ã‚°è¨­å®šã‚’ä½œæˆ
+        if (settings.DialogSettings == null)
+        {
+            settings.DialogSettings = new DialogElementSettings
+            {
+                MessageText = "ã‚²ãƒ¼ãƒ ã‚’çµ‚äº†ã—ã¾ã™ã‹ï¼Ÿ",
+                MessageObjectName = "MessageText",
+                ConfirmButtonName = "ConfirmButton",
+                CancelButtonName = "CancelButton",
+                ConfirmButtonText = "ã¯ã„",
+                CancelButtonText = "ã„ã„ãˆ",
+                UseCustomColors = false,
+                MessageTextColor = Color.white,
+                ConfirmButtonColor = Color.green,
+                CancelButtonColor = Color.red
+            };
+        }
+
+        settings.ShowConfirmDialog = true;
+   
+    }
+    /// <summary>
+    /// ç¢ºèªãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®æº–å‚™
     /// </summary>
     private void SetupConfirmDialog()
     {
         if (settings?.ConfirmDialogPrefab != null)
         {
-            // “KØ‚ÈeƒIƒuƒWƒFƒNƒgiƒLƒƒƒ“ƒoƒXj‚ğŒ©‚Â‚¯‚é
-            Transform parentTransform = FindAppropriateParent();
-            
+            Transform parentTransform = targetCanvas.transform;
+
             confirmDialog = Instantiate(settings.ConfirmDialogPrefab, parentTransform);
             confirmDialog.SetActive(false);
-            
-            // ƒ_ƒCƒAƒƒO‚Ì‰Šúİ’è‚ğ“K—p
+
+            // ä¸è¦ãªCanvasRendererã‚’å‰Šé™¤
+            RemoveUnnecessaryCanvasRenderers();
+
             ApplyDialogSettings();
         }
     }
 
     /// <summary>
-    /// Šm”Fƒ_ƒCƒAƒƒO‚Ì“KØ‚ÈeƒIƒuƒWƒFƒNƒg‚ğ’T‚·
+    /// ä¸è¦ãªCanvasRendererã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å‰Šé™¤
     /// </summary>
-    private Transform FindAppropriateParent()
+    private void RemoveUnnecessaryCanvasRenderers()
     {
-        // 1. ƒCƒ“ƒXƒyƒNƒ^[‚Åw’è‚³‚ê‚½ƒLƒƒƒ“ƒoƒX‚ª‚ ‚é‚©ƒ`ƒFƒbƒN
-        if (targetCanvas != null && targetCanvas.gameObject.activeInHierarchy)
-        {
-            Debug.Log($"w’è‚³‚ê‚½ƒLƒƒƒ“ƒoƒX '{targetCanvas.name}' ‚ğg—p‚µ‚Ü‚·");
-            return targetCanvas.transform;
-        }
+        if (confirmDialog == null) return;
 
-        // 2. Œ»İ‚ÌƒV[ƒ“‚ÅƒAƒNƒeƒBƒu‚ÈƒLƒƒƒ“ƒoƒX‚ğ’T‚·
-        Object[] canvases = FindObjectsByType(typeof(Canvas), FindObjectsSortMode.None);
-
-        
-        // 3. Screen Space - Overlay ‚ÌƒLƒƒƒ“ƒoƒX‚ğ—Dæ
-        Canvas overlayCanvas = null;
-        Canvas cameraCanvas = null;
-        Canvas worldCanvas = null;
-        
-        foreach (Canvas canvas in canvases)
+        var textComponents = confirmDialog.GetComponentsInChildren<UnityEngine.UI.Text>();
+        foreach (var textComponent in textComponents)
         {
-            if (!canvas.gameObject.activeInHierarchy) continue;
-            
-            switch (canvas.renderMode)
+            var canvasRenderers = textComponent.GetComponents<CanvasRenderer>();
+            // Text ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«ã¯1ã¤ã® CanvasRenderer ãŒã‚ã‚Œã°ååˆ†
+            for (int i = 1; i < canvasRenderers.Length; i++)
             {
-                case RenderMode.ScreenSpaceOverlay:
-                    if (overlayCanvas == null || canvas.sortingOrder > overlayCanvas.sortingOrder)
-                        overlayCanvas = canvas;
-                    break;
-                case RenderMode.ScreenSpaceCamera:
-                    if (cameraCanvas == null || canvas.sortingOrder > cameraCanvas.sortingOrder)
-                        cameraCanvas = canvas;
-                    break;
-                case RenderMode.WorldSpace:
-                    if (worldCanvas == null || canvas.sortingOrder > worldCanvas.sortingOrder)
-                        worldCanvas = canvas;
-                    break;
+                DestroyImmediate(canvasRenderers[i]);
             }
         }
-        
-        // 4. —Dæ‡ˆÊ‚É]‚Á‚Ä“KØ‚ÈƒLƒƒƒ“ƒoƒX‚ğ‘I‘ğ
-        Canvas selectedCanvas = overlayCanvas ?? cameraCanvas ?? worldCanvas;
-        
-        if (selectedCanvas != null)
-        {
-            Debug.Log($"Šm”Fƒ_ƒCƒAƒƒO‚ğ '{selectedCanvas.name}' ƒLƒƒƒ“ƒoƒX‚É¶¬‚µ‚Ü‚·");
-            return selectedCanvas.transform;
-        }
-        
-        // 5. ƒLƒƒƒ“ƒoƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍAUIƒLƒƒƒ“ƒoƒX‚ğ“®“I‚Éì¬
-        Debug.LogWarning("“KØ‚ÈƒLƒƒƒ“ƒoƒX‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñBV‚µ‚¢ƒLƒƒƒ“ƒoƒX‚ğì¬‚µ‚Ü‚·");
-        return CreateUICanvas().transform;
     }
 
-    /// <summary>
-    /// UI—p‚ÌƒLƒƒƒ“ƒoƒX‚ğ“®“I‚Éì¬
-    /// </summary>
-    private Canvas CreateUICanvas()
-    {
-        GameObject canvasGO = new GameObject("GameExitUI_Canvas");
-        Canvas canvas = canvasGO.AddComponent<Canvas>();
-        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        canvas.sortingOrder = 1000; // Å‘O–Ê‚É•\¦
-        
-        // Canvas Scaler ‚ğ’Ç‰Á
-        CanvasScaler scaler = canvasGO.AddComponent<CanvasScaler>();
-        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-        scaler.referenceResolution = new Vector2(1920, 1080);
-        scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
-        scaler.matchWidthOrHeight = 0.5f;
-        
-        // Graphic Raycaster ‚ğ’Ç‰Á
-        canvasGO.AddComponent<GraphicRaycaster>();
-        
-        // ƒV[ƒ“•ÏX‚Éíœ‚³‚ê‚È‚¢‚æ‚¤‚É‚·‚éi•K—v‚É‰‚¶‚Äj
-        DontDestroyOnLoad(canvasGO);
-        
-        Debug.Log("GameExitManager—p‚ÌUIƒLƒƒƒ“ƒoƒX‚ğì¬‚µ‚Ü‚µ‚½");
-        return canvas;
-    }
+  
 
     /// <summary>
-    /// ƒ_ƒCƒAƒƒO‚Ìİ’è‚ğ“K—p
+    /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®è¨­å®šã‚’é©ç”¨
     /// </summary>
     private void ApplyDialogSettings()
     {
@@ -196,40 +147,63 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
 
         var dialogSettings = settings.DialogSettings;
 
-        // ƒƒbƒZ[ƒWƒeƒLƒXƒg‚ğİ’è
+        // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ†ã‚­ã‚¹ãƒˆã‚’è¨­å®š
         SetDialogMessage(dialogSettings.MessageText);
 
-        // ƒ{ƒ^ƒ“ƒeƒLƒXƒg‚ğİ’è
+        // ãƒœã‚¿ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’è¨­å®š
         SetButtonText(dialogSettings.ConfirmButtonName, dialogSettings.ConfirmButtonText);
         SetButtonText(dialogSettings.CancelButtonName, dialogSettings.CancelButtonText);
 
-        // ƒJƒXƒ^ƒ€ƒJƒ‰[‚ğ“K—p
+        // ã‚«ã‚¹ã‚¿ãƒ ã‚«ãƒ©ãƒ¼ã‚’é©ç”¨
         if (dialogSettings.UseCustomColors)
         {
             ApplyCustomColors(dialogSettings);
         }
+        // å„ãƒœã‚¿ãƒ³ã«ãƒªã‚¹ãƒŠãƒ¼ã‚’ç™»éŒ²
+        SetButtonListener(dialogSettings.ConfirmButtonName, OnConfirmExit);
+        SetButtonListener(dialogSettings.CancelButtonName, OnCancelExit);
     }
-
+    private void SetButtonListener(string buttonName, UnityEngine.Events.UnityAction action)
+    {
+        var buttonTransform = confirmDialog.transform.GetChild(0).Find(buttonName);
+        if (buttonTransform != null)
+        {
+            var button = buttonTransform.GetComponent<Button>();
+            if (button != null)
+            {
+                button.onClick.RemoveAllListeners(); // å¤ã„ãƒªã‚¹ãƒŠãƒ¼ã‚’ã‚¯ãƒªã‚¢
+                button.onClick.AddListener(action);  // æ–°ã—ã„ãƒªã‚¹ãƒŠãƒ¼ã‚’è¿½åŠ 
+            }
+            else
+            {
+                Debug.LogWarning($"'{buttonName}' ã« Button ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"'{buttonName}' ãŒãƒ€ã‚¤ã‚¢ãƒ­ã‚°å†…ã«è¦‹ã¤ã‹ã‚Šã¾ã›ã‚“");
+        }
+    }
     /// <summary>
-    /// ƒ{ƒ^ƒ“‚ÌƒeƒLƒXƒg‚ğİ’è
+    /// ãƒœã‚¿ãƒ³ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’è¨­å®š
     /// </summary>
     private void SetButtonText(string buttonName, string text)
     {
-        var buttonTransform = confirmDialog.transform.Find(buttonName);
+        var buttonTransform = confirmDialog.transform.GetChild(0).Find(buttonName);
         if (buttonTransform != null)
         {
-            var buttonComponent = buttonTransform.GetComponent<UnityEngine.UI.Button>();
+            var buttonComponent = buttonTransform.GetComponent<Button>();
             if (buttonComponent != null)
             {
-                // ƒ{ƒ^ƒ““à‚ÌƒeƒLƒXƒgƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ’T‚·
-                var textComponent = buttonComponent.GetComponentInChildren<UnityEngine.UI.Text>();
+                // ãƒœã‚¿ãƒ³å†…ã®ãƒ†ã‚­ã‚¹ãƒˆã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æ¢ã™
+                var textComponent = buttonComponent.GetComponentInChildren<Text>();
                 if (textComponent != null)
                 {
                     textComponent.text = text;
                     return;
                 }
 
-                var tmpComponent = buttonComponent.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+                var tmpComponent = buttonComponent.GetComponentInChildren<TextMeshProUGUI>();
                 if (tmpComponent != null)
                 {
                     tmpComponent.text = text;
@@ -240,34 +214,34 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
     }
 
     /// <summary>
-    /// ƒJƒXƒ^ƒ€ƒJƒ‰[‚ğ“K—p
+    /// ã‚«ã‚¹ã‚¿ãƒ ã‚«ãƒ©ãƒ¼ã‚’é©ç”¨
     /// </summary>
     private void ApplyCustomColors(DialogElementSettings dialogSettings)
     {
-        // ƒƒbƒZ[ƒWƒeƒLƒXƒg‚ÌF‚ğİ’è
+        // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ†ã‚­ã‚¹ãƒˆã®è‰²ã‚’è¨­å®š
         ApplyTextColor(dialogSettings.MessageObjectName, dialogSettings.MessageTextColor);
         
-        // ƒ{ƒ^ƒ“‚ÌF‚ğİ’è
+        // ãƒœã‚¿ãƒ³ã®è‰²ã‚’è¨­å®š
         ApplyButtonColor(dialogSettings.ConfirmButtonName, dialogSettings.ConfirmButtonColor);
         ApplyButtonColor(dialogSettings.CancelButtonName, dialogSettings.CancelButtonColor);
     }
 
     /// <summary>
-    /// ƒeƒLƒXƒg‚ÌF‚ğİ’è
+    /// ãƒ†ã‚­ã‚¹ãƒˆã®è‰²ã‚’è¨­å®š
     /// </summary>
     private void ApplyTextColor(string objectName, Color color)
     {
         var textTransform = confirmDialog.transform.Find(objectName);
         if (textTransform != null)
         {
-            var uiText = textTransform.GetComponent<UnityEngine.UI.Text>();
+            var uiText = textTransform.GetComponent<Text>();
             if (uiText != null)
             {
                 uiText.color = color;
                 return;
             }
 
-            var tmpText = textTransform.GetComponent<TMPro.TextMeshProUGUI>();
+            var tmpText = textTransform.GetComponent<TextMeshProUGUI>();
             if (tmpText != null)
             {
                 tmpText.color = color;
@@ -276,123 +250,36 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
     }
 
     /// <summary>
-    /// ƒ{ƒ^ƒ“‚ÌF‚ğİ’è
+    /// ãƒœã‚¿ãƒ³ã®è‰²ã‚’è¨­å®š
     /// </summary>
     private void ApplyButtonColor(string buttonName, Color color)
     {
-        var buttonTransform = confirmDialog.transform.Find(buttonName);
+        var buttonTransform = confirmDialog.transform.GetChild(0).Find(buttonName);
         if (buttonTransform != null)
         {
-            var button = buttonTransform.GetComponent<UnityEngine.UI.Button>();
+            var button = buttonTransform.GetComponent<Button>();
             if (button != null)
             {
-                var colors = button.colors;
-                colors.normalColor = color;
-                button.colors = colors;
+                // ãƒœã‚¿ãƒ³å†…ã®ãƒ†ã‚­ã‚¹ãƒˆã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æ¢ã™
+                var textComponent = button.GetComponentInChildren<Text>();
+                if (textComponent != null)
+                {
+                    textComponent.color = color;
+                    return;
+                }
+
+                var tmpComponent = button.GetComponentInChildren<TextMeshProUGUI>();
+                if (tmpComponent != null)
+                {
+                    tmpComponent.color = color;
+                    return;
+                }
             }
-        }
-    }
-
-    private void OnEnable()
-    {
-        EnableInputActions();
-    }
-
-    private void OnDisable()
-    {
-        DisableInputActions();
-    }
-
-    /// <summary>
-    /// Input Action‚Ì‰Šú‰»
-    /// </summary>
-    private void InitializeInputActions()
-    {
-        inputActions = new PlayerInputActions();
-
-        exitAction = inputActions.UI.Exit;
-        menuAction = inputActions.UI.Menu;
-
-        if (exitAction == null)
-        {
-            exitAction = new InputAction("Exit", InputActionType.Button);
-            exitAction.AddBinding("<Keyboard>/escape");
-            exitAction.AddBinding("<Gamepad>/start");
-#if UNITY_ANDROID || UNITY_IOS
-            exitAction.AddBinding("<AndroidGameController>/buttonSouth");
-#endif
-        }
-
-        if (menuAction == null)
-        {
-            menuAction = new InputAction("Menu", InputActionType.Button);
-            menuAction.AddBinding("<Keyboard>/m");
-            menuAction.AddBinding("<Gamepad>/select");
-        }
-
-        exitAction.performed += OnExitInput;
-        menuAction.performed += OnMenuInput;
-    }
-
-    /// <summary>
-    /// Input Action‚ğ—LŒø‰»
-    /// </summary>
-    private void EnableInputActions()
-    {
-        inputActions?.Enable();
-        exitAction?.Enable();
-        menuAction?.Enable();
-    }
-
-    /// <summary>
-    /// Input Action‚ğ–³Œø‰»
-    /// </summary>
-    private void DisableInputActions()
-    {
-        inputActions?.Disable();
-        exitAction?.Disable();
-        menuAction?.Disable();
-    }
-
-    /// <summary>
-    /// I—¹“ü—Í‚ªs‚í‚ê‚½‚Ìˆ—
-    /// </summary>
-    private void OnExitInput(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            RequestExitAsync().Forget();
-        }
-    }
-
-    /// <summary>
-    /// ƒƒjƒ…[“ü—Í‚ªs‚í‚ê‚½‚Ìˆ—
-    /// </summary>
-    private void OnMenuInput(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            ReturnToMenuAsync().Forget();
         }
     }
 
     private void OnDestroy()
     {
-        if (exitAction != null)
-        {
-            exitAction.performed -= OnExitInput;
-        }
-
-        if (menuAction != null)
-        {
-            menuAction.performed -= OnMenuInput;
-        }
-
-        DisableInputActions();
-        inputActions?.Dispose();
-
-        cancellationTokenSource?.Cancel();
-        cancellationTokenSource?.Dispose();
 
         if (confirmDialog != null)
         {
@@ -401,155 +288,101 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
     }
 
     /// <summary>
-    /// ƒQ[ƒ€I—¹‚ğ—v‹‚·‚éiŠO•”‚©‚çŒÄ‚Ño‚µ‰Â”\j
-    /// </summary>
-    public async UniTaskVoid RequestExitAsync()
-    {
-        try
-        {
-            bool showDialog = settings?.ShowConfirmDialog ?? true;
-
-            if (showDialog)
-            {
-                bool confirmed = await ShowConfirmDialogAsync();
-                if (!confirmed) return;
-            }
-
-            await ExitGameAsync();
-        }
-        catch (System.OperationCanceledException)
-        {
-            Debug.Log("ƒQ[ƒ€I—¹ˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚Ü‚µ‚½");
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogError($"ƒQ[ƒ€I—¹ˆ—‚ÅƒGƒ‰[‚ª”­¶: {e.Message}");
-        }
-    }
-
-    /// <summary>
-    /// “¯Šú”Å‚ÌƒQ[ƒ€I—¹—v‹iUIƒ{ƒ^ƒ“—pj
-    /// </summary>
-    public void RequestExit()
-    {
-        RequestExitAsync().Forget();
-    }
-
-    /// <summary>
-    /// Šm”Fƒ_ƒCƒAƒƒO‚ğ•\¦‚µ‚ÄŒ‹‰Ê‚ğ‘Ò‹@i‰ü—Ç”Åj
-    /// </summary>
-    private async UniTask<bool> ShowConfirmDialogAsync()
-    {
-        if (confirmDialog == null)
-        {
-            return true;
-        }
-
-        confirmDialog.SetActive(true);
-        Time.timeScale = 0f;
-
-        // İ’è‚©‚çƒƒbƒZ[ƒWƒeƒLƒXƒg‚ğæ“¾
-        string messageText = settings?.DialogSettings?.MessageText ?? "ƒQ[ƒ€‚ğI—¹‚µ‚Ü‚·‚©H";
-        SetDialogMessage(messageText);
-
-        bool? result = null;
-
-        // İ’è‚©‚çƒ{ƒ^ƒ“–¼‚ğæ“¾
-        string confirmButtonName = settings?.DialogSettings?.ConfirmButtonName ?? "ConfirmButton";
-        string cancelButtonName = settings?.DialogSettings?.CancelButtonName ?? "CancelButton";
-
-        var confirmButton = confirmDialog.transform.Find(confirmButtonName)?.GetComponent<UnityEngine.UI.Button>();
-        var cancelButton = confirmDialog.transform.Find(cancelButtonName)?.GetComponent<UnityEngine.UI.Button>();
-
-        if (confirmButton != null)
-        {
-            confirmButton.onClick.AddListener(() => result = true);
-        }
-
-        if (cancelButton != null)
-        {
-            cancelButton.onClick.AddListener(() => result = false);
-        }
-
-        await UniTask.WaitUntil(() => result.HasValue, cancellationToken: cancellationTokenSource.Token);
-
-        confirmButton?.onClick.RemoveAllListeners();
-        cancelButton?.onClick.RemoveAllListeners();
-
-        confirmDialog.SetActive(false);
-        Time.timeScale = 1f;
-
-        return result.Value;
-    }
-
-    /// <summary>
-    /// ƒ_ƒCƒAƒƒO‚ÌƒƒbƒZ[ƒWƒeƒLƒXƒg‚ğİ’è
+    /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ†ã‚­ã‚¹ãƒˆã‚’è¨­å®š
     /// </summary>
     private void SetDialogMessage(string message)
     {
-        // İ’è‚©‚çƒIƒuƒWƒFƒNƒg–¼‚ğæ“¾A‚È‚¯‚ê‚ÎƒfƒtƒHƒ‹ƒg‚Ì–¼‘Oƒpƒ^[ƒ“‚ğg—p
-        string[] possibleNames;
-        
-        if (settings?.DialogSettings != null)
+        if (confirmDialog == null)
         {
-            possibleNames = new string[] { settings.DialogSettings.MessageObjectName };
+            Debug.LogError("confirmDialog ãŒ null ã§ã™");
+            return;
+        }
+
+        Debug.Log($"=== MessageText æ¤œç´¢é–‹å§‹ ===");
+        Debug.Log($"confirmDialog åå‰: {confirmDialog.name}");
+
+        // è¨­å®šã‹ã‚‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã‚’å–å¾—
+        string targetName = settings?.DialogSettings?.MessageObjectName ?? "MessageText";
+        Debug.Log($"æ¤œç´¢å¯¾è±¡å: {targetName}");
+
+        var directChild = confirmDialog.transform.Find(targetName);
+        if (directChild != null)
+        {
+            Debug.Log($"ç›´æ¥ã®å­ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§ç™ºè¦‹: {directChild.name}");
+            if (TrySetTextComponent(directChild, message))
+            {
+                return;
+            }
         }
         else
         {
-            // ƒtƒH[ƒ‹ƒoƒbƒN—p‚Ìˆê”Ê“I‚È–¼‘O‚Ìƒpƒ^[ƒ“
-            possibleNames = new string[] { "MessageText", "Message", "Text", "DialogText", "ConfirmText" };
+            Debug.Log($"ç›´æ¥ã®å­ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã¯ '{targetName}' ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“");
         }
 
-        foreach (string name in possibleNames)
-        {
-            var textComponent = confirmDialog.transform.Find(name);
-            if (textComponent != null)
-            {
-                // Unity UI Text
-                var uiText = textComponent.GetComponent<UnityEngine.UI.Text>();
-                if (uiText != null)
-                {
-                    uiText.text = message;
-                    return;
-                }
+      
 
-                // TextMeshPro UGUI
-                var tmpText = textComponent.GetComponent<TMPro.TextMeshProUGUI>();
-                if (tmpText != null)
-                {
-                    tmpText.text = message;
-                    return;
-                }
-
-                // TextMeshPro (3D)
-                var tmp3DText = textComponent.GetComponent<TMPro.TextMeshPro>();
-                if (tmp3DText != null)
-                {
-                    tmp3DText.text = message;
-                    return;
-                }
-            }
-        }
-
-        // Œ©‚Â‚©‚ç‚È‚¢ê‡‚ÍŒx‚ğo‚·
-        Debug.LogWarning($"Šm”Fƒ_ƒCƒAƒƒO“à‚ÉƒeƒLƒXƒgƒRƒ“ƒ|[ƒlƒ“ƒg‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½B’Tõ‚µ‚½ƒIƒuƒWƒFƒNƒg–¼: {string.Join(", ", possibleNames)}");
+      
+        Debug.LogError("ãƒ†ã‚­ã‚¹ãƒˆã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒå…¨ãè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸ");
     }
 
     /// <summary>
-    /// Šm”Fƒ_ƒCƒAƒƒO‚Ìu‚Í‚¢vƒ{ƒ^ƒ“—pi’¼ÚŒÄ‚Ño‚µ”Åj
+    /// ãƒ†ã‚­ã‚¹ãƒˆã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«å€¤ã‚’è¨­å®šã‚’è©¦è¡Œ
     /// </summary>
-    public async UniTaskVoid OnConfirmExitAsync()
+    private bool TrySetTextComponent(Transform target, string message)
+    {
+        if (target == null) return false;
+
+        Debug.Log($"ãƒ†ã‚­ã‚¹ãƒˆã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆè¨­å®šè©¦è¡Œ: {target.name}");
+
+        // Unity UI Text
+        var uiText = target.GetComponent<Text>();
+        if (uiText != null)
+        {
+            uiText.text = message;
+            Debug.Log($"UI Text ã«è¨­å®šå®Œäº†: {message}");
+            return true;
+        }
+
+        // TextMeshPro UGUI
+        var tmpText = target.GetComponent<TextMeshProUGUI>();
+        if (tmpText != null)
+        {
+            tmpText.text = message;
+            Debug.Log($"TextMeshPro ã«è¨­å®šå®Œäº†: {message}");
+            return true;
+        }
+
+        // TextMeshPro (3D)
+        var tmp3DText = target.GetComponent<TextMeshPro>();
+        if (tmp3DText != null)
+        {
+            tmp3DText.text = message;
+            Debug.Log($"TextMeshPro 3D ã«è¨­å®šå®Œäº†: {message}");
+            return true;
+        }
+
+        Debug.LogWarning($"'{target.name}' ã«ãƒ†ã‚­ã‚¹ãƒˆã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“");
+
+
+        return false;
+    }
+
+ 
+    /// <summary>
+    /// ç¢ºèªãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã€Œã¯ã„ã€ãƒœã‚¿ãƒ³ç”¨ï¼ˆç›´æ¥å‘¼ã³å‡ºã—ç‰ˆï¼‰
+    /// </summary>
+    public void OnConfirmExit()
     {
         if (confirmDialog != null)
         {
             confirmDialog.SetActive(false);
             Time.timeScale = 1f;
         }
-        await ExitGameAsync();
+        QuitApplication();
     }
 
     /// <summary>
-    /// Šm”Fƒ_ƒCƒAƒƒO‚Ìu‚¢‚¢‚¦vƒ{ƒ^ƒ“—p
+    /// ç¢ºèªãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã€Œã„ã„ãˆã€ãƒœã‚¿ãƒ³ç”¨
     /// </summary>
     public void OnCancelExit()
     {
@@ -560,384 +393,24 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
         }
     }
 
-    /// <summary>
-    /// ƒƒCƒ“ƒƒjƒ…[‚É–ß‚é
-    /// </summary>
-    public async UniTaskVoid ReturnToMenuAsync()
-    {
-        try
-        {
-            if (SceneTransitionManager.Instance == null)
-            {
-                Debug.LogError("SceneTransitionManager‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ");
-                await ExitGameAsync();
-                return;
-            }
-
-            var menuScene = settings?.MenuSceneReference;
-            if (menuScene == null)
-            {
-                Debug.LogWarning("ƒƒjƒ…[ƒV[ƒ“‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
-                await ExitGameAsync();
-                return;
-            }
-
-            await OnBeforeSceneChangeAsync();
-            SceneTransitionManager.Instance.TransitionTo(menuScene);
-        }
-        catch (System.OperationCanceledException)
-        {
-            Debug.Log("ƒƒjƒ…[•œ‹Aˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚Ü‚µ‚½");
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogError($"ƒƒjƒ…[•œ‹Aˆ—‚ÅƒGƒ‰[‚ª”­¶: {e.Message}");
-        }
-    }
 
     /// <summary>
-    /// “¯Šú”Å‚Ìƒƒjƒ…[•œ‹AiUIƒ{ƒ^ƒ“—pj
-    /// </summary>
-    public void ReturnToMenu()
-    {
-        ReturnToMenuAsync().Forget();
-    }
-
-    /// <summary>
-    /// ƒQ[ƒ€‚ğI—¹‚·‚é
-    /// </summary>
-    public async UniTask ExitGameAsync()
-    {
-        try
-        {
-            await OnBeforeExitAsync();
-
-            if (SceneTransitionManager.Instance != null)
-            {
-                await WaitForFadeEffect();
-            }
-            else
-            {
-                await UniTask.Delay(500, cancellationToken: cancellationTokenSource.Token);
-            }
-
-            QuitApplication();
-        }
-        catch (System.OperationCanceledException)
-        {
-            Debug.Log("ƒQ[ƒ€I—¹ˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚Ü‚µ‚½");
-        }
-    }
-
-    /// <summary>
-    /// “¯Šú”Å‚ÌƒQ[ƒ€I—¹iUIƒ{ƒ^ƒ“—pj
-    /// </summary>
-    public void ExitGame()
-    {
-        ExitGameAsync().Forget();
-    }
-
-    /// <summary>
-    /// ƒtƒF[ƒhŒø‰Ê‚ğ‘Ò‹@‚·‚éˆ—
-    /// </summary>
-    private async UniTask WaitForFadeEffect()
-    {
-        if (!SceneTransitionManager.Instance.IsTransitioning)
-        {
-            float fadeSpeed = GameInitializer.Instance?.GetGameSettings()?.FadeSpeed ?? 1.0f;
-            float fadeDuration = 1.0f / fadeSpeed;
-
-            await UniTask.Delay((int)(fadeDuration * 1000), cancellationToken: cancellationTokenSource.Token);
-        }
-    }
-
-    /// <summary>
-    /// ƒV[ƒ“•ÏX‘O‚Ìˆ—
-    /// </summary>
-    protected virtual async UniTask OnBeforeSceneChangeAsync()
-    {
-        await SaveCurrentStateAsync();
-        Debug.Log("ƒV[ƒ“•ÏX‘Oˆ—‚ğÀs’†...");
-        await UniTask.Delay(100, cancellationToken: cancellationTokenSource.Token);
-    }
-
-    /// <summary>
-    /// I—¹‘O‚Ìˆ—iƒI[ƒo[ƒ‰ƒCƒh‰Â”\j
-    /// </summary>
-    protected virtual async UniTask OnBeforeExitAsync()
-    {
-        await SaveGameDataAsync();
-        AudioListener.pause = true;
-        Debug.Log("ƒQ[ƒ€I—¹ˆ—‚ğÀs’†...");
-        await UniTask.Delay(200, cancellationToken: cancellationTokenSource.Token);
-    }
-
-    /// <summary>
-    /// Œ»İ‚Ìó‘Ô‚ğ•Û‘¶iƒV[ƒ“•ÏX—pj
-    /// </summary>
-    private async UniTask SaveCurrentStateAsync()
-    {
-        await UniTask.RunOnThreadPool(() =>
-        {
-            PlayerPrefs.SetString("LastSceneChangeTime", System.DateTime.Now.ToString());
-        }, cancellationToken: cancellationTokenSource.Token);
-
-        Debug.Log("Œ»İ‚Ìó‘Ô‚ğ•Û‘¶‚µ‚Ü‚µ‚½");
-    }
-
-    /// <summary>
-    /// ƒQ[ƒ€ƒf[ƒ^‚Ì•Û‘¶i”ñ“¯Šú”Åj
-    /// </summary>
-    private async UniTask SaveGameDataAsync()
-    {
-        try
-        {
-            PlayerPrefs.SetString("LastExitTime", System.DateTime.Now.ToString());
-            PlayerPrefs.SetInt("SaveVersion", 1);
-            PlayerPrefs.Save();
-
-            if (HasHeavyDataToSave())
-            {
-                await UniTask.RunOnThreadPool(() =>
-                {
-                    SaveHeavyDataToFile();
-                }, cancellationToken: cancellationTokenSource.Token);
-            }
-
-            await UniTask.SwitchToMainThread(cancellationToken: cancellationTokenSource.Token);
-            Debug.Log("ƒQ[ƒ€ƒf[ƒ^‚ğ•Û‘¶‚µ‚Ü‚µ‚½");
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogError($"•Û‘¶ˆ—‚ÅƒGƒ‰[‚ª”­¶: {e.Message}");
-            throw;
-        }
-    }
-
-    /// <summary>
-    /// d‚¢ƒf[ƒ^‚ª‚ ‚é‚©ƒ`ƒFƒbƒN
-    /// </summary>
-    private bool HasHeavyDataToSave()
-    {
-        return false;
-    }
-
-    /// <summary>
-    /// •Û‘¶ƒpƒX‚ğæ“¾‚·‚é
-    /// </summary>
-    private string GetSavePath()
-    {
-        string basePath;
-        string fileName = settings?.SaveFileName ?? "savedata.json";
-        SaveLocation location = settings?.SaveLocation ?? SaveLocation.PersistentDataPath;
-        string customPath = settings?.CustomSavePath ?? "";
-
-        switch (location)
-        {
-            case SaveLocation.PersistentDataPath:
-                basePath = Application.persistentDataPath;
-                break;
-            case SaveLocation.DataPath:
-                basePath = Application.dataPath;
-                break;
-            case SaveLocation.StreamingAssetsPath:
-                basePath = Application.streamingAssetsPath;
-                break;
-            case SaveLocation.TemporaryCachePath:
-                basePath = Application.temporaryCachePath;
-                break;
-            case SaveLocation.Custom:
-                basePath = !string.IsNullOrEmpty(customPath) ? customPath : Application.persistentDataPath;
-                break;
-            default:
-                basePath = Application.persistentDataPath;
-                break;
-        }
-
-        return System.IO.Path.Combine(basePath, fileName);
-    }
-
-    /// <summary>
-    /// d‚¢ƒtƒ@ƒCƒ‹•Û‘¶ˆ—iİ’è‰Â”\‚ÈƒpƒXg—pj
-    /// </summary>
-    private void SaveHeavyDataToFile()
-    {
-        try
-        {
-            string saveData = "{ \"lastSave\": \"" + System.DateTime.Now.ToString() + "\" }";
-            string filePath = GetSavePath();
-
-            // ƒfƒBƒŒƒNƒgƒŠ‚ª‘¶İ‚µ‚È‚¢ê‡‚Íì¬
-            string directory = System.IO.Path.GetDirectoryName(filePath);
-            if (!System.IO.Directory.Exists(directory))
-            {
-                System.IO.Directory.CreateDirectory(directory);
-            }
-
-            System.IO.File.WriteAllText(filePath, saveData);
-            Debug.Log($"ƒtƒ@ƒCƒ‹‚ğ•Û‘¶‚µ‚Ü‚µ‚½: {filePath}");
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogError($"ƒtƒ@ƒCƒ‹•Û‘¶ƒGƒ‰[: {e.Message}");
-            throw;
-        }
-    }
-
-    /// <summary>
-    /// ƒvƒ‰ƒbƒgƒtƒH[ƒ€•Ê‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“I—¹ˆ—
+    /// ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ åˆ¥ã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³çµ‚äº†å‡¦ç†
     /// </summary>
     private void QuitApplication()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        Debug.Log("ƒGƒfƒBƒ^‚Å‚ÌÀs‚ğ’â~‚µ‚Ü‚µ‚½");
+        Debug.Log("ã‚¨ãƒ‡ã‚£ã‚¿ã§ã®å®Ÿè¡Œã‚’åœæ­¢ã—ã¾ã—ãŸ");
 #elif UNITY_WEBGL
-        Debug.Log("WebGLƒvƒ‰ƒbƒgƒtƒH[ƒ€‚Å‚ÍƒQ[ƒ€I—¹‚Ís‚í‚ê‚Ü‚¹‚ñ");
+        Debug.Log("WebGLãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã§ã¯ã‚²ãƒ¼ãƒ çµ‚äº†ã¯è¡Œã‚ã‚Œã¾ã›ã‚“");
 #elif UNITY_ANDROID || UNITY_IOS
         Application.Quit();
-        Debug.Log("ƒ‚ƒoƒCƒ‹ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ğI—¹‚µ‚Ü‚µ‚½");
+        Debug.Log("ãƒ¢ãƒã‚¤ãƒ«ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’çµ‚äº†ã—ã¾ã—ãŸ");
 #else
         Application.Quit();
-        Debug.Log("ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ğI—¹‚µ‚Ü‚µ‚½");
+        Debug.Log("ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’çµ‚äº†ã—ã¾ã—ãŸ");
 #endif
     }
 
-    /// <summary>
-    /// ‹­§I—¹i‹Ù‹}—pj
-    /// </summary>
-    public void ForceQuit()
-    {
-        Debug.Log("‹­§I—¹‚ğÀs‚µ‚Ü‚·");
-        cancellationTokenSource?.Cancel();
-
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        System.Diagnostics.Process.GetCurrentProcess().Kill();
-#endif
-    }
-
-    /// <summary>
-    /// ƒ^ƒCƒ€ƒAƒEƒg•t‚«‚ÅƒQ[ƒ€I—¹
-    /// </summary>
-    public async UniTaskVoid ExitGameWithTimeoutAsync(float? timeoutSeconds = null)
-    {
-        try
-        {
-            float timeout = timeoutSeconds ?? settings?.ExitTimeoutSeconds ?? 10f;
-            var timeoutToken = new CancellationTokenSource(System.TimeSpan.FromSeconds(timeout));
-            var combinedToken = CancellationTokenSource.CreateLinkedTokenSource(
-                cancellationTokenSource.Token, timeoutToken.Token).Token;
-
-            await ExitGameAsync().AttachExternalCancellation(combinedToken);
-        }
-        catch (System.OperationCanceledException)
-        {
-            Debug.LogWarning("ƒQ[ƒ€I—¹ˆ—‚ªƒ^ƒCƒ€ƒAƒEƒg‚µ‚Ü‚µ‚½B‹­§I—¹‚µ‚Ü‚·B");
-            ForceQuit();
-        }
-    }
-
-    // === Àsİ’è•ÏX—pƒƒ\ƒbƒhiƒfƒoƒbƒOEƒeƒXƒg—pj ===
-
-    /// <summary>
-    /// İ’è‚ğÄ“Ç‚İ‚İ
-    /// </summary>
-    public void ReloadSettings()
-    {
-        LoadSettings();
-        SetupConfirmDialog();
-    }
-
-    /// <summary>
-    /// Œ»İ‚Ì•Û‘¶ƒpƒX‚ğæ“¾iƒfƒoƒbƒO—pj
-    /// </summary>
-    public string GetCurrentSavePath()
-    {
-        return GetSavePath();
-    }
-
-    /// <summary>
-    /// Exit—pInput Action‚Ìİ’è
-    /// </summary>
-    public void SetExitInputAction(InputAction action)
-    {
-        if (exitAction != null)
-        {
-            exitAction.performed -= OnExitInput;
-            exitAction.Disable();
-        }
-
-        exitAction = action;
-
-        if (exitAction != null)
-        {
-            exitAction.performed += OnExitInput;
-            exitAction.Enable();
-        }
-    }
-
-    /// <summary>
-    /// ƒƒjƒ…[—pInput Action‚Ìİ’è
-    /// </summary>
-    public void SetMenuInputAction(InputAction action)
-    {
-        if (menuAction != null)
-        {
-            menuAction.performed -= OnMenuInput;
-            menuAction.Disable();
-        }
-
-        menuAction = action;
-
-        if (menuAction != null)
-        {
-            menuAction.performed += OnMenuInput;
-            menuAction.Enable();
-        }
-    }
-
-    /// <summary>
-    /// “ü—Í‚ğˆê“I‚É–³Œø‰»
-    /// </summary>
-    public void DisableInput()
-    {
-        DisableInputActions();
-    }
-
-    /// <summary>
-    /// “ü—Í‚ğ—LŒø‰»
-    /// </summary>
-    public void EnableInput()
-    {
-        EnableInputActions();
-    }
-
-    /// <summary>
-    /// Šm”Fƒ_ƒCƒAƒƒO‚ÌeƒLƒƒƒ“ƒoƒX‚ğİ’è
-    /// </summary>
-    public void SetTargetCanvas(Canvas canvas)
-    {
-        targetCanvas = canvas;
-        
-        // Šù‚Éƒ_ƒCƒAƒƒO‚ªì¬‚³‚ê‚Ä‚¢‚éê‡‚ÍÄì¬
-        if (confirmDialog != null)
-        {
-            Destroy(confirmDialog);
-            SetupConfirmDialog();
-        }
-    }
-
-    /// <summary>
-    /// Œ»İg—p’†‚ÌƒLƒƒƒ“ƒoƒX‚ğæ“¾iƒfƒoƒbƒO—pj
-    /// </summary>
-    public Canvas GetCurrentCanvas()
-    {
-        if (confirmDialog != null && confirmDialog.transform.parent != null)
-        {
-            return confirmDialog.transform.parent.GetComponent<Canvas>();
-        }
-        return targetCanvas;
-    }
 }

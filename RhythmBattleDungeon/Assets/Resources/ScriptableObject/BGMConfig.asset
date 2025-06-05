@@ -13,15 +13,21 @@ MonoBehaviour:
   m_Name: BGMConfig
   m_EditorClassIdentifier: 
   bgmLists:
-  - bgmId: 'Shining Star '
-    bgmAudioClip: {fileID: 8300000, guid: 099302f2d20e90043930296fd69a03e8, type: 3}
-    bgmBpm: 0
+  - bgmId: Beginning!
+    bgmAudioClip: {fileID: 8300000, guid: 69751661d8d66e7438a0601e1172da2d, type: 3}
+    bgmBpm: 135
     bgmGenre: 
-    bgmDisplayName: "\u30B7\u30E3\u30A4\u30CB\u30F3\u30B0\u30B9\u30BF\u30FC"
+    bgmDisplayName: Beginning!
     bgmJacketImage: {fileID: 0}
-  - bgmId: bbbb
-    bgmAudioClip: {fileID: 8300000, guid: 099302f2d20e90043930296fd69a03e8, type: 3}
-    bgmBpm: 0
-    bgmGenre: 
+  - bgmId: AC Ryhm
+    bgmAudioClip: {fileID: 8300000, guid: 881af67b20a0c6e49a4e6b4049ddc503, type: 3}
+    bgmBpm: 135
+    bgmGenre: "\u30A8\u30EC\u30AF\u30C8\u30ED\u30CB\u30AB"
     bgmDisplayName: "\u30B7\u30E3\u30A4\u30CB\u30F3\u30B0\u30B9\u30BF\u30FC"
-    bgmJacketImage: {fileID: 0}
+    bgmJacketImage: {fileID: 21300000, guid: 07c1e0f78b0c2fd4f9b3e42a68622b88, type: 3}
+  - bgmId: "\u865A\u507D"
+    bgmAudioClip: {fileID: 8300000, guid: 69751661d8d66e7438a0601e1172da2d, type: 3}
+    bgmBpm: 135
+    bgmGenre: "\u30A8\u30EC\u30AF\u30C8\u30ED\u30CB\u30AB"
+    bgmDisplayName: "\u865A\u507D"
+    bgmJacketImage: {fileID: 21300000, guid: 44059bac7034b014cbfdfd2969182d69, type: 3}

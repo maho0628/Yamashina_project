@@ -14,6 +14,12 @@ public class GameSceneInitializer : MonoBehaviour
         {
             GameInitializer.Instance.SetUpGameInitialize();
         }
+        if (StageManager.Instance.IsStageSelected)
+        {
+            NoteManager.Instance?.ResetForNewScene();
+            AnimationManager.Instance.InitEffectController();   
+
+        }
 
     }
 
@@ -60,15 +66,14 @@ public class GameSceneInitializer : MonoBehaviour
     }
     private IEnumerator WaitForBGMThenInitialize()
     {
-        var scrollDuration = currentStage.ScrollConfig.ScrollDuration;
-        yield return new WaitUntil(() => AudioManager.Instance.GetCurrentBGMTime() > scrollDuration);
+        var scrollDuration = currentStage.ScrollConfig.GetNoteTimingConfig().ScrollDuration;
 
         NoteManager.Instance.Initialize();
         yield return UIManager.Instance.ShowReadyGoAsync().ToCoroutine();
+        yield return new WaitUntil(() => AudioManager.Instance.GetCurrentBGMTime() > scrollDuration);
+
         NoteManager.Instance.AllowNoteSpawning();
-
-        Debug.Log("NoteManager ��������");
-
+        ScoreManager.Instance.CalculateMaxScore();  
         FindAnyObjectByType<InputHandler>()?.InitializeInput();
     }
 

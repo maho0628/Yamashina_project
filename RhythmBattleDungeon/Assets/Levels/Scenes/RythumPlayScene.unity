@@ -252,7 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   readyGoPanelPrefab: {fileID: 2782185245803167324, guid: c826dd60a5dc36349907b408d2dbc337, type: 3}
   startSignalConfig: {fileID: 11400000, guid: 6a07472a2b5ecd44bb1758126db6062e, type: 2}
-  targetCanvas: {fileID: 322368134}
+  targetCanvas: {fileID: 0}
 --- !u!4 &28564455
 Transform:
   m_ObjectHideFlags: 0
@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 137522221}
   - component: {fileID: 137522220}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: NoteUIPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 223461612}
   - component: {fileID: 223461611}
   m_Layer: 0
-  m_Name: GameObject (5)
+  m_Name: ScoreGaugeUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -416,7 +416,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 7be228bc8f1628642a0d27bb64e450b7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 322368133}
   - component: {fileID: 322368132}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: ReadyGoPanelCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1106,7 +1106,7 @@ GameObject:
   - component: {fileID: 784084668}
   - component: {fileID: 784084667}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: NoteManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1125,7 +1125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notePool: {fileID: 137522220}
-  parentRect: {fileID: 1320145676}
   laneImages:
   - {fileID: 2136440744}
   - {fileID: 714509947}
@@ -1133,6 +1132,12 @@ MonoBehaviour:
   - {fileID: 875395078}
   - {fileID: 465533307}
   - {fileID: 2017792236}
+  laneLabels:
+  - {fileID: 0}
+  laneImagePrefab: {fileID: 4777398705777423786}
+  laneLabelPrefab: {fileID: 0}
+  laneContainer: {fileID: 0}
+  parentRect: {fileID: 1320145676}
 --- !u!224 &784084668
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2485,7 +2490,7 @@ GameObject:
   - component: {fileID: 2060503306}
   - component: {fileID: 2060503305}
   m_Layer: 0
-  m_Name: GameObject (4)
+  m_Name: GaugeManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2530,7 +2535,7 @@ GameObject:
   - component: {fileID: 2131524640}
   - component: {fileID: 2131524639}
   m_Layer: 0
-  m_Name: GameObject (2)
+  m_Name: InputHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2568,7 +2573,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8099426198293168622, guid: b67f89bc671c96347907ff3d10430c6a, type: 3}
   m_PrefabInstance: {fileID: 4777398705777423784}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4777398705777423786}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -2585,8 +2590,8 @@ GameObject:
   - component: {fileID: 2141539553}
   - component: {fileID: 2141539552}
   m_Layer: 0
-  m_Name: GameObject (3)
-  m_TagString: Untagged
+  m_Name: JudgeEffectController
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2857,29 +2862,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8099426198293168622, guid: b67f89bc671c96347907ff3d10430c6a, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8099426198293168622, guid: b67f89bc671c96347907ff3d10430c6a, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8099426198293168622, guid: b67f89bc671c96347907ff3d10430c6a, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8099426198293168622, guid: b67f89bc671c96347907ff3d10430c6a, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8588445537414935267, guid: b67f89bc671c96347907ff3d10430c6a, type: 3}
       propertyPath: m_Name
       value: LaneImage
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588445537414935267, guid: b67f89bc671c96347907ff3d10430c6a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2889,6 +2874,11 @@ PrefabInstance:
 --- !u!224 &4777398705777423785 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5898207131297394884, guid: b67f89bc671c96347907ff3d10430c6a, type: 3}
+  m_PrefabInstance: {fileID: 4777398705777423784}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4777398705777423786 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8588445537414935267, guid: b67f89bc671c96347907ff3d10430c6a, type: 3}
   m_PrefabInstance: {fileID: 4777398705777423784}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &6685835302500444045 stripped

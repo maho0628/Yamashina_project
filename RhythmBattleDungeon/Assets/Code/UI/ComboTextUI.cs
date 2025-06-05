@@ -3,27 +3,28 @@ using UnityEngine;
 
 public class ComboTextUI : MonoBehaviour, IResultEntryUI
 {
-    [SerializeField, Header("コンボを表示するためのTextMeshPro")] private TextMeshProUGUI ComboNameText;
-    private TextMeshProUGUI ComboCountText;
+    [SerializeField, Header("Max Comboテキスト表示用TextMeshPro")]
+    private TextMeshProUGUI comboNameText;
+    [SerializeField, Header("コンボ数を表示するためのTextMeshPro")] private TextMeshProUGUI comboCountText;
 
     private void Awake()
     {
         var texts = GetComponentsInChildren<TextMeshProUGUI>();
         foreach (var text in texts)
         {
-            if (text.name.Contains("Name")) ComboNameText = text;
-            else if (text.name.Contains("Count")) ComboCountText = text;
+            if (text.name.Contains("Name")) comboNameText = text;
+            else if (text.name.Contains("Count")) comboCountText = text;
         }
     }
 
     public void Setup(string label, int value)
     {
-        ComboNameText.text = label;
-        ComboCountText.text = value.ToString();
+        comboNameText.text = label;
+        comboCountText.text = value.ToString();
     }
 
     public void SetValue(int value)
     {
-        ComboCountText.text = value.ToString();
+        comboCountText.text = value.ToString();
     }
 }

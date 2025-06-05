@@ -17,6 +17,7 @@ public class JudgeEffectController : MonoBehaviour, IUIEffectPoolable<JudgeEffec
     {
         judgeEffectColor = judgeText.transform.parent.gameObject.GetComponent<Image>().color;
 
+
     }
     public void OnCreated(UIObjectPool<JudgeEffectController> pool)
     {

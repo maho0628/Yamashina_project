@@ -20,12 +20,12 @@ MonoBehaviour:
     messageText: "\u30B2\u30FC\u30E0\u3092\u7D42\u4E86\u3057\u307E\u3059\u304B\uFF1F"
     confirmButtonText: "\u306F\u3044"
     cancelButtonText: "\u3044\u3044\u3048"
-    useCustomColors: 0
-    cancelButtonColor: {r: 1, g: 0, b: 0, a: 1}
-    messageTextColor: {r: 1, g: 1, b: 1, a: 1}
-  menuSceneReference: {fileID: 0}
-  saveFileName: savedata.json
-  saveLocation: 0
-  customSavePath: 
+    useCustomColors: 1
+    confirmButtonColor: {r: 0.07924521, g: 0.07924521, b: 0.07924521, a: 1}
+    cancelButtonColor: {r: 0, g: 0, b: 0, a: 1}
+    messageTextColor: {r: 0.11698109, g: 0.1101388, b: 0.1101388, a: 1}
+    useCustomFontSize: 1
+    messageFontSize: 100
+    cancelFontSize: 100
+    confirmFontSize: 100
   confirmDialogPrefab: {fileID: 497707639946610065, guid: 80afcb0252e825e40b857624d0a64032, type: 3}
-  exitTimeoutSeconds: 10

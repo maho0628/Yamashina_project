@@ -22,12 +22,13 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
         base.Awake();
 
         // ターゲットCanvasが未設定なら探す
-        if (targetCanvas == null)
-            targetCanvas = FindAnyObjectByType<Canvas>();
-    }
+         }
 
     public async UniTask ShowReadyGoAsync()
     {
+        if (targetCanvas == null)
+            targetCanvas = GameObject.Find("ReadyGoPanelCanvas").GetComponent<Canvas>();
+
         // インスタンスが無ければ生成
         if (readyGoPanelInstance == null)
             CreateReadyGoPanel();
@@ -64,7 +65,7 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
 
         if (readyGoText == null)
         {
-            Debug.LogError("ReadyGoPanel内にTextコンポーネントが見つかりません！");
+            Debug.LogError("ReadyGoPanel内にTextMeshProUGUIコンポーネントが見つかりません！");
         }
 
         // 初期状態は非表示
