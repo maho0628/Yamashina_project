@@ -29,6 +29,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   laneCount: 6
+  laneImagePrefab: {fileID: 8588445537414935267, guid: 9e5ac6d4bf82e684295dd1825bec132a, type: 3}
+  laneLabelPrefab: {fileID: 6554274703570677028, guid: 0b9d0977bda19284090e68d3da8c7c1b, type: 3}
   laneLabelYOffset: 60
   laneLabelSize: {x: 100, y: 40}
   laneLabelFormat: Lane {0}
