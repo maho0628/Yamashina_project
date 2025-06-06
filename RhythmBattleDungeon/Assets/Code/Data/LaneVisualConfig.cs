@@ -39,6 +39,16 @@ public class LaneVisualConfig : ScriptableObject
     [Min(1)]
     private int laneCount = 4;
 
+
+
+    [Header("▼ レーン生成用プレハブ設定")]
+
+    [SerializeField, Tooltip("レーンの背景画像プレハブ (Image付き)")]
+    private GameObject laneImagePrefab;
+
+    [SerializeField,Tooltip("レーンラベルのプレハブ (TextMeshPro付き)")] 
+    private GameObject laneLabelPrefab; 
+
     [Header("▼ レーンラベル UI 調整")]
     [Tooltip("ラベルのY方向位置オフセット（下に動かす場合は正の値）")]
     [SerializeField] private float laneLabelYOffset = 60f;
@@ -67,7 +77,10 @@ public class LaneVisualConfig : ScriptableObject
     internal Sprite GetLaneSprite(int index) =>
         (index >= 0 && index < laneSprites.Length) ? laneSprites[index] : null;
 
-    internal string LaneLabelFormat => laneLabelFormat; 
+    internal string LaneLabelFormat => laneLabelFormat;
+
+    internal GameObject LaneImagePrefab => laneImagePrefab;
+    internal GameObject LaneLabelPrefab => laneLabelPrefab;
     #endregion
 
 }
