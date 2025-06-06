@@ -54,7 +54,6 @@ public class ScoreGaugeUI : MonoBehaviour
     }
     public void ResetGauge()
     {
-        config = GaugeManager.Instance.GetCurrentConfig();
 
         if (backgroundImage != null)
         {
