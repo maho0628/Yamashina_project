@@ -31,7 +31,7 @@ public static class ChartJsonLoader
         // もしファイルが存在しない場合は、エラーログを出力して null を返す
         if (jsonFile == null)
         {
-            Debug.LogError($"[ChartJsonLoader] JSON ファイルが見つかりません: '{filePath}'");
+            DebugManager.LogError($"[ChartJsonLoader] JSON ファイルが見つかりません: '{filePath}'");
             return null;
         }
 
@@ -48,13 +48,13 @@ public static class ChartJsonLoader
         catch (JsonException e)
         {
             // JsonException：JSONの形式がおかしい場合などにスローされる例外
-            Debug.LogError($"[ChartJsonLoader] JSON のパースに失敗しました: {e.Message}");
+            DebugManager.LogError($"[ChartJsonLoader] JSON のパースに失敗しました: {e.Message}");
             return null;
         }
         catch (System.Exception e)
         {
             // その他の例外キャッチブロック
-            Debug.LogError($"[ChartJsonLoader] JSON読み込み中に予期しないエラーが発生しました: {e.Message}");
+            DebugManager.LogError($"[ChartJsonLoader] JSON読み込み中に予期しないエラーが発生しました: {e.Message}");
             return null;
         }
     }

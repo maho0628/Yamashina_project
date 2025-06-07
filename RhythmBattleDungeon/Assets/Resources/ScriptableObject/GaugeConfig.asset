@@ -12,39 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0c74b9acae12b45a61e931ebde45bf, type: 3}
   m_Name: GaugeConfig
   m_EditorClassIdentifier: 
-  gaugeLerpDuration: 0.5
-  useEasing: 0
-  gaugeAnimationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  scoreGainColor: {r: 0, g: 1, b: 0, a: 1}
-  flashOnFull: 0
-  flashEffectPrefab: {fileID: 0}
-  gaugeBackgroundColor: {r: 1, g: 1, b: 1, a: 0.45490196}
-  gaugeFillColor: {r: 0.7803922, g: 0.3137255, b: 0.3137255, a: 1}
-  thresholdColors:
-  - threshold: 0
-    color: {r: 0, g: 0, b: 0, a: 0}
-  debugAlwaysAnimate: 0
-  debugInitialValue: 0
+  animationConfig:
+    gaugeLerpDuration: 0.5
+    useEasing: 0
+    gaugeAnimationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 1
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 1
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    scoreGainColor: {r: 0, g: 1, b: 0, a: 1}
+    flashOnFull: 0
+    flashEffectPrefab: {fileID: 0}
+  visualConfig:
+    gaugeBackgroundColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    gaugeFillColor: {r: 0, g: 1, b: 1, a: 1}
+    thresholdColors:
+    - threshold: 0
+      gaugeColor: {r: 0, g: 0, b: 0, a: 0}
+  debugConfig:
+    debugAlwaysAnimate: 0
+    debugInitialValue: 0

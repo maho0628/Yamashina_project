@@ -23,7 +23,7 @@ public class SongItemUI : MonoBehaviour, IPoolable<SongItemUI>
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private Button selectButton;
 
-    private string songId;
+    private BGMName songId;
     private UIObjectPool<SongItemUI> songItemUiPool;
 
     #endregion
@@ -36,15 +36,15 @@ public class SongItemUI : MonoBehaviour, IPoolable<SongItemUI>
 
             if (jacketImage == null)
             {
-                Debug.LogError($"[{gameObject.name}] BgmJacketImageが見つかりません。子オブジェクトの名前とImageコンポーネントを確認してください。");
+                DebugManager.LogError($"[{gameObject.name}] BgmJacketImageが見つかりません。子オブジェクトの名前とImageコンポーネントを確認してください。");
             }
             else if (jacketImage.gameObject.name != "BgmJacketImage")
             {
-                Debug.LogWarning($"[{gameObject.name}] オブジェクト名が'{jacketImage.gameObject.name}'です。'BgmJacketImage'に変更するかインスペクターで設定してください。");
+                DebugManager.LogWarning($"[{gameObject.name}] オブジェクト名が'{jacketImage.gameObject.name}'です。'BgmJacketImage'に変更するかインスペクターで設定してください。");
             }
             else
             {
-                Debug.Log($"[{gameObject.name}] BgmJacketImage取得完了");
+                DebugManager.Log($"[{gameObject.name}] BgmJacketImage取得完了");
             }
         }
         if (titleText == null)
@@ -53,11 +53,11 @@ public class SongItemUI : MonoBehaviour, IPoolable<SongItemUI>
 
             if (titleText == null)
             {
-                Debug.LogError($"[{gameObject.name}] BGMNameが見つかりません。子オブジェクトの名前とTextMeshProUGUIコンポーネントを確認してください。");
+                DebugManager.LogError($"[{gameObject.name}] BGMNameが見つかりません。子オブジェクトの名前とTextMeshProUGUIコンポーネントを確認してください。");
             }
             else
             {
-                Debug.Log($"[{gameObject.name}] BGMName取得完了: {titleText.text}");
+                DebugManager.Log($"[{gameObject.name}] BGMName取得完了: {titleText.text}");
             }
         }
 
@@ -67,11 +67,11 @@ public class SongItemUI : MonoBehaviour, IPoolable<SongItemUI>
 
             if (selectButton == null)
             {
-                Debug.LogError($"[{gameObject.name}] Buttonコンポーネントが見つかりません。");
+                DebugManager.LogError($"[{gameObject.name}] Buttonコンポーネントが見つかりません。");
             }
             else
             {
-                Debug.Log($"[{gameObject.name}] Button取得完了");
+                DebugManager.Log($"[{gameObject.name}] Button取得完了");
             }
         }
 
@@ -80,16 +80,21 @@ public class SongItemUI : MonoBehaviour, IPoolable<SongItemUI>
 
     public void Setup(BGMConfig config)
     {
-        Debug.Log("セットアップ");
-        Debug.Log(config);
+        DebugManager.Log("セットアップ");
+        DebugManager.Log(config.ToString());
+        var bgmTable = GameInitializer.Instance.GetBGMConfigTable();
+        if (bgmTable != null && bgmTable.IsDuplicateBgmId(songId))
+        {
+            DebugManager.LogError($"[SongItemUI] 重複しているBGM ID が検出されました: {songId}");
+        }
         if (config == null) return;
 
         songId = config.BgmId;
         titleText.text = config.BgmDisplayName;
-        Debug.Log(config.BgmDisplayName);
+        DebugManager.Log(config.BgmDisplayName);
 
 
-        Debug.Log(titleText.text + "タイトルテキスト表示");
+        DebugManager.Log(titleText.text + "タイトルテキスト表示");
 
         jacketImage.sprite = config.BgmJacketImage;
     }
@@ -109,7 +114,7 @@ public class SongItemUI : MonoBehaviour, IPoolable<SongItemUI>
         {
             if (stageConfig.StageBgm.BgmId == songId)
             {
-                Debug.Log($"選択されたステージID: {stageConfig.StageId}（曲ID: {songId}）");
+                DebugManager.Log($"選択されたステージID: {stageConfig.StageId}（曲ID: {songId}）");
                 StageManager.Instance.SetupStage(stageConfigTable, stageConfig.StageId);
                 StageManager.Instance.SetStageSelected(true);
 
@@ -118,7 +123,7 @@ public class SongItemUI : MonoBehaviour, IPoolable<SongItemUI>
 
         }
 
-        Debug.Log($"[SongItemUI] 選択された曲: {songId}");
+        DebugManager.Log($"[SongItemUI] 選択された曲: {songId}");
     }
 
     public void OnCreated(UIObjectPool<SongItemUI> pool)
