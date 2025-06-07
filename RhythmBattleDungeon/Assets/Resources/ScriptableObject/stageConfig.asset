@@ -14,13 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stagesBgmLists:
   - stageId: Beginning!
-    stageBgm:
-      bgmId: Beginning!
-      bgmAudioClip: {fileID: 8300000, guid: 27bea4f96d6f23f43b1ecb42d0e4d2a3, type: 3}
-      bgmBpm: 0
-      bgmGenre: 
-      bgmDisplayName: Beginning!
-      bgmJacketImage: {fileID: 21300000, guid: 9425e1cb493f2bd47bcfef58089d9f67, type: 3}
+    stageBgmId: 1
     chartFileName: Beginning
     scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
     judgementConfigs:
@@ -39,7 +33,7 @@ MonoBehaviour:
         scaleEase: 27
     - logic:
         judgementName: Great
-        maxTimeDifference: 0.05
+        maxTimeDifference: 0.1
         scoreValue: 100
         shouldBreakCombo: 0
       visual:
@@ -52,7 +46,7 @@ MonoBehaviour:
         scaleEase: 27
     - logic:
         judgementName: Miss
-        maxTimeDifference: 0.05
+        maxTimeDifference: 0.35
         scoreValue: 0
         shouldBreakCombo: 1
       visual:
@@ -66,13 +60,7 @@ MonoBehaviour:
     gaugeConfig: {fileID: 11400000, guid: c99b943deb19c194bac7a17694c7fd6c, type: 2}
     delayBeforeResult: 0.2
   - stageId: AC Ryhm
-    stageBgm:
-      bgmId: AC Ryhm
-      bgmAudioClip: {fileID: 8300000, guid: 881af67b20a0c6e49a4e6b4049ddc503, type: 3}
-      bgmBpm: 135
-      bgmGenre: "\u30A8\u30EC\u30AF\u30C8\u30ED\u30CB\u30AB"
-      bgmDisplayName: AC Ryhm
-      bgmJacketImage: {fileID: 21300000, guid: 07c1e0f78b0c2fd4f9b3e42a68622b88, type: 3}
+    stageBgmId: 0
     chartFileName: AC Ryhm
     scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
     judgementConfigs:
@@ -118,13 +106,7 @@ MonoBehaviour:
     gaugeConfig: {fileID: 11400000, guid: c99b943deb19c194bac7a17694c7fd6c, type: 2}
     delayBeforeResult: 0.2
   - stageId: "\u865A\u507D"
-    stageBgm:
-      bgmId: "\u865A\u507D"
-      bgmAudioClip: {fileID: 8300000, guid: 69751661d8d66e7438a0601e1172da2d, type: 3}
-      bgmBpm: 0
-      bgmGenre: 
-      bgmDisplayName: "\u865A\u507D"
-      bgmJacketImage: {fileID: 21300000, guid: 44059bac7034b014cbfdfd2969182d69, type: 3}
+    stageBgmId: 2
     chartFileName: test
     scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
     judgementConfigs:
@@ -183,13 +165,7 @@ MonoBehaviour:
     gaugeConfig: {fileID: 11400000, guid: c99b943deb19c194bac7a17694c7fd6c, type: 2}
     delayBeforeResult: 0.2
   - stageId: "\u30DE\u30C8\u30EA\u30C3\u30AF\u30B9"
-    stageBgm:
-      bgmId: "\u30DE\u30C8\u30EA\u30C3\u30AF\u30B9"
-      bgmAudioClip: {fileID: 8300000, guid: 1bd9a1f2554d17143933ad857c4b1c87, type: 3}
-      bgmBpm: 0
-      bgmGenre: 
-      bgmDisplayName: "\u30DE\u30C8\u30EA\u30C3\u30AF\u30B9"
-      bgmJacketImage: {fileID: 21300000, guid: 8b2ec94f197bc6049bf57a0b242a16c0, type: 3}
+    stageBgmId: 3
     chartFileName: Matrix
     scrollConfig: {fileID: 11400000, guid: 721f76240efcbc745b398f2ce4946396, type: 2}
     judgementConfigs:
@@ -209,7 +185,7 @@ MonoBehaviour:
     - logic:
         judgementName: Great
         maxTimeDifference: 0.05
-        scoreValue: 100
+        scoreValue: 50
         shouldBreakCombo: 0
       visual:
         displayName: GREAT

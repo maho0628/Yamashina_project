@@ -24,13 +24,13 @@ public class JudgementTextUI : MonoBehaviour,IResultEntryUI
 
         if (judgeNameText == null || judgeCountText == null)
         {
-            Debug.LogWarning("[JudgementTextUI] Text コンポーネントの取得に失敗しました");
+            DebugManager.LogWarning("[JudgementTextUI] Text コンポーネントの取得に失敗しました");
         }
     }
     public void Setup(string label, int value)
     {
         judgeNameText.text = label;
-        Debug.Log(label);
+        DebugManager.Log(label);
         judgeCountText.text = value.ToString();
     }
 

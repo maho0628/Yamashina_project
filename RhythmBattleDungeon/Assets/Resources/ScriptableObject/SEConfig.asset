@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d749fe79b512d43bc98a998f4198ed, type: 3}
   m_Name: SEConfig
   m_EditorClassIdentifier: 
-  seList:
-  - seId: 
-    seAudioClip: {fileID: 0}
-    description: 
+  seLists:
   - seId: 
     seAudioClip: {fileID: 0}
     description: 

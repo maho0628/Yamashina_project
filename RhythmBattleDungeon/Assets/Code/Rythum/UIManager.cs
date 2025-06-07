@@ -17,12 +17,7 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
     private GameObject readyGoPanelInstance;
     private TextMeshProUGUI readyGoText;
 
-    protected override void Awake()
-    {
-        base.Awake();
 
-        // ターゲットCanvasが未設定なら探す
-         }
 
     public async UniTask ShowReadyGoAsync()
     {
@@ -33,7 +28,7 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
         if (readyGoPanelInstance == null)
             CreateReadyGoPanel();
         // 親の状態を確認
-      readyGoPanelInstance.SetActive(true);
+        readyGoPanelInstance.SetActive(true);
 
         // Ready演出
         await ShowTextWithConfig(startSignalConfig.readyConfig);
@@ -65,7 +60,7 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
 
         if (readyGoText == null)
         {
-            Debug.LogError("ReadyGoPanel内にTextMeshProUGUIコンポーネントが見つかりません！");
+            DebugManager.LogError("ReadyGoPanel内にTextMeshProUGUIコンポーネントが見つかりません！");
         }
 
         // 初期状態は非表示
@@ -77,7 +72,7 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
         if (readyGoText == null) return;
 
         // テキスト設定
-        readyGoText.text = config.text;
+        readyGoText.text = config.AnimationText;
         readyGoText.color = config.textColor;
         readyGoText.fontSize = config.fontSize;
 

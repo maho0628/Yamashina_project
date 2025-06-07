@@ -72,13 +72,13 @@ public class InputHandler : MonoBehaviour
         for (int i = 0; i < laneCount; i++)
         {
             string actionName = $"Lane{i + 1}";
-            Debug.Log(actionName);
+            DebugManager.Log(actionName);
             //actionName�ɑΉ�����C���v�b�g�A�N�V������T��
             laneInputs[i] = inputActions.FindAction(actionName);
             if (laneInputs[i] != null)
             {
 
-                Debug.Log(laneInputs[i] + "laneInputs");
+                DebugManager.Log(laneInputs[i] + "laneInputs");
 
                 //�����_���͕ϐ��́u�l�v�ł͂Ȃ��u�Q�Ɓv���L���v�`������̂œ���i���Q�Ƃ��Ă��܂��̂ň�x���[�J���ϐ��ɃR�s�[
                 string actionCopy = actionName;
@@ -87,7 +87,7 @@ public class InputHandler : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning($"[InputHandler] �A�N�V���� {actionName} ��������܂���");
+                DebugManager.LogWarning($"[InputHandler] �A�N�V���� {actionName} ��������܂���");
             }
         }
      
