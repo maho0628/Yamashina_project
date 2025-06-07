@@ -1,114 +1,62 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Localization;
-using System.Collections.Generic;
-using System.IO;
-
 using UnityEngine.Localization.Settings;
+using System.Collections.Generic;
 
 public class LocalizedTextAssetLoader : MonoBehaviour
 {
-    public string japaneseFolderPath = "JapaneseTextAssets"; // 日本語テキストの相対フォルダパス
-    public string englishFolderPath = "EnglishTextAssets"; // 英語テキストの相対フォルダパス
-    public string targetFolderName = "TargetFolder"; // 探索する特定のフォルダ名
+    public string japaneseFolderPath = "JapaneseTextAssets"; // Resources フォルダ内のパス
+    public string englishFolderPath = "EnglishTextAssets";
+    public string targetFolderName = "TargetFolder"; // サブフォルダ名
 
     private List<TextAsset> textAssets = new List<TextAsset>();
 
     private void Start()
     {
-        //LoadTextAssetsForCurrentLocale();
+        // 必要に応じて自動でロードしたい場合はここで呼び出してください
+        // LoadTextAssetsForCurrentLocale();
     }
-    // 現在のロケールに基づいてテキストアセットをロードするメソッド
+
     public List<TextAsset> LoadTextAssetsForCurrentLocale()
     {
-        Debug.Log(LocalizationSettings.SelectedLocale.Identifier.Code);
         textAssets.Clear();
 
         string currentLocale = LocalizationSettings.SelectedLocale.Identifier.Code;
+        Debug.Log("Current Locale: " + currentLocale);
 
         if (currentLocale == "ja")
         {
             LoadTextAssets(japaneseFolderPath);
         }
-        else if (currentLocale =="en")
+        else if (currentLocale == "en")
         {
             LoadTextAssets(englishFolderPath);
         }
-        
+        else
+        {
+            Debug.LogWarning("対応していないロケール: " + currentLocale);
+        }
+
         return textAssets;
     }
 
     public void LoadTextAssets(string relativeFolderPath)
     {
-        string absolutePath = Path.Combine(Application.dataPath, "Resources", relativeFolderPath);
-        Debug.Log(absolutePath);
+        // Resources.LoadAll で使うパス形式に変換（スラッシュ統一）
+        string resourcePath = System.IO.Path.Combine(relativeFolderPath, targetFolderName).Replace("\\", "/");
+        Debug.Log("Loading Resources from: " + resourcePath);
 
-        if (Directory.Exists(absolutePath))
+        TextAsset[] loadedAssets = Resources.LoadAll<TextAsset>(resourcePath);
+
+        if (loadedAssets.Length == 0)
         {
-            string targetPath = FindTargetFolder(absolutePath);
-            Debug.Log(targetPath);
-            if (targetPath != null)
-            {
-                Debug.Log(targetPath);
-                Debug.Log(relativeFolderPath);
-                LoadTextAssetsFromPath(targetPath,relativeFolderPath);
-            }
-            else
-            {
-                Debug.LogError($"Target folder '{targetFolderName}' not found.");
-            }
+            Debug.LogError($"TextAssets not found at Resources/{resourcePath}");
         }
-        else
+
+        textAssets.AddRange(loadedAssets);
+
+        foreach (var asset in loadedAssets)
         {
-            Debug.LogError($"Directory not found: {absolutePath}");
+            Debug.Log($"Loaded TextAsset: {asset.name}");
         }
     }
-
-    private string FindTargetFolder(string path)
-    {
-        if (Path.GetFileName(path) == targetFolderName)
-        {
-            return path;
-        }
-
-        string[] subDirectories = Directory.GetDirectories(path);
-        Debug.Log(subDirectories.Length);
-        foreach (string subDir in subDirectories)
-        {
-            string result = FindTargetFolder(subDir);
-            if (result != null)
-            {
-                return result;
-            }
-        }
-
-        return null;
-    }
-
-    public void LoadTextAssetsFromPath(string path,string relativeFolderPath)
-    {
-        string[] files = Directory.GetFiles(path, "*.txt");
-
-        foreach (string file in files)
-        {
-            string fileName = Path.GetFileNameWithoutExtension(file);
-            print(fileName);
-
-            string resourcePath = Path.Combine(relativeFolderPath, targetFolderName, fileName);
-            TextAsset textAsset = Resources.Load<TextAsset>(resourcePath);
-            if (textAsset != null)
-            {
-                textAssets.Add(textAsset);
-                Debug.Log(textAsset);
-            }
-            else
-            {
-                Debug.LogError($"Failed to load TextAsset: {resourcePath}");
-            }
-        }
-    }
-   
 }
-
-
-

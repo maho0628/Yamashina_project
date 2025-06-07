@@ -22,11 +22,11 @@ public class ScoreGaugeUI : MonoBehaviour
 
         if (backgroundImage != null)
         {
-            backgroundImage.color = config.GaugeBackgroundColor;
+            backgroundImage.color = config.Visual.GaugeBackgroundColor;
         }
-        currentFill = config.DebugInitialValue;
+        currentFill = config.Debug.DebugInitialValue;
         gaugeImage.fillAmount = currentFill;
-        gaugeImage.color = config.GaugeFillColor;
+        gaugeImage.color = config.Visual.GaugeFillColor;
 
         ScoreManager.Instance.OnScoreChanged += OnScoreChanged;
     }
@@ -49,7 +49,7 @@ public class ScoreGaugeUI : MonoBehaviour
         }
 
         targetFill = Mathf.Clamp01((float)newScore / maxScore);
-        Debug.Log($"[ScoreGauge] targetFill: {targetFill}");
+        DebugManager.Log($"[ScoreGauge] targetFill: {targetFill}");
         AnimateGaugeAsync().Forget();
     }
     public void ResetGauge()
@@ -57,31 +57,31 @@ public class ScoreGaugeUI : MonoBehaviour
 
         if (backgroundImage != null)
         {
-            backgroundImage.color = config.GaugeBackgroundColor;
+            backgroundImage.color = config.Visual.GaugeBackgroundColor;
         }
 
-        currentFill = config.DebugInitialValue;
-        targetFill = config.DebugInitialValue;
+        currentFill = config.Debug.DebugInitialValue;
+        targetFill = config.Debug.DebugInitialValue;
 
         gaugeImage.fillAmount = currentFill;
-        gaugeImage.color = config.GaugeFillColor;
+        gaugeImage.color = config.Visual.GaugeFillColor;
 
         isAnimating = false;
     }
     private async UniTask AnimateGaugeAsync()
     {
-        if (isAnimating && !config.DebugAlwaysAnimate) return;
+        if (isAnimating && !config.Debug.DebugAlwaysAnimate) return;
 
         isAnimating = true;
         float time = 0f;
         float startFill = currentFill;
-        float duration = config.GaugeLerpDuration;
+        float duration = config.Animation.GaugeLerpDuration;
 
         while (time < duration)
         {
             time += Time.deltaTime;
             float t = Mathf.Clamp01(time / duration);
-            float evaluatedT = config.UseEasing ? config.GaugeAnimationCurve.Evaluate(t) : t;
+            float evaluatedT = config.Animation.UseEasing ? config.Animation.GaugeAnimationCurve.Evaluate(t) : t;
             currentFill = Mathf.Lerp(startFill, targetFill, evaluatedT);
             gaugeImage.fillAmount = currentFill;
             await UniTask.Yield();

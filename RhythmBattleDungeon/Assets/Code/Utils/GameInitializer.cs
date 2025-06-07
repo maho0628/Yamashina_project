@@ -19,10 +19,11 @@ public class GameInitializer : SingletonMonoBehaviour<GameInitializer>
     internal GameExitSettings GetGameExitSettings() { return gameExitSettings; } // 追加
     internal SceneDatabase GetSceneDatabase() { return sceneDatabase; }
 
+    internal BGMConfigTable GetBGMConfigTable() { return bgmConfigTable; }
     internal void SetUpGameInitialize()
     {
         if (isInitialized)return;   
-        Debug.Log("GameInitializer Awake");
+        DebugManager.Log("GameInitializer Awake");
 
         // 既存のリソースロード
         bgmConfigTable = Resources.Load<BGMConfigTable>("ScriptableObject/BGMConfig");
@@ -38,13 +39,13 @@ public class GameInitializer : SingletonMonoBehaviour<GameInitializer>
 
         if (initialScene == null)
         {
-            Debug.LogError("初期シーンの SceneReference が見つかりません。Resources/Scenes/TitleScene.asset を確認してください。");
+            DebugManager.LogError("初期シーンの SceneReference が見つかりません。Resources/Scenes/TitleScene.asset を確認してください。");
             return;
         }
 
         if (gameExitSettings == null)
         {
-            Debug.LogWarning("GameExitSettings が見つかりません。Resources/ScriptableObject/GameExitSettings.asset を確認してください。");
+            DebugManager.LogWarning("GameExitSettings が見つかりません。Resources/ScriptableObject/GameExitSettings.asset を確認してください。");
         }
 
         fadePrefab = Resources.Load<GameObject>("fadePrefab");
@@ -54,9 +55,11 @@ public class GameInitializer : SingletonMonoBehaviour<GameInitializer>
         // 設定テーブルを渡す
         audio.SetupBGMConfigTable(bgmConfigTable);
         audio.SetupSEConfigTable(seConfigTable);
-        Debug.Log("AudioManager 初期化完了");
+        DebugManager.Log("AudioManager 初期化完了");
 
         StageManager.Instance.SetupStageTable(stageConfigTable);
+        stageConfigTable.GetAllStageConfigs().ForEach(config => { config.InitializeBGMTable(bgmConfigTable); });
+
         var sceneTransition = SceneTransitionManager.Instance;
         sceneTransition.SetFadePrefab(fadePrefab);
         sceneTransition.SetInitialScene(initialScene);
