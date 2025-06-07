@@ -36,7 +36,7 @@ private UIObjectPool<ComboEffectController> comboEffectPool;
     {
         if (judgeEffectPool == null)
         {
-            Debug.LogWarning("[AnimationManager] judgeEffectPool ‚ª–¢İ’è");
+            DebugManager.LogWarning("[AnimationManager] judgeEffectPool ‚ª–¢İ’è");
             return;
         }
 
@@ -47,7 +47,7 @@ private UIObjectPool<ComboEffectController> comboEffectPool;
     {
         if (comboEffectPool == null)
         {
-            Debug.LogWarning("[AnimationManager] judgeEffectPool ‚ª–¢İ’è");
+            DebugManager.LogWarning("[AnimationManager] judgeEffectPool ‚ª–¢İ’è");
             return;
         }
 
@@ -58,7 +58,7 @@ private UIObjectPool<ComboEffectController> comboEffectPool;
     {
         if (scoreEffectPool == null)
         {
-            Debug.LogWarning("[AnimationManager] judgeEffectPool ‚ª–¢İ’è");
+            DebugManager.LogWarning("[AnimationManager] judgeEffectPool ‚ª–¢İ’è");
             return;
         }
 

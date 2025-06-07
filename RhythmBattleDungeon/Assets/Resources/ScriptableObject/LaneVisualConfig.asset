@@ -15,7 +15,7 @@ MonoBehaviour:
   laneWidth: 250
   laneHeight: 100
   laneColors:
-  - {r: 0.095941514, g: 0.2686048, b: 0.9245283, a: 1}
+  - {r: 0.1547525, g: 0.24872875, b: 0.6075471, a: 1}
   - {r: 0.09411765, g: 0.26666668, b: 0.9254902, a: 1}
   - {r: 0.09411765, g: 0.26666668, b: 0.9254902, a: 1}
   - {r: 0.09411765, g: 0.26666668, b: 0.9254902, a: 1}
@@ -29,6 +29,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   laneCount: 6
-  laneLabelYOffset: 60
-  laneLabelSize: {x: 100, y: 40}
-  laneLabelFormat: Lane {0}
+  laneImagePrefab: {fileID: 8588445537414935267, guid: 9e5ac6d4bf82e684295dd1825bec132a, type: 3}

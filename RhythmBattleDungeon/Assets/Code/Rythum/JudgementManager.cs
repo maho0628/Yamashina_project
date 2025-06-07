@@ -21,7 +21,7 @@ public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
         // Miss ���܂܂Ȃ��ꍇ�� fallback ��ǉ�
         if (!judgementConfigs.Exists(j => j.Logic.SetJudgementName == "Miss"))
         {
-            Debug.LogWarning("[JudgementManager] Miss ���肪���o�^�Afallback ��ǉ�");
+            DebugManager.LogWarning("[JudgementManager] Miss ���肪���o�^�Afallback ��ǉ�");
             judgementConfigs.Add(JudgementConfig.CreateFallbackMiss());
         }
 
@@ -42,7 +42,7 @@ public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
         var miss = judgementConfigs.FirstOrDefault(j => j.Logic.JudgementName == "Miss");
         if (miss == null)
         {
-            Debug.LogError("[JudgementManager] Miss ���肪�擾�ł��܂���ł���");
+            DebugManager.LogError("[JudgementManager] Miss ���肪�擾�ł��܂���ł���");
         }
         return miss;
     }
@@ -67,7 +67,7 @@ public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
     {
         if (judgementConfigs == null || !judgementConfigs.Any())
         {
-            Debug.LogError("[JudgementManager] ����f�[�^������������Ă��܂���");
+            DebugManager.LogError("[JudgementManager] ����f�[�^������������Ă��܂���");
             return 0f;
         }
         return judgementConfigs.Max(j => j.Logic.SetMaxTimeDifference);
@@ -82,7 +82,7 @@ public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
 
         judgementCounts[config.Logic.JudgementName]++;
         OnJudgementApplied?.Invoke();
-        Debug.Log(config.Logic.JudgementName.ToString());   
+        DebugManager.Log(config.Logic.JudgementName.ToString());   
         // �X�R�A����
         ScoreManager.Instance.AddScore(config.Logic.SetScoreValue);
 
