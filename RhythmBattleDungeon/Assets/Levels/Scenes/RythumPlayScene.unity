@@ -252,7 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   readyGoPanelPrefab: {fileID: 2782185245803167324, guid: c826dd60a5dc36349907b408d2dbc337, type: 3}
   startSignalConfig: {fileID: 11400000, guid: 6a07472a2b5ecd44bb1758126db6062e, type: 2}
-  targetCanvas: {fileID: 0}
+  targetCanvas: {fileID: 322368134}
 --- !u!4 &28564455
 Transform:
   m_ObjectHideFlags: 0

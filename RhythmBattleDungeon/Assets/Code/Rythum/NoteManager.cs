@@ -58,8 +58,9 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
 
         laneVisualConfig = scrollConfig.GetLaneVisualConfig();
         noteTimingConfig = scrollConfig.GetNoteTimingConfig();
-        missJudgementConfig = JudgementManager.Instance.GetMissJudgement();
         keyLabelConfig = scrollConfig.GetKeyLabelConfig();
+
+        missJudgementConfig = JudgementManager.Instance.GetMissJudgement();
         chartData = ChartJsonLoader.LoadChartData(chartFileName);
         if (chartData == null) yield break;
 
@@ -93,17 +94,18 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
             laneImage.sprite = laneVisualConfig.GetLaneSprite(i);
             laneImage.color = laneVisualConfig.GetLaneColor(i);
 
-            if (laneVisualConfig.LaneLabelPrefab != null)
+            if (keyLabelConfig.LaneLabelPrefab != null)
             {
-                GameObject laneLabelPrefab = Instantiate(laneVisualConfig.LaneLabelPrefab, laneContainer);
+                GameObject laneLabelPrefab = Instantiate(keyLabelConfig.LaneLabelPrefab, laneContainer);
                 RectTransform labelRT = laneLabelPrefab.GetComponent<RectTransform>();
                 labelRT.anchoredPosition = new Vector2(posX, noteTimingConfig.EndY);
-                labelRT.sizeDelta = laneVisualConfig.LaneLabelSize;
+                labelRT.sizeDelta = keyLabelConfig.LaneLabelSize;
 
                 TextMeshProUGUI labelText = laneLabelPrefab.GetComponent<TextMeshProUGUI>();
                 labelText.text = string.Format(keyLabelConfig.KeyLabels[i]);
                 labelText.fontSize = keyLabelConfig.FontSize;
                 labelText.color = keyLabelConfig.FontColor;
+                DebugManager.Log(labelText.color.ToString());
                 labelText.font = keyLabelConfig.FontAsset;
                 labelText.alignment = keyLabelConfig.Alignment;
             }

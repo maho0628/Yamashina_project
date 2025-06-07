@@ -1,16 +1,15 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
 using Cysharp.Threading.Tasks;
-using System.Threading;
 using TMPro;
 using UnityEngine.UI;
+using UnityEditor;
 
 /// <summary>
 /// ゲーム終了処理を管理する汎用クラス
 /// </summary>
 public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
 {
-  
+
 
     [Header("UI設定（オプション）")]
     [SerializeField, Tooltip("確認ダイアログを生成する親キャンバス。未設定の場合は自動検出")]
@@ -22,7 +21,7 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
     // UI参照（動的に生成）
     private GameObject confirmDialog;
 
-    
+
 
     public void InitializeConfirmSettings()
     {
@@ -41,16 +40,16 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
         // 設定を取得
         LoadSettings();
 
-  
+
 
         // 確認ダイアログを準備
         SetupConfirmDialog();
         confirmDialog.SetActive(true);
 
-        Debug.Log("GameExitManager初期化完了");
+        DebugManager.Log("GameExitManager初期化完了");
     }
 
-  
+
     /// <summary>
     /// 設定をGameInitializerから取得
     /// </summary>
@@ -64,7 +63,7 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
         // デフォルト設定を作成
         if (settings == null)
         {
-            Debug.LogWarning("GameExitSettingsが見つかりません。デフォルト設定を作成します。");
+            DebugManager.LogWarning("GameExitSettingsが見つかりません。デフォルト設定を作成します。");
             CreateDefaultSettings();
         }
     }
@@ -90,13 +89,13 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
                 CancelButtonText = "いいえ",
                 UseCustomColors = false,
                 MessageTextColor = Color.white,
-                ConfirmButtonColor = Color.green,
-                CancelButtonColor = Color.red
+                ConfirmButtonTextColor = Color.green,
+                CancelButtonTextColor = Color.red
             };
         }
 
         settings.ShowConfirmDialog = true;
-   
+
     }
     /// <summary>
     /// 確認ダイアログの準備
@@ -124,7 +123,7 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
     {
         if (confirmDialog == null) return;
 
-        var textComponents = confirmDialog.GetComponentsInChildren<UnityEngine.UI.Text>();
+        var textComponents = confirmDialog.GetComponentsInChildren<Text>();
         foreach (var textComponent in textComponents)
         {
             var canvasRenderers = textComponent.GetComponents<CanvasRenderer>();
@@ -136,7 +135,7 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
         }
     }
 
-  
+
 
     /// <summary>
     /// ダイアログの設定を適用
@@ -159,6 +158,11 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
         {
             ApplyCustomColors(dialogSettings);
         }
+
+        if (dialogSettings.UseCustomFontSize)
+        {
+            ApplyCustomSizes(dialogSettings);   
+        }
         // 各ボタンにリスナーを登録
         SetButtonListener(dialogSettings.ConfirmButtonName, OnConfirmExit);
         SetButtonListener(dialogSettings.CancelButtonName, OnCancelExit);
@@ -176,12 +180,12 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
             }
             else
             {
-                Debug.LogWarning($"'{buttonName}' に Button コンポーネントが見つかりません");
+                DebugManager.LogWarning($"'{buttonName}' に Button コンポーネントが見つかりません");
             }
         }
         else
         {
-            Debug.LogWarning($"'{buttonName}' がダイアログ内に見つかりません");
+            DebugManager.LogWarning($"'{buttonName}' がダイアログ内に見つかりません");
         }
     }
     /// <summary>
@@ -220,10 +224,21 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
     {
         // メッセージテキストの色を設定
         ApplyTextColor(dialogSettings.MessageObjectName, dialogSettings.MessageTextColor);
-        
+
         // ボタンの色を設定
-        ApplyButtonColor(dialogSettings.ConfirmButtonName, dialogSettings.ConfirmButtonColor);
-        ApplyButtonColor(dialogSettings.CancelButtonName, dialogSettings.CancelButtonColor);
+        ApplyButtonColor(dialogSettings.ConfirmButtonName, dialogSettings.ConfirmButtonTextColor);
+        ApplyButtonColor(dialogSettings.CancelButtonName, dialogSettings.CancelButtonTextColor);
+    }
+
+
+    private void ApplyCustomSizes(DialogElementSettings dialogSettings)
+    {
+        // メッセージテキストの色を設定
+        ApplyTextSizes(dialogSettings.MessageObjectName, dialogSettings.MessageFontSize);
+
+        // ボタンの色を設定
+        ApplyButtonTextSizes(dialogSettings.ConfirmButtonName, dialogSettings.ConfirmFontSize);
+        ApplyButtonTextSizes(dialogSettings.CancelButtonName, dialogSettings.CancelFontSize);
     }
 
     /// <summary>
@@ -246,6 +261,10 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
             {
                 tmpText.color = color;
             }
+        }
+        else
+        {
+            DebugManager.LogWarning($"{objectName}のオブジェクトが見つかりません");
         }
     }
 
@@ -278,6 +297,55 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
         }
     }
 
+    private void ApplyTextSizes(string objectName, int fontSize)
+    {
+        var textTransform = confirmDialog.transform.Find(objectName);
+        if (textTransform != null)
+        {
+            var uiText = textTransform.GetComponent<Text>();
+            if (uiText != null)
+            {
+                uiText.fontSize = fontSize;
+                return;
+            }
+
+            var tmpText = textTransform.GetComponent<TextMeshProUGUI>();
+            if (tmpText != null)
+            {
+                tmpText.fontSize = fontSize;
+            }
+        }
+        else
+        {
+            DebugManager.LogWarning($"{objectName}のオブジェクトが見つかりません");
+        }
+    }
+
+    private void ApplyButtonTextSizes(string buttonName, int fontSize)
+    {
+        var buttonTransform = confirmDialog.transform.GetChild(0).Find(buttonName);
+        if (buttonTransform != null)
+        {
+            var button = buttonTransform.GetComponent<Button>();
+            if (button != null)
+            {
+                // ボタン内のテキストコンポーネントを探す
+                var textComponent = button.GetComponentInChildren<Text>();
+                if (textComponent != null)
+                {
+                    textComponent.fontSize = fontSize;
+                    return;
+                }
+
+                var tmpComponent = button.GetComponentInChildren<TextMeshProUGUI>();
+                if (tmpComponent != null)
+                {
+                    tmpComponent.fontSize = fontSize;
+                    return;
+                }
+            }
+        }
+    }
     private void OnDestroy()
     {
 
@@ -294,21 +362,21 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
     {
         if (confirmDialog == null)
         {
-            Debug.LogError("confirmDialog が null です");
+            DebugManager.LogError("confirmDialog が null です");
             return;
         }
 
-        Debug.Log($"=== MessageText 検索開始 ===");
-        Debug.Log($"confirmDialog 名前: {confirmDialog.name}");
+        DebugManager.Log($"=== MessageText 検索開始 ===");
+        DebugManager.Log($"confirmDialog 名前: {confirmDialog.name}");
 
         // 設定からオブジェクト名を取得
         string targetName = settings?.DialogSettings?.MessageObjectName ?? "MessageText";
-        Debug.Log($"検索対象名: {targetName}");
+        DebugManager.Log($"検索対象名: {targetName}");
 
         var directChild = confirmDialog.transform.Find(targetName);
         if (directChild != null)
         {
-            Debug.Log($"直接の子オブジェクトで発見: {directChild.name}");
+            DebugManager.Log($"直接の子オブジェクトで発見: {directChild.name}");
             if (TrySetTextComponent(directChild, message))
             {
                 return;
@@ -316,13 +384,13 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
         }
         else
         {
-            Debug.Log($"直接の子オブジェクトには '{targetName}' が見つかりません");
+            DebugManager.Log($"直接の子オブジェクトには '{targetName}' が見つかりません");
         }
 
-      
 
-      
-        Debug.LogError("テキストコンポーネントが全く見つかりませんでした");
+
+
+        DebugManager.LogError("テキストコンポーネントが全く見つかりませんでした");
     }
 
     /// <summary>
@@ -332,14 +400,14 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
     {
         if (target == null) return false;
 
-        Debug.Log($"テキストコンポーネント設定試行: {target.name}");
+        DebugManager.Log($"テキストコンポーネント設定試行: {target.name}");
 
         // Unity UI Text
         var uiText = target.GetComponent<Text>();
         if (uiText != null)
         {
             uiText.text = message;
-            Debug.Log($"UI Text に設定完了: {message}");
+            DebugManager.Log($"UI Text に設定完了: {message}");
             return true;
         }
 
@@ -348,7 +416,7 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
         if (tmpText != null)
         {
             tmpText.text = message;
-            Debug.Log($"TextMeshPro に設定完了: {message}");
+            DebugManager.Log($"TextMeshPro に設定完了: {message}");
             return true;
         }
 
@@ -357,17 +425,17 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
         if (tmp3DText != null)
         {
             tmp3DText.text = message;
-            Debug.Log($"TextMeshPro 3D に設定完了: {message}");
+            DebugManager.Log($"TextMeshPro 3D に設定完了: {message}");
             return true;
         }
 
-        Debug.LogWarning($"'{target.name}' にテキストコンポーネントが見つかりません");
+        DebugManager.LogWarning($"'{target.name}' にテキストコンポーネントが見つかりません");
 
 
         return false;
     }
 
- 
+
     /// <summary>
     /// 確認ダイアログの「はい」ボタン用（直接呼び出し版）
     /// </summary>
@@ -401,15 +469,15 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        Debug.Log("エディタでの実行を停止しました");
+        DebugManager.Log("エディタでの実行を停止しました");
 #elif UNITY_WEBGL
-        Debug.Log("WebGLプラットフォームではゲーム終了は行われません");
+        DebugManager.Log("WebGLプラットフォームではゲーム終了は行われません");
 #elif UNITY_ANDROID || UNITY_IOS
         Application.Quit();
-        Debug.Log("モバイルアプリケーションを終了しました");
+        DebugManager.Log("モバイルアプリケーションを終了しました");
 #else
         Application.Quit();
-        Debug.Log("アプリケーションを終了しました");
+        DebugManager.Log("アプリケーションを終了しました");
 #endif
     }
 

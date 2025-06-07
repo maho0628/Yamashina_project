@@ -79,7 +79,7 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
             return null;
         }
 
-        return stageConfig.StageBgm.BgmId;
+        return stageConfig.StageBgm.BgmId.ToString();
     }
 
     /// <summary>
