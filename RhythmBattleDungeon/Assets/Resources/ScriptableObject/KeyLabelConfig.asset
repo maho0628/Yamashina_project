@@ -23,3 +23,7 @@ MonoBehaviour:
   fontAsset: {fileID: 11400000, guid: fd1f83cd21ef96a4dbe93ef7a075d219, type: 2}
   fontColor: {r: 1, g: 1, b: 1, a: 1}
   alignment: 514
+  laneLabelPrefab: {fileID: 6554274703570677028, guid: 0b9d0977bda19284090e68d3da8c7c1b, type: 3}
+  laneLabelYOffset: 60
+  laneLabelSize: {x: 250, y: 40}
+  laneLabelFormat: Lane {0}

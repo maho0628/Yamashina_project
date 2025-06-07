@@ -37,7 +37,7 @@ public class ResultUIManager : MonoBehaviour
 
     private void OnSongSelectRetryClicked()
     {
-        Debug.Log("[ResultRetryButtons] 選曲画面リトライボタンが押されました");
+        DebugManager.Log("[ResultRetryButtons] 選曲画面リトライボタンが押されました");
 
         SetButtonsInteractable(false);
 
@@ -47,14 +47,14 @@ public class ResultUIManager : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"[ResultRetryButtons] 選曲画面リトライでエラー: {e.Message}");
+            DebugManager.LogError($"[ResultRetryButtons] 選曲画面リトライでエラー: {e.Message}");
             SetButtonsInteractable(true);
         }
     }
 
     private void OnTitleReturnClicked()
     {
-        Debug.Log("[ResultRetryButtons] タイトル戻りボタンが押されました");
+        DebugManager.Log("[ResultRetryButtons] タイトル戻りボタンが押されました");
 
         SetButtonsInteractable(false);
 
@@ -64,7 +64,7 @@ public class ResultUIManager : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"[ResultRetryButtons] タイトル戻りでエラー: {e.Message}");
+            DebugManager.LogError($"[ResultRetryButtons] タイトル戻りでエラー: {e.Message}");
             SetButtonsInteractable(true);
         }
     }
@@ -89,12 +89,12 @@ public class ResultUIManager : MonoBehaviour
         {
             entry.Setup(label, value);
             targetDictionary[label] = entry;
-            Debug.LogWarning($"[ResultUIManager] {prefab.name} に IResultEntryUI がある。");
+            DebugManager.LogWarning($"[ResultUIManager] {prefab.name} に IResultEntryUI がある。");
 
         }
         else
         {
-            Debug.LogWarning($"[ResultUIManager] {prefab.name} に IResultEntryUI がアタッチされていません。");
+            DebugManager.LogWarning($"[ResultUIManager] {prefab.name} に IResultEntryUI がアタッチされていません。");
         }
     }
 
@@ -104,7 +104,7 @@ public class ResultUIManager : MonoBehaviour
         foreach (var config in JudgementManager.Instance.GetAllJudgements())
         {
             string label = config.Logic.JudgementName;
-            Debug.Log(label);
+            DebugManager.Log(label);
             int count = JudgementManager.Instance.GetJudgementCount(label);
             CreateResultEntry(judgementTextPrefab, judgeParentTransform, label, count, activeJudgementUIs);
         }

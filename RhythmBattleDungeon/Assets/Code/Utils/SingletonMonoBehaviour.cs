@@ -24,7 +24,7 @@ public class SingletonMonoBehaviour<T> : MonoBehaviour where T : Component
                 else
                 {
                     // 既にインスタンスが存在する場合のデバッグメッセージ
-                    Debug.Log($"[Singleton] Instance of {typeof(T).Name} already created: {_instance.gameObject.name}");
+                    DebugManager.Log($"[Singleton] Instance of {typeof(T).Name} already created: {_instance.gameObject.name}");
                 }
             }
 

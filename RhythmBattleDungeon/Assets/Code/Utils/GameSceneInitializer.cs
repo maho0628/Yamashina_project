@@ -32,15 +32,15 @@ public class GameSceneInitializer : MonoBehaviour
             currentStage = StageManager.Instance.GetCurrentStageConfig();
 
             var judgementConfigs = currentStage.JudgementConfigs;
-            Debug.Log(judgementConfigs.ToString());
+            DebugManager.Log(judgementConfigs.ToString());
             JudgementManager.Instance.Setup(judgementConfigs);
             if (currentStage != null)
             {
                 // ステージ用のBGMがあるならそれを再生
 
-                AudioManager.Instance.ForcePlayBGM(currentStage.StageBgm.BgmId);
+                AudioManager.Instance.ForcePlayBGM(currentStage.StageBgmId   );
 
-                Debug.Log($"[GameSceneInitializer] ステージ用BGMを再生: {currentStage.StageBgm.BgmId}");
+                DebugManager.Log($"[GameSceneInitializer] ステージ用BGMを再生: {currentStage.StageBgm.BgmId}");
 
             }
             StartCoroutine(WaitForBGMThenInitialize());
@@ -55,10 +55,10 @@ public class GameSceneInitializer : MonoBehaviour
         {
             string sceneName = SceneManager.GetActiveScene().name;
             SceneBGMConfigTable sceneBgmConfigTable = GameInitializer.Instance.GetSceneBGMConfigTable();
-            string bgmId = sceneBgmConfigTable.GetSceneBgmConfigName(sceneName);
-            Debug.Log($"�V�[����: {sceneName}, BGM ID: {bgmId}");
+            BGMName bgmId = sceneBgmConfigTable.GetSceneBgmConfigName(sceneName);
+            DebugManager.Log($"シーン名: {sceneName}, BGM ID: {bgmId}");
             AudioManager.Instance.PlayBGMIfNotPlaying(bgmId);
-            Debug.LogWarning("ステージがまだ選択されていません！");
+            DebugManager.LogWarning("ステージがまだ選択されていません！");
 
             return;
         }
