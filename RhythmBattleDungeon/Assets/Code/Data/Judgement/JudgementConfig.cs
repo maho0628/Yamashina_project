@@ -9,17 +9,39 @@ using UnityEngine;
 public class JudgementConfig
 {
     #region 判定の内部管理用変数
-    [SerializeField, Header(" ロジック判定設定")]
 
+    /// <summary>
+    /// ロジック判定設定
+    /// </summary>
+    [Header(" ロジック判定設定")]
+    [SerializeField, Tooltip(" 各判定の内部で識別する名前や許容タイミングなどを設定します。")]
     private JudgementLogicConfig logic;
-    [SerializeField, Header(" 見た目・演出設定")]
 
+    /// <summary>
+    /// 見た目・演出設定
+    /// </summary>
+    [Header(" 見た目・演出設定")]
+    [SerializeField, Tooltip(" 各判定の表示名や判定のエフェクトを表示する際の各設定などを設定します。")]
     private JudgementVisualConfig visual;
 
     #endregion
 
+
+    #region 読み取り専用プロパティ (判定の内部管理用変数)
+
+    /// <summary>
+    /// ロジック判定設定の読み取り専用
+    /// </summary>
     internal JudgementLogicConfig Logic { get { return logic; } }
+
+    /// <summary>
+    /// 見た目・演出設定の読み取り専用
+    /// </summary>
     internal JudgementVisualConfig Visual { get { return visual; } }
+
+    #endregion
+
+
     #region コンストラクタなど
 
     /// <summary>
@@ -34,47 +56,17 @@ public class JudgementConfig
             {
                 SetJudgementName = "Miss",
                 ShouldBreakCombo = true,
-                SetMaxTimeDifference = 99f
-                
-            }
+                SetMaxTimeDifference = 99f,
+                SetScoreValue = 0,
+
+
+            },
+          
+
+                  
 
 
         };
-    }
-
-    /// <summary>
-    /// フォールバック用コンストラクタ
-    /// </summary>
-    /// <param name="name">判定名</param>
-    /// <param name="maxDiff"> 判定が成立する許容時間</param>
-    /// <param name="col">判定の表示に使うカラー</param>
-    /// <param name="icon">判定のアイコン画像</param>
-    /// <param name="score">スコアの値</param>
-    /// <param name="breakCom">コンボが途切れるかどうか</param>
-    /// <param name="breakCom">コンボが途切れるかどうか</param>
-
-    /// <summary>
-    /// ロジック設定のみを初期化するコンストラクタ
-    /// </summary>
-    public JudgementConfig(string name, float maxDiff, int score, bool breakCom)
-    {
-        logic = new JudgementLogicConfig(name, maxDiff, score, breakCom);
-        visual = new JudgementVisualConfig(); // デフォルト値で初期化
-    }
-
-    /// <summary>
-    /// ビジュアル設定を設定するメソッド
-    /// </summary>
-    /// <param name="name">表示名</param>
-    /// <param name="col">表示色</param>
-    /// <param name="icon">表示アイコン（任意）</param>
-    /// <param name="showTime">表示時間（デフォルト: 0.5f）</param>
-    /// <param name="fadeTime">フェードアウト時間（デフォルト: 0.3f）</param>
-    /// <returns>JudgementConfig（メソッドチェーン用）</returns>
-    public JudgementConfig SetVisual(string name, Color col, Sprite icon = null, float showTime = 0.5f, float fadeTime = 0.3f)
-    {
-        visual = new JudgementVisualConfig(name, col, icon, showTime, fadeTime);
-        return this; // メソッドチェーン用
     }
 
 
@@ -84,9 +76,7 @@ public class JudgementConfig
         logic = new JudgementLogicConfig();
         visual = new JudgementVisualConfig();
     }
-    /// <summary>
-    /// JudgementConfigをNewする用
-    /// </summary>
+
 
     #endregion
 }

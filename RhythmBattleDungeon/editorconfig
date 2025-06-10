@@ -13,8 +13,7 @@ indent_size = 4
 # 目安のため、Visual Studioにはガイドラインを設定するのみ
 max_line_length = 100
 
-# 1行1ステートメントルールを強制
-csharp_style_allow_embedded_statements_on_same_line = false
+
 
 # 波括弧のスタイル（Allmanスタイル推奨。K&Rスタイルは適宜コメントアウト）
 # 波括弧を省略しない（if, for, while などで必須）
