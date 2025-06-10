@@ -40,6 +40,7 @@ public class ScoreEffectController : MonoBehaviour, IUIEffectPoolable<ScoreEffec
         scoreText.color = config.Visual.DisplayColor;
         scoreText.alpha = 1f;
         scoreText.transform.localScale = Vector3.zero;
+        DebugManager.Log($"[ScoreEffect] Playing on instance: {GetInstanceID()}");
 
         activeSequence = DOTween.Sequence();
         activeSequence.Append(scoreText.transform.DOScale(1f, 0.2f).SetEase(config.Visual.SetScaleEase))
