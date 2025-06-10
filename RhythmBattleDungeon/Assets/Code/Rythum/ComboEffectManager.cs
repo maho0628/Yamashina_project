@@ -25,6 +25,7 @@ public class ComboEffectController : MonoBehaviour, IUIEffectPoolable<ComboEffec
     public void Play(JudgementConfig config,int comboCount)
     {
         Debug.Log($"[ScoreEffect] Play called: +{config.Logic.SetScoreValue}");
+        comboText.gameObject.SetActive(true);
 
         comboText.transform.DOKill();
         comboText.DOKill();
@@ -33,11 +34,13 @@ public class ComboEffectController : MonoBehaviour, IUIEffectPoolable<ComboEffec
             activeSequence.Kill();
             activeSequence = null;
         }
-        comboText.gameObject.SetActive(true);
         comboEffectColor.a = 1.0f;
         comboText.text = $"Combo: {comboCount}!";
-        comboText.color = config.Visual.DisplayColor;
-        comboText.alpha = 1f;
+        Color displayColor = config.Visual.DisplayColor;
+        displayColor.a = 1f; 
+        comboText.color = displayColor;
+        comboText.alpha = 1f; 
+
         comboText.transform.localScale = Vector3.zero;
 
         activeSequence = DOTween.Sequence();
