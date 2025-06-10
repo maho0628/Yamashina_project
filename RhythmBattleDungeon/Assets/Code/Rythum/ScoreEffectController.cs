@@ -24,6 +24,7 @@ public class ScoreEffectController : MonoBehaviour, IUIEffectPoolable<ScoreEffec
 
     public void Play( JudgementConfig config)
     {
+        Debug.Log($"[ScoreEffect] Play called: +{config.Logic.SetScoreValue}");
 
         scoreText.transform.DOKill();
         scoreText.DOKill();

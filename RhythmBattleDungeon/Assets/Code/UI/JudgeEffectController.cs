@@ -27,6 +27,8 @@ public class JudgeEffectController : MonoBehaviour, IUIEffectPoolable<JudgeEffec
 
     public void Play(JudgementConfig config)
     {
+        Debug.Log($"[ScoreEffect] Play called: +{config.Logic.SetScoreValue}");
+
         judgeText.transform.DOKill();
         judgeText.DOKill();
         if (activeSequence != null)
