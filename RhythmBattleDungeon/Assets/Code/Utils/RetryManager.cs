@@ -125,7 +125,7 @@ public class RetryManager : SingletonMonoBehaviour<RetryManager>
         ComboManager.Instance?.ResetAll();
         AudioManager.Instance?.StopBGM();
         UIManager.Instance?.StopReadyGo();
-
+        JudgementManager.Instance.ResetAllJudgement();  
         var scoreGauge = FindAnyObjectByType<ScoreGaugeUI>();
         if (scoreGauge != null)
         {
