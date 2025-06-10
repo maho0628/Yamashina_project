@@ -13,7 +13,6 @@ public class ScoreEffectController : MonoBehaviour, IUIEffectPoolable<ScoreEffec
 
     public void OnCreated(UIObjectPool<ScoreEffectController> pool)
     {
-        Debug.Log("OnCreated called on ScoreEffectController"); // ’Ç‰Á
 
         this.pool = pool;
     }
@@ -48,7 +47,7 @@ public class ScoreEffectController : MonoBehaviour, IUIEffectPoolable<ScoreEffec
 
     public void ReturnToPool()
     {
-        Debug.Log("ReturnToPool called");
+        DebugManager.Log("ReturnToPool called");
 
         activeSequence?.Kill();
         activeSequence = null;
