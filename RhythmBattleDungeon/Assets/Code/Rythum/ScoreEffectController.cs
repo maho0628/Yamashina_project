@@ -9,9 +9,12 @@ public class ScoreEffectController : MonoBehaviour, IUIEffectPoolable<ScoreEffec
     private UIObjectPool<ScoreEffectController> pool;
     private Color scoreImageColor;
 
-    
+    private Sequence activeSequence;
+
     public void OnCreated(UIObjectPool<ScoreEffectController> pool)
     {
+        Debug.Log("OnCreated called on ScoreEffectController"); // ’Ç‰Á
+
         this.pool = pool;
     }
     private void Start()
@@ -23,6 +26,12 @@ public class ScoreEffectController : MonoBehaviour, IUIEffectPoolable<ScoreEffec
     public void Play( JudgementConfig config)
     {
 
+        if (activeSequence != null)
+        {
+            activeSequence.Kill();
+            activeSequence = null;
+        }
+        scoreText.gameObject.SetActive(true);
         scoreImageColor.a = 1.0f;
 
         scoreText.text = $"+{config.Logic.SetScoreValue}";
@@ -39,9 +48,16 @@ public class ScoreEffectController : MonoBehaviour, IUIEffectPoolable<ScoreEffec
 
     public void ReturnToPool()
     {
-        scoreImageColor.a = 0.0f;
+        Debug.Log("ReturnToPool called");
+
+        activeSequence?.Kill();
+        activeSequence = null;
+
         pool?.Return(this);
         scoreText.text = null;
+
+        scoreImageColor.a = 0.0f;
+      
 
 
     }

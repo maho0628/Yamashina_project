@@ -117,14 +117,16 @@ public class InputHandler : MonoBehaviour
         //���茋�ʂ��Ȃ��̂Ń��^�[��
         if (judgement == null) return;
 
-        
+        Debug.Log($"Effect played: {judgement.Logic.JudgementName} on lane {note.LaneNumber}");
+
         note.IsHit = true;
 
+        Debug.Log("note.IsHit" + note.IsHit);
         //���茋�ʂ�JudgementManager�ɓn���ăX�R�A�Ȃǂ𔽉f���Ă��炤
         JudgementManager.Instance.ApplyJudgement(judgement, note.LaneNumber);
         AnimationManager.Instance.ShowScoreEffect(judgement);
         AnimationManager.Instance.ShowJudgeEffect(judgement);
-
+       
 
     }
 
