@@ -121,7 +121,6 @@ public class ResultUIManager : MonoBehaviour
         CreateResultEntry(scoreTextPrefab, scoreParentTransform, scoreLabel, scoreValue, activeScoreUIs);
         //各ボタンのリスナー登録
         songSelectButton.onClick.AddListener(OnSongSelectRetryClicked);
-        songSelectButton.interactable = RetryManager.Instance.CanRetry;
         // タイトル戻りボタン
         if (titleReturnButton != null)
         {
