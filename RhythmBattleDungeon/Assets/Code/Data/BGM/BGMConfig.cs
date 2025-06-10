@@ -11,37 +11,37 @@ public class BGMConfig
     /// <summary>
     /// BGMのID
     /// </summary>
-    [SerializeField, Header("BGMのID")]
+    [SerializeField, Tooltip("BGMのID")]
     private BGMName bgmId;
 
     /// <summary>
     /// 使用するオーディオクリップ
     /// </summary>
-    [SerializeField, Header("使用するオーディオクリップ")]
+    [SerializeField, Tooltip("使用するオーディオクリップ")]
     private AudioClip bgmAudioClip;
 
     /// <summary>
     /// BPM（Beats Per Minute)
     /// </summary>
-    [SerializeField, Header("BPM（Beats Per Minute）")]
+    [SerializeField, Tooltip("BPM（Beats Per Minute）")]
     private float bgmBpm;
 
     /// <summary>
     /// ジャンル名
     /// </summary>
-    [SerializeField, Header("ジャンル名")]
+    [SerializeField, Tooltip("ジャンル名")]
     private string bgmGenre;
 
     /// <summary>
     /// 表示用の曲名
     /// </summary>
-    [SerializeField, Header("表示用の曲名")]
+    [SerializeField, Tooltip("表示用の曲名")]
     private string bgmDisplayName;
 
     /// <summary>
     /// ジャケット画像
     /// </summary>
-    [SerializeField, Header("ジャケット画像")]
+    [SerializeField, Tooltip("ジャケット画像")]
     private Sprite bgmJacketImage;
 
     #endregion

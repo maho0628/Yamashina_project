@@ -31,8 +31,8 @@ public class ComboEffectController : MonoBehaviour, IUIEffectPoolable<ComboEffec
 
         Sequence seq = DOTween.Sequence();
         seq.Append(comboText.transform.DOScale(1f, 0.2f).SetEase(config.Visual.SetScaleEase))
-           .AppendInterval(config.Visual.SetShowDuration)
-           .Append(comboText.DOFade(0f, config.Visual.SetFadeOutDuration))
+           .AppendInterval(config.Visual.ShowDuration)
+           .Append(comboText.DOFade(0f, config.Visual.FadeOutDuration))
            .OnComplete(ReturnToPool);
     }
 
