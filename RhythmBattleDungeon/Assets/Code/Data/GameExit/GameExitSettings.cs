@@ -24,7 +24,7 @@ public class GameExitSettings : ScriptableObject
     /// <summary>
     /// 入れるダイアログのオブジェクトプレハブ
     /// </summary>
-    [SerializeField, Header("入れるダイアログのオブジェクトプレハブ")]
+    [SerializeField, Tooltip("入れるダイアログのオブジェクトプレハブ")]
     private GameObject confirmDialogPrefab;
 
     #endregion

@@ -73,6 +73,7 @@ public class DialogElementSettings
     /// <summary>
     /// 実際に出す文章のテキストの色
     /// </summary>
+    
     [SerializeField, Tooltip("実際に出す文章のテキストの色")]
     private Color messageTextColor = Color.white;
 
