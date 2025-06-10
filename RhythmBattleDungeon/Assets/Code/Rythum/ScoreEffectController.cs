@@ -24,7 +24,10 @@ public class ScoreEffectController : MonoBehaviour, IUIEffectPoolable<ScoreEffec
 
     public void Play( JudgementConfig config)
     {
+        Debug.Log($"[ScoreEffect] Play called: +{config.Logic.SetScoreValue}");
 
+        scoreText.transform.DOKill();
+        scoreText.DOKill();
         if (activeSequence != null)
         {
             activeSequence.Kill();
@@ -37,9 +40,10 @@ public class ScoreEffectController : MonoBehaviour, IUIEffectPoolable<ScoreEffec
         scoreText.color = config.Visual.DisplayColor;
         scoreText.alpha = 1f;
         scoreText.transform.localScale = Vector3.zero;
+        DebugManager.Log($"[ScoreEffect] Playing on instance: {GetInstanceID()}");
 
-        Sequence seq = DOTween.Sequence();
-        seq.Append(scoreText.transform.DOScale(1f, 0.2f).SetEase(config.Visual.SetScaleEase))
+        activeSequence = DOTween.Sequence();
+        activeSequence.Append(scoreText.transform.DOScale(1f, 0.2f).SetEase(config.Visual.SetScaleEase))
            .AppendInterval(config.Visual.ShowDuration)
            .Append(scoreText.DOFade(0f, config.Visual.FadeOutDuration))
            .OnComplete(ReturnToPool);
@@ -56,7 +60,8 @@ public class ScoreEffectController : MonoBehaviour, IUIEffectPoolable<ScoreEffec
         scoreText.text = null;
 
         scoreImageColor.a = 0.0f;
-      
+
+        scoreText.gameObject.SetActive(false);
 
 
     }
