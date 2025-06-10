@@ -38,6 +38,8 @@ public class ComboEffectController : MonoBehaviour, IUIEffectPoolable<ComboEffec
 
     public void ReturnToPool()
     {
+        DebugManager.Log("ReturnToPool called");
+
         pool?.Return(this);
         comboEffectColor.a = 0.0f;
         comboText.text = null;

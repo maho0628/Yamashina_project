@@ -45,7 +45,7 @@ public class JudgeEffectController : MonoBehaviour, IUIEffectPoolable<JudgeEffec
 
     public void ReturnToPool()
     {
-        Debug.Log("ReturnToPool called");
+        DebugManager.Log("ReturnToPool called");
 
         activeSequence?.Kill();
         activeSequence = null;
