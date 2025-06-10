@@ -119,6 +119,8 @@ public class InputHandler : MonoBehaviour
 
         Debug.Log($"Effect played: {judgement.Logic.JudgementName} on lane {note.LaneNumber}");
 
+        if (note.IsHit) return; 
+
         note.IsHit = true;
 
         Debug.Log("note.IsHit" + note.IsHit);

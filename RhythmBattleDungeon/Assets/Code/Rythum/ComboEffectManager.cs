@@ -10,6 +10,7 @@ public class ComboEffectController : MonoBehaviour, IUIEffectPoolable<ComboEffec
 
     private Color comboEffectColor;
 
+    private Sequence activeSequence;
 
     private void Start()
     {
@@ -23,14 +24,21 @@ public class ComboEffectController : MonoBehaviour, IUIEffectPoolable<ComboEffec
 
     public void Play(JudgementConfig config,int comboCount)
     {
+        comboText.transform.DOKill();
+        comboText.DOKill();
+        if (activeSequence != null)
+        {
+            activeSequence.Kill();
+            activeSequence = null;
+        }
         comboEffectColor.a = 1.0f;
         comboText.text = $"Combo: {comboCount}!";
         comboText.color = config.Visual.DisplayColor;
         comboText.alpha = 1f;
         comboText.transform.localScale = Vector3.zero;
 
-        Sequence seq = DOTween.Sequence();
-        seq.Append(comboText.transform.DOScale(1f, 0.2f).SetEase(config.Visual.SetScaleEase))
+        activeSequence = DOTween.Sequence();
+        activeSequence.Append(comboText.transform.DOScale(1f, 0.2f).SetEase(config.Visual.SetScaleEase))
            .AppendInterval(config.Visual.ShowDuration)
            .Append(comboText.DOFade(0f, config.Visual.FadeOutDuration))
            .OnComplete(ReturnToPool);
@@ -39,11 +47,13 @@ public class ComboEffectController : MonoBehaviour, IUIEffectPoolable<ComboEffec
     public void ReturnToPool()
     {
         DebugManager.Log("ReturnToPool called");
-
+        activeSequence?.Kill();
+        activeSequence = null;
         pool?.Return(this);
         comboEffectColor.a = 0.0f;
         comboText.text = null;
 
+        comboText.gameObject.SetActive(false);
 
     }
 }
