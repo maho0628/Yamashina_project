@@ -58,32 +58,7 @@ public class JudgementVisualConfig
 
     internal float SetScaleInTime => scaleInTime;
     internal Ease SetScaleEase => scaleEase;
-    #region 設定用プロパティ（必要に応じて）
-    /// <summary>
-    /// 表示名の設定用プロパティ
-    /// </summary>
-    internal string SetDisplayJudgementName { get => displayName; set => displayName = value; }
-
-    /// <summary>
-    /// 表示色の設定用プロパティ
-    /// </summary>
-    internal Color SetDisplayColor { get => displayColor; set => displayColor = value; }
-
-    /// <summary>
-    /// 表示アイコンの設定用プロパティ
-    /// </summary>
-    internal Sprite SetDisplayIcon { get => displayIcon; set => displayIcon = value; }
-
-    /// <summary>
-    /// 表示時間の設定用プロパティ
-    /// </summary>
-    internal float SetShowDuration { get => showDuration; set => showDuration = value; }
-
-    /// <summary>
-    /// フェードアウト時間の設定用プロパティ
-    /// </summary>
-    internal float SetFadeOutDuration { get => fadeOutDuration; set => fadeOutDuration = value; }
-    #endregion
+   
 
     #region コンストラクタ
     /// <summary>
