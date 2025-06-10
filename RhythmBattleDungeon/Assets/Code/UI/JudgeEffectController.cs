@@ -28,6 +28,7 @@ public class JudgeEffectController : MonoBehaviour, IUIEffectPoolable<JudgeEffec
     public void Play(JudgementConfig config)
     {
         Debug.Log($"[ScoreEffect] Play called: +{config.Logic.SetScoreValue}");
+        judgeText.gameObject.SetActive(true);
 
         judgeText.transform.DOKill();
         judgeText.DOKill();
@@ -36,10 +37,11 @@ public class JudgeEffectController : MonoBehaviour, IUIEffectPoolable<JudgeEffec
             activeSequence.Kill();
             activeSequence = null;
         }
-        judgeText.gameObject.SetActive(true);   
         judgeEffectColor.a = 1.0f;
         judgeText.text = config.Visual.DisplayJudgementName;
-        judgeText.color = config.Visual.DisplayColor;
+        Color displayColor = config.Visual.DisplayColor;
+        displayColor.a = 1f;
+        judgeText.color = displayColor;
         judgeText.alpha = 1f;
         judgeText.transform.localScale = Vector3.zero;
 
