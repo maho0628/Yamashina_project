@@ -27,6 +27,8 @@ public class JudgementVisualConfig
     [SerializeField] private float scaleInTime = 0.2f;
     [SerializeField] private Ease scaleEase = Ease.OutBack;
 
+    [SerializeField, Header("各判定ごとのエフェクト")] 
+    private GameObject hitEffect;
 
 
     #region 読み取り専用プロパティ
@@ -59,52 +61,13 @@ public class JudgementVisualConfig
     internal float SetScaleInTime => scaleInTime;
     internal Ease SetScaleEase => scaleEase;
    
-
+    internal GameObject HitEffect => hitEffect; 
     #region コンストラクタ
     /// <summary>
     /// デフォルトコンストラクタ
     /// </summary>
     public JudgementVisualConfig() { }
 
-    /// <summary>
-    /// 基本初期化用コンストラクタ
-    /// </summary>
-    /// <param name="color">表示色</param>
-    /// <param name="icon">表示アイコン（任意）</param>
-    internal JudgementVisualConfig(Color color, Sprite icon = null)
-    {
-        displayColor = color;
-        displayIcon = icon;
-    }
-
-    /// <summary>
-    /// 表示名付き初期化用コンストラクタ
-    /// </summary>
-    /// <param name="name">表示名</param>
-    /// <param name="color">表示色</param>
-    /// <param name="icon">表示アイコン（任意）</param>
-    internal JudgementVisualConfig(string name, Color color, Sprite icon = null)
-    {
-        displayName = name;
-        displayColor = color;
-        displayIcon = icon;
-    }
-
-    /// <summary>
-    /// 完全初期化用コンストラクタ
-    /// </summary>
-    /// <param name="name">表示名</param>
-    /// <param name="color">表示色</param>
-    /// <param name="icon">表示アイコン（任意）</param>
-    /// <param name="showTime">表示時間</param>
-    /// <param name="fadeTime">フェードアウト時間</param>
-    internal JudgementVisualConfig(string name, Color color, Sprite icon, float showTime, float fadeTime)
-    {
-        displayName = name;
-        displayColor = color;
-        displayIcon = icon;
-        showDuration = showTime;
-        fadeOutDuration = fadeTime;
-    }
+ 
     #endregion
 }
