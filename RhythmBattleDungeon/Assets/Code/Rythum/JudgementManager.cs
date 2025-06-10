@@ -29,6 +29,10 @@ public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
         judgementConfigs.Sort((a, b) => a.Logic.SetMaxTimeDifference.CompareTo(b.Logic.SetMaxTimeDifference));
     }
 
+    public void ResetAllJudgement()
+    {
+        judgementCounts.Clear();
+    }
     /// <summary>
     /// �S���胊�X�g���擾
     /// </summary>
