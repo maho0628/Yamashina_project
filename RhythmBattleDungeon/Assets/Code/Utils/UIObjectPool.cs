@@ -28,7 +28,7 @@ public class UIObjectPool<T> : MonoBehaviour where T : MonoBehaviour
     {
         pool.Enqueue(item);
         item.gameObject.SetActive(false);
-        Debug.Log($"Returning to pool: {typeof(T).Name}, Current count: {pool.Count}");
+        DebugManager.Log($"Returning to pool: {typeof(T).Name}, Current count: {pool.Count}");
 
     }
 }
