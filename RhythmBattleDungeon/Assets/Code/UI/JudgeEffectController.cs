@@ -12,6 +12,7 @@ public class JudgeEffectController : MonoBehaviour, IUIEffectPoolable<JudgeEffec
 
     private Color judgeEffectColor;
 
+    private Sequence activeSequence;
 
     private void Start()
     {
@@ -26,6 +27,9 @@ public class JudgeEffectController : MonoBehaviour, IUIEffectPoolable<JudgeEffec
 
     public void Play(JudgementConfig config)
     {
+        activeSequence?.Kill(true);
+
+        judgeText.gameObject.SetActive(true);   
         judgeEffectColor.a = 1.0f;
         judgeText.text = config.Visual.DisplayJudgementName;
         judgeText.color = config.Visual.DisplayColor;
@@ -41,9 +45,16 @@ public class JudgeEffectController : MonoBehaviour, IUIEffectPoolable<JudgeEffec
 
     public void ReturnToPool()
     {
-        pool?.Return(this);
+        Debug.Log("ReturnToPool called");
+
+        activeSequence?.Kill();
+        activeSequence = null;
+
+        pool?.Return(this); 
+        judgeText.text = null;
+       
         judgeEffectColor.a = 0.0f;
-        judgeText.text =null;
+        judgeText.gameObject.SetActive(false);  
 
 
     }
