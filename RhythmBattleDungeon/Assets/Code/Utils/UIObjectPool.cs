@@ -12,9 +12,13 @@ public class UIObjectPool<T> : MonoBehaviour where T : MonoBehaviour
         item.gameObject.SetActive(true);
 
         // IPoolable ‚É‘Î‰‚µ‚Ä‚½‚çƒv[ƒ‹“n‚·
-        if (item is IPoolable<T> poolable)
+        if (item is IPoolable<T> poolAble)
         {
-            poolable.OnCreated(this);
+            poolAble.OnCreated(this);
+        }
+        if(item is IUIEffectPoolable<T> uiEffectPoolAble)
+        {
+            uiEffectPoolAble.OnCreated(this);
         }
 
         return item;
@@ -23,6 +27,8 @@ public class UIObjectPool<T> : MonoBehaviour where T : MonoBehaviour
     public void Return(T item)
     {
         pool.Enqueue(item);
+        item.gameObject.SetActive(false);
+        Debug.Log($"Returning to pool: {typeof(T).Name}, Current count: {pool.Count}");
 
     }
 }
