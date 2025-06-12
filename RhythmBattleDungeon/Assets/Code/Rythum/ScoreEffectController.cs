@@ -61,10 +61,8 @@ public class ScoreEffectController : MonoBehaviour, IUIEffectPoolable<ScoreEffec
 
         pool?.Return(this);
         scoreText.text = null;
-
-        scoreImageColor.a = 0.0f;
-
-        scoreText.gameObject.SetActive(false);
+        scoreText.alpha = 0f; 
+        scoreText.transform.localScale = Vector3.zero;
 
 
     }

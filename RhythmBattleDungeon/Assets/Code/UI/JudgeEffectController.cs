@@ -59,11 +59,12 @@ public class JudgeEffectController : MonoBehaviour, IUIEffectPoolable<JudgeEffec
         activeSequence?.Kill();
         activeSequence = null;
 
-        pool?.Return(this); 
+        pool?.Return(this);
         judgeText.text = null;
-       
+        judgeText.alpha = 0f; 
+        judgeText.transform.localScale = Vector3.zero;
+
         judgeEffectColor.a = 0.0f;
-        judgeText.gameObject.SetActive(false);  
 
 
     }

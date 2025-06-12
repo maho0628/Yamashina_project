@@ -7,13 +7,10 @@ public class SceneTransitionManager : SingletonMonoBehaviour<SceneTransitionMana
 {
     private Image fadeInstance;
     private bool isTransitioning = false;
-    private SceneReference initialScene;
+    private SceneObject initialScene;
 
-    internal bool IsTransitioning { get { return isTransitioning; } }   
-   
-   
+    internal bool IsTransitioning { get { return isTransitioning; } }
 
-    // フェード用プレハブの設定
     public void SetFadePrefab(GameObject prefab)
     {
         if (fadeInstance == null && prefab != null)
@@ -27,18 +24,15 @@ public class SceneTransitionManager : SingletonMonoBehaviour<SceneTransitionMana
         }
     }
 
-    // 初期シーンをセットする関数
-    public void SetInitialScene(SceneReference sceneReference)
+    public void SetInitialScene(SceneObject sceneObject)
     {
-        initialScene = sceneReference;
+        initialScene = sceneObject;
     }
 
-    // シーン遷移
-    public void TransitionTo(SceneReference sceneReference)
+    public void TransitionTo(SceneObject sceneObject)
     {
-        if (isTransitioning || sceneReference == null) return;
-
-        StartCoroutine(FadeOutAndLoadScene(sceneReference.sceneName));
+        if (isTransitioning || sceneObject == null) return;
+        StartCoroutine(FadeOutAndLoadScene((string)sceneObject));
     }
 
     private IEnumerator FadeOutAndLoadScene(string sceneName)
