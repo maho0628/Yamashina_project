@@ -12,6 +12,7 @@ public class JudgeEffectController : MonoBehaviour, IUIEffectPoolable<JudgeEffec
 
     private Color judgeEffectColor;
 
+    private Sequence activeSequence;
 
     private void Start()
     {
@@ -26,24 +27,43 @@ public class JudgeEffectController : MonoBehaviour, IUIEffectPoolable<JudgeEffec
 
     public void Play(JudgementConfig config)
     {
+        Debug.Log($"[ScoreEffect] Play called: +{config.Logic.SetScoreValue}");
+        judgeText.gameObject.SetActive(true);
+
+        judgeText.transform.DOKill();
+        judgeText.DOKill();
+        if (activeSequence != null)
+        {
+            activeSequence.Kill();
+            activeSequence = null;
+        }
         judgeEffectColor.a = 1.0f;
         judgeText.text = config.Visual.DisplayJudgementName;
-        judgeText.color = config.Visual.DisplayColor;
+        Color displayColor = config.Visual.DisplayColor;
+        displayColor.a = 1f;
+        judgeText.color = displayColor;
         judgeText.alpha = 1f;
         judgeText.transform.localScale = Vector3.zero;
 
-        Sequence seq = DOTween.Sequence();
-        seq.Append(judgeText.transform.DOScale(1f, 0.2f).SetEase(config.Visual.SetScaleEase))
-           .AppendInterval(config.Visual.SetShowDuration)
-           .Append(judgeText.DOFade(0f, config.Visual.SetFadeOutDuration))
+        activeSequence = DOTween.Sequence();
+        activeSequence.Append(judgeText.transform.DOScale(1f, 0.2f).SetEase(config.Visual.SetScaleEase))
+           .AppendInterval(config.Visual.ShowDuration)
+           .Append(judgeText.DOFade(0f, config.Visual.FadeOutDuration))
            .OnComplete(ReturnToPool);
     }
 
     public void ReturnToPool()
     {
-        pool?.Return(this);
+        DebugManager.Log("ReturnToPool called");
+
+        activeSequence?.Kill();
+        activeSequence = null;
+
+        pool?.Return(this); 
+        judgeText.text = null;
+       
         judgeEffectColor.a = 0.0f;
-        judgeText.text =null;
+        judgeText.gameObject.SetActive(false);  
 
 
     }

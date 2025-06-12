@@ -45,6 +45,7 @@ private UIObjectPool<ComboEffectController> comboEffectPool;
     }
     public void ShowComboEffect(JudgementConfig config)
     {
+
         if (comboEffectPool == null)
         {
             DebugManager.LogWarning("[AnimationManager] judgeEffectPool Ç™ñ¢ê›íË");
@@ -61,6 +62,7 @@ private UIObjectPool<ComboEffectController> comboEffectPool;
             DebugManager.LogWarning("[AnimationManager] judgeEffectPool Ç™ñ¢ê›íË");
             return;
         }
+        Debug.Log($"Playing judge effect: {config.Logic.JudgementName}");
 
         var ctrl = scoreEffectPool.Get();
         ctrl.Play(config);

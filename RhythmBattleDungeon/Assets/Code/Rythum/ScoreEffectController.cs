@@ -9,9 +9,11 @@ public class ScoreEffectController : MonoBehaviour, IUIEffectPoolable<ScoreEffec
     private UIObjectPool<ScoreEffectController> pool;
     private Color scoreImageColor;
 
-    
+    private Sequence activeSequence;
+
     public void OnCreated(UIObjectPool<ScoreEffectController> pool)
     {
+
         this.pool = pool;
     }
     private void Start()
@@ -22,16 +24,29 @@ public class ScoreEffectController : MonoBehaviour, IUIEffectPoolable<ScoreEffec
 
     public void Play( JudgementConfig config)
     {
+        Debug.Log($"[ScoreEffect] Play called: +{config.Logic.SetScoreValue}");
+        scoreText.gameObject.SetActive(true);
 
+        scoreText.transform.DOKill();
+        scoreText.DOKill();
+        if (activeSequence != null)
+        {
+            activeSequence.Kill();
+            activeSequence = null;
+        }
         scoreImageColor.a = 1.0f;
 
         scoreText.text = $"+{config.Logic.SetScoreValue}";
-        scoreText.color = config.Visual.DisplayColor;
-        scoreText.alpha = 1f;
-        scoreText.transform.localScale = Vector3.zero;
+        Color displayColor = config.Visual.DisplayColor;
+        displayColor.a = 1f; 
+        scoreText.color = displayColor;
+        scoreText.alpha = 1f; 
 
-        Sequence seq = DOTween.Sequence();
-        seq.Append(scoreText.transform.DOScale(1f, 0.2f).SetEase(config.Visual.SetScaleEase))
+        scoreText.transform.localScale = Vector3.zero;
+        DebugManager.Log($"[ScoreEffect] Playing on instance: {GetInstanceID()}");
+
+        activeSequence = DOTween.Sequence();
+        activeSequence.Append(scoreText.transform.DOScale(1f, 0.2f).SetEase(config.Visual.SetScaleEase))
            .AppendInterval(config.Visual.ShowDuration)
            .Append(scoreText.DOFade(0f, config.Visual.FadeOutDuration))
            .OnComplete(ReturnToPool);
@@ -39,9 +54,17 @@ public class ScoreEffectController : MonoBehaviour, IUIEffectPoolable<ScoreEffec
 
     public void ReturnToPool()
     {
-        scoreImageColor.a = 0.0f;
+        DebugManager.Log("ReturnToPool called");
+
+        activeSequence?.Kill();
+        activeSequence = null;
+
         pool?.Return(this);
         scoreText.text = null;
+
+        scoreImageColor.a = 0.0f;
+
+        scoreText.gameObject.SetActive(false);
 
 
     }

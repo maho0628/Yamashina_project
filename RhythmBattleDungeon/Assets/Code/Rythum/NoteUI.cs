@@ -53,7 +53,6 @@ public class NoteUI : MonoBehaviour, IPoolable<NoteUI>
 
     private void Deactivate()
     {
-        gameObject.SetActive(false);
         noteUIPool?.Return(this);
         linkedNote = null; 
     }

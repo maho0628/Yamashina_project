@@ -1,5 +1,6 @@
 using System.Collections;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -75,6 +76,7 @@ public class GameSceneInitializer : MonoBehaviour
         NoteManager.Instance.AllowNoteSpawning();
         ScoreManager.Instance.CalculateMaxScore();  
         FindAnyObjectByType<InputHandler>()?.InitializeInput();
+        DOTween.Init(false, false);
     }
 
 

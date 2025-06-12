@@ -30,7 +30,7 @@ MonoBehaviour:
         showDuration: 0.5
         fadeOutDuration: 0.3
         scaleInTime: 0.2
-        scaleEase: 27
+        scaleEase: 30
     - logic:
         judgementName: Great
         maxTimeDifference: 0.1
