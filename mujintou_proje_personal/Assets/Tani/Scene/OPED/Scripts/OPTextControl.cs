@@ -38,18 +38,18 @@ namespace Opening
         ShakeUI shake;
         Fading fading;
         PlayerInfo info;
-       
-            
-            //ここまで//
-            private void Start()
-            {
+
+
+        //ここまで//
+        private void Start()
+        {
             Debug.Log("OPTextControl Start called");
 
             GameData.CanReturnTitle = false;
-                shake = GetComponent<ShakeUI>();
-                textContol = GetComponent<TextControl>();
-                fading = GetComponent<Fading>();
-                textContol.ResetTextData();
+            shake = GetComponent<ShakeUI>();
+            textContol = GetComponent<TextControl>();
+            fading = GetComponent<Fading>();
+            textContol.ResetTextData();
             LoadLocalizedTextAssets();
 
             AddTextDataToTextControl(0);
@@ -57,14 +57,14 @@ namespace Opening
             Debug.Log("ClickEventAfterTextsEnd listener added");
 
             if (PlayerInfo.InstanceNullable)
-                {
-                    PlayerInfo.Instance.DestroySelf();
-                }
-                Instantiate(PlayerPrefab);
-                info = PlayerInfo.Instance;
-                info.StartGame(true);
-
+            {
+                PlayerInfo.Instance.DestroySelf();
             }
+            Instantiate(PlayerPrefab);
+            info = PlayerInfo.Instance;
+            info.StartGame(true);
+
+        }
         public async void ChangeLanguage(string locale)
         {
             await ChangeSelectedLocale(locale);
@@ -94,125 +94,126 @@ namespace Opening
         private void LoadLocalizedTextAssets()
         {
             textAssets = localizedTextAssetLoader.LoadTextAssetsForCurrentLocale();
-                AddTextDataToTextControl(0);
+            AddTextDataToTextControl(0);
         }
 
-      
+
 
 
         void AddTextDataToTextControl(int index)
+        {
+            if (index > textAssets.Count)
             {
-                if (index > textAssets.Count)
-                {
-                    Debug.LogError("index out of Range int textAssets");
-                    return;
-                }
+                Debug.LogError("index out of Range int textAssets");
+                return;
+            }
 
-                textContol.ResetTextData();
-                textContol.EndEvent.RemoveAllListeners();
-                textContol.ClickEventAfterTextsEnd.RemoveAllListeners();
+            textContol.ResetTextData();
+            textContol.EndEvent.RemoveAllListeners();
+            textContol.ClickEventAfterTextsEnd.RemoveAllListeners();
 
-                string rawData = textAssets[index].text;
-                string[] splitedText = rawData.Split(char.Parse("\n"));
-                foreach (var text in splitedText)
-                {
+            string rawData = textAssets[index].text;
+            string[] splitedText = rawData.Split(char.Parse("\n"));
+            foreach (var text in splitedText)
+            {
 
                 if (text == "") continue;
                 textContol.AddTextData(text.Replace("**", "\n"));
-                }
             }
+        }
 
-            void EventAfterFirst()
-            {
+        void EventAfterFirst()
+        {
             Debug.Log("EventAfterFirst called");
 
             //柴田追加分//
             BGMPlayer.GetComponent<anotherBGMPlayer>().StartCoroutine("FadeOutAudio", 2);
-                SEPlayer.GetComponent<anotherSoundPlayer>().ChooseSongs_SE(10);
-                //ここまで//
-                var info = new ShakeUI.ShakeInfo(3, 100, 5);
-                info.OnShakeEnd.AddListener(() => {
-
-                    Debug.Log("Shake ended");
-
-                    //柴田追加分//
-                    anotherBGMPlayer ABP = BGMPlayer.GetComponent<anotherBGMPlayer>();
-                    StartCoroutine(ABP.FadeInAudio(5, 2));
-                    //ここまで//
-
-                    var fade = (Fading)FindAnyObjectByType(typeof(Fading));
-                    fade.fading_time = 0.5f;
-                    fade.Fade(Fading.type.FadeOut);
-                    fade.OnFadeEnd.AddListener(() =>
-                    {
-                        StartCoroutine(cf());
-                    });
-                });
-                shake.Shake(BG_image.gameObject, info);
-                textContol.ClickEventAfterTextsEnd.RemoveAllListeners();
-            }
-      
-
-
-            
-        IEnumerator cf()
+            SEPlayer.GetComponent<anotherSoundPlayer>().ChooseSongs_SE(10);
+            //ここまで//
+            var info = new ShakeUI.ShakeInfo(3, 100, 5);
+            info.OnShakeEnd.AddListener(() =>
             {
-                yield return null;
-                BG_image.sprite = BG_images[1];
+
+                Debug.Log("Shake ended");
+
+                //柴田追加分//
+                anotherBGMPlayer ABP = BGMPlayer.GetComponent<anotherBGMPlayer>();
+                StartCoroutine(ABP.FadeInAudio(5, 2));
+                //ここまで//
+
                 var fade = (Fading)FindAnyObjectByType(typeof(Fading));
                 fade.fading_time = 0.5f;
-                fade.Fade(Fading.type.FadeIn);
+                fade.Fade(Fading.type.FadeOut);
                 fade.OnFadeEnd.AddListener(() =>
                 {
-
-                    AddTextDataToTextControl(1);
-                    textContol.ClickEventAfterTextsEnd.AddListener(EventAfterSecond);
-                    fade.fading_time = 3f;
+                    StartCoroutine(cf());
                 });
+            });
+            shake.Shake(BG_image.gameObject, info);
+            textContol.ClickEventAfterTextsEnd.RemoveAllListeners();
+        }
 
-            }
-     
-        void EventAfterSecond()
+
+
+
+        IEnumerator cf()
+        {
+            yield return null;
+            BG_image.sprite = BG_images[1];
+            var fade = (Fading)FindAnyObjectByType(typeof(Fading));
+            fade.fading_time = 0.5f;
+            fade.Fade(Fading.type.FadeIn);
+            fade.OnFadeEnd.AddListener(() =>
             {
+
+                AddTextDataToTextControl(1);
+                textContol.ClickEventAfterTextsEnd.AddListener(EventAfterSecond);
+                fade.fading_time = 3f;
+            });
+
+        }
+
+        void EventAfterSecond()
+        {
             Debug.Log("EventAfterSecond called");
 
             textContol.ClickEventAfterTextsEnd.RemoveAllListeners();
-                textContol.ResetTextData();
-                AddTextDataToTextControl(2);
-                textContol.ClickEventAfterTextsEnd.AddListener(() =>
+            textContol.ResetTextData();
+            AddTextDataToTextControl(2);
+            textContol.ClickEventAfterTextsEnd.AddListener(() =>
+            {
+                textContol.ClickEventAfterTextsEnd.RemoveAllListeners();
+                //柴田追加分//
+                SEPlayer.GetComponent<anotherSoundPlayer>().ChooseSongs_SE(10);
+                //ここまで//
+                var info = new ShakeUI.ShakeInfo(3, 100, 5);
+                info.OnShakeEnd.RemoveAllListeners();
+                info.OnShakeEnd.AddListener(() =>
                 {
-                    textContol.ClickEventAfterTextsEnd.RemoveAllListeners();
-                    //柴田追加分//
-                    SEPlayer.GetComponent<anotherSoundPlayer>().ChooseSongs_SE(10);
-                    //ここまで//
-                    var info = new ShakeUI.ShakeInfo(3, 100, 5);
-                    info.OnShakeEnd.RemoveAllListeners();
-                    info.OnShakeEnd.AddListener(() =>
-                    {
 
-                        BG_image.sprite = BG_images[1];
-                        AddTextDataToTextControl(3);
-                        textContol.ClickEventAfterTextsEnd.AddListener(EventAfterThird);
+                    BG_image.sprite = BG_images[1];
+                    AddTextDataToTextControl(3);
+                    textContol.ClickEventAfterTextsEnd.AddListener(EventAfterThird);
 
-                    });
-                    shake.Shake(BG_image.gameObject, info);
                 });
-            }
+                shake.Shake(BG_image.gameObject, info);
+            });
+        }
 
 
         void EventAfterThird()
-            {
+        {
             Debug.Log("EventAfterThird called");
 
             textContol.ResetTextData();
-                textContol.ClickEventAfterTextsEnd.RemoveAllListeners();
-                //柴田追加分//
-                BGMPlayer.GetComponent<anotherBGMPlayer>().StartCoroutine("FadeOutAudio", 3);
-                //ここまで//
-                BG_image.sprite = BG_images[2];
-                AddTextDataToTextControl(4);
-                textContol.ClickEventAfterTextsEnd.AddListener(EventAfterForth);
-            }
+            textContol.ClickEventAfterTextsEnd.RemoveAllListeners();
+            //柴田追加分//
+            BGMPlayer.GetComponent<anotherBGMPlayer>().StartCoroutine("FadeOutAudio", 3);
+            //ここまで//
+            BG_image.sprite = BG_images[2];
+            AddTextDataToTextControl(4);
+            textContol.ClickEventAfterTextsEnd.AddListener(EventAfterForth);
+        }
 
 
         void EventAfterForth()
@@ -237,81 +238,81 @@ namespace Opening
                 });
             }
         }
-       
-       
+
+
         void EventAfterFifth()
-            {
+        {
             Debug.Log("EventAfterFifth called");
 
             textContol.ResetTextData();
-                GetComponent<Text>().text = "";
-                fading.SetFadeImageActivaton(true);
-                StartCoroutine(EventAfterFifthCoroutine());
-            }
-       
+            GetComponent<Text>().text = "";
+            fading.SetFadeImageActivaton(true);
+            StartCoroutine(EventAfterFifthCoroutine());
+        }
+
         IEnumerator EventAfterFifthCoroutine()
-            {
+        {
             Debug.Log("EventAfterFifthCoroutine called");
 
             TextBG.SetActive(false);
-                yield return new WaitForSeconds(3);
-                BG_image.sprite = BG_images[3];
-                fading.Fade(Fading.type.FadeIn);
-                //柴田追加分//
-                anotherBGMPlayer ABP = BGMPlayer.GetComponent<anotherBGMPlayer>();
-                StartCoroutine(ABP.FadeInAudio(6, 2));
-                //ここまで//
-                fading.OnFadeEnd.AddListener(() =>
-                {
-                    AddTextDataToTextControl(6);
-                    textContol.ClickEventAfterTextsEnd.AddListener(EventAfterSixth);
-                    TextBG.SetActive(true);
-                });
-            }
-      
-        void EventAfterSixth()
+            yield return new WaitForSeconds(3);
+            BG_image.sprite = BG_images[3];
+            fading.Fade(Fading.type.FadeIn);
+            //柴田追加分//
+            anotherBGMPlayer ABP = BGMPlayer.GetComponent<anotherBGMPlayer>();
+            StartCoroutine(ABP.FadeInAudio(6, 2));
+            //ここまで//
+            fading.OnFadeEnd.AddListener(() =>
             {
+                AddTextDataToTextControl(6);
+                textContol.ClickEventAfterTextsEnd.AddListener(EventAfterSixth);
+                TextBG.SetActive(true);
+            });
+        }
+
+        void EventAfterSixth()
+        {
             Debug.Log("EventAfterSixth called");
 
             //柴田追加分//
             fading.Fade(Fading.type.FadeOut);
-                BGMPlayer.GetComponent<anotherBGMPlayer>().StartCoroutine("FadeOutAudio", 1);
-                fading.OnFadeEnd.AddListener(() =>
-                {
-                    //ここまで//
-                    SceneManager.LoadScene(next_scene);
-                });
-
-            }
-
-
+            BGMPlayer.GetComponent<anotherBGMPlayer>().StartCoroutine("FadeOutAudio", 1);
+            fading.OnFadeEnd.AddListener(() =>
+            {
+                //ここまで//
+                SceneManager.LoadScene(next_scene);
+            });
 
         }
+
+
+
     }
-
-
-   
-
-           
-
-           
-        
-
-       
-        
-        
-
-        
-
-     
-
-      
-
-
-  
-
-       
+}
 
 
 
-      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

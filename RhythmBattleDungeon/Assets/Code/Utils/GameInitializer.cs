@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameInitializer : SingletonMonoBehaviour<GameInitializer>
 {
@@ -7,7 +8,6 @@ public class GameInitializer : SingletonMonoBehaviour<GameInitializer>
     private StageConfigTable stageConfigTable;
     private SceneDatabase sceneDatabase;
     private GameObject fadePrefab; // フェード用プレハブ
-    private SceneReference initialScene;
     private SceneBGMConfigTable sceneBGMConfigTable;
     private GameSettings gameSettings;
     private GameExitSettings gameExitSettings; // 追加
@@ -30,18 +30,13 @@ public class GameInitializer : SingletonMonoBehaviour<GameInitializer>
         seConfigTable = Resources.Load<SEConfigTable>("ScriptableObject/SEConfig");
         stageConfigTable = Resources.Load<StageConfigTable>("ScriptableObject/stageConfig");
         sceneDatabase = Resources.Load<SceneDatabase>("ScriptableObject/sceneDatabase");
-        initialScene = Resources.Load<SceneReference>("ScriptableObject/TitleScene");
         gameSettings = Resources.Load<GameSettings>("ScriptableObject/gameSettings");
         sceneBGMConfigTable = Resources.Load<SceneBGMConfigTable>("ScriptableObject/SceneBGMConfigTable");
 
         // GameExitSettingsの追加
         gameExitSettings = Resources.Load<GameExitSettings>("ScriptableObject/GameExitSettings");
 
-        if (initialScene == null)
-        {
-            DebugManager.LogError("初期シーンの SceneReference が見つかりません。Resources/Scenes/TitleScene.asset を確認してください。");
-            return;
-        }
+        
 
         if (gameExitSettings == null)
         {
@@ -59,9 +54,10 @@ public class GameInitializer : SingletonMonoBehaviour<GameInitializer>
 
         StageManager.Instance.SetupStageTable(stageConfigTable);
         stageConfigTable.GetAllStageConfigs().ForEach(config => { config.InitializeBGMTable(bgmConfigTable); });
-
+        
         var sceneTransition = SceneTransitionManager.Instance;
         sceneTransition.SetFadePrefab(fadePrefab);
+        SceneObject initialScene = sceneDatabase.GetScene(SceneManager.GetActiveScene().name);
         sceneTransition.SetInitialScene(initialScene);
 
         GameManagerRetryExtensions.ClearRetryInfo();

@@ -3323,8 +3323,23 @@ MonoBehaviour:
     m_Key: BL_Tu_3/Canvas/WaringPanel/Canvas/BG/Button (Legacy)/Text (Legacy) 1
     m_Metadata:
       m_Items: []
-  - m_Id: 19273248355303424
-    m_Key: RecipeCreatItemTips/Canvas (Environment)/RecipeCreatItemTips/Text (Legacy)
+  - m_Id: 78325688989560832
+    m_Key: AreaNamePrefab/AreaNamePrefab/Text (Legacy) (1)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78355842478551040
+    m_Key: BaseLocationDaytime/PlayerPanelCanvas/PlayerPanel/StatusBack/BG_he/Text
+      (Legacy)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78356254858326016
+    m_Key: BaseLocationDaytime/PlayerPanelCanvas/PlayerPanel/StatusBack/BG_hu/Text
+      (Legacy) (1)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78356276941336576
+    m_Key: BaseLocationDaytime/PlayerPanelCanvas/PlayerPanel/StatusBack/BG_th/Text
+      (Legacy) (2)
     m_Metadata:
       m_Items: []
   m_Metadata:

@@ -1086,7 +1086,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 15626650878394368
-    m_Localized: '#VALUE!'
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 15626810014482432
@@ -1098,7 +1098,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 15626848165871616
-    m_Localized: '#VALUE!'
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 15626870500540416
@@ -1110,7 +1110,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 15627208804712448
-    m_Localized: '#VALUE!'
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 15627268342857728
@@ -1118,7 +1118,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 15627277188644864
-    m_Localized: '#VALUE!'
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 15627388530638848
@@ -1131,7 +1131,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 15627422143791104
-    m_Localized: '#VALUE!'
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 15627455610142720
@@ -1143,7 +1143,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 15627478800449536
-    m_Localized: '#VALUE!'
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 15627505350393856
@@ -3732,8 +3732,20 @@ MonoBehaviour:
     m_Localized: 'Required action value:'
     m_Metadata:
       m_Items: []
-  - m_Id: 19273248355303424
-    m_Localized: "\u713C\u304D\u30AC\u30CB\ntairyoku:0\naa:0\naaa:0\n\u3042\u3075\u3047\u3044\u3046\uFF46\uFF48\u3074\uFF46\u307B\u3046\u3043"
+  - m_Id: 78325688989560832
+    m_Localized: Save completed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78355842478551040
+    m_Localized: 'Health:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78356254858326016
+    m_Localized: 'Hunger:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78356276941336576
+    m_Localized: 'Thirst:'
     m_Metadata:
       m_Items: []
   references:
