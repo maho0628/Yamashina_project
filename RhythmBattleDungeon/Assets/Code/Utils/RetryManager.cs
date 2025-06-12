@@ -146,7 +146,7 @@ public class RetryManager : SingletonMonoBehaviour<RetryManager>
         var sceneDatabase = GameInitializer.Instance.GetSceneDatabase();
         string currentSceneName = SceneManager.GetActiveScene().name;
 
-        var currentScene = sceneDatabase.GetSceneReference(currentSceneName);   
+        var currentScene = sceneDatabase.GetScene(currentSceneName);   
         SceneTransitionManager.Instance.TransitionTo(currentScene);
 
         DebugManager.Log("[RetryManager] ゲームシーン再開完了");
@@ -163,7 +163,7 @@ public class RetryManager : SingletonMonoBehaviour<RetryManager>
         var sceneDatabase = GameInitializer.Instance.GetSceneDatabase();
         string currentSceneName = SceneManager.GetActiveScene().name;
         var previousScene = sceneDatabase.GetPreviousScene(currentSceneName);
-        var prePreviousScene = sceneDatabase.GetPreviousScene(previousScene.name);
+        var prePreviousScene = sceneDatabase.GetPreviousScene(previousScene);
 
         StageManager.Instance.SetStageSelected(false);
 

@@ -9,23 +9,23 @@ public class SceneDatabase : ScriptableObject
     [System.Serializable]
     public class SceneData
     {
-        public SceneReference sceneReference;
-        public SceneReference nextScene;
-        public SceneReference previousScene;
+        public SceneObject scene;
+        public SceneObject nextScene;
+        public SceneObject previousScene;
     }
 
-    public SceneReference GetSceneReference(string name)
+    public SceneObject GetScene(string name)
     {
-        return scenes.Find(s => s.sceneReference.sceneName == name)?.sceneReference;
+        return scenes.Find(s => (string)s.scene == name)?.scene;
     }
 
-    public SceneReference GetNextScene(string name)
+    public SceneObject GetNextScene(string name)
     {
-        return scenes.Find(s => s.sceneReference.sceneName == name)?.nextScene;
+        return scenes.Find(s => (string)s.scene == name)?.nextScene;
     }
 
-    public SceneReference GetPreviousScene(string name)
+    public SceneObject GetPreviousScene(string name)
     {
-        return scenes.Find(s => s.sceneReference.sceneName == name)?.previousScene;
+        return scenes.Find(s => (string)s.scene == name)?.previousScene;
     }
 }

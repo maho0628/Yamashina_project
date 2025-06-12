@@ -58,8 +58,10 @@ public class ComboEffectController : MonoBehaviour, IUIEffectPoolable<ComboEffec
         pool?.Return(this);
         comboEffectColor.a = 0.0f;
         comboText.text = null;
+        comboText.alpha = 0f;
+        comboText.transform.localScale = Vector3.zero;
 
-        comboText.gameObject.SetActive(false);
+
 
     }
 }
