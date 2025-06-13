@@ -14,9 +14,10 @@ public class TutorialController : MonoBehaviour
     List<TextAsset> textAssets;
     [SerializeField]
     SceneObject NextScene;
+    #region　山品変更
     // 追加：LocalizedTextAssetLoader
     [SerializeField] LocalizedTextAssetLoader localizedTextAssetLoader;
-
+    #endregion
     private void Start()
     {
         Debug.Log("OPTextControl Start called");
@@ -28,8 +29,14 @@ public class TutorialController : MonoBehaviour
         //ここまで//
         textControl.ResetTextData();
         textControl.ClickEventAfterTextsEnd.RemoveAllListeners();
+        #region 山品変更
+
         LoadLocalizedTextAssets();
         AddTextDataToTextControl(0);
+        #endregion
+
+
+
         textControl.ClickEventAfterTextsEnd.AddListener(() =>
         {
             Debug.Log("ClickEventAfterTextsEnd listener added");
@@ -43,32 +50,11 @@ public class TutorialController : MonoBehaviour
             fade.OnFadeEnd.AddListener(()=> SceneManager.LoadScene(NextScene));
         });
     }
-    public async void ChangeLanguage(string locale)
-    {
-        await ChangeSelectedLocale(locale);
-        Debug.Log(locale);
-    }
 
-    private async Task ChangeSelectedLocale(string locale)
-    {
-        var selectedLocale = LocalizationSettings.AvailableLocales.Locales.Find(l => l.Identifier.Code == locale);
-        if (selectedLocale != null)
-        {
-            LocalizationSettings.SelectedLocale = selectedLocale;
-            await LocalizationSettings.InitializationOperation.Task;
-        }
-        else
-        {
-            Debug.LogError($"Locale '{locale}' not found.");
-        }
-    }
-    public void ReloadLocalizedText()
-    {
-        Debug.Log("ReloadLocalizedText called");
 
-        textControl.ResetTextData();
-        AddTextDataToTextControl(0); // ここでテキストを再読み込みします
-    }
+
+    #region 山品変更
+
     private void LoadLocalizedTextAssets()
     {
         
@@ -76,6 +62,9 @@ public class TutorialController : MonoBehaviour
             AddTextDataToTextControl(0);
         
     }
+    #endregion
+
+
     void AddTextDataToTextControl(int index)
     {
         if (index > textAssets.Count)
@@ -87,6 +76,7 @@ public class TutorialController : MonoBehaviour
         textControl.ResetTextData();
         textControl.EndEvent.RemoveAllListeners();
         textControl.ClickEventAfterTextsEnd.RemoveAllListeners();
+        #region 山品変更
 
         string rawData = textAssets[index].text;
         string[] splitedText = rawData.Split(char.Parse("\n"));
@@ -95,5 +85,7 @@ public class TutorialController : MonoBehaviour
             if (text == "") continue;
             textControl.AddTextData(text.Replace("**", "\n"));
         }
+        #endregion
+
     }
 }

@@ -16,9 +16,17 @@ public class GetItemData
 [System.Serializable]
 public class ChoiseResult
 {
+    #region 山品変更
+
     public LocalizedString choise_text ;
+    #endregion
+
     public List<GetItemData> Gain_Items;
+    #region 山品変更
+
     public LocalizedString result_text = null;
+#endregion
+
     [Space(10)]
     public int health_change_min = 0;
     public int health_change_max = 0;
@@ -36,11 +44,17 @@ public class ChoiseResult
 
 public class EventDatas : ScriptableObject
 {
+    #region 山品変更
     public LocalizedString event_title;
+    #endregion
     public int scene_id = 0;
     public Sprite event_view_sprite;
     public int probability = 1;
+    #region 山品変更
+
     public LocalizedString main_text = null;
+    #endregion
+
     public EventPanelBase.EventCallBackType callBackType = EventPanelBase.EventCallBackType.Normal;
     public GameObject buttons_prefab;
 

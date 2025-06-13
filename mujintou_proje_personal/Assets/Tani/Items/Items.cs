@@ -6,8 +6,11 @@ public class Items : ScriptableObject
 {
     //アイテムID
     public Item_ID item_ID = Item_ID.EmptyObject;
+    #region 山品変更箇所
     //アイテム名
     public LocalizedString item_name = null;
+
+    #endregion
     //アイテムのアイコン
     public Sprite icon = null;
     //使用できるか
@@ -18,9 +21,13 @@ public class Items : ScriptableObject
     public int Thirst_Chage = 0;
     public int Luck_Change = 0;
     //説明文
+    #region 山品変更箇所
+
     public LocalizedString Discription = null;
     [Header("追加効果テキスト")]
     public LocalizedString extra_effect = null;
+    #endregion
+
     [Header("料理か")]
     public bool isCooking = false;
     [Header("重複数"),Min(1)]

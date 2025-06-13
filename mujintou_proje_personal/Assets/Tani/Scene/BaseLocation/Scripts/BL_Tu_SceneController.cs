@@ -11,16 +11,21 @@ public class BL_Tu_SceneController : MonoBehaviour
     List<TextAsset> textAssets;
     [SerializeField]
     GameObject[] tips;
+    #region 山品変更
     [SerializeField] LocalizedTextAssetLoader localizedTextAssetLoader;
 
-
+    #endregion
     private void Start()
     {
         textControl.ResetTextData();
         textControl.ClickEventAfterTextsEnd.RemoveAllListeners();
+        #region 山品変更
+
         localizedTextAssetLoader = GameObject.FindAnyObjectByType<LocalizedTextAssetLoader>();
         LoadLocalizedTextAssets();
         AddTextDataToTextControl(0);
+        #endregion
+
         textControl.ClickEventAfterTextsEnd.AddListener(() =>
         {
             textControl.ClickEventAfterTextsEnd.RemoveAllListeners();
@@ -29,26 +34,7 @@ public class BL_Tu_SceneController : MonoBehaviour
 
         });
     }
-    private async Task ChangeSelectedLocale(string locale)
-    {
-        var selectedLocale = LocalizationSettings.AvailableLocales.Locales.Find(l => l.Identifier.Code == locale);
-        if (selectedLocale != null)
-        {
-            LocalizationSettings.SelectedLocale = selectedLocale;
-            await LocalizationSettings.InitializationOperation.Task;
-        }
-        else
-        {
-            Debug.LogError($"Locale '{locale}' not found.");
-        }
-    }
-    public void ReloadLocalizedText()
-    {
-        Debug.Log("ReloadLocalizedText called");
 
-        textControl.ResetTextData();
-        AddTextDataToTextControl(0); // ここでテキストを再読み込みします
-    }
     private void LoadLocalizedTextAssets()
     {
         textAssets = localizedTextAssetLoader.LoadTextAssetsForCurrentLocale();
@@ -81,6 +67,7 @@ public class BL_Tu_SceneController : MonoBehaviour
         textControl.ResetTextData();
         textControl.EndEvent.RemoveAllListeners();
         textControl.ClickEventAfterTextsEnd.RemoveAllListeners();
+        #region 山品変更
 
         string rawData = textAssets[index].text;
         string[] splitedText = rawData.Split(char.Parse("\n"));
@@ -89,5 +76,7 @@ public class BL_Tu_SceneController : MonoBehaviour
             if (text == "") continue;
             textControl.AddTextData(text.Replace("**", "\n"));
         }
+        #endregion
+
     }
 }

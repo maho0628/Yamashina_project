@@ -31,9 +31,10 @@ namespace Opening
         [SerializeField] GameObject SEPlayer;
         [SerializeField] GameObject BGMPlayer;
 
+        #region 山品変更
         // 追加：LocalizedTextAssetLoader
         [SerializeField] LocalizedTextAssetLoader localizedTextAssetLoader;
-
+        #endregion
         TextControl textContol;
         ShakeUI shake;
         Fading fading;
@@ -50,9 +51,13 @@ namespace Opening
             textContol = GetComponent<TextControl>();
             fading = GetComponent<Fading>();
             textContol.ResetTextData();
+            #region 山品変更
+
             LoadLocalizedTextAssets();
 
             AddTextDataToTextControl(0);
+            #endregion
+
             textContol.ClickEventAfterTextsEnd.AddListener(EventAfterFirst);
             Debug.Log("ClickEventAfterTextsEnd listener added");
 
@@ -65,38 +70,17 @@ namespace Opening
             info.StartGame(true);
 
         }
-        public async void ChangeLanguage(string locale)
-        {
-            await ChangeSelectedLocale(locale);
-            Debug.Log(locale);
-        }
 
-        private async Task ChangeSelectedLocale(string locale)
-        {
-            var selectedLocale = LocalizationSettings.AvailableLocales.Locales.Find(l => l.Identifier.Code == locale);
-            if (selectedLocale != null)
-            {
-                LocalizationSettings.SelectedLocale = selectedLocale;
-                await LocalizationSettings.InitializationOperation.Task;
-            }
-            else
-            {
-                Debug.LogError($"Locale '{locale}' not found.");
-            }
-        }
-        public void ReloadLocalizedText()
-        {
-            Debug.Log("ReloadLocalizedText called");
 
-            textContol.ResetTextData();
-            AddTextDataToTextControl(0); // ここでテキストを再読み込みします
-        }
+        #region 山品変更
+
         private void LoadLocalizedTextAssets()
         {
             textAssets = localizedTextAssetLoader.LoadTextAssetsForCurrentLocale();
             AddTextDataToTextControl(0);
         }
 
+        #endregion
 
 
 
@@ -111,6 +95,7 @@ namespace Opening
             textContol.ResetTextData();
             textContol.EndEvent.RemoveAllListeners();
             textContol.ClickEventAfterTextsEnd.RemoveAllListeners();
+            #region 山品変更
 
             string rawData = textAssets[index].text;
             string[] splitedText = rawData.Split(char.Parse("\n"));
@@ -120,6 +105,9 @@ namespace Opening
                 if (text == "") continue;
                 textContol.AddTextData(text.Replace("**", "\n"));
             }
+            #endregion
+
+
         }
 
         void EventAfterFirst()
