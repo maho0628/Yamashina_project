@@ -108,6 +108,8 @@ public class EventPanelBase : MonoBehaviour
         //UIを適用
         current_event_scene_id = data.scene_id;
         event_view.sprite = data.event_view_sprite;
+        #region 山品変更
+
         // タイトルとメインテキストのローカライズ
         data.event_title.GetLocalizedStringAsync().Completed += (asyncOperation) =>
         {
@@ -121,6 +123,7 @@ public class EventPanelBase : MonoBehaviour
             event_text.text = asyncOperation.Result;
         };
 
+
         event_text_control.ResetTextData();
         string load_text_Event = data.main_text.GetLocalizedString();
         string[] split_text_Event = load_text_Event.Split('\n');
@@ -129,6 +132,7 @@ public class EventPanelBase : MonoBehaviour
             if (text == "") continue;
             event_text_control.AddTextData(text.Replace("**", "\n"));
         }
+        #endregion
 
         // イベント終了後のボタン表示
         event_text_control.EndEvent.AddListener(ShowButtons);
@@ -167,16 +171,21 @@ public class EventPanelBase : MonoBehaviour
 
 
             var choiceResult = data.results[i];
+            #region 山品変更
+
             string choiceText = choiceResult.choise_text.GetLocalizedString(); // ローカライズされたテキストを取得
 
             // ボタンの1つ目のテキストを設定
             buttonTextComponent.text = choiceText;
             string currentLocale = LocalizationSettings.SelectedLocale.Identifier.Code;
+            #endregion
 
-                // ボタンの子オブジェクトから2つ目の Text コンポーネントを取得
-                if (buttonTransform.childCount >= 2)
+            // ボタンの子オブジェクトから2つ目の Text コンポーネントを取得
+            if (buttonTransform.childCount >= 2)
             {
                 var actionValueTextComponent = buttonTransform.GetChild(1).GetComponent<Text>();
+                #region 山品変更
+
 
                 if (currentLocale == "ja")
                 {
@@ -188,6 +197,8 @@ public class EventPanelBase : MonoBehaviour
                     actionValueTextComponent.text = $"ActionValue: {choiceResult.required_action_value}";
 
                 }
+                #endregion
+
             }
 
             // ボタンのアクション設定
@@ -349,8 +360,11 @@ public class EventPanelBase : MonoBehaviour
 
 
         event_text_control.ResetTextData();
+        #region 山品変更
+
         string load_text_Event;
         string[] split_text_Event;
+
         load_text_Event = result.result_text.GetLocalizedString();
         Debug.LogWarning("LoadTextEvent :" + load_text_Event);
         split_text_Event = load_text_Event.Split(char.Parse("\n"));
@@ -359,7 +373,7 @@ public class EventPanelBase : MonoBehaviour
             if (text == "") continue;
             event_text_control.AddTextData(text.Replace("**", "\n"));
         }
-
+        #endregion
 
         PlayerInfo info = PlayerInfo.Instance;
         //ステータスの増減を表す文字列
@@ -438,7 +452,7 @@ public class EventPanelBase : MonoBehaviour
 
             foreach (var n in result.Gain_Items)
             {
-            string result_text_Item="";
+                string result_text_Item = "";
                 //このアイテムを取得できるか
                 bool bGet = Random.value <= n.probability;
                 if (bGet)
@@ -448,12 +462,15 @@ public class EventPanelBase : MonoBehaviour
                     if (PlayerInfo.Instance.Inventry.GetNullSlot())
                     {
                         Debug.Log(PlayerInfo.Instance.Inventry.GetItemName(n.id));
+                        #region 山品変更
+
                         string currentLocale = LocalizationSettings.SelectedLocale.Identifier.Code;
                         if (currentLocale == "en")
                         {
                             result_text_Item += "The " + PlayerInfo.Instance.Inventry.GetItemName(n.id) + $" is**obtained by the “{num}”! \n";
                         }
-                        else if (currentLocale == "ja") {
+                        else if (currentLocale == "ja")
+                        {
                             result_text_Item += PlayerInfo.Instance.Inventry.GetItemName(n.id) + $"を{num}個獲得!\n";
 
                         }
@@ -466,15 +483,18 @@ public class EventPanelBase : MonoBehaviour
                         foreach (var text in split_text_Event_Item)
                         {
                             if (text == "") continue;
-                            Debug.Log($"{result_text_Item}/{a}");a++;
+                            Debug.Log($"{result_text_Item}/{a}"); a++;
 
                             event_text_control.AddTextData(text.Replace("**", "\n"));
                         }
-                       
+                        #endregion
+
                         event_text_control.EndEvent.AddListener(() => info.Inventry.GetItem(n.id, num, true));
                     }
                     else
                     {
+                        #region 山品変更
+
                         string currentLocale = LocalizationSettings.SelectedLocale.Identifier.Code;
                         if (currentLocale == "en")
                         {
@@ -496,8 +516,10 @@ public class EventPanelBase : MonoBehaviour
 
                             event_text_control.AddTextData(text.Replace("**", "\n"));
                         }
-                    } 
-    
+                        #endregion
+
+                    }
+
 
                 }
             }

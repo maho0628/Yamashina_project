@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.Localization.Settings;
-using System.Threading.Tasks;
 
 public class EDTextFlow : MonoBehaviour
 {
@@ -30,8 +29,10 @@ public class EDTextFlow : MonoBehaviour
     SceneObject title;
     [SerializeField]
     GameObject bgmAudio;
+    #region 山品変更
     // 追加：LocalizedTextAssetLoader
     [SerializeField] LocalizedTextAssetLoader localizedTextAssetLoader;
+    #endregion
 
     private void Awake()
     {
@@ -42,9 +43,13 @@ public class EDTextFlow : MonoBehaviour
         Debug.Log("OPTextControl Start called");
         textControl.ResetTextData();
         textControl.ClickEventAfterTextsEnd.RemoveAllListeners();
+        #region 山品変更
+
         localizedTextAssetLoader = GameObject.FindAnyObjectByType<LocalizedTextAssetLoader>();
         LoadLocalizedTextAssets();
         AddTextDataToTextControl(0);
+        #endregion
+
         //インベントリ開いたままtrueEndに飛ぶと開きっぱなしになるみたいなので加えました（柴田）
         var player = GameObject.FindAnyObjectByType<PlayerInfo>();
         player.Inventry.SetVisible(false);
@@ -142,7 +147,7 @@ public class EDTextFlow : MonoBehaviour
                 textControl.ClickEventAfterTextsEnd.RemoveAllListeners();
                 StartCoroutine(move());
             });
-           
+
         });
     }
     IEnumerator move()
@@ -153,7 +158,7 @@ public class EDTextFlow : MonoBehaviour
         {
             tall_image_obj.gameObject.transform.Translate(
                 new Vector3(0, -200 * Time.deltaTime, 0));
-            if(tall_image_obj.gameObject.transform.position.y <= -720)
+            if (tall_image_obj.gameObject.transform.position.y <= -720)
             {
                 break;
             }
@@ -177,7 +182,7 @@ public class EDTextFlow : MonoBehaviour
 
 
         yield return new WaitForSeconds(5f);
-      
+
         fade.fading_time = 3f;
 
         fade.Fade(Fading.type.FadeOut);
@@ -189,32 +194,8 @@ public class EDTextFlow : MonoBehaviour
         });
     }
 
-    public async void ChangeLanguage(string locale)
-    {
-        await ChangeSelectedLocale(locale);
-        Debug.Log(locale);
-    }
+    #region 山品変更
 
-    private async Task ChangeSelectedLocale(string locale)
-    {
-        var selectedLocale = LocalizationSettings.AvailableLocales.Locales.Find(l => l.Identifier.Code == locale);
-        if (selectedLocale != null)
-        {
-            LocalizationSettings.SelectedLocale = selectedLocale;
-            await LocalizationSettings.InitializationOperation.Task;
-        }
-        else
-        {
-            Debug.LogError($"Locale '{locale}' not found.");
-        }
-    }
-    public void ReloadLocalizedText()
-    {
-        Debug.Log("ReloadLocalizedText called");
-
-        textControl.ResetTextData();
-        AddTextDataToTextControl(0); // ここでテキストを再読み込みします
-    }
     private void LoadLocalizedTextAssets()
     {
 
@@ -222,6 +203,8 @@ public class EDTextFlow : MonoBehaviour
         AddTextDataToTextControl(0);
 
     }
+    #endregion
+
     void AddTextDataToTextControl(int index)
     {
         if (index > textAssets.Count)
@@ -233,6 +216,7 @@ public class EDTextFlow : MonoBehaviour
         textControl.ResetTextData();
         textControl.EndEvent.RemoveAllListeners();
         textControl.ClickEventAfterTextsEnd.RemoveAllListeners();
+        #region 山品変更
 
         string rawData = textAssets[index].text;
         string[] splitedText = rawData.Split(char.Parse("\n"));
@@ -241,6 +225,8 @@ public class EDTextFlow : MonoBehaviour
             if (text == "") continue;
             textControl.AddTextData(text.Replace("**", "\n"));
         }
+        #endregion
+
     }
 
 

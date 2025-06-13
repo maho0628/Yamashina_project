@@ -148,11 +148,15 @@ public class DetailPanel : MonoBehaviour
             {
                 effect_text.text = "使用できない";
             }
-
+            #region 山品変更
             discription_text.text = item_data.Discription.GetLocalizedString();
+            #endregion
             icon_image.sprite = item_data.icon;
             icon_image.color = new Color(1, 1, 1, 1);
+            #region 山品変更
+
             ItemName.text = item_data.item_name.GetLocalizedString()  ;
+            #endregion
 
             current_id = item_data.item_ID;
             Use_Button.interactable = item_data.canUse ;

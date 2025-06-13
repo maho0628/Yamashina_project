@@ -82,7 +82,9 @@ public class CraftPanel : PanelBase
             
             if(data.Value.id != Items.Item_ID.EmptyObject)
             {
+                #region éRïiïœçX
                 discriptions[i].text = SlotManager.GetItemData(data.Value.id).item_name.GetLocalizedString();
+                #endregion
             }
             else
             {
