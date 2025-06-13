@@ -78,7 +78,9 @@ public class CookingPanel : PanelBase
 
             if (data.Value.id != Items.Item_ID.EmptyObject)
             {
-                discriptions[i].text = SlotManager.GetItemData(data.Value.id).item_name.GetLocalizedString();    
+                #region éRïiïœçX
+                discriptions[i].text = SlotManager.GetItemData(data.Value.id).item_name.GetLocalizedString();
+                #endregion
             }
             else
             {

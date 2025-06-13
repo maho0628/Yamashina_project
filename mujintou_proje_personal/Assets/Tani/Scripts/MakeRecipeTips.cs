@@ -31,16 +31,19 @@ public class MakeRecipeTips : MakeFloatWindow
             createdObject.transform.position = this.gameObject.transform.position + offset;
             createdObject.transform.parent.GetComponent<Canvas>().sortingOrder = 6;
             var item_data = SlotManager.GetItemData(id);
+            #region 山品変更　
             createdObject.GetComponentInChildren<Text>().text =
                                                     (SlotManager.GetItemData(id).item_name.GetLocalizedString() + "\n" +
                                                     "体力 :" +item_data.Health_Change ) + "\n" +
                                                     "食料 :" +item_data.Hunger_Change + "\n" +
                                                     "水分 :" +item_data.Thirst_Chage + "\n" + 
                                                     item_data.extra_effect.GetLocalizedString();
-            if(item_data.extra_effect.GetLocalizedString() == "")
+            if (item_data.extra_effect.GetLocalizedString() == "")
             {
                 return;
             }
+            #endregion
+
         });
         entries[1].callback.AddListener(_ =>
         {

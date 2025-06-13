@@ -13,18 +13,22 @@ public class BL_Tu_1_SceneController : MonoBehaviour
     List<TextAsset> textAssets;
     [SerializeField]
     GameObject tips;
+    #region 山品変更
 
     // 追加：LocalizedTextAssetLoader
     [SerializeField] LocalizedTextAssetLoader localizedTextAssetLoader;
+    #endregion
 
     private void Start()
     {
-        textControl=GameObject.FindAnyObjectByType<TextControl>().GetComponent<TextControl>();  
+        textControl = GameObject.FindAnyObjectByType<TextControl>().GetComponent<TextControl>();
         Debug.Log("OPTextControl Start called");
         textControl.ResetTextData();
         textControl.ClickEventAfterTextsEnd.RemoveAllListeners();
-        localizedTextAssetLoader=GameObject.FindAnyObjectByType<LocalizedTextAssetLoader>();    
+        #region 山品変更
+        localizedTextAssetLoader = GameObject.FindAnyObjectByType<LocalizedTextAssetLoader>();
         LoadLocalizedTextAssets();
+        #endregion
         AddTextDataToTextControl(0);
         textControl.ClickEventAfterTextsEnd.AddListener(() =>
         {
@@ -34,35 +38,15 @@ public class BL_Tu_1_SceneController : MonoBehaviour
 
         });
     }
-    public async void ChangeLanguage(string locale)
-    {
-        await ChangeSelectedLocale(locale);
-        Debug.Log(locale);
-    }
 
-    private async Task ChangeSelectedLocale(string locale)
-    {
-        var selectedLocale = LocalizationSettings.AvailableLocales.Locales.Find(l => l.Identifier.Code == locale);
-        if (selectedLocale != null)
-        {
-            LocalizationSettings.SelectedLocale = selectedLocale;
-            await LocalizationSettings.InitializationOperation.Task;
-        }
-        else
-        {
-            Debug.LogError($"Locale '{locale}' not found.");
-        }
-    }
-    public void ReloadLocalizedText()
-    {
-        Debug.Log("ReloadLocalizedText called");
 
-        textControl.ResetTextData();
-        AddTextDataToTextControl(0); // ここでテキストを再読み込みします
-    }
+    #region 山品変更
+
     private void LoadLocalizedTextAssets()
     {
         textAssets = localizedTextAssetLoader.LoadTextAssetsForCurrentLocale();
+        #endregion
+
         AddTextDataToTextControl(0);
     }
     void AddTextDataToTextControl(int index)
@@ -76,6 +60,7 @@ public class BL_Tu_1_SceneController : MonoBehaviour
         textControl.ResetTextData();
         textControl.EndEvent.RemoveAllListeners();
         textControl.ClickEventAfterTextsEnd.RemoveAllListeners();
+        #region 山品変更
 
         string rawData = textAssets[index].text;
         string[] splitedText = rawData.Split(char.Parse("\n"));
@@ -84,6 +69,8 @@ public class BL_Tu_1_SceneController : MonoBehaviour
             if (text == "") continue;
             textControl.AddTextData(text.Replace("**", "\n"));
         }
+        #endregion
+
     }
-    }
+}
 

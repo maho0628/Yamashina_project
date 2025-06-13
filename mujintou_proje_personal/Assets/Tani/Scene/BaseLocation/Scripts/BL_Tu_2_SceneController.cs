@@ -17,16 +17,21 @@ public class BL_Tu_2_SceneController : MonoBehaviour
     GameObject nextTips;
     [SerializeField]
     SceneObject nextScene;
+    #region 山品変更
     [SerializeField] LocalizedTextAssetLoader localizedTextAssetLoader;
-
+    #endregion
     List<SlotManager> slots = new List<SlotManager>();
     private void Start()
     {
         textControl.ResetTextData();
         textControl.ClickEventAfterTextsEnd.RemoveAllListeners();
+        #region 山品変更
+
         localizedTextAssetLoader = GameObject.FindAnyObjectByType<LocalizedTextAssetLoader>();
         LoadLocalizedTextAssets();
         AddTextDataToTextControl(0);
+        #endregion
+
         textControl.ClickEventAfterTextsEnd.AddListener(() =>
         {
             textControl.ClickEventAfterTextsEnd.RemoveAllListeners();
@@ -42,40 +47,18 @@ public class BL_Tu_2_SceneController : MonoBehaviour
 
 
     }
-    public async void ChangeLanguage(string locale)
-    {
-        await ChangeSelectedLocale(locale);
-        Debug.Log(locale);
-    }
+    #region 山品変更
 
-    private async Task ChangeSelectedLocale(string locale)
-    {
-        var selectedLocale = LocalizationSettings.AvailableLocales.Locales.Find(l => l.Identifier.Code == locale);
-        if (selectedLocale != null)
-        {
-            LocalizationSettings.SelectedLocale = selectedLocale;
-            await LocalizationSettings.InitializationOperation.Task;
-        }
-        else
-        {
-            Debug.LogError($"Locale '{locale}' not found.");
-        }
-    }
-    public void ReloadLocalizedText()
-    {
-        Debug.Log("ReloadLocalizedText called");
-
-        textControl.ResetTextData();
-        AddTextDataToTextControl(0); // ここでテキストを再読み込みします
-    }
     private void LoadLocalizedTextAssets()
     {
         textAssets = localizedTextAssetLoader.LoadTextAssetsForCurrentLocale();
         AddTextDataToTextControl(0);
     }
+    #endregion
+
     void OnCoconutsUsed(Items.Item_ID iD)
     {
-        if(iD == Items.Item_ID.item_craft_coconutJuice)
+        if (iD == Items.Item_ID.item_craft_coconutJuice)
         {
             PlayerInfo.Instance.Inventry.SetVisible(true);
             PlayerInfo.Instance.gameObject.GetComponentInChildren<DetailPanel>().OnItemUse -= OnCoconutsUsed;
@@ -86,11 +69,11 @@ public class BL_Tu_2_SceneController : MonoBehaviour
 
     void MakeTips2()
     {
-        if(PlayerInfo.Instance.MaxActionValue == 8)
-        { 
+        if (PlayerInfo.Instance.MaxActionValue == 8)
+        {
             return;
         }
-        if(PlayerInfo.Instance.MaxActionValue == 6 || PlayerInfo.Instance.MaxActionValue == 9)
+        if (PlayerInfo.Instance.MaxActionValue == 6 || PlayerInfo.Instance.MaxActionValue == 9)
         {
             PlayerInfo.Instance.OnMaxActionValueChange.RemoveListener(MakeTips2);
             Instantiate(nextTips);
@@ -118,8 +101,8 @@ public class BL_Tu_2_SceneController : MonoBehaviour
 
         });
     }
-    
-    
+
+
 
     void AddTextDataToTextControl(int index)
     {
@@ -132,6 +115,7 @@ public class BL_Tu_2_SceneController : MonoBehaviour
         textControl.ResetTextData();
         textControl.EndEvent.RemoveAllListeners();
         textControl.ClickEventAfterTextsEnd.RemoveAllListeners();
+        #region 山品変更
 
         string rawData = textAssets[index].text;
         string[] splitedText = rawData.Split(char.Parse("\n"));
@@ -140,5 +124,7 @@ public class BL_Tu_2_SceneController : MonoBehaviour
             if (text == "") continue;
             textControl.AddTextData(text.Replace("**", "\n"));
         }
+        #endregion
+
     }
 }
