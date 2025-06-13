@@ -106,6 +106,7 @@ public class TextControl : MonoBehaviour
                 string[] split_text;
 
                 if (!textAsset) return;
+                #region éRïiïœçX
                 load_text = textAsset.text;
                 split_text = load_text.Split(char.Parse("\n"));
                 foreach (var n in split_text)
@@ -115,6 +116,7 @@ public class TextControl : MonoBehaviour
                     if (n == "") continue;
                     strs.Add(n);
                 }
+                #endregion
                 break;
             case TextInputType.EventData:
                 strs.Clear();
