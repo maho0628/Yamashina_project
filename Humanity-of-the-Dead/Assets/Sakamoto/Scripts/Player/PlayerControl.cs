@@ -175,31 +175,30 @@ public class PlayerControl : MonoBehaviour
                 //Debug.Log("プレイヤーが動いていないこと確認");
                 break;
         }
-        if (GameMgr.GetState() != GameState.ShowOption)
-        {
-            PlayerSleeping();
+        //if (GameMgr.GetState() != GameState.ShowOption)
+        //{
+        //    PlayerSleeping();
 
-        }
+        //}
     }
 
-    private void PlayerSleeping()
-    {
-        if (Input.anyKey || Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0 ||
-        Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
-        {
-            lastInputTime = Time.time;
-        }
-        // 一定時間操作がなければ「放置」と判定
-        if (Time.time - lastInputTime >= sleepThreshold)
-        {
-            InstantiateSkipPanel();
+    //private void PlayerSleeping()
+    //{
+    //    if (Input.anyKey || Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0 ||
+    //    Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+    //    {
+    //        lastInputTime = Time.time;
+    //    }
+    //    // 一定時間操作がなければ「放置」と判定
+    //    if (Time.time - lastInputTime >= sleepThreshold)
+    //    {
 
-            Debug.Log("プレイヤーが一定時間操作していません");
-        }
-
+    //        Debug.Log("プレイヤーが一定時間操作していません");
+    //    }
 
 
-    }
+
+    //}
    
     void Move()
     {
