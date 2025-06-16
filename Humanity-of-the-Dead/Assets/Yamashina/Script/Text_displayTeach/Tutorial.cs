@@ -13,7 +13,7 @@ public enum Tutorial_State
 }
 public class Tutorial : TextDisplay
 {
-    private Tutorial_spown tutorial_Spawn;
+    private TutorialSpawn tutorialSpawner;
 
     private const float POSITION_DONOT_MOVE = 21;
 
@@ -41,7 +41,7 @@ public class Tutorial : TextDisplay
     {
         enGameState = Tutorial_State.PlayerMove;
         base.Start();
-        tutorial_Spawn = FindAnyObjectByType<Tutorial_spown>();
+        tutorialSpawner = FindAnyObjectByType<TutorialSpawn>();
     }
     public static void ChangeState(Tutorial_State newState)
     {
@@ -82,22 +82,22 @@ public class Tutorial : TextDisplay
                 if (!TextArea.activeSelf)
                 {
                     GameMgr.ChangeState(GameState.Tutorial);
-                    tutorial_Spawn.SpawnTutorial();
+                    tutorialSpawner.SpawnTutorial();
                     Debug.Log(GameMgr.GetState().ToString());
 
                 }
 
                 break;
             case GameState.Tutorial:
-                if(tutorial_Spawn.newImageObject != null) 
+                if(tutorialSpawner.newImageObject != null) 
                 {
-                    Image enterUIImage = tutorial_Spawn.newImageObject.transform.Find("EnterUI").gameObject.GetComponent<Image>();
+                    Image enterUIImage = tutorialSpawner.newImageObject.transform.Find("EnterUI").gameObject.GetComponent<Image>();
 
                     Color enterUIcolor = enterUIImage.color;
 
                     if (tutorialTimer > tutorialDelete)
                     {
-                        Debug.Log(tutorial_Spawn.newImageObject?.transform.Find("EnterUI").gameObject);
+                        Debug.Log(tutorialSpawner.newImageObject?.transform.Find("EnterUI").gameObject);
                         Debug.Log(enterUIcolor);
                         Debug.Log(enterUIcolor.a);
                         enterUIcolor.a = 1f;
@@ -109,7 +109,7 @@ public class Tutorial : TextDisplay
 
 
 
-                            tutorial_Spawn.DestroyCanvasWithImage();
+                            tutorialSpawner.DestroyCanvasWithImage();
 
                             tutorialTimer = 0;
                         }
@@ -119,7 +119,7 @@ public class Tutorial : TextDisplay
                
                 tutorialTimer += Time.deltaTime;
 
-                if (GetState() == Tutorial_State.Option && tutorial_Spawn.canvasObject == null)
+                if (GetState() == Tutorial_State.Option && tutorialSpawner.canvasObject == null)
                 {
                     ShowGameClearUI();
                 }
