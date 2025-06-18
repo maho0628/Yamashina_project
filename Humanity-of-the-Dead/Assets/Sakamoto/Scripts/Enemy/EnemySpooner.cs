@@ -31,7 +31,7 @@ public class EnemySpooner : MonoBehaviour
 
     void Update()
     {
-        if (GameMgr.GetState() == GameState.Main)
+        if (GameManager.GetState() == GameState.Main)
         {
             if (IsPlayerInRange() && CanSpawnEnemy())
             {

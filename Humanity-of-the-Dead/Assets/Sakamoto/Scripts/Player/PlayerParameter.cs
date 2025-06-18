@@ -90,7 +90,7 @@ public class PlayerParameter : CharacterStats
         string SceneName = SceneManager.GetActiveScene().name;
         if (!(SceneName == SceneTransitionManager.instance.sceneInformation.GetSceneName(SceneInformation.SCENE.Title)))
         {
-            switch (GameMgr.GetState())
+            switch (GameManager.GetState())
             {
                 case GameState.Main:
                     //パラメータの値をiDownTime秒で1減少させる
@@ -117,7 +117,7 @@ public class PlayerParameter : CharacterStats
                         //プレイヤーを初期化
                         //ゲームオーバーの標準
                         goPanel.SetActive(true);
-                        GameMgr.ChangeState(GameState.GameOver);
+                        GameManager.ChangeState(GameState.GameOver);
 
                     }
                     break;

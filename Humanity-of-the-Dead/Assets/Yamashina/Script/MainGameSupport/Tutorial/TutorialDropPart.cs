@@ -70,7 +70,7 @@ public class TutorialDropPart : newDropPart
     void TutorialShowText()
     {
 
-        GameMgr.ChangeState(GameState.ShowText);    //GameStateがShowTextに変わる
+        GameManager.ChangeState(GameState.ShowText);    //GameStateがShowTextに変わる
         tutorial.UpdateText();
 
         //テキスト表示域を表示域

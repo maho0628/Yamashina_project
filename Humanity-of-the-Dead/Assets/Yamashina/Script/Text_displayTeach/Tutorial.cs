@@ -69,7 +69,7 @@ public class Tutorial : TextDisplay
     protected override void Update()
     {
 
-        switch (GameMgr.GetState())
+        switch (GameManager.GetState())
         {
 
             case GameState.Main:
@@ -81,9 +81,9 @@ public class Tutorial : TextDisplay
                 base.Update();
                 if (!TextArea.activeSelf)
                 {
-                    GameMgr.ChangeState(GameState.Tutorial);
+                    GameManager.ChangeState(GameState.Tutorial);
                     tutorialSpawner.SpawnTutorial();
-                    Debug.Log(GameMgr.GetState().ToString());
+                    Debug.Log(GameManager.GetState().ToString());
 
                 }
 
@@ -170,7 +170,7 @@ public class Tutorial : TextDisplay
             {
                 Flag[i] = true;
 
-                GameMgr.ChangeState(GameState.ShowText);    //GameStateがShowTextに変わる
+                GameManager.ChangeState(GameState.ShowText);    //GameStateがShowTextに変わる
                 UpdateText();
                 //テキスト表示域を表示域
                 TextArea.SetActive(true);

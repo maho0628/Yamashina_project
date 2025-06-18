@@ -77,7 +77,7 @@ public class CameraScript : MonoBehaviour
                     eState = STATE.BOSSLAB;
 
                 }
-                if (GameMgr.GetState() == GameState.GameOver)
+                if (GameManager.GetState() == GameState.GameOver)
                 {
                     eState = STATE.GAMEOVER;
                 }

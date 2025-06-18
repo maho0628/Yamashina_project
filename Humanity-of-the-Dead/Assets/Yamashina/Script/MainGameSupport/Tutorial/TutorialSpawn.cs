@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TutorialSpawn: MonoBehaviour
+public class TutorialSpawn : MonoBehaviour
 {
     [SerializeField, Header("TutorialCanvasプレハブを入れてください")]
     private GameObject canvasPrefab;  // 生成するCanvasのプレハブ
@@ -23,7 +23,7 @@ public class TutorialSpawn: MonoBehaviour
 
     private int currentImageIndex = 0;  // 現在表示している画像のインデックス
 
-   
+
 
     public void SpawnTutorial()
     {
@@ -49,7 +49,7 @@ public class TutorialSpawn: MonoBehaviour
 
 
         newImageObject.transform.SetAsLastSibling();
-       
+
     }
 
 
@@ -81,7 +81,7 @@ public class TutorialSpawn: MonoBehaviour
             if (Tutorial.GetState() != TutorialState.Option)
             {
 
-                GameMgr.ChangeState(GameState.Main);
+                GameManager.ChangeState(GameState.Main);
             }
             ShowNextTutorialImage();
         }

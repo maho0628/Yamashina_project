@@ -136,8 +136,8 @@ public class PlayerControl : MonoBehaviour
         //プレイヤーのY座標の制限
         //プレイヤーのY座標が8.0を超えたらリジッドボディのフォースを0にする
 
-        switch (GameMgr.GetState())
-        {
+        switch (GameManager.GetState())
+        {   
             case GameState.Main:
                 //bShootFlagをfalseにする
                 isShot = false;
@@ -175,7 +175,7 @@ public class PlayerControl : MonoBehaviour
                 //Debug.Log("プレイヤーが動いていないこと確認");
                 break;
         }
-        if (GameMgr.GetState() != GameState.ShowOption)
+        if (GameManager.GetState() != GameState.ShowOption)
         {
             PlayerSleeping();
 
@@ -501,7 +501,7 @@ public class PlayerControl : MonoBehaviour
     //{
     //    if (other.gameObject.CompareTag("OnTheCar"))
     //    {
-    //        GameMgr.ChangeState(GameState.Main); // ボス戦直前に状態変更
+    //        GameManager.ChangeState(GameState.Main); // ボス戦直前に状態変更
 
     //    }
     //}

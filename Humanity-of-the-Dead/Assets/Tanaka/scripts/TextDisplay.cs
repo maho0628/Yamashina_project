@@ -101,13 +101,13 @@ public class TextDisplay : MonoBehaviour
 
 
 
-        switch (GameMgr.GetState())
+        switch (GameManager.GetState())
         {
             case GameState.Main:
                 if (Player.transform.position.x > Position[Position.Length - 1])
                 {
                     //this.gameObject.SetActive(true);    //オブジェクトを表示
-                    GameMgr.ChangeState(GameState.Clear);    //GameStateがShowTextに変わる
+                    GameManager.ChangeState(GameState.Clear);    //GameStateがShowTextに変わる
                     Flag[Position.Length - 1] = true;
 
                 }
@@ -254,7 +254,7 @@ public class TextDisplay : MonoBehaviour
             if (BGM.time >= BGM.clip.length - clearToTransitionTime) // 0.1秒のマージンを持たせる
             {
                 // クリア状態に遷移
-                GameMgr.ChangeState(GameState.Clear);
+                GameManager.ChangeState(GameState.Clear);
             }
 
 
@@ -290,7 +290,7 @@ public class TextDisplay : MonoBehaviour
 
     public virtual void ShowHintText()
     {
-        GameMgr.ChangeState(GameState.Hint);
+        GameManager.ChangeState(GameState.Hint);
         TextArea.SetActive(true);
         LoadText = 0;
         initCurrentTextDisplay();
@@ -412,7 +412,7 @@ public class TextDisplay : MonoBehaviour
     // テキストエリアを閉じる
     private void CloseTextArea()
     {
-        GameMgr.ChangeState(GameState.Main);
+        GameManager.ChangeState(GameState.Main);
         TextArea.SetActive(false); // テキストエリアを非表示
     }
 
@@ -524,7 +524,7 @@ public class TextDisplay : MonoBehaviour
             {
                 Flag[i] = true;
 
-                GameMgr.ChangeState(GameState.ShowText);    //GameStateがShowTextに変わる
+                GameManager.ChangeState(GameState.ShowText);    //GameStateがShowTextに変わる
                 UpdateText();
                 //テキスト表示域を表示域
                 TextArea.SetActive(true);
