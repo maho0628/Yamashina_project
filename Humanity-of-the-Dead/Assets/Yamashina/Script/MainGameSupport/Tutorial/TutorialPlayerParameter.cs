@@ -21,7 +21,7 @@ public class TutorialPlayerParameter : PlayerParameter
     protected override void Update()
     {
 
-        switch (GameMgr.GetState())
+        switch (GameManager.GetState())
         {
             case GameState.Main:
                 string sceneName = SceneManager.GetActiveScene().name;
@@ -58,7 +58,7 @@ public class TutorialPlayerParameter : PlayerParameter
 
         if (Tutorial.GetState() == TutorialState.PlayerDoNotMove)
         {
-            GameMgr.ChangeState(GameState.ShowText);    //GameState‚ªShowText‚É•Ï‚í‚é
+            GameManager.ChangeState(GameState.ShowText);    //GameState‚ªShowText‚É•Ï‚í‚é
             tutorial.UpdateText();
 
             Tutorial.ChangeState(TutorialState.PlayerAttack);

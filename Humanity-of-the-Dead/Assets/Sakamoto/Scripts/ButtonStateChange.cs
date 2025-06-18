@@ -7,15 +7,15 @@ public class ButtonStateChange : MonoBehaviour
     //ボタンを押したときゲームステートをShowOptionにする
     public void ChangeStateShowOption()
     {
-        GameMgr.ChangeState(GameState.ShowOption);
+        GameManager.ChangeState(GameState.ShowOption);
     }
     public void ChangeStateShowHint()
     {
-        GameMgr.ChangeState(GameState.Hint);
+        GameManager.ChangeState(GameState.Hint);
     }
     //ボタンを押したときゲームステートをMainにする
     public void ChangeStateMain()
     {
-        GameMgr.ChangeState(GameState.Main);
+        GameManager.ChangeState(GameState.Main);
     }
 }

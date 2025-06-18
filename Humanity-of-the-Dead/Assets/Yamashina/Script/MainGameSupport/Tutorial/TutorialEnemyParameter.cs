@@ -21,7 +21,7 @@ public class TutorialEnemyParameter : newEnemyParameters
         // 部位が破壊された際にHPバーを一瞬表示
         if ((UpperHP <= 0 || LowerHP <= 0) && newEnemyMovement.GetEnemyState() != newEnemyMovement.EnemyState.IsDead&&Tutorial.GetState()==TutorialState.PlayerAttack)
         {
-            GameMgr.ChangeState(GameState.ShowText);    //GameStateがShowTextに変わる
+            GameManager.ChangeState(GameState.ShowText);    //GameStateがShowTextに変わる
             tutorial.UpdateText();
             Tutorial.ChangeState(TutorialState.PlayerComfort);
 
@@ -31,7 +31,7 @@ public class TutorialEnemyParameter : newEnemyParameters
 
         if ((UpperHP <= 0 || LowerHP <= 0) && newEnemyMovement.GetEnemyState() != newEnemyMovement.EnemyState.IsDead && Tutorial.GetState() == TutorialState.EnemyDrop)
         {
-            GameMgr.ChangeState(GameState.ShowText);    //GameStateがShowTextに変わる
+            GameManager.ChangeState(GameState.ShowText);    //GameStateがShowTextに変わる
             tutorial.UpdateText();
             Tutorial.ChangeState(TutorialState.PlayerTransplant);
 
