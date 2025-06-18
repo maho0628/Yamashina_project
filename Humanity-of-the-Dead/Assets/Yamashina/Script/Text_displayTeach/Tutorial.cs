@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-public enum Tutorial_State
+public enum TutorialState
 {
     PlayerMove,
     PlayerGauge,
@@ -23,9 +23,9 @@ public class Tutorial : TextDisplay
     public static void NextState()
     {
         int nextIndex = (int)enGameState + 1; // 次のインデックス
-        if (nextIndex < System.Enum.GetValues(typeof(Tutorial_State)).Length)
+        if (nextIndex < System.Enum.GetValues(typeof(TutorialState)).Length)
         {
-            ChangeState((Tutorial_State)nextIndex);
+            ChangeState((TutorialState)nextIndex);
         }
         else
         {
@@ -35,15 +35,15 @@ public class Tutorial : TextDisplay
         Debug.Log("Next State: " + enGameState);
     }
 
-    static Tutorial_State enGameState = Tutorial_State.PlayerMove;
-    static Tutorial_State previousGameState; // 前回のゲームステートを保存
+    static TutorialState enGameState = TutorialState.PlayerMove;
+    static TutorialState previousGameState; // 前回のゲームステートを保存
     protected override void Start()
     {
-        enGameState = Tutorial_State.PlayerMove;
+        enGameState = TutorialState.PlayerMove;
         base.Start();
         tutorialSpawner = FindAnyObjectByType<TutorialSpawn>();
     }
-    public static void ChangeState(Tutorial_State newState)
+    public static void ChangeState(TutorialState newState)
     {
         previousGameState = enGameState; // 現在のステートを前回のステートとして保存
 
@@ -55,15 +55,15 @@ public class Tutorial : TextDisplay
     {
         return enGameState != previousGameState;
     }
-    public static Tutorial_State GetState()
+    public static TutorialState GetState()
     {
         return enGameState;
     }
     private void ChangeStateToDoNotMoveIfNeeded()
     {
-        if (enGameState == Tutorial_State.PlayerGauge && Player.transform.position.x > POSITION_DONOT_MOVE)
+        if (enGameState == TutorialState.PlayerGauge && Player.transform.position.x > POSITION_DONOT_MOVE)
         {
-            ChangeState(Tutorial_State.PlayerDoNotMove);
+            ChangeState(TutorialState.PlayerDoNotMove);
         }
     }
     protected override void Update()
@@ -119,7 +119,7 @@ public class Tutorial : TextDisplay
                
                 tutorialTimer += Time.deltaTime;
 
-                if (GetState() == Tutorial_State.Option && tutorialSpawner.canvasObject == null)
+                if (GetState() == TutorialState.Option && tutorialSpawner.canvasObject == null)
                 {
                     ShowGameClearUI();
                 }
