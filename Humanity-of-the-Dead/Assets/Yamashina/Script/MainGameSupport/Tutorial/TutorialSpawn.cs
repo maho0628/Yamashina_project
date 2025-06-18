@@ -48,11 +48,6 @@ public class TutorialSpawn: MonoBehaviour
         }
 
 
-
-
-
-
-
         newImageObject.transform.SetAsLastSibling();
        
     }
@@ -83,7 +78,7 @@ public class TutorialSpawn: MonoBehaviour
         if (canvasObject != null)
         {
             Destroy(canvasObject);
-            if (Tutorial.GetState() != Tutorial_State.Option)
+            if (Tutorial.GetState() != TutorialState.Option)
             {
 
                 GameMgr.ChangeState(GameState.Main);

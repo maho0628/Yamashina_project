@@ -273,7 +273,7 @@ public class PlayerControl : MonoBehaviour
     //ゲームメインのエクスキュート
     void MainExecution()
     {
-        if (Tutorial.GetState() == Tutorial_State.PlayerDoNotMove)
+        if (Tutorial.GetState() == TutorialState.PlayerDoNotMove)
         {
             return;
         }

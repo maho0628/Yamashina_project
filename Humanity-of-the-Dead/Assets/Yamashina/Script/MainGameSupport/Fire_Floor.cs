@@ -7,9 +7,7 @@ using UnityEngine;
 
 public class Fire_Floor : MonoBehaviour
 {
-#if DEBUG
 
-#endif
     //プレイヤーパラメーター
     //private PlayerParameter scPlayerParameter;
     
