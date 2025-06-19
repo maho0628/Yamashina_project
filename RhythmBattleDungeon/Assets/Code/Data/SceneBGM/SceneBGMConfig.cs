@@ -11,13 +11,15 @@ public class SceneBGMConfig
     /// <summary>
     /// 対象のシーン名
     /// </summary>
-    [SerializeField, Header("対象のシーン名")]
+    [SerializeField, Tooltip("対象のシーン名")]
     private string sceneName;
+
+    [Space(15)]
 
     /// <summary>
     /// 再生するBGMのID
     /// </summary>
-    [SerializeField, Header("再生するBGMのID")]
+    [SerializeField, Tooltip("再生するBGMのID")]
     private BGMName bgmId;
 
     #endregion

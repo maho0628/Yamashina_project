@@ -10,9 +10,11 @@ public class GaugeAnimationConfig
 
     /// <summary>
     /// ゲージ補間時間
-    [Header("ゲージ補間設定"),Range(0f, 1f)]
+    [Header("▼ゲージ補間設定"), Range(0f, 1f)]
     [SerializeField, Tooltip("ゲージ補間時間（秒）")]
     private float gaugeLerpDuration = 0.5f;
+
+    [Space(15)]
 
     /// <summary>
     /// 補間にEasingを使うか
@@ -20,33 +22,14 @@ public class GaugeAnimationConfig
     [SerializeField, Tooltip("補間にEasingを使うか")]
     private bool useEasing = false;
 
+    [Space(15)]
+
     /// <summary>
     /// ゲージアニメーションに使う補間カーブ（イージング）
     /// </summary>
     [SerializeField, Tooltip("ゲージアニメーションに使う補間カーブ（イージング）")]
     private AnimationCurve gaugeAnimationCurve = AnimationCurve.Linear(0, 0, 1, 1);
 
-    /// <summary>
-    /// スコア上昇時の演出カラー
-    /// </summary>
-    [Space(10)]
-    [Header("演出カラー")]
-    [SerializeField, Tooltip("スコア上昇時の演出カラー") ]
-    private Color scoreGainColor = Color.green;
-
-    /// <summary>
-    /// MAX時にゲージをフラッシュさせるか
-    /// </summary>
-    [Space(10)]
-    [Header("MAX時の演出設定")]
-    [SerializeField, Tooltip("MAX時にゲージをフラッシュさせるか")]
-    private bool flashOnFull = false;
-
-    /// <summary>
-    /// MAX時の演出エフェクトプレハブ
-    /// </summary>
-    [SerializeField, Tooltip("MAX時の演出エフェクトプレハブ")]
-    private GameObject flashEffectPrefab;
 
     #endregion
 
@@ -68,20 +51,6 @@ public class GaugeAnimationConfig
     /// </summary>
     internal AnimationCurve GaugeAnimationCurve => gaugeAnimationCurve;
 
-    /// <summary>
-    /// スコア上昇時の演出カラーの読み取り専用
-    /// </summary>
-    internal Color ScoreGainColor => scoreGainColor;
-
-    /// <summary>
-    /// MAX時にゲージをフラッシュさせるかの読み取り専用
-    /// </summary>
-    internal bool FlashOnFull => flashOnFull;
-
-    /// <summary>
-    /// MAX時の演出エフェクトプレハブの読み取り専用
-    /// </summary>
-    internal GameObject FlashEffectPrefab => flashEffectPrefab;
 
     #endregion
 

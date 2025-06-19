@@ -44,7 +44,7 @@ public class ComboEffectController : MonoBehaviour, IUIEffectPoolable<ComboEffec
         comboText.transform.localScale = Vector3.zero;
 
         activeSequence = DOTween.Sequence();
-        activeSequence.Append(comboText.transform.DOScale(1f, 0.2f).SetEase(config.Visual.SetScaleEase))
+        activeSequence.Append(comboText.transform.DOScale(1f, config.Visual.ScaleInTime).SetEase(config.Visual.SetScaleEase))
            .AppendInterval(config.Visual.ShowDuration)
            .Append(comboText.DOFade(0f, config.Visual.FadeOutDuration))
            .OnComplete(ReturnToPool);
