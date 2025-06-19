@@ -12,7 +12,7 @@ public class BGMConfigTable : ScriptableObject
     /// <summary>
     /// ゲーム内で使用するBGM設定の一覧のリスト
     /// </summary>
-    [Header("ゲーム内で使用するBGM設定の一覧")]
+    [Header("▼ゲーム内で使用するBGM設定の一覧")]
     [SerializeField, Tooltip("ゲーム内で使用するBGM設定のリスト")]
     private List<BGMConfig> bgmLists = new List<BGMConfig>();
 

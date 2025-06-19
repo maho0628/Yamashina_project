@@ -31,16 +31,16 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
         readyGoPanelInstance.SetActive(true);
 
         // Readyââèo
-        await ShowTextWithConfig(startSignalConfig.readyConfig);
+        await ShowTextWithConfig(startSignalConfig.ReadyConfig);
 
         // ReadyÅ®Goä‘ÇÃë“ã@éûä‘
-        if (startSignalConfig.intervalBetweenReadyGo > 0)
+        if (startSignalConfig.IntervalBetweenReadyGo > 0)
         {
-            await UniTask.Delay(System.TimeSpan.FromSeconds(startSignalConfig.intervalBetweenReadyGo));
+            await UniTask.Delay(System.TimeSpan.FromSeconds(startSignalConfig.IntervalBetweenReadyGo));
         }
 
         // Goââèo
-        await ShowTextWithConfig(startSignalConfig.goConfig);
+        await ShowTextWithConfig(startSignalConfig.GoConfig);
 
         readyGoPanelInstance.SetActive(false);
     }

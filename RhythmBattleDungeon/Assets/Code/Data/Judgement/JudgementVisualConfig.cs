@@ -7,31 +7,61 @@ using UnityEngine;
 [System.Serializable]
 public class JudgementVisualConfig
 {
-    #region フィールド
-    [SerializeField, Header("画面に表示される判定名")]
+    #region 判定の見た目に関する内部情報処理変数
+
+    /// <summary>
+    /// 画面に表示される判定名
+    /// </summary>
+    [Header("▼判定表示設定")]
+    [SerializeField, Tooltip("画面に表示される判定名")]
     private string displayName = "PERFECT";
 
-    [SerializeField, Header("表示カラー")]
+    [Space(15)]
+
+    /// <summary>
+    /// 表示カラー
+    /// </summary>
+    [SerializeField, Tooltip("表示カラー")]
     private Color displayColor = Color.white;
 
-    [SerializeField, Header("表示アイコン（任意）")]
-    private Sprite displayIcon;
+    [Space(15)]
 
-    [SerializeField, Header("表示時間（秒）")]
+    /// <summary>
+    /// 表示時間（秒）
+    /// </summary>
+    [SerializeField, Tooltip("表示時間（秒）")]
     private float showDuration = 0.5f;
 
-    [SerializeField, Header("フェードアウト時間（秒）")]
+    [Space(15)]
+
+    /// <summary>
+    /// フェードアウト時間（秒）
+    /// </summary>
+    [SerializeField, Tooltip("フェードアウト時間（秒）")]
     private float fadeOutDuration = 0.3f;
+
+    [Space(15)]
+
+    /// <summary>
+    /// スケールイン時間
+    /// </summary>
+    [Header("▼スケーリング")]
+    [SerializeField, Tooltip("スケールイン時間")]
+    private float scaleInTime = 0.2f;
+
+    [Space(15)]
+
+    /// <summary>
+    /// イージングタイプ
+    /// </summary>
+    [SerializeField, Tooltip("イージングタイプ")]
+    private Ease scaleEase = Ease.OutBack;
+
     #endregion
-    [Header("スケーリング")]
-    [SerializeField] private float scaleInTime = 0.2f;
-    [SerializeField] private Ease scaleEase = Ease.OutBack;
-
-    [SerializeField, Header("各判定ごとのエフェクト")] 
-    private GameObject hitEffect;
 
 
-    #region 読み取り専用プロパティ
+    #region 読み取り専用プロパティ(判定の見た目に関する内部情報処理変数)
+
     /// <summary>
     /// プレイ中に表示される判定の表示名の読み取り専用
     /// </summary>
@@ -42,10 +72,6 @@ public class JudgementVisualConfig
     /// </summary>
     internal Color DisplayColor => displayColor;
 
-    /// <summary>
-    /// 判定表示用アイコンの読み取り専用
-    /// </summary>
-    internal Sprite DisplayIcon => displayIcon;
 
     /// <summary>
     /// 表示時間の読み取り専用
@@ -56,18 +82,26 @@ public class JudgementVisualConfig
     /// フェードアウト時間の読み取り専用
     /// </summary>
     internal float FadeOutDuration => fadeOutDuration;
+
+
+    /// <summary>
+    /// スケールイン時間の読み取り専用
+    /// </summary>
+    internal float ScaleInTime => scaleInTime;
+
+    /// <summary>
+    /// イージングタイプ
+    /// </summary>
+    internal Ease SetScaleEase => scaleEase;
+
     #endregion
 
-    internal float SetScaleInTime => scaleInTime;
-    internal Ease SetScaleEase => scaleEase;
-   
-    internal GameObject HitEffect => hitEffect; 
+
     #region コンストラクタ
     /// <summary>
     /// デフォルトコンストラクタ
     /// </summary>
-    public JudgementVisualConfig() { }
+    internal JudgementVisualConfig() { }
 
- 
     #endregion
 }

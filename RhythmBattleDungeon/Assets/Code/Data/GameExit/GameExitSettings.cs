@@ -11,15 +11,19 @@ public class GameExitSettings : ScriptableObject
     /// <summary>
     /// ダイアログを見せるかどうか
     /// </summary>
-    [Header("確認ダイアログ設定")]
+    [Header("▼確認ダイアログ設定")]
     [SerializeField, Tooltip("ダイアログを見せるかどうか")]
     private bool showConfirmDialog = true;
+
+    [Space(15)]
 
     /// <summary>
     /// ダイアログの詳細設定
     /// </summary>
     [SerializeField, Tooltip("ダイアログの詳細設定")]
     private DialogElementSettings dialogSettings = new DialogElementSettings();
+
+    [Space(15)]
 
     /// <summary>
     /// 入れるダイアログのオブジェクトプレハブ

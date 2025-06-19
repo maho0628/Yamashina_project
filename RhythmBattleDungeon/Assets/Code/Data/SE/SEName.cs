@@ -1,8 +1,8 @@
 
 /// <summary>
-/// BGM‚Ì–¼‘O‚ÌEnum
+/// SE‚Ì–¼‘O‚ÌEnum
 /// </summary>
-internal enum BGMName
+internal enum SEName
 {
 
     ACRhythm,
@@ -11,3 +11,5 @@ internal enum BGMName
     Matrix
 
 }
+
+

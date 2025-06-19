@@ -46,7 +46,7 @@ public class ScoreEffectController : MonoBehaviour, IUIEffectPoolable<ScoreEffec
         DebugManager.Log($"[ScoreEffect] Playing on instance: {GetInstanceID()}");
 
         activeSequence = DOTween.Sequence();
-        activeSequence.Append(scoreText.transform.DOScale(1f, 0.2f).SetEase(config.Visual.SetScaleEase))
+        activeSequence.Append(scoreText.transform.DOScale(1f, config.Visual.ScaleInTime).SetEase(config.Visual.SetScaleEase))
            .AppendInterval(config.Visual.ShowDuration)
            .Append(scoreText.DOFade(0f, config.Visual.FadeOutDuration))
            .OnComplete(ReturnToPool);

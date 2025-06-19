@@ -8,13 +8,14 @@ public class GaugeDebugConfig
 {
     #region デバッグ用の設定に関連する内部管理用変数
 
-
     /// <summary>
     /// スコア変化しなくても常にゲージをアニメさせるかどうか
     /// </summary>
-    [Header("デバッグ設定")]
+    [Header("▼デバッグ設定")]
     [SerializeField, Tooltip("スコア変化しなくても常にゲージをアニメさせるかどうか")]
     private bool debugAlwaysAnimate = false;
+
+    [Space(15)]
 
     [Range(0f, 1f)]
     [SerializeField, Tooltip("初期ゲージ値（0〜1）")]

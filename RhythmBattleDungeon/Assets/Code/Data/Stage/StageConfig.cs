@@ -7,54 +7,64 @@ using UnityEngine;
 [System.Serializable]
 public class StageConfig
 {
-    #region  ステージ設定に関する情報変数
+    #region  ステージ設定に関する内部管理用変数
 
     /// <summary>
     /// ステージID名
     /// </summary>
-    [SerializeField, Header("譜面ID名")]
+    [Header("▼ ステージ基本情報")]
+    [SerializeField, Tooltip("譜面ID名")]
     private string stageId;
+
+    [Space(15)]
+
     /// <summary>
-    /// ステージで鳴らすBGMのID
+    /// 譜面BGMのID
     /// </summary>
-    [SerializeField, Header("BGM ID")]
+    [SerializeField, Tooltip("譜面BGM ID")]
     private BGMName stageBgmId;
 
-   
+    [Space(15)]
+
+    /// <summary>
+    /// ステージ設定内のBGMのテーブル
+    /// </summary>
     private BGMConfigTable bgmTable;
+
+    [Space(15)]
 
     /// <summary>
     /// 譜面データJsonファイル名
     /// </summary>
-    [SerializeField, Header("譜面データJsonファイル名")]
+    [SerializeField, Tooltip("譜面データJsonファイル名")]
     private string chartFileName;
+
+    [Space(15)]
 
     /// <summary>
     /// ノーツのスクロール設定
     /// </summary>
-    [SerializeField, Header("ノーツのスクロール設定")]
+    [SerializeField, Tooltip("ノーツのスクロール設定")]
     private NoteScrollConfig scrollConfig;
+
+    [Space(15)]
 
     /// <summary>
     /// 判定設定（Perfect / Good / Miss など）
     /// </summary>
-    [SerializeField, Header("判定設定（Perfect / Good / Miss など）")]
+    [Header("▼ ステージ挙動・演出設定")]
+    [SerializeField, Tooltip("判定設定（Perfect / Good / Miss など）")]
     private List<JudgementConfig> judgementConfigs;
 
-    /// <summary>
-    /// スコアゲージの演出・見た目設定
-    /// </summary>
-    [SerializeField, Header("スコアゲージの設定")]
-    private GaugeConfig gaugeConfig;
+    [Space(15)]
+
     /// <summary>
     /// 楽曲終了後の遷移待機秒数
     /// </summary>
-    [SerializeField, Header("楽曲終了後の遷移待機秒数")]
+    [Header("▼ その他")]
+    [SerializeField, Tooltip("楽曲終了後の遷移待機秒数")]
     private float delayBeforeResult = 2.0f;
 
-  
-
-   
     #endregion
 
 
@@ -70,8 +80,10 @@ public class StageConfig
     /// </summary>
     internal BGMConfig StageBgm => bgmTable?.GetBgmConfig(stageBgmId);
 
+    /// <summary>
+    /// 譜面BGMのIDの読み取り専用
+    /// </summary>
     internal BGMName StageBgmId => stageBgmId;
-
 
     /// <summary>
     /// 譜面データJsonファイル名の読み取り専用
@@ -89,18 +101,24 @@ public class StageConfig
     internal List<JudgementConfig> JudgementConfigs => judgementConfigs;
 
     /// <summary>
-    /// スコアゲージの設定の読み取り専用
-    /// </summary>
-    internal GaugeConfig GaugeConfig => gaugeConfig;
-    /// <summary>
     /// 楽曲終了後の遷移待機秒数の読み取り専用
     /// </summary>
     internal float DelayBeforeResult => delayBeforeResult;
 
-    internal void InitializeBGMTable(BGMConfigTable table)
+    #endregion
+
+
+    #region ゲッター
+
+    /// <summary>
+    /// ステージ設定内のBGMのテーブルを返す
+    /// </summary>
+    /// <param name="table"></param>
+    internal void GetStageBGMTable(BGMConfigTable table)
     {
-        this.bgmTable = table;
+        bgmTable = table;
     }
 
     #endregion
+
 }

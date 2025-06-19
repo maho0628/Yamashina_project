@@ -226,7 +226,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     /// 指定した SE ID の効果音を再生する。
     /// </summary>
     /// <param name="seId">SEConfigTable に登録された識別子</param>
-    internal void PlaySEById(string seId)
+    internal void PlaySEById(SEName seId)
     {
         if (seConfigTable == null)
         {
