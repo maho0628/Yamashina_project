@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class SEConfigTable : ScriptableObject
 {
-    #region SEのリストやディクショナリ内部管理用変数
+    #region SEのリストやディクショナリの内部管理用変数
 
     /// <summary>
     /// ゲーム内で使用するSE設定のリスト
