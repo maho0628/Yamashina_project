@@ -15,11 +15,15 @@ public class TextBasicSettings
     [SerializeField, Tooltip("演出で表示する文字列。例：\"Ready\", \"Start\", \"Game Over\"など")]
     private string animationText = "Ready";
 
+    [Space(15)]
+
     /// <summary>
     /// アニメーションの文字色
     /// </summary>
     [SerializeField, Tooltip("アニメーションの文字色")]
     private Color textColor = Color.white;
+
+    [Space(15)]
 
     /// <summary>
     /// アニメーションの文字の大きさ
@@ -27,17 +31,23 @@ public class TextBasicSettings
     [SerializeField, Tooltip("アニメーションの文字の大きさ")]
     private int fontSize = 48;
 
+    [Space(15)]
+
     /// <summary>
     /// 使用するアニメーションの種類
     /// </summary>
     [SerializeField, Tooltip("テキストの表示アニメーションの種類を選択します")]
     private AnimationType animationType = AnimationType.Simple;
 
+    [Space(15)]
+
     /// <summary>
     /// 使用するフォントアセット
     /// </summary>
     [SerializeField, Tooltip("アニメーションテキストに使用するTMPフォントアセット")]
     private TMP_FontAsset fontAsset;
+
+    [Space(15)]
 
     /// <summary>
     /// フォントスタイル（太字、斜体など）

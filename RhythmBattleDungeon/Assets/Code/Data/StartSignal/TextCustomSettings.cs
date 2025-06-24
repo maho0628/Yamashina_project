@@ -13,6 +13,7 @@ public class TextCustomSettings
     [SerializeField,Tooltip("カスタム時のアニメーションクリップ")]
     private AnimationClip customAnimationClip;
 
+    
     /// <summary>
     /// カスタム時のアニメーションクリップの読み取り専用
     /// </summary>
