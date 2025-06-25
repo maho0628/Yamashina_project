@@ -703,6 +703,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comboText: {fileID: 1918049148}
+  resetConfig:
+    comboTextFormat: 'Combo: {0}!'
+    startScale: {x: 0, y: 0, z: 0}
+    endScale: {x: 1, y: 1, z: 1}
+    startAlpha: 0
+    endAlpha: 1
 --- !u!4 &516605425
 Transform:
   m_ObjectHideFlags: 0
