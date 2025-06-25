@@ -23,7 +23,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     #endregion
 
 
-    #region その他の内部管理用変数
+    #region BGMの内部管理用変数
 
     /// <summary>
     ///  現在の BGM 音量 (0.0 - 1.0)
@@ -35,10 +35,10 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     /// </summary>
     private float seVolume;
 
-    /// <summary>
-    /// スタート時のオーディオソースの現在時刻（DspTime)
-    /// </summary>
-    private double bgmStartDspTime;
+    #endregion
+
+
+    #region 各音源テーブルの内部管理用変数
 
     /// <summary>
     /// 登録されている BGM 設定テーブル
@@ -52,10 +52,19 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     /// </summary>
     private SEConfigTable seConfigTable;
 
-    /// <summary>
+    #endregion
+
+
+    #region その他の内部管理用変数    
+
     /// 現在流れているBGMのID
     /// </summary>
     private BGMName currentBgmId;
+
+    /// <summary>
+    /// スタート時のオーディオソースの現在時刻（DspTime)
+    /// </summary>
+    private double bgmStartDspTime;
 
     /// <summary>
     /// ゲームの初期設定
@@ -94,21 +103,12 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     internal float GetSEVolume() => seVolume;
 
     /// <summary>
-    /// 現在流れているBGMのIDを返す
-    /// </summary>
-    /// <returns>string</returns>
-    internal BGMName GetCurrentBGMId()
-    {
-        return currentBgmId;
-    }
-
-    /// <summary>
     /// BGMが鳴り終わったかどうかを返す
     /// </summary>
     /// <returns>bool</returns>
     internal bool IsBGMFinished()
     {
-        //BGMが鳴り終わった
+        //BGMが鳴り終わったかを判定
         return bgmSource != null && !bgmSource.isPlaying && bgmSource.time > 0;
     }
 
@@ -190,12 +190,12 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     {
         if (string.IsNullOrEmpty(bgmId.ToString())) return;
 
+        // 同じ曲が流れていれば何もしない
         if (currentBgmId == bgmId && bgmSource.isPlaying)
         {
-            // 同じ曲が流れていれば何もしない
             return;
         }
-        //
+        //ループ対応ありでBGMIDの楽曲を流す
         PlayBGMById(bgmId,islooped:true, forceReplay: false);
     }
 
@@ -205,8 +205,10 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     /// <param name="bgmId">BGMConfigTable に登録された識別子</param>
     internal void ForcePlayBGM(BGMName bgmId)
     {
+        //BGMIDに何も入ってないなら処理しない
         if (string.IsNullOrEmpty(bgmId.ToString())) return;
 
+        //ループ対応なしでBGMIDの楽曲をはじめから流す
         PlayBGMById(bgmId,islooped :false,forceReplay: true);
     }
 
@@ -215,8 +217,10 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     /// </summary>
     internal void StopBGM()
     {
+        //BGMが再生中なら
         if (bgmSource.isPlaying)
         {
+            //再生停止
             bgmSource.Stop();
             DebugManager.Log("[AudioManager] BGM 停止");
         }
@@ -228,19 +232,25 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     /// <param name="seId">SEConfigTable に登録された識別子</param>
     internal void PlaySEById(SEName seId)
     {
+        //SEテーブルに何も入ってないなら
         if (seConfigTable == null)
         {
+            //エラー出して処理しない
             DebugManager.LogError("[AudioManager] SEConfigTable が未設定です。");
             return;
         }
-
+        //SEIDのデータをテーブルから取得する
         var seConfig = seConfigTable.GetSeConfig(seId);
+
+        ///SEIDのデータがないなら
         if (seConfig == null)
         {
+            //エラー出して処理しない
             DebugManager.LogError($"[AudioManager] SEConfig が見つかりません (ID: {seId})");
             return;
         }
 
+        //SEを流す
         PlayClipsMultiAudioSources(seSources, seConfig.SeAudioClip);
     }
 
@@ -276,16 +286,20 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     /// </summary>
     private void PlayClips(AudioSource source, AudioClip clip, bool loop = false, bool forceReplay = false)
     {
+        //クリップに何も入ってこないなら
         if (clip == null)
         {
+            //エラー出して終了
             DebugManager.LogError("[AudioManager] 再生対象の AudioClip が null です。");
             return;
         }
 
+        //プレイ中、強制再再生なしなら処理しない
         if (!forceReplay && source.clip == clip && source.isPlaying) return;
 
         source.clip = clip;
         source.loop = loop;
+
         bgmStartDspTime = AudioSettings.dspTime;
 
         source.Play();
@@ -296,16 +310,22 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     /// </summary>
     private void PlayClipsMultiAudioSources(AudioSource[] sources, AudioClip clip)
     {
+        //クリップに何も入ってこないなら
+
         if (clip == null)
         {
+            //エラー出して終了
             DebugManager.LogWarning("[AudioManager] 再生対象の SE AudioClip が null です。");
             return;
         }
 
+        //オーディオソースの中から一個ずつ取り出して
         foreach (var src in sources)
         {
+            //そのオーディオソースが再生中ではないなら
             if (!src.isPlaying)
             {
+                //SEを一度流して処理しない
                 src.PlayOneShot(clip);
                 return;
             }
@@ -323,14 +343,21 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     /// <param name="islooped">ループ対応させるかどうか</param>
     private void PlayBGMById(BGMName bgmId, bool islooped ,bool forceReplay = false)
     {
+        //BGMIDのデータをテーブルから取得する
         var bgmConfig = bgmConfigTable.GetBgmConfig(bgmId);
+
+        //BGMIDのデータが見つからないなら
         if (bgmConfig == null)
         {
+            //エラー出して終了
             DebugManager.LogError($"[AudioManager] BGM ID '{bgmId}' が見つかりません。");
             return;
         }
 
+        //BGMソースなどのデータを渡して終了
         PlayClips(bgmSource, bgmConfig.BgmAudioClip, loop: islooped, forceReplay: forceReplay);
+
+        //現在のBGMIDを登録
         currentBgmId = bgmId;
     }
 
@@ -339,6 +366,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     /// </summary>
     private void ApplyVolumes()
     {
+        //BGMソースとSEソースがあるならそれぞれに音量を反映
         if (bgmSource != null) bgmSource.volume = bgmVolume;
         if (seSources != null)
             foreach (var src in seSources)

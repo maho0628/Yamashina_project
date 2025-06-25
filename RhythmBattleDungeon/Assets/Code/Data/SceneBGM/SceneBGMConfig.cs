@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class SceneBGMConfig
 {
-    #region シーンBGMの設定に関する内部管理用変数
+    #region シーンBGMの設定の内部管理用変数
 
     /// <summary>
     /// 対象のシーン名
@@ -25,7 +25,7 @@ public class SceneBGMConfig
     #endregion
 
 
-    #region 読み取り専用プロパティ(シーンBGMの設定に関する内部管理用変数)
+    #region 読み取り専用プロパティ(シーンBGMの設定の内部管理用変数)
 
     /// <summary>
     /// 対象のシーン名の読み取り専用

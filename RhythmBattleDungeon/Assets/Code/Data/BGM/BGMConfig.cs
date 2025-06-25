@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// 単一のBGMに関する設定データ
+/// 単一のBGMの設定データ
 /// </summary>
 [System.Serializable]
 public class BGMConfig

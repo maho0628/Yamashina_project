@@ -40,17 +40,17 @@ public class GaugeConfig : ScriptableObject
     #region 読み取り専用プロパティ (ゲージの設定全体に関連する内部管理用変数)
 
     /// <summary>
-    /// ゲージのアニメーション設定に関する読み取り専用プロパティ
+    /// ゲージのアニメーション設定の読み取り専用プロパティ
     /// </summary>
     internal GaugeAnimationConfig Animation => animationConfig;
 
     /// <summary>
-    /// ゲージの見た目設定に関する読み取り専用プロパティ
+    /// ゲージの見た目設定の読み取り専用プロパティ
     /// </summary>
     internal GaugeVisualConfig Visual => visualConfig;
 
     /// <summary>
-    /// ゲージのデバッグ設定に関する読み取り専用プロパティ
+    /// ゲージのデバッグ設定の読み取り専用プロパティ
     /// </summary>
     internal GaugeDebugConfig Debug => debugConfig;
 

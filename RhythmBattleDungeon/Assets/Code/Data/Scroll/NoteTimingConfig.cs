@@ -1,13 +1,13 @@
 using UnityEngine;
 
 /// <summary>
-/// スクロールタイミングに関するスクリプタブルオブジェクト
+/// スクロールタイミングのスクリプタブルオブジェクト
 /// ノーツの出現Y座標やノーツが判定ラインに到達するまでの時間などを管理する
 /// </summary>
 [CreateAssetMenu(fileName = "NoteTimingConfig", menuName = "GameConfig/ノーツ/スクロールタイミング")]
 public class NoteTimingConfig : ScriptableObject
 {
-    #region スクロールタイミングに関する内部管理用変数
+    #region スクロールタイミングの内部管理用変数
 
     /// <summary>
     /// ノーツが判定ラインに到達するまでの時間(秒）
@@ -34,7 +34,7 @@ public class NoteTimingConfig : ScriptableObject
     #endregion
 
 
-    #region 読み取り専用プロパティ(スクロールタイミングに関する内部管理用変数)
+    #region 読み取り専用プロパティ(スクロールタイミングの内部管理用変数)
 
     /// <summary>
     /// ノーツが判定ラインに到達するまでの時間（秒）の読み取り専用

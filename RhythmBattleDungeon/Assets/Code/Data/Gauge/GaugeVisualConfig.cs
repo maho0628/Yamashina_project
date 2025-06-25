@@ -6,7 +6,7 @@
 [System.Serializable]
 public class GaugeVisualConfig
 {
-    #region ゲージの見た目設定に関する内部管理用変数
+    #region ゲージの見た目設定の内部管理用変数
 
     /// <summary>
     /// ゲージの背景色
@@ -26,7 +26,7 @@ public class GaugeVisualConfig
     #endregion
 
 
-    #region 読み取り専用プロパティ(ゲージの見た目設定に関する内部管理用変数)
+    #region 読み取り専用プロパティ(ゲージの見た目設定の内部管理用変数)
 
     /// <summary>
     /// ゲージの背景色の読み取り専用

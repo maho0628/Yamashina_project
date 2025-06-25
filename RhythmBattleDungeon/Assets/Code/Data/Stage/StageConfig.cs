@@ -7,7 +7,7 @@ using UnityEngine;
 [System.Serializable]
 public class StageConfig
 {
-    #region  ステージ設定に関する内部管理用変数
+    #region  ステージ設定の内部管理用変数
 
     /// <summary>
     /// ステージID名
@@ -68,7 +68,7 @@ public class StageConfig
     #endregion
 
 
-    #region 読み取り専用プロパティ(ステージ設定に関する情報変数)
+    #region 読み取り専用プロパティ(ステージ設定の情報変数)
 
     /// <summary>
     /// 譜面ID名の読み取り専用

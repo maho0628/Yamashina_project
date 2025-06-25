@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NoteScrollConfig", menuName = "GameConfig/ノーツ/統合スクロール設定")]
 public class NoteScrollConfig : ScriptableObject
 {
-    #region  統合スクロール設定に関する内部管理用変数
+    #region  統合スクロール設定の内部管理用変数
 
     /// <summary>
     /// ノーツのタイミングや位置の設定

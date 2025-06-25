@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "TextAnimation/Config")]
 
 /// <summary>
-/// テキストのアニメーションに関するデータを総合的に持つ
+/// テキストのアニメーションのデータを総合的に持つ
 /// </summary>
 public class TextAnimationConfig : ScriptableObject
 {
@@ -59,7 +59,7 @@ public class TextAnimationConfig : ScriptableObject
     /// レイアウト＆Canvas設定
     /// </summary>
     [Header("レイアウト＆Canvas設定")]
-    [SerializeField, Tooltip("表示位置や親Canvasの設定など、レイアウトに関する設定です。")]
+    [SerializeField, Tooltip("表示位置や親Canvasの設定など、レイアウトの設定です。")]
     private TextLayoutSettings layoutSettings;
 
     [Space(15)]
@@ -166,7 +166,7 @@ public class TextAnimationConfig : ScriptableObject
         //アニメーション時間のバリデーション設定にデータが入っているかチェック
         if (validationSettings == null)
         {
-            //未割り当てを伝えて早期終了
+            //未割り当てを伝えて処理しない
             durationCheck = "⚠️ Validation設定が未割り当てです";
             return;
         }

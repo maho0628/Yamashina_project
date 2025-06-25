@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// アニメーション時間の妥当性チェッククラス
+/// </summary>
 [CreateAssetMenu(menuName = "TextAnimation/ValidationSettings")]
 public class TextValidationSettings : ScriptableObject
 {

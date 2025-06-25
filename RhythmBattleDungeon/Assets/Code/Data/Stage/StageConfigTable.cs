@@ -3,7 +3,7 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "GameData/Stage Config Table")]
 /// <summary>
-//ステージ設定に関するScriptableObject
+//ステージ設定のScriptableObject
 /// </summary>
 public class StageConfigTable : ScriptableObject
 {

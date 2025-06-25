@@ -1,12 +1,12 @@
 using UnityEngine;
 
 /// <summary>
-/// 判定のロジックに関するクラス
+/// 判定のロジックのクラス
 /// </summary>
 [System.Serializable]
 public class JudgementLogicConfig
 {
-    #region ロジック判定設定に関する内部情報処理変数
+    #region ロジック判定設定の内部情報処理変数
 
     /// <summary>
     /// 判定の名前（内部識別用）
@@ -41,7 +41,7 @@ public class JudgementLogicConfig
     #endregion
 
 
-    #region 読み取り専用プロパティ(ロジック判定設定に関する内部情報処理変数)
+    #region 読み取り専用プロパティ(ロジック判定設定の内部情報処理変数)
 
     /// <summary>
     /// 判定名の読み取り専用
@@ -57,7 +57,7 @@ public class JudgementLogicConfig
     #endregion
 
 
-    #region セッターメソッド（ロジック判定設定に関する内部情報処理変数)
+    #region セッターメソッド（ロジック判定設定の内部情報処理変数)
 
     /// <summary>
     /// 判定名の設定用プロパティ

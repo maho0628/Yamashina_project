@@ -105,6 +105,27 @@ public class LaneVisualConfig : ScriptableObject
     internal Sprite GetLaneSprite(int index) =>
         (index >= 0 && index < laneSprites.Length) ? laneSprites[index] : null;
 
+    /// <summary>
+    /// laneContainerの幅と設定されたレーン数・幅から、左端のレーンのX座標（中央配置）を返す
+    /// </summary>
+    /// <param name="containerWidth">laneContainer の RectTransform の幅</param>
+    /// <returns>1レーン目の中央の X 座標</returns>
+    internal float GetStartX(float containerWidth)
+    {
+        return -containerWidth / 2f + laneWidth / 2f;
+    }
+
+    /// <summary>
+    /// laneContainerの幅から、指定レーン番号のX座標（中央基準）を計算して返す
+    /// </summary>
+    /// <param name="containerWidth">laneContainer の RectTransform の幅</param>
+    /// <param name="laneIndex">レーン番号（0始まり）</param>
+    /// <returns>指定レーンの中央X座標</returns>
+    internal float GetLaneX(float containerWidth, int laneIndex)
+    {
+        return GetStartX(containerWidth) + laneIndex * laneWidth;
+    }
+
     #endregion
 
 }
