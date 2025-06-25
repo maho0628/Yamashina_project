@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class SEConfig
 {
-    #region SE設定に関する内部管理用変数
+    #region SE設定の内部管理用変数
 
     /// <summary>
     /// SEのID名
@@ -34,7 +34,7 @@ public class SEConfig
     #endregion
 
 
-    #region 読み取り専用プロパティ(SE設定に関する内部管理用変数)
+    #region 読み取り専用プロパティ(SE設定の内部管理用変数)
 
     /// <summary>
     /// SEのID名の読み取り専用

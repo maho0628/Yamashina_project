@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// ゲームスタート演出に関するスクリプタブルオブジェクト
+/// ゲームスタート演出のスクリプタブルオブジェクト
 /// </summary>
 [CreateAssetMenu(fileName = "StartSignalConfig", menuName = "GameConfigs/StartSignalConfig")]
 public class StartSignalConfig : ScriptableObject

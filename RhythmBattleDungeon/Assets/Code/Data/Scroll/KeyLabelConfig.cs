@@ -2,12 +2,12 @@ using UnityEngine;
 using TMPro;
 
 /// <summary>
-/// レーンのキーラベル設定に関するスクリプタブルオブジェクト
+/// レーンのキーラベル設定のスクリプタブルオブジェクト
 /// </summary>
 [CreateAssetMenu(fileName = "KeyLabelConfig", menuName = "GameConfig/UI/キーラベル設定")]
 public class KeyLabelConfig : ScriptableObject
 {
-    #region レーンのキーラベル設定に関する内部管理用変数
+    #region レーンのキーラベル設定の内部管理用変数
 
     /// <summary>
     /// レーンのキーラベルの文字列の配列
@@ -69,7 +69,7 @@ public class KeyLabelConfig : ScriptableObject
     #endregion
 
 
-    #region  読み取り専用プロパティ(レーンのキーラベル設定に関する内部管理用変数)
+    #region  読み取り専用プロパティ(レーンのキーラベル設定の内部管理用変数)
 
     /// <summary>
     /// レーンのキーラベルの文字列の配列の読み取り専用

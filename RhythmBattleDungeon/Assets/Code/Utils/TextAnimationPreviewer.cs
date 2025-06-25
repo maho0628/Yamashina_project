@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
-//using DG.DOTweenEditor;
 using UnityEditor;
 
 public static class TextAnimationPreviewer
@@ -86,14 +85,13 @@ public static class TextAnimationPreviewer
 
         Undo.RegisterCreatedObjectUndo(previewCanvasObj, "Create Preview Canvas");
 
-        
+
         var sequence = DOTween.Sequence();
         sequence.Append(text.DOFade(config.TimingSettings.FadeInAlpha, config.TimingSettings.FadeInDuration));
         sequence.AppendInterval(config.TimingSettings.DisplayDuration);
         sequence.Append(text.DOFade(config.TimingSettings.FadeOutAlpha, config.TimingSettings.FadeOutDuration));
 
         sequence.Play();
-#endif
     }
 
 
@@ -104,4 +102,6 @@ public static class TextAnimationPreviewer
     {
         return previewCanvasObj != null;
     }
+
 }
+#endif

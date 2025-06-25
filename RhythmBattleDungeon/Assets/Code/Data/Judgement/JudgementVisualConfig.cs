@@ -2,12 +2,12 @@ using DG.Tweening;
 using UnityEngine;
 
 /// <summary>
-/// 判定の見た目に関するクラス
+/// 判定の見た目のクラス
 /// </summary>
 [System.Serializable]
 public class JudgementVisualConfig
 {
-    #region 判定の見た目に関する内部情報処理変数
+    #region 判定表示設定の内部情報処理変数
 
     /// <summary>
     /// 画面に表示される判定名
@@ -42,6 +42,11 @@ public class JudgementVisualConfig
 
     [Space(15)]
 
+    #endregion
+
+
+    #region スケーリングの内部情報処理変数
+
     /// <summary>
     /// スケールイン時間
     /// </summary>
@@ -57,10 +62,24 @@ public class JudgementVisualConfig
     [SerializeField, Tooltip("イージングタイプ")]
     private Ease scaleEase = Ease.OutBack;
 
+    [Space(15)]
+
     #endregion
 
 
-    #region 読み取り専用プロパティ(判定の見た目に関する内部情報処理変数)
+    #region コンボ演出設定の内部情報処理変数
+
+    /// <summary>
+    /// コンボ演出用の視覚効果設定
+    /// </summary>
+    [Header("▼コンボ演出設定")]
+    [SerializeField, Tooltip("コンボ演出用の視覚効果設定")]
+    private ComboEffectConfig comboEffectConfig = new ComboEffectConfig();
+
+    #endregion
+
+
+    #region 読み取り専用プロパティ(判定表示設定の内部情報処理変数)
 
     /// <summary>
     /// プレイ中に表示される判定の表示名の読み取り専用
@@ -83,6 +102,10 @@ public class JudgementVisualConfig
     /// </summary>
     internal float FadeOutDuration => fadeOutDuration;
 
+    #endregion
+
+
+    #region 読み取り専用プロパティ(スケーリングの内部情報処理変数)
 
     /// <summary>
     /// スケールイン時間の読み取り専用
@@ -90,14 +113,24 @@ public class JudgementVisualConfig
     internal float ScaleInTime => scaleInTime;
 
     /// <summary>
-    /// イージングタイプ
+    /// イージングタイプの読み取り専用
     /// </summary>
     internal Ease SetScaleEase => scaleEase;
 
     #endregion
 
+    #region 読み取り専用プロパティ( コンボ演出設定の内部情報処理変数)
+
+    /// <summary>
+    /// コンボ演出用の設定の読み取り専用
+    /// </summary>
+    internal ComboEffectConfig ComboEffect => comboEffectConfig;
+
+    #endregion
+
 
     #region コンストラクタ
+
     /// <summary>
     /// デフォルトコンストラクタ
     /// </summary>
