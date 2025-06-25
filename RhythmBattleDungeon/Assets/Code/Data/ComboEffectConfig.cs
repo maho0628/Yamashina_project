@@ -3,6 +3,7 @@ using UnityEngine;
 //// <summary>
 /// コンボ演出に使用する視覚効果設定クラス。<br/>
 /// コンボ数表示のテキスト、アニメーションスケール、透明度の初期値・終了値などを設定可能。
+/// 参照先変更大エフェクト形をまとめたスクリプタブルオブジェクト制作予定
 /// </summary>
 [System.Serializable]
 public class ComboEffectConfig
