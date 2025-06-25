@@ -67,7 +67,7 @@ public class newEnemyMovement : MonoBehaviour
     {
         // プレイヤーとの距離を計算
         //Debug.Log(distanceToPlayer.ToString());
-        switch (GameMgr.GetState())
+        switch (GameManager.GetState())
         {
             case GameState.Main:
 

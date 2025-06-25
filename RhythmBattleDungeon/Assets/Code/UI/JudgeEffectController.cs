@@ -46,7 +46,7 @@ public class JudgeEffectController : MonoBehaviour, IUIEffectPoolable<JudgeEffec
         judgeText.transform.localScale = Vector3.zero;
 
         activeSequence = DOTween.Sequence();
-        activeSequence.Append(judgeText.transform.DOScale(1f, 0.2f).SetEase(config.Visual.SetScaleEase))
+        activeSequence.Append(judgeText.transform.DOScale(1f, config.Visual.ScaleInTime).SetEase(config.Visual.SetScaleEase))
            .AppendInterval(config.Visual.ShowDuration)
            .Append(judgeText.DOFade(0f, config.Visual.FadeOutDuration))
            .OnComplete(ReturnToPool);

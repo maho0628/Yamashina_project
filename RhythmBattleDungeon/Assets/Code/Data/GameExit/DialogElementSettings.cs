@@ -11,16 +11,20 @@ public class DialogElementSettings
     /// <summary>
     /// 文章を打つ場所のオブジェクトの名前
     /// </summary>
-    [Header("オブジェクト名設定")]
+    [Header("▼オブジェクト名設定")]
 
     [SerializeField, Tooltip("文章を打つ場所のオブジェクトの名前")]
     private string messageObjectName = "MessageText";
+
+    [Space(15)]
 
     /// <summary>
     ///確認時にOKと見なすボタンのオブジェクトの名前
     /// </summary>
     [SerializeField, Tooltip("確認時にOKと見なすボタンのオブジェクトの名前")]
     private string confirmButtonName = "ConfirmButton";
+
+    [Space(15)]
 
     /// <summary>
     /// 確認時にOKではないと見なすボタンのオブジェクトの名前
@@ -36,18 +40,22 @@ public class DialogElementSettings
     /// <summary>
     /// 実際に出す文章の内容
     /// </summary>
-    [Space(2)]
+    [Space(15)]
 
-    [Header("テキスト設定")]
+    [Header("▼テキスト設定")]
 
     [SerializeField, Tooltip("実際に出す文章の内容")]
     private string messageText = "ゲームを終了しますか？";
+
+    [Space(15)]
 
     /// <summary>
     /// 確認時にOKと見なすボタンのテキスト内容
     /// </summary>
     [SerializeField, Tooltip("確認時にOKと見なすボタンのテキスト内容")]
     private string confirmButtonText = "はい";
+
+    [Space(15)]
 
     /// <summary>
     /// 確認時にOKではないと見なすボタンのテキスト内容
@@ -63,9 +71,9 @@ public class DialogElementSettings
     /// <summary>
     /// テキストの色をスクリプタブルオブジェクト内で設定するかどうか
     /// </summary>
-    [Space(2)]
+    [Space(15)]
 
-    [Header("色設定（オプション）")]
+    [Header("▼色設定（オプション）")]
 
     [SerializeField, Tooltip("テキストの色をスクリプタブルオブジェクト内で設定するかどうか")]
     private bool useCustomColors = false;
@@ -73,15 +81,21 @@ public class DialogElementSettings
     /// <summary>
     /// 実際に出す文章のテキストの色
     /// </summary>
-    
+
+    [Space(15)]
+
     [SerializeField, Tooltip("実際に出す文章のテキストの色")]
     private Color messageTextColor = Color.white;
+
+    [Space(15)]
 
     /// <summary>
     /// 確認時にOKと見なすボタンのテキストの色
     /// </summary>
     [SerializeField, Tooltip("確認時にOKと見なすボタンのテキストの色")]
     private Color confirmButtonTextColor = Color.green;
+
+    [Space(15)]
 
     /// <summary>
     /// 確認時にOKではないと見なすボタンのテキストの色
@@ -97,12 +111,14 @@ public class DialogElementSettings
     /// <summary>
     /// テキストのフォントサイズをスクリプタブルオブジェクト内で設定するかどうか
     /// </summary>
-    [Space(2)]
+    [Space(15)]
 
-    [Header("フォントサイズ設定（オプション）")]
+    [Header("▼フォントサイズ設定（オプション）")]
 
     [SerializeField, Tooltip("テキストのフォントサイズをスクリプタブルオブジェクト内で設定するかどうか")]
     private bool useCustomFontSize = false;
+
+    [Space(15)]
 
     /// <summary>
     /// 実際に出す文章のテキストのフォントサイズ
@@ -110,11 +126,15 @@ public class DialogElementSettings
     [SerializeField, Tooltip("実際に出す文章のテキストのフォントサイズ")]
     private int messageFontSize = 100;
 
+    [Space(15)]
+
     /// <summary>
     /// 確認時にOKと見なすボタンのテキストのフォントサイズ
     /// </summary>
     [SerializeField, Tooltip("確認時にOKと見なすボタンのテキストのフォントサイズ")]
     private int confirmFontSize = 100;
+
+    [Space(15)]
 
     /// <summary>
     /// 確認時にOKではないと見なすボタンのテキストのフォントサイズ

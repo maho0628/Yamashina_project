@@ -2,36 +2,85 @@ using DG.Tweening;
 using UnityEngine;
 
 /// <summary>
-/// 判定の見た目に関するクラス
+/// 判定の見た目のクラス
 /// </summary>
 [System.Serializable]
 public class JudgementVisualConfig
 {
-    #region フィールド
-    [SerializeField, Header("画面に表示される判定名")]
+    #region 判定表示設定の内部情報処理変数
+
+    /// <summary>
+    /// 画面に表示される判定名
+    /// </summary>
+    [Header("▼判定表示設定")]
+    [SerializeField, Tooltip("画面に表示される判定名")]
     private string displayName = "PERFECT";
 
-    [SerializeField, Header("表示カラー")]
+    [Space(15)]
+
+    /// <summary>
+    /// 表示カラー
+    /// </summary>
+    [SerializeField, Tooltip("表示カラー")]
     private Color displayColor = Color.white;
 
-    [SerializeField, Header("表示アイコン（任意）")]
-    private Sprite displayIcon;
+    [Space(15)]
 
-    [SerializeField, Header("表示時間（秒）")]
+    /// <summary>
+    /// 表示時間（秒）
+    /// </summary>
+    [SerializeField, Tooltip("表示時間（秒）")]
     private float showDuration = 0.5f;
 
-    [SerializeField, Header("フェードアウト時間（秒）")]
+    [Space(15)]
+
+    /// <summary>
+    /// フェードアウト時間（秒）
+    /// </summary>
+    [SerializeField, Tooltip("フェードアウト時間（秒）")]
     private float fadeOutDuration = 0.3f;
+
+    [Space(15)]
+
     #endregion
-    [Header("スケーリング")]
-    [SerializeField] private float scaleInTime = 0.2f;
-    [SerializeField] private Ease scaleEase = Ease.OutBack;
-
-    [SerializeField, Header("各判定ごとのエフェクト")] 
-    private GameObject hitEffect;
 
 
-    #region 読み取り専用プロパティ
+    #region スケーリングの内部情報処理変数
+
+    /// <summary>
+    /// スケールイン時間
+    /// </summary>
+    [Header("▼スケーリング")]
+    [SerializeField, Tooltip("スケールイン時間")]
+    private float scaleInTime = 0.2f;
+
+    [Space(15)]
+
+    /// <summary>
+    /// イージングタイプ
+    /// </summary>
+    [SerializeField, Tooltip("イージングタイプ")]
+    private Ease scaleEase = Ease.OutBack;
+
+    [Space(15)]
+
+    #endregion
+
+
+    #region コンボ演出設定の内部情報処理変数
+
+    /// <summary>
+    /// コンボ演出用の視覚効果設定
+    /// </summary>
+    [Header("▼コンボ演出設定")]
+    [SerializeField, Tooltip("コンボ演出用の視覚効果設定")]
+    private ComboEffectConfig comboEffectConfig = new ComboEffectConfig();
+
+    #endregion
+
+
+    #region 読み取り専用プロパティ(判定表示設定の内部情報処理変数)
+
     /// <summary>
     /// プレイ中に表示される判定の表示名の読み取り専用
     /// </summary>
@@ -42,10 +91,6 @@ public class JudgementVisualConfig
     /// </summary>
     internal Color DisplayColor => displayColor;
 
-    /// <summary>
-    /// 判定表示用アイコンの読み取り専用
-    /// </summary>
-    internal Sprite DisplayIcon => displayIcon;
 
     /// <summary>
     /// 表示時間の読み取り専用
@@ -56,18 +101,40 @@ public class JudgementVisualConfig
     /// フェードアウト時間の読み取り専用
     /// </summary>
     internal float FadeOutDuration => fadeOutDuration;
+
     #endregion
 
-    internal float SetScaleInTime => scaleInTime;
+
+    #region 読み取り専用プロパティ(スケーリングの内部情報処理変数)
+
+    /// <summary>
+    /// スケールイン時間の読み取り専用
+    /// </summary>
+    internal float ScaleInTime => scaleInTime;
+
+    /// <summary>
+    /// イージングタイプの読み取り専用
+    /// </summary>
     internal Ease SetScaleEase => scaleEase;
-   
-    internal GameObject HitEffect => hitEffect; 
+
+    #endregion
+
+    #region 読み取り専用プロパティ( コンボ演出設定の内部情報処理変数)
+
+    /// <summary>
+    /// コンボ演出用の設定の読み取り専用
+    /// </summary>
+    internal ComboEffectConfig ComboEffect => comboEffectConfig;
+
+    #endregion
+
+
     #region コンストラクタ
+
     /// <summary>
     /// デフォルトコンストラクタ
     /// </summary>
-    public JudgementVisualConfig() { }
+    internal JudgementVisualConfig() { }
 
- 
     #endregion
 }

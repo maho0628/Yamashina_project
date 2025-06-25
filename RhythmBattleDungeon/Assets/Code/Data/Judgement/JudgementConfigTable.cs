@@ -10,84 +10,25 @@ using UnityEngine;
 public class JudgementConfigTable : ScriptableObject
 {
     #region 判定のリストやディクショナリの内部管理用変数
+
     /// <summary>
-    /// ゲーム内で使用する判定関連の一覧のリスト
+    /// 判定一つ分の設定情報のデータをまとめたリスト
     /// </summary>
-    [SerializeField, Header("ゲーム内で使用する判定関連の一覧")]
+    [Header("▼ゲーム内で使用する判定関連の一覧")]
+    [SerializeField, Tooltip(" 判定一つ分の設定情報のデータをまとめたリスト")]
     private List<JudgementConfig> judgementLists = new List<JudgementConfig>();
+
 
     /// <summary>
     /// ゲーム内で使用する判定関連のディクショナリ
     /// </summary>
     private Dictionary<string, JudgementConfig> judgementConfigDict;
+
     #endregion
 
-    #region 読み取り専用プロパティ
-    /// <summary>
-    /// 判定関連のリストの読み取り専用
-    /// </summary>
-    internal List<JudgementConfig> JudgementLists => judgementLists;
-    #endregion
-
-    #region ゲッターメソッド
-    /// <summary>
-    /// 判定関連のリスト情報をすべて返す 
-    /// </summary>
-    /// <returns>JudgementConfigのList</returns>
-    internal List<JudgementConfig> GetAllJudgementConfig()
-    {
-        return judgementLists;
-    }
-
-    /// <summary>
-    /// リスト内のJudgementConfigをIDで探して返す
-    /// </summary>
-    /// <param name="judgementName">判定名</param>
-    /// <returns>JudgementConfig（見つからない場合はnull）</returns>
-    internal JudgementConfig GetJudgementConfig(string judgementName)
-    {
-        if (judgementConfigDict == null)
-        {
-            InitializeDictionary();
-        }
-
-        judgementConfigDict.TryGetValue(judgementName, out var config);
-        return config;
-    }
-
-    /// <summary>
-    /// 指定した判定名が存在するかチェック
-    /// </summary>
-    /// <param name="judgementName">判定名</param>
-    /// <returns>存在する場合true</returns>
-    internal bool HasJudgementConfig(string judgementName)
-    {
-        if (judgementConfigDict == null)
-        {
-            InitializeDictionary();
-        }
-
-        return judgementConfigDict.ContainsKey(judgementName);
-    }
-
-    /// <summary>
-    /// 登録されている判定名の一覧を取得
-    /// </summary>
-    /// <returns>判定名の配列</returns>
-    internal string[] GetAllJudgementNames()
-    {
-        if (judgementConfigDict == null)
-        {
-            InitializeDictionary();
-        }
-
-        var names = new string[judgementConfigDict.Count];
-        judgementConfigDict.Keys.CopyTo(names, 0);
-        return names;
-    }
-    #endregion
 
     #region Unity イベント
+
     private void OnEnable()
     {
         // ScriptableObject 再読み込み時にも対応
@@ -102,9 +43,12 @@ public class JudgementConfigTable : ScriptableObject
             InitializeDictionary();
         }
     }
+
     #endregion
 
+
     #region プライベートメソッド
+
     /// <summary>
     /// ディクショナリの初期化
     /// </summary>
@@ -157,7 +101,9 @@ public class JudgementConfigTable : ScriptableObject
 
         DebugManager.Log($"[JudgementConfigTable] 初期化完了。登録数: {judgementConfigDict.Count}");
     }
+
     #endregion
+
 }
 
 

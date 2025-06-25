@@ -6,6 +6,9 @@ using TMPro;
 
 public class UIManager : SingletonMonoBehaviour<UIManager>
 {
+    /// <summary>
+    /// Re
+    /// </summary>
     [Header("プレハブ設定")]
     [SerializeField] private GameObject readyGoPanelPrefab; // プレハブ参照
     [SerializeField] private StartSignalConfig startSignalConfig;
@@ -21,6 +24,7 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
 
     public async UniTask ShowReadyGoAsync()
     {
+        float intervalBetweenReadyGo =startSignalConfig.IntervalBetweenReadyGo; 
         if (targetCanvas == null)
             targetCanvas = GameObject.Find("ReadyGoPanelCanvas").GetComponent<Canvas>();
 
@@ -31,16 +35,16 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
         readyGoPanelInstance.SetActive(true);
 
         // Ready演出
-        await ShowTextWithConfig(startSignalConfig.readyConfig);
+        await ShowTextWithConfig(startSignalConfig.ReadyConfig);
 
         // Ready→Go間の待機時間
-        if (startSignalConfig.intervalBetweenReadyGo > 0)
+        if (intervalBetweenReadyGo > 0)
         {
-            await UniTask.Delay(System.TimeSpan.FromSeconds(startSignalConfig.intervalBetweenReadyGo));
+            await UniTask.Delay(System.TimeSpan.FromSeconds(intervalBetweenReadyGo));
         }
 
         // Go演出
-        await ShowTextWithConfig(startSignalConfig.goConfig);
+        await ShowTextWithConfig(startSignalConfig.GoConfig);
 
         readyGoPanelInstance.SetActive(false);
     }
@@ -71,17 +75,28 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
     {
         if (readyGoText == null) return;
 
+        var basicSettings =config.BasicSettings;
         // テキスト設定
-        readyGoText.text = config.AnimationText;
-        readyGoText.color = config.textColor;
-        readyGoText.fontSize = config.fontSize;
+        readyGoText.text = basicSettings.AnimationText;
+        readyGoText.fontSize = basicSettings.FontSize;
+        readyGoText.font = basicSettings.FontAsset;
+        readyGoText.fontStyle = basicSettings.AnimationFontStyles;
+        readyGoText.alignment = config.LayoutSettings.Alignment;
+        readyGoText.textWrappingMode = config.LayoutSettings.AnimationTextWrappingModes;
+        Color animationColor = basicSettings.TextColor;
 
-        // 初期状態設定
-        readyGoText.color = new Color(config.textColor.r, config.textColor.g, config.textColor.b, 0f);
-        readyGoText.transform.localScale = Vector3.one * config.initialScale;
+        animationColor.a = 0.0f;
+
+        readyGoText.color = animationColor;
+        var rect = readyGoText.GetComponent<RectTransform>();
+
+        rect.anchorMin = config.LayoutSettings.AnchorMin;
+        rect.anchorMax = config.LayoutSettings.AnchorMax;
+       
+        readyGoText.transform.localScale = Vector3.one * config.ScaleSettings.InitialScale;
 
         // 演出タイプによって分岐
-        switch (config.animationType)
+        switch (basicSettings.AnimationType)
         {
             case AnimationType.Simple:
                 await PlaySimpleAnimation(config);
@@ -100,25 +115,28 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
 
     private async UniTask PlaySimpleAnimation(TextAnimationConfig config)
     {
+        TextTimingSettings timingSettings = config.TimingSettings;  
         var sequence = DOTween.Sequence();
 
-        sequence.Append(readyGoText.DOFade(1f, config.fadeInDuration));
-        sequence.AppendInterval(config.displayDuration);
-        sequence.Append(readyGoText.DOFade(0f, config.fadeOutDuration));
+        sequence.Append(readyGoText.DOFade(timingSettings.FadeInAlpha, timingSettings.FadeInDuration));
+        sequence.AppendInterval(timingSettings.DisplayDuration);
+        sequence.Append(readyGoText.DOFade(timingSettings.FadeOutAlpha, timingSettings.FadeOutDuration));
 
         await sequence.AsyncWaitForCompletion();
     }
 
     private async UniTask PlayPunchAnimation(TextAnimationConfig config)
     {
+        TextTimingSettings timingSettings = config.TimingSettings;
+        TextPunchSettings punchSettings = config.PunchSettings; 
         var sequence = DOTween.Sequence();
 
-        sequence.Append(readyGoText.DOFade(1f, config.fadeInDuration))
-               .Join(readyGoText.transform.DOPunchScale(config.punchPower, config.punchDuration, config.punchVibrato)
-                     .SetEase(config.easeType));
+        sequence.Append(readyGoText.DOFade(timingSettings.FadeInAlpha, timingSettings.FadeInDuration))
+               .Join(readyGoText.transform.DOPunchScale(punchSettings.PunchPower, punchSettings.PunchDuration, punchSettings.PunchVibrato)
+                     .SetEase(punchSettings.EaseType));
 
-        sequence.AppendInterval(config.displayDuration);
-        sequence.Append(readyGoText.DOFade(0f, config.fadeOutDuration));
+        sequence.AppendInterval(timingSettings.DisplayDuration);
+        sequence.Append(readyGoText.DOFade(timingSettings.FadeOutAlpha, timingSettings.FadeOutDuration));
 
         await sequence.AsyncWaitForCompletion();
     }
@@ -126,26 +144,30 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
     private async UniTask PlayBounceAnimation(TextAnimationConfig config)
     {
         var sequence = DOTween.Sequence();
-
-        sequence.Append(readyGoText.DOFade(1f, config.fadeInDuration))
-               .Join(readyGoText.transform.DOScale(config.targetScale, config.scaleDuration)
-                     .SetEase(config.easeType));
-
-        sequence.AppendInterval(config.displayDuration);
-        sequence.Append(readyGoText.DOFade(0f, config.fadeOutDuration));
+        TextTimingSettings timingSettings =config.TimingSettings;
+        TextPunchSettings punchSettings =config.PunchSettings;
+        TextScaleSettings scaleSettings = config.ScaleSettings; 
+      
+        sequence.Append(readyGoText.DOFade(timingSettings.FadeInAlpha, timingSettings.FadeInDuration))
+              .Join(readyGoText.transform.DOScale(scaleSettings.TargetScale, scaleSettings.ScaleDuration)
+                    .SetEase(punchSettings.EaseType));
+        sequence.AppendInterval(timingSettings.DisplayDuration);
+        sequence.Append(readyGoText.DOFade(timingSettings.FadeOutAlpha, timingSettings.FadeOutDuration));
 
         await sequence.AsyncWaitForCompletion();
     }
 
     private async UniTask PlayCustomAnimation(TextAnimationConfig config)
     {
-        if (config.customAnimationClip != null)
+
+        AnimationClip animationClip =config.CustomSettings.CustomAnimationClip;
+        if (animationClip != null)
         {
             var animator = readyGoText.GetComponent<Animator>();
             if (animator != null)
             {
-                animator.Play(config.customAnimationClip.name);
-                await UniTask.Delay(System.TimeSpan.FromSeconds(config.customAnimationClip.length));
+                animator.Play(animationClip.name);
+                await UniTask.Delay(System.TimeSpan.FromSeconds(animationClip.length));
             }
         }
         else

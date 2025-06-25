@@ -19,9 +19,9 @@ public class BossAreaTrigger : MonoBehaviour
     {
         //Debug.Log(IsPlayerAtTarget());
         // プレイヤーが指定の位置に到達したかをチェック
-        if (GameMgr.GetState() == GameState.Main && IsPlayerAtTarget())
+        if (GameManager.GetState() == GameState.Main && IsPlayerAtTarget())
         {
-            GameMgr.ChangeState(GameState.BeforeBoss);
+            GameManager.ChangeState(GameState.BeforeBoss);
         }
     }
 
@@ -39,7 +39,7 @@ public class BossAreaTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            GameMgr.ChangeState(GameState.BeforeBoss); // ボス戦直前に状態変更
+            GameManager.ChangeState(GameState.BeforeBoss); // ボス戦直前に状態変更
         }
     }
 }

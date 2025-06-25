@@ -19,7 +19,7 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
 
     private IEnumerator WaitAndSubscribe()
     {
-        DebugManager.LogError("[ScoreManager] WaitAndSubscribe START!!!");
+        DebugManager.Log("[ScoreManager] WaitAndSubscribe START!!!");
 
         int waitCount = 0;
         while (NoteManager.Instance == null || !NoteManager.Instance.IsInitialized)
@@ -32,20 +32,20 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
             yield return null;
         }
 
-        DebugManager.LogError("[ScoreManager] NoteManager ready! Subscribing to events...");
+        DebugManager.Log("[ScoreManager] NoteManager ready! Subscribing to events...");
 
         DebugManager.Log($"[ScoreManager] NotesSpawned status: {NoteManager.Instance.NotesSpawned}");
 
         if (NoteManager.Instance.NotesSpawned)
         {
-            DebugManager.LogError("[ScoreManager] Calling CalculateMaxScore manually!!!");
+            DebugManager.Log("[ScoreManager] Calling CalculateMaxScore manually!!!");
         }
         else
         {
-            DebugManager.LogError("[ScoreManager] NotesSpawned is FALSE, waiting for event...");
+            DebugManager.Log("[ScoreManager] NotesSpawned is FALSE, waiting for event...");
         }
 
-        DebugManager.LogError("[ScoreManager] WaitAndSubscribe COMPLETE!!!");
+        DebugManager.Log("[ScoreManager] WaitAndSubscribe COMPLETE!!!");
     }
     public void Initialize()
     {

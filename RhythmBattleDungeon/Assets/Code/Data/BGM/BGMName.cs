@@ -1,4 +1,3 @@
-using UnityEngine;
 
 /// <summary>
 /// BGM‚Ì–¼‘O‚ÌEnum

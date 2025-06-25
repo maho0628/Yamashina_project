@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// 単一のBGMに関する設定データ
+/// 単一のBGMの設定データ
 /// </summary>
 [System.Serializable]
 public class BGMConfig
@@ -14,29 +14,23 @@ public class BGMConfig
     [SerializeField, Tooltip("BGMのID")]
     private BGMName bgmId;
 
+    [Space(15)]
+
     /// <summary>
     /// 使用するオーディオクリップ
     /// </summary>
     [SerializeField, Tooltip("使用するオーディオクリップ")]
     private AudioClip bgmAudioClip;
 
-    /// <summary>
-    /// BPM（Beats Per Minute)
-    /// </summary>
-    [SerializeField, Tooltip("BPM（Beats Per Minute）")]
-    private float bgmBpm;
-
-    /// <summary>
-    /// ジャンル名
-    /// </summary>
-    [SerializeField, Tooltip("ジャンル名")]
-    private string bgmGenre;
+    [Space(15)]
 
     /// <summary>
     /// 表示用の曲名
     /// </summary>
     [SerializeField, Tooltip("表示用の曲名")]
     private string bgmDisplayName;
+
+    [Space(15)]
 
     /// <summary>
     /// ジャケット画像
@@ -58,16 +52,6 @@ public class BGMConfig
     /// 使用するオーディオクリップの読み取り専用
     /// </summary>
     internal AudioClip BgmAudioClip => bgmAudioClip;
-
-    /// <summary>
-    /// BPM（Beats Per Minute）の読み取り専用
-    /// </summary>
-    internal float BgmBpm => bgmBpm;
-
-    /// <summary>
-    /// ジャンル名の読み取り専用
-    /// </summary>
-    internal string BgmGenre => bgmGenre;
 
     /// <summary>
     /// 表示用の曲名の読み取り専用

@@ -31,7 +31,7 @@ public class EnemyMovement : EnemyAttack
     private bool movingToPointB = false; // 進行方向
     private Transform player; // プレイヤーの位置
 
-    public GameMgr gamestate;
+    public GameManager gamestate;
 
     private float timer;
     [SerializeField] float waitTime; //攻撃後の後隙
@@ -49,7 +49,7 @@ public class EnemyMovement : EnemyAttack
     {
         // プレイヤーとの距離を計算
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        switch (GameMgr.GetState())
+        switch (GameManager.GetState())
         {
             case GameState.Main:
                 switch (enemystate)

@@ -1,20 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Rendering.STP;
 
 /// <summary>
 /// シーンに対応するBGM設定の一覧を保持する ScriptableObject
 /// </summary>
+[CreateAssetMenu(fileName = "SceneBGMConfig", menuName = "GameData/SceneBGMConfigTable")]
 public class SceneBGMConfigTable : ScriptableObject
 {
     #region シーンBGMのリストやディクショナリの内部管理用変数
 
     /// <summary>
-    /// シーンに対応するBGMのリスト
+    /// シーンに対応するBGM設定をまとめたリスト
     /// </summary>
-    [SerializeField, Header("シーンに対応するBGMのリスト")]
+    [Header("▼シーンに対応するBGMの一覧")]
+    [SerializeField, Tooltip(" シーンに対応するBGM設定をまとめたリスト")]
     private List<SceneBGMConfig> sceneBgmConfigLists = new List<SceneBGMConfig>();
-
 
     /// <summary>
     /// シーンに対応するBGMのリストのディクショナリ
@@ -24,26 +24,7 @@ public class SceneBGMConfigTable : ScriptableObject
     #endregion
 
 
-    #region 読み取り専用プロパティ(シーンBGMのリストやディクショナリの内部管理用変数)
-
-    /// <summary>
-    /// シーンに対応するBGMのリストの読み取り専用
-    /// </summary>
-    internal List<SceneBGMConfig> SceneBgmConfigLists => sceneBgmConfigLists;
-
-    #endregion
-
-
     #region ゲッターメソッド
-
-    /// <summary>
-    /// シーンに対応するBGMのリスト情報をすべて返す
-    /// </summary>
-    /// <returns>SceneBGMConfigのList</returns>
-    internal List<SceneBGMConfig> GetAllSceneBGMConfig()
-    {
-        return sceneBgmConfigLists;
-    }
 
     /// <summary>
     /// sceneNameに対応したBGMIDを返す
@@ -63,14 +44,20 @@ public class SceneBGMConfigTable : ScriptableObject
 
     #endregion
 
+
+    #region Unity イベント
+
     private void OnEnable()
     {
         // ScriptableObject 再読み込み時にも対応
         InitializeDictionary();
     }
 
+    #endregion
+
 
     #region プライベートメソッド
+
     /// <summary>
     /// ディクショナリの初期化
     /// </summary>
@@ -97,6 +84,7 @@ public class SceneBGMConfigTable : ScriptableObject
             }
         }
     }
+
     #endregion
 
 

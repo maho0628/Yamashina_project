@@ -3,16 +3,17 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "GameData/Stage Config Table")]
 /// <summary>
-//ステージ設定に関するScriptableObject
+//ステージ設定のScriptableObject
 /// </summary>
 public class StageConfigTable : ScriptableObject
 {
-    #region リストやディクショナリ変数
+    #region リストやディクショナリの内部管理用変数
 
     /// <summary>
     /// ステージ音源のリスト
     /// </summary>
-    [SerializeField, Header("ステージ音源のリスト")]
+    [Header("▼ステージ設定の一覧")]
+    [SerializeField, Tooltip(" 各ステージの設定情報をまとめたリスト")]
     private List<StageConfig> stagesBgmLists;
 
     /// <summary>
@@ -23,24 +24,13 @@ public class StageConfigTable : ScriptableObject
     #endregion
 
 
-    #region 読み取り専用プロパティ
-
-    /// <summary>
-    /// ゲーム内で使用するSE設定のリストの読み取り専用
-    /// </summary>
-    internal List<StageConfig> StagesBgmList => stagesBgmLists;
-
-    #endregion
-
-
     #region ゲッターメソッド
-
 
     /// <summary>
     /// 指定されたステージIDに対応するStageConfigデータを取得
     /// </summary>
     /// <param name="id">ステージのID</param>
-    /// <returns>該当するStageConfigデータ、見つからない場合は null</returns>
+    /// <returns>該当するStageConfigデータ</returns>
 
     internal StageConfig GetStageConfig(string id)
     {

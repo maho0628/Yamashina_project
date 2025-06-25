@@ -53,7 +53,7 @@ public class newDropPart : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        switch (GameMgr.GetState())
+        switch (GameManager.GetState())
         {
             case GameState.Main:
 
@@ -153,7 +153,7 @@ public class newDropPart : MonoBehaviour
         //テキストボックスの表示
         //goTextBox.SetActive(true);
         //GameStateをAfterBossに切り替える
-        GameMgr.ChangeState(GameState.AfterBoss);
+        GameManager.ChangeState(GameState.AfterBoss);
         TextDisplay textDisplay = FindAnyObjectByType<TextDisplay>();
         textDisplay.TextArea.SetActive(true);
 

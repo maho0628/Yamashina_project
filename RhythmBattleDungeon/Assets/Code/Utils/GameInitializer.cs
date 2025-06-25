@@ -53,7 +53,7 @@ public class GameInitializer : SingletonMonoBehaviour<GameInitializer>
         DebugManager.Log("AudioManager ‰Šú‰»Š®—¹");
 
         StageManager.Instance.SetupStageTable(stageConfigTable);
-        stageConfigTable.GetAllStageConfigs().ForEach(config => { config.InitializeBGMTable(bgmConfigTable); });
+        stageConfigTable.GetAllStageConfigs().ForEach(config => { config.GetStageBGMTable(bgmConfigTable); });
         
         var sceneTransition = SceneTransitionManager.Instance;
         sceneTransition.SetFadePrefab(fadePrefab);
