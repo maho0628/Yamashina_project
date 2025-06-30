@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// アニメーションの基本設定のクラス
@@ -12,7 +13,7 @@ public class TextBasicSettings
     /// <summary>
     /// 表示するアニメーションテキスト
     /// </summary>
-    [SerializeField, Tooltip("演出で表示する文字列。例：\"Ready\", \"Start\", \"Game Over\"など")]
+    [SerializeField, Tooltip("演出で表示する文字列。\n例：\"Ready\", \"Start\", \"Game Over\"など")]
     private string animationText = "Ready";
 
     [Space(15)]
@@ -50,12 +51,20 @@ public class TextBasicSettings
     [Space(15)]
 
     /// <summary>
-    /// フォントスタイル（太字、斜体など）
+    /// フォントスタイル（Bold, Italicなど）
     /// </summary>
     [SerializeField, Tooltip("フォントのスタイル（Bold, Italicなど）を指定します")]
     private FontStyles animationFontStyles;
 
+    [Space(15)]
+
+    /// <summary>
+    /// 演出の背景画像
+    /// </summary>
+    [SerializeField, Tooltip("アニメーションテキストに使用する背景画像を指定します")]
+    private Sprite backGroundImage;
     #endregion
+
 
     #region 読み取り専用フィールド(アニメーションの基本設定の内部管理用変数)
 
@@ -101,5 +110,9 @@ public class TextBasicSettings
     /// </summary>
     internal FontStyles AnimationFontStyles => animationFontStyles;
 
+    /// <summary>
+    /// 演出の背景画像の読み取り専用
+    /// </summary>
+    internal Sprite BackGroundImage => backGroundImage;  
     #endregion
 }

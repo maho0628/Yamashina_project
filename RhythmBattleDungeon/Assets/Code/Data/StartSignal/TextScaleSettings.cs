@@ -11,7 +11,7 @@ public class TextScaleSettings
     /// <summary>
     /// アニメーション開始時のスケール。通常は 0〜1 の範囲で指定します。
     /// </summary>
-    [SerializeField, Tooltip("アニメーション開始時のスケール。通常は 0〜1 の範囲で指定します")]
+    [SerializeField, Tooltip("アニメーション開始時のスケール。\n通常は 0〜1 の範囲で指定します。")]
     private float initialScale = 0.5f;
 
     [Space(15)]
@@ -19,7 +19,7 @@ public class TextScaleSettings
     /// <summary>
     /// アニメーション終了時のスケール。通常は 1.0 が標準サイズです
     /// </summary>
-    [SerializeField, Tooltip("アニメーション終了時のスケール。通常は 1.0 が標準サイズです。")]
+    [SerializeField, Tooltip("アニメーション終了時のスケール。\n通常は 1.0 が標準サイズです。")]
     private float targetScale = 1.0f;
 
     [Space(15)]

@@ -51,7 +51,6 @@ public class UIObjectPool<T> : MonoBehaviour where T : MonoBehaviour
             uiEffectPoolAble.OnCreated(this);
         }
 
-        DebugManager.Log($"[Pool] Get called. Pool size: {pool.Count}");
     }
 
     public void Return(T item)

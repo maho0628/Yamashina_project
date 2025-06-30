@@ -85,7 +85,7 @@ public class TextAnimationConfig : ScriptableObject
     /// <summary>
     /// アニメーション時間の適正さに関するチェック結果です。自動的に更新されます。
     /// </summary>
-    [SerializeField, Tooltip("アニメーション時間の適正さに関するチェック結果です。自動的に更新されます。")]
+    [SerializeField, Tooltip("アニメーション時間の適正さに関するチェック結果です。\n自動的に更新されます。")]
     private string durationCheck;
 
     #endregion
@@ -94,66 +94,45 @@ public class TextAnimationConfig : ScriptableObject
     #region 読み取り専用プロパティ(テキストアニメーションの内部管理用変数)
 
     /// <summary>
-    /// アニメーションの基本設定のデータの読み取り専用
-    /// </summary>
-    internal TextBasicSettings BasicSettings
-    {
-        get { return basicSettings; }
-        set { basicSettings = value; }
-    }
-    /// <summary>
-    /// アニメーションのタイミング設定のデータの読み取り専用
-    /// </summary>
-    internal TextTimingSettings TimingSettings
-    {
-        get { return timingSettings; }
-        set { timingSettings = value; }
-    }
-
-    /// <summary>
-    /// アニメーションのスケール設定のデータの読み取り専用
-    /// </summary>
-    internal TextScaleSettings ScaleSettings
-    {
-        get { return scaleSettings; }
-        set { scaleSettings = value; }
-    }
-
-    /// <summary>
-    /// アニメーションのパンチアニメ設定のデータの読み取り専用
-    /// </summary>
-    internal TextPunchSettings PunchSettings
-    {
-        get { return punchSettings; }
-        set { punchSettings = value; }
-    }
-
-    /// <summary>
-    /// カスタムアニメーション設定のデータの読み取り専用
-    /// </summary>
-    internal TextCustomSettings CustomSettings
-    {
-        get { return customSettings; }
-        set { customSettings = value; }
-    }
-
-    /// <summary>
-    /// レイアウト＆Canvas設定のデータの読み取り専用
-    /// </summary>
-    internal TextLayoutSettings LayoutSettings
-    {
-        get { return layoutSettings; }
-        set { layoutSettings = value; }
-    }
-
-    /// <summary>
     /// タイミング設定に基づいた合計アニメーション時間の読み取り専用
     /// </summary>
     internal float TotalDuration => timingSettings.FadeInDuration + timingSettings.DisplayDuration + timingSettings.FadeOutDuration;
 
+    /// <summary>
+    /// この設定オブジェクトからすべてのアニメーション関連設定をまとめた構造体を取得します。
+    /// </summary>
+    internal TextAnimationParams Params => new TextAnimationParams(this);
+
 
     #endregion
 
+    /// <summary>
+    /// TextAnimationConfig の各設定項目をまとめて取得するための構造体。
+    /// 読み取り専用で、設定値への簡潔なアクセスを提供する。
+    /// </summary>
+    internal readonly struct TextAnimationParams
+    {
+        internal TextTimingSettings Timing { get; }
+        internal TextPunchSettings Punch { get; }
+        internal TextScaleSettings Scale { get; }
+        internal TextBasicSettings Basic { get; }
+        internal TextCustomSettings Custom { get; }
+        internal TextLayoutSettings Layout { get; }
+
+        /// <summary>
+        /// 指定されたアニメーション設定から各カテゴリの設定値を抽出して初期化します。
+        /// </summary>
+        /// <param name="config">元となるテキストアニメーション設定</param>
+        internal TextAnimationParams(TextAnimationConfig config)
+        {
+            Timing = config.timingSettings;
+            Punch = config.punchSettings;
+            Scale = config.scaleSettings;
+            Basic = config.basicSettings;
+            Custom = config.customSettings;
+            Layout = config.layoutSettings;
+        }
+    }
 
     /// <summary>
     /// 外部で呼び出すValidate関数

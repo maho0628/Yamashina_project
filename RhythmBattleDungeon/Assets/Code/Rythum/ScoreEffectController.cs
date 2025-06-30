@@ -5,9 +5,14 @@ using UnityEngine.UI;
 
 public class ScoreEffectController : MonoBehaviour, IUIEffectPoolable<ScoreEffectController>
 {
+    [Header("UI参照")]
     [SerializeField] private TextMeshProUGUI scoreText;
+
+    [Header("初期化用リセット設定")]
+    [SerializeField] private ScoreEffectConfig resetConfig;
+    
     private UIObjectPool<ScoreEffectController> pool;
-    private Color scoreImageColor;
+
 
     private Sequence activeSequence;
 
@@ -16,11 +21,7 @@ public class ScoreEffectController : MonoBehaviour, IUIEffectPoolable<ScoreEffec
 
         this.pool = pool;
     }
-    private void Start()
-    {
-        scoreImageColor = scoreText.transform.parent.gameObject.GetComponent<Image>().color;
-
-    }
+ 
 
     public void Play( JudgementConfig config)
     {
@@ -34,21 +35,22 @@ public class ScoreEffectController : MonoBehaviour, IUIEffectPoolable<ScoreEffec
             activeSequence.Kill();
             activeSequence = null;
         }
-        scoreImageColor.a = 1.0f;
+        var visual = config.Visual;
+        var scoreCfg = visual.ScoreEffect;
 
-        scoreText.text = $"+{config.Logic.SetScoreValue}";
-        Color displayColor = config.Visual.DisplayColor;
-        displayColor.a = 1f; 
-        scoreText.color = displayColor;
-        scoreText.alpha = 1f; 
 
-        scoreText.transform.localScale = Vector3.zero;
+        scoreText.text = string.Format(scoreCfg.ScoreTextFormat, config.Logic.SetScoreValue);
+        scoreText.color = visual.DisplayColor;
+        scoreText.alpha = scoreCfg.StartAlpha;
+
+
+        scoreText.transform.localScale = scoreCfg.StartScale;
         DebugManager.Log($"[ScoreEffect] Playing on instance: {GetInstanceID()}");
 
         activeSequence = DOTween.Sequence();
-        activeSequence.Append(scoreText.transform.DOScale(1f, config.Visual.ScaleInTime).SetEase(config.Visual.SetScaleEase))
-           .AppendInterval(config.Visual.ShowDuration)
-           .Append(scoreText.DOFade(0f, config.Visual.FadeOutDuration))
+        activeSequence.Append(scoreText.transform.DOScale(scoreCfg.EndScale, visual.ScaleInTime).SetEase(visual.SetScaleEase))
+           .AppendInterval(visual.ShowDuration)
+           .Append(scoreText.DOFade(scoreCfg.EndAlpha, visual.FadeOutDuration))
            .OnComplete(ReturnToPool);
     }
 
@@ -59,10 +61,11 @@ public class ScoreEffectController : MonoBehaviour, IUIEffectPoolable<ScoreEffec
         activeSequence?.Kill();
         activeSequence = null;
 
-        pool?.Return(this);
-        scoreText.text = null;
-        scoreText.alpha = 0f; 
-        scoreText.transform.localScale = Vector3.zero;
+        // リセット処理
+        scoreText.text = string.Empty;
+        scoreText.alpha = resetConfig.StartAlpha;
+        scoreText.transform.localScale = resetConfig.StartScale;
+        scoreText.gameObject.SetActive(false);
 
 
     }

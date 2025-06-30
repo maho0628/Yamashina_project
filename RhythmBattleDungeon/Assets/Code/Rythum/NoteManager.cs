@@ -174,16 +174,19 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
     /// <returns>最も近いノーツ。該当なしの場合は null を返す。</returns>
     internal Note GetNearestNoteByAction(string actionName, float currentTime, float maxJudgementTime)
     {
+        // アクション名からレーンインデックスを取得
         int laneIndex = GetLaneIndexFromAction(actionName);
         if (laneIndex < 0) return null;
 
         Note nearest = null;
         float closest = maxJudgementTime;
 
+        // アクティブなノーツの中から対象レーンの未ヒットノーツを探す
         foreach (var note in activeNotes)
         {
             if (note.IsHit || note.LaneNumber != laneIndex) continue;
 
+            // 現在時刻との時間差を計算し、最も近いノーツを記録
             float diff = Mathf.Abs(note.SpawnTime - currentTime);
             if (diff < closest)
             {
@@ -194,6 +197,9 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
         return nearest;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     internal void ResetForNewScene()
     {
         notesSpawned = false;

@@ -11,10 +11,10 @@ public class TextLayoutSettings
     #region テキストのレイアウト設定の内部管理用変数
 
     /// <summary>
-    /// テキストの整列位置（左揃え、中央揃え、右揃えなど）
+    /// テキストの 文字揃え設定（左揃え、中央揃え、右揃えなど）
     /// </summary>
     [Header("テキストのレイアウト設定")]
-    [SerializeField, Tooltip("テキストの整列位置（左揃え、中央揃え、右揃えなど）")]
+    [SerializeField, Tooltip("テキストの 文字揃え設定（左揃え、中央揃え、右揃えなど）")]
     private TextAlignmentOptions alignment = TextAlignmentOptions.Center;
 
     [Space(15)]
@@ -22,10 +22,24 @@ public class TextLayoutSettings
     /// <summary>
     /// テキストの改行設定（アニメーション表示に使用）
     /// </summary>
-    [SerializeField, Tooltip("テキストの改行設定（アニメーション表示に使用）")]
-    private TextWrappingModes animationTextWrappingModes;
+    [SerializeField, Tooltip("テキストの改行設定。\nNoWrap: 一行表示、Normal: 幅に応じて改行、PreserveWhitespace: 空白・改行コードを保持")] private TextWrappingModes animationTextWrappingModes;
 
     [Space(15)]
+
+    /// <summary>
+    /// テキストの背景の幅
+    /// </summary>
+    [SerializeField, Tooltip("テキストを描画する際に使用する背景の幅")]
+
+    private float textBoxWidth;
+
+    [Space(15)]
+    /// <summary>
+    /// テキストの背景の高さ
+    /// </summary>
+    [SerializeField, Tooltip("テキストを描画する際に使用する背景の高さ")]
+
+    private float textBoxHeight;
 
     #endregion
 
@@ -52,19 +66,19 @@ public class TextLayoutSettings
 
     #region Canvas設定の内部管理用変数
 
-    /// <summary>
-    /// Canvas内での描画優先度（数値が高いほど手前に表示）
-    /// </summary>
-    [Header("【Canvas設定】")]
+/// <summary>
+/// Canvas内での描画優先度（数値が高いほど手前に表示）
+/// </summary>
+[Header("【Canvas設定】")]
     [SerializeField, Tooltip("Canvas内での描画優先度（数値が高いほど手前に表示）")]
     private int sortingOrder = 1000;
 
     [Space(15)]
 
     /// <summary>
-    /// Canvas Scaler で使用する基準解像度（デザイン基準となるサイズ）
+    /// Canvas Scaler で使用する画面比率（デザイン基準となるサイズ）
     /// </summary>
-    [SerializeField, Tooltip("Canvas Scaler で使用する基準解像度（デザイン基準となるサイズ）")]
+    [SerializeField, Tooltip("Canvas Scaler で使用する画面比率")]
     private Vector2 referenceResolution = new Vector2(1920, 1080);
 
     [Space(15)]
@@ -72,7 +86,7 @@ public class TextLayoutSettings
     /// <summary>
     /// Canvas Scalerのスケーリングモード（画面サイズに合わせて拡大縮小）
     /// </summary>
-    [SerializeField, Tooltip("Canvas Scalerのスケーリングモード（画面サイズに合わせて拡大縮小）")]
+    [SerializeField, Tooltip("Canvas Scalerのスケーリングモード\n（画面サイズに合わせて拡大縮小）")]
     private CanvasScaler.ScaleMode scaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
 
     [Space(15)]
@@ -99,7 +113,7 @@ public class TextLayoutSettings
 
 
     /// <summary>
-    /// テキストの整列位置（左揃え、中央揃え、右揃えなど）の読み取り専用
+    /// テキストの文字揃え設定（左揃え、中央揃え、右揃えなど）の読み取り専用
     /// </summary>
     internal TextAlignmentOptions Alignment => alignment;
 
@@ -107,6 +121,16 @@ public class TextLayoutSettings
     /// テキストの改行設定（アニメーション表示に使用）の読み取り専用
     /// </summary>
     internal TextWrappingModes AnimationTextWrappingModes => animationTextWrappingModes;
+
+    /// <summary>
+    /// テキストを描画する際に使用する背景の幅の読み取り専用
+    /// </summary>
+    internal float TextBoxWidth => textBoxWidth;
+
+    /// <summary>
+    /// テキストを描画する際に使用する背景の高さの読み取り専用
+    /// </summary>
+    internal float TextBoxHeight => textBoxHeight;
 
     #endregion
 
