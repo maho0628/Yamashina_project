@@ -75,9 +75,5 @@ private UIObjectPool<ComboEffectController> comboEffectPool;
         titleAnimator.SetTrigger("Intro");
     }
 
-    public void PlayResultInAnimation()
-    {
-        if (resultAnimator == null) return;
-        resultAnimator.SetTrigger("Idle");
-    }
+   
 }

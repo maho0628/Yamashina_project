@@ -25,7 +25,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: aa5f221c4b9f98d4bb1e47dde5039d62, type: 3}
   canUse: 1
   Health_Change: 0
-  Hunger_Change: 5
+  Hunger_Change: -16
   Thirst_Chage: 0
   Luck_Change: 0
   Discription:

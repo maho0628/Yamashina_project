@@ -1,6 +1,7 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+
 /// <summary>
 /// ステージの設定データ
 /// </summary>
@@ -13,6 +14,7 @@ public class StageConfig
     /// ステージID名
     /// </summary>
     [Header("▼ ステージ基本情報")]
+
     [SerializeField, Tooltip("譜面ID名")]
     private string stageId;
 
@@ -23,13 +25,6 @@ public class StageConfig
     /// </summary>
     [SerializeField, Tooltip("譜面BGM ID")]
     private BGMName stageBgmId;
-
-    [Space(15)]
-
-    /// <summary>
-    /// ステージ設定内のBGMのテーブル
-    /// </summary>
-    private BGMConfigTable bgmTable;
 
     [Space(15)]
 
@@ -53,6 +48,7 @@ public class StageConfig
     /// 判定設定（Perfect / Good / Miss など）
     /// </summary>
     [Header("▼ ステージ挙動・演出設定")]
+
     [SerializeField, Tooltip("判定設定（Perfect / Good / Miss など）")]
     private List<JudgementConfig> judgementConfigs;
 
@@ -62,8 +58,14 @@ public class StageConfig
     /// 楽曲終了後の遷移待機秒数
     /// </summary>
     [Header("▼ その他")]
+
     [SerializeField, Tooltip("楽曲終了後の遷移待機秒数")]
     private float delayBeforeResult = 2.0f;
+
+    /// <summary>
+    /// ステージ設定内のBGMのテーブル
+    /// </summary>
+    private BGMConfigTable bgmTable;
 
     #endregion
 

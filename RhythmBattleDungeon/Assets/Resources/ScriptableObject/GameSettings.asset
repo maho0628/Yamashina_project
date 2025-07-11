@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   maxSeCount: 3
-  initialBgmVolume: 0.5
+  initialBgmVolume: 0.182
   initialSeVolume: 1
   fadeSpeed: 1
+  retryDelayMilliseconds: 100

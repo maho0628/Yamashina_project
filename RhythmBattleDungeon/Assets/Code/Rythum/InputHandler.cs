@@ -97,6 +97,7 @@ public class InputHandler : MonoBehaviour
     /// <param name="actionName">レーンに対応する入力アクション名</param>
     private void TryHitNoteByAction(string actionName)
     {
+
         ///  現在の BGM 再生位置（秒）を取得
         float currentTime = AudioManager.Instance.GetCurrentBGMTime();
 
@@ -111,6 +112,8 @@ public class InputHandler : MonoBehaviour
 
         // 判定ランク（Perfect, Good など）を取得
         var judgement = JudgementManager.Instance.EvaluateTiming(diff);
+        AudioManager.Instance.PlaySEById(judgement.JudgementSE);
+
 
         //判定ランクがないなら処理しない
         if (judgement == null) return;
@@ -129,5 +132,6 @@ public class InputHandler : MonoBehaviour
         JudgementManager.Instance.ApplyJudgement(judgement, note.LaneNumber);
         AnimationManager.Instance.ShowScoreEffect(judgement);
         AnimationManager.Instance.ShowJudgeEffect(judgement);
+
     }
 }

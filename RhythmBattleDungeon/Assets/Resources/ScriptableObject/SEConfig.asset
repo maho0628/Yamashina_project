@@ -13,6 +13,21 @@ MonoBehaviour:
   m_Name: SEConfig
   m_EditorClassIdentifier: 
   seLists:
-  - seId: 
-    seAudioClip: {fileID: 0}
-    description: 
+  - seId: 0
+    seAudioClip: {fileID: 8300000, guid: 65b2373faed5f2d4088e12a78c189eb0, type: 3}
+    description: "\u30DF\u30B9"
+  - seId: 1
+    seAudioClip: {fileID: 8300000, guid: e510da88a12136145aa2cee3df49e08f, type: 3}
+    description: "\u30B0\u30EC\u30FC\u30C8"
+  - seId: 2
+    seAudioClip: {fileID: 8300000, guid: 63c0c35901476ac45b5dc83968123bc4, type: 3}
+    description: "\u30D1\u30FC\u30D5\u30A7\u30AF\u30C8"
+  - seId: 5
+    seAudioClip: {fileID: 8300000, guid: ea391d5b825b77d4a8acc043561fd123, type: 3}
+    description: "\u30EA\u30B6\u30EB\u30C8\u753B\u9762\u3078\u9077\u79FB"
+  - seId: 5
+    seAudioClip: {fileID: 8300000, guid: ea391d5b825b77d4a8acc043561fd123, type: 3}
+    description: "\u30EA\u30B6\u30EB\u30C8\u753B\u9762\u3078\u9077\u79FB"
+  - seId: 6
+    seAudioClip: {fileID: 8300000, guid: 751a86b382fc9c944bdc57b3aa5de619, type: 3}
+    description: "\u30AF\u30EA\u30C3\u30AFSE"

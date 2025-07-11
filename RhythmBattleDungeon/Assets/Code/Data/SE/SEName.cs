@@ -5,10 +5,13 @@
 internal enum SEName
 {
 
-    ACRhythm,
-    Beginning,
-    Falsehood,
-    Matrix
+    Miss,
+    Great,
+    Perfect,
+    Good,
+    MouseOver,
+    ToResult,
+    TitleClicked,
 
 }
 

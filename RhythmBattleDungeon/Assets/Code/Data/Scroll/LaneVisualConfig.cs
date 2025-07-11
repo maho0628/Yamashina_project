@@ -2,6 +2,7 @@ using UnityEngine;
 
 /// <summary>
 /// レーンの見た目を決めるスクリプタブルオブジェクト
+/// レーンサイズやレーンの色などを設定します
 /// </summary>
 [CreateAssetMenu(fileName = "LaneVisualConfig", menuName = "GameConfig/ノーツ/レーン見た目設定")]
 public class LaneVisualConfig : ScriptableObject
@@ -12,6 +13,7 @@ public class LaneVisualConfig : ScriptableObject
     /// 各レーンの横幅（px）
     /// </summary>
     [Header("▼レーンサイズ設定")]
+
     [SerializeField, Tooltip("各レーンの横幅（px）")]
     private float laneWidth = 100f;
 
@@ -29,6 +31,7 @@ public class LaneVisualConfig : ScriptableObject
     /// レーン数。初期設定は4
     /// </summary>
     [Header("▼レーン構成設定")]
+
     [SerializeField, Tooltip("レーン数。初期設定は4")]
     [Min(1)]
     private int laneCount = 4;
@@ -39,6 +42,7 @@ public class LaneVisualConfig : ScriptableObject
     ///レーンの背景画像プレハブ (Image付き)
     /// </summary>
     [Header("▼ レーン生成用プレハブ設定")]
+
     [SerializeField, Tooltip("レーンの背景画像プレハブ (Image付き)")]
     private GameObject laneImagePrefab;
 
@@ -48,6 +52,7 @@ public class LaneVisualConfig : ScriptableObject
     /// 各レーンに割り当てる色（インデックスで指定）
     /// </summary>
     [Header("▼レーンビジュアル設定")]
+
     [SerializeField, Tooltip("各レーンに割り当てる色（インデックスで指定）")]
     private Color[] laneColors;
 
@@ -113,17 +118,6 @@ public class LaneVisualConfig : ScriptableObject
     internal float GetStartX(float containerWidth)
     {
         return -containerWidth / 2f + laneWidth / 2f;
-    }
-
-    /// <summary>
-    /// laneContainerの幅から、指定レーン番号のX座標（中央基準）を計算して返す
-    /// </summary>
-    /// <param name="containerWidth">laneContainer の RectTransform の幅</param>
-    /// <param name="laneIndex">レーン番号（0始まり）</param>
-    /// <returns>指定レーンの中央X座標</returns>
-    internal float GetLaneX(float containerWidth, int laneIndex)
-    {
-        return GetStartX(containerWidth) + laneIndex * laneWidth;
     }
 
     #endregion

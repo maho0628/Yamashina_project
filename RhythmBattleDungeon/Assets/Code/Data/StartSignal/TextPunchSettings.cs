@@ -13,7 +13,7 @@ public class TextPunchSettings
     /// <summary>
     /// パンチ時に加える力のベクトル（X, Y, Z）。動きの大きさを調整します。
     /// </summary>
-    [SerializeField, Tooltip("パンチ時に加える力のベクトル（X, Y, Z）。動きの大きさを調整します。")]
+    [SerializeField, Tooltip("パンチ時に加える力のベクトル（X, Y, Z）。\n動きの大きさを調整します。")]
     private Vector3 punchPower = new Vector3(0.2f, 0.2f, 0f);
 
     [Space(15)]
@@ -37,7 +37,7 @@ public class TextPunchSettings
     /// <summary>
     /// アニメーションのイージングタイプ。動きの変化の仕方を決めます。
     /// </summary>
-    [SerializeField,Tooltip("アニメーションのイージングタイプ。動きの変化の仕方を決めます。")]
+    [SerializeField,Tooltip("アニメーションのイージングタイプ。\n動きの変化の仕方を決めます。")]
     private Ease easeType = Ease.OutBack;
 
     #endregion

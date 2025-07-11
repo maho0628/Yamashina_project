@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// アニメーションの種類のEnum
 /// </summary>
-internal enum AnimationType
+public enum AnimationType
 {
     Simple,     // シンプルなフェード
     Punch,      // パンチエフェクト

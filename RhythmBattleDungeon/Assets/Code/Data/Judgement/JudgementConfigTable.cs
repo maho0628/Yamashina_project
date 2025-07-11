@@ -15,6 +15,7 @@ public class JudgementConfigTable : ScriptableObject
     /// 判定一つ分の設定情報のデータをまとめたリスト
     /// </summary>
     [Header("▼ゲーム内で使用する判定関連の一覧")]
+
     [SerializeField, Tooltip(" 判定一つ分の設定情報のデータをまとめたリスト")]
     private List<JudgementConfig> judgementLists = new List<JudgementConfig>();
 
@@ -62,21 +63,27 @@ public class JudgementConfigTable : ScriptableObject
             return;
         }
 
+
         foreach (var judgement in judgementLists)
         {
+            //リスト内の判定情報がないなら
             if (judgement == null)
             {
+                //ワーニングを出して続行
                 DebugManager.LogWarning($"[JudgementConfigTable] nullの判定設定が含まれています: {name}");
                 continue;
             }
 
-            if (judgement.Logic == null)
+            //判定情報内のロジック設定を取得して、データが入ってこないなら
+            var logic = judgement.Logic;    
+            if (logic == null)
             {
+                //ワーニングを出して続行
                 DebugManager.LogWarning($"[JudgementConfigTable] LogicConfigがnullの判定設定があります: {name}");
                 continue;
             }
 
-            string judgementName = judgement.Logic.JudgementName;
+            string judgementName = logic.JudgementName;
 
             // 判定関連の一覧のリストのJudgementNameに文字列が入ってる＆ディクショナリにその文字列（キー）が含まれていないなら
             if (!string.IsNullOrEmpty(judgementName) && !judgementConfigDict.ContainsKey(judgementName))
@@ -87,13 +94,14 @@ public class JudgementConfigTable : ScriptableObject
             }
             else
             {
-                // 同じキーを登録しようとしているかJudgementNameが空白
+                // JudgementNameが空白なら
                 if (string.IsNullOrEmpty(judgementName))
                 {
                     DebugManager.LogWarning($"[JudgementConfigTable] JudgementNameが空または null です: {name}");
                 }
                 else
                 {
+                    //同じキーを登録しようとしている
                     DebugManager.LogWarning($"[JudgementConfigTable] 重複したJudgementName: {judgementName} in {name}");
                 }
             }

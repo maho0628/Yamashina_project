@@ -16,7 +16,8 @@ public class StageFlowController : MonoBehaviour
         {
 
             hasTransitioned = true;
-            Invoke("GoToResult", StageManager.Instance.GetCurrentStageConfig().DelayBeforeResult); // 2•b—]‰C‚ðŽæ‚Á‚Ä‚©‚ç‘JˆÚ
+            AudioManager.Instance.PlaySEById(SEName.ToResult);
+            Invoke("GoToResult", StageManager.Instance.GetCurrentStageConfig().DelayBeforeResult); // 
         }
     }
 

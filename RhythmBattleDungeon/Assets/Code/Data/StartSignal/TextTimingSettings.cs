@@ -19,7 +19,7 @@ public class TextTimingSettings
     /// <summary>
     /// フェードイン後の最終アルファ値（0 = 完全に透明, 1 = 完全に不透明）。
     /// </summary>
-    [SerializeField, Tooltip("フェードイン後の最終アルファ値（0 = 完全に透明, 1 = 完全に不透明）。")] 
+    [SerializeField, Tooltip("フェードイン後の最終アルファ値\n（0 = 完全に透明, 1 = 完全に不透明）。")]
     private float fadeInAlpha = 1f;
 
     [Space(15)]
@@ -43,8 +43,8 @@ public class TextTimingSettings
     /// <summary>
     /// フェードアウト後の最終アルファ値（0 = 完全に透明, 1 = 完全に不透明）。
     /// </summary>
-    [Tooltip("フェードアウト後の最終アルファ値（0 = 完全に透明, 1 = 完全に不透明）。")]
-    [SerializeField] private float fadeOutAlpha = 0f;
+    [SerializeField, Tooltip("フェードアウト後の最終アルファ値\n（0 = 完全に透明, 1 = 完全に不透明）。")]
+    private float fadeOutAlpha = 0f;
 
     #endregion
 
@@ -77,6 +77,5 @@ public class TextTimingSettings
     internal float FadeOutAlpha => fadeOutAlpha;
 
     #endregion
-
 
 }

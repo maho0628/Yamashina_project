@@ -16,9 +16,10 @@ MonoBehaviour:
     animationText: Ready
     textColor: {r: 1, g: 1, b: 1, a: 1}
     fontSize: 64
-    animationType: 0
+    animationType: 3
     fontAsset: {fileID: 11400000, guid: fd1f83cd21ef96a4dbe93ef7a075d219, type: 2}
     animationFontStyles: 1
+    backGroundImage: {fileID: 0}
   timingSettings:
     fadeInDuration: 0.3
     fadeInAlpha: 1
@@ -35,10 +36,16 @@ MonoBehaviour:
     punchVibrato: 3
     easeType: 27
   customSettings:
-    customAnimationClip: {fileID: 0}
+    baseAnimatorController: {fileID: 22100000, guid: 2437bfbaa0af01345a0b7c42990bc175, type: 2}
+    overridePairs:
+    - originalClip: {fileID: 0}
+      overrideClip: {fileID: 0}
+      targetStateName: 
   layoutSettings:
     alignment: 514
     animationTextWrappingModes: 0
+    textBoxWidth: 0
+    textBoxHeight: 0
     anchorMin: {x: 0.5, y: 0.5}
     anchorMax: {x: 0.5, y: 0.5}
     sortingOrder: 1000

@@ -7,19 +7,17 @@ using UnityEngine.UI;
 
 public class JudgeEffectController : MonoBehaviour, IUIEffectPoolable<JudgeEffectController>
 {
-    [SerializeField] private TextMeshProUGUI judgeText;
+    [Header("判定テキスト")]
+    [SerializeField, Tooltip("判定表示用のTextMeshProUGUI")]
+    private TextMeshProUGUI judgeText;
+
+    [Header("初期化用リセットコンフィグ")]
+    [SerializeField, Tooltip("リセット時に使うエフェクトの初期設定")]
+    private JudgementEffectConfig resetConfig;
+
     private UIObjectPool<JudgeEffectController> pool;
 
-    private Color judgeEffectColor;
-
     private Sequence activeSequence;
-
-    private void Start()
-    {
-        judgeEffectColor = judgeText.transform.parent.gameObject.GetComponent<Image>().color;
-
-
-    }
     public void OnCreated(UIObjectPool<JudgeEffectController> pool)
     {
         this.pool = pool;
@@ -37,19 +35,22 @@ public class JudgeEffectController : MonoBehaviour, IUIEffectPoolable<JudgeEffec
             activeSequence.Kill();
             activeSequence = null;
         }
-        judgeEffectColor.a = 1.0f;
-        judgeText.text = config.Visual.DisplayJudgementName;
-        Color displayColor = config.Visual.DisplayColor;
-        displayColor.a = 1f;
-        judgeText.color = displayColor;
-        judgeText.alpha = 1f;
-        judgeText.transform.localScale = Vector3.zero;
 
-        activeSequence = DOTween.Sequence();
-        activeSequence.Append(judgeText.transform.DOScale(1f, config.Visual.ScaleInTime).SetEase(config.Visual.SetScaleEase))
-           .AppendInterval(config.Visual.ShowDuration)
-           .Append(judgeText.DOFade(0f, config.Visual.FadeOutDuration))
-           .OnComplete(ReturnToPool);
+
+        var visual = config.Visual;
+        var judgeCfg = visual.JudgementEffect;
+        // テキスト設定
+        judgeText.text = visual.DisplayJudgementName;
+        judgeText.color = visual.DisplayColor;
+        judgeText.alpha = judgeCfg.StartAlpha;
+        judgeText.transform.localScale = judgeCfg.StartScale;
+
+        // アニメーション開始
+        activeSequence = DOTween.Sequence()
+            .Append(judgeText.transform.DOScale(judgeCfg.EndScale, visual.ScaleInTime).SetEase(visual.SetScaleEase))
+            .AppendInterval(visual.ShowDuration)
+            .Append(judgeText.DOFade(judgeCfg.EndAlpha, visual.FadeOutDuration))
+            .OnComplete(ReturnToPool);
     }
 
     public void ReturnToPool()
@@ -59,12 +60,13 @@ public class JudgeEffectController : MonoBehaviour, IUIEffectPoolable<JudgeEffec
         activeSequence?.Kill();
         activeSequence = null;
 
-        pool?.Return(this);
-        judgeText.text = null;
-        judgeText.alpha = 0f; 
-        judgeText.transform.localScale = Vector3.zero;
 
-        judgeEffectColor.a = 0.0f;
+        judgeText.text = string.Empty;
+        judgeText.alpha = resetConfig.StartAlpha;
+        judgeText.transform.localScale = resetConfig.StartScale;
+        judgeText.gameObject.SetActive(false);
+
+        pool?.Return(this);
 
 
     }

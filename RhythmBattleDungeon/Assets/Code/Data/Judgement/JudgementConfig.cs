@@ -13,6 +13,7 @@ public class JudgementConfig
     /// ロジック判定設定
     /// </summary>
     [Header(" ▼ロジック判定設定")]
+
     [SerializeField, Tooltip(" 各判定の内部で識別する名前や許容タイミングなどを設定します。")]
     private JudgementLogicConfig logic;
 
@@ -22,9 +23,15 @@ public class JudgementConfig
     /// 見た目・演出設定
     /// </summary>
     [Header("▼ 見た目・演出設定")]
+
     [SerializeField, Tooltip(" 各判定の表示名や判定のエフェクトを表示する際の各設定などを設定します。")]
     private JudgementVisualConfig visual;
 
+    /// <summary>
+    /// 判定に応じたSEの名前
+    /// </summary>
+    [SerializeField, Tooltip(" 判定に応じたSEの名前")]
+    private SEName judgementSE;
     #endregion
 
 
@@ -40,6 +47,7 @@ public class JudgementConfig
     /// </summary>
     internal JudgementVisualConfig Visual { get { return visual; } }
 
+    internal SEName JudgementSE {  get { return judgementSE; } } 
     #endregion
 
 

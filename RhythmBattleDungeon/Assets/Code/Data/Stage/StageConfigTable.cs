@@ -13,6 +13,7 @@ public class StageConfigTable : ScriptableObject
     /// ステージ音源のリスト
     /// </summary>
     [Header("▼ステージ設定の一覧")]
+
     [SerializeField, Tooltip(" 各ステージの設定情報をまとめたリスト")]
     private List<StageConfig> stagesBgmLists;
 
@@ -31,7 +32,6 @@ public class StageConfigTable : ScriptableObject
     /// </summary>
     /// <param name="id">ステージのID</param>
     /// <returns>該当するStageConfigデータ</returns>
-
     internal StageConfig GetStageConfig(string id)
     {
         if (stagesBgmDict == null)
@@ -40,6 +40,7 @@ public class StageConfigTable : ScriptableObject
         }
 
         stagesBgmDict.TryGetValue(id, out var config);
+
         return config;
     }
 
@@ -66,11 +67,12 @@ public class StageConfigTable : ScriptableObject
     #region プライベートメソッド
 
     /// <summary>
-    /// �f�B�N�V���i��������
+    /// StageConfigデータのディクショナリの初期化
     /// </summary>
     private void InitializeDictionary()
     {
         stagesBgmDict = new Dictionary<string, StageConfig>();
+
         foreach (var stageBgm in stagesBgmLists)
         {
             //ステージ音源のリストのStageIDに文字列が入ってる＆ディクショナリにその文字列（キー）が含まれていないなら
@@ -78,12 +80,14 @@ public class StageConfigTable : ScriptableObject
             {
                 // ディクショナリにその文字列を追加
                 stagesBgmDict.Add(stageBgm.StageId, stageBgm);
+
                 foreach (var key in stagesBgmDict.Keys)
                 {
                     //どのキーが登録されているかのデバッグログ
                     DebugManager.Log($"登録されているステージBGMキー: {key}");
                 }
             }
+
             else
             {
                 //同じキーを登録しようとしているかBGMIDが空白

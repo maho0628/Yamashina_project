@@ -12,6 +12,7 @@ public class ChartData
     /// </summary>
     [JsonProperty("notes")]
     public Note[] Notes { get; internal set; }
+
 }
 
 

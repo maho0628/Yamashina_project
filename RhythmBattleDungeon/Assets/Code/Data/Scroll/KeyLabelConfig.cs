@@ -3,6 +3,7 @@ using TMPro;
 
 /// <summary>
 /// レーンのキーラベル設定のスクリプタブルオブジェクト
+/// 各レーンに割り当てられたキーの文字列と表示スタイルを設定します
 /// </summary>
 [CreateAssetMenu(fileName = "KeyLabelConfig", menuName = "GameConfig/UI/キーラベル設定")]
 public class KeyLabelConfig : ScriptableObject
@@ -13,6 +14,7 @@ public class KeyLabelConfig : ScriptableObject
     /// レーンのキーラベルの文字列の配列
     /// </summary>
     [Header("▼キーラベルの表示設定")]
+
     [SerializeField, Tooltip("レーンのキーラベルの文字列")]
     private string[] keyLabels = { "S", "D", "F", "J", "K", "L" };
 
@@ -54,6 +56,7 @@ public class KeyLabelConfig : ScriptableObject
     /// レーンラベルのプレハブ (TextMeshPro付き)
     /// </summary>
     [Header("▼キーラベルのプレハブ設定")]
+
     [SerializeField, Tooltip("レーンラベルのプレハブ (TextMeshPro付き)")]
     private GameObject laneLabelPrefab;
 
@@ -63,6 +66,7 @@ public class KeyLabelConfig : ScriptableObject
     /// ラベルのサイズ（Width, Height）
     /// </summary>
     [Header("▼ レーンラベル UI 調整")]
+
     [SerializeField, Tooltip("ラベルのサイズ（Width, Height）")]
     private Vector2 laneLabelSize = new Vector2(100f, 40f);
 

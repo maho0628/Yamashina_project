@@ -40,8 +40,6 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
         // 設定を取得
         LoadSettings();
 
-
-
         // 確認ダイアログを準備
         SetupConfirmDialog();
         confirmDialog.SetActive(true);
@@ -164,8 +162,8 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
             ApplyCustomSizes(dialogSettings);   
         }
         // 各ボタンにリスナーを登録
-        SetButtonListener(dialogSettings.ConfirmButtonName, OnConfirmExit);
-        SetButtonListener(dialogSettings.CancelButtonName, OnCancelExit);
+        SetButtonListener(dialogSettings.ConfirmButtonName, OnConfirmExitWithSE);
+        SetButtonListener(dialogSettings.CancelButtonName, OnCancelExitWithSE);
     }
     private void SetButtonListener(string buttonName, UnityEngine.Events.UnityAction action)
     {
@@ -225,7 +223,7 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
         // メッセージテキストの色を設定
         ApplyTextColor(dialogSettings.MessageObjectName, dialogSettings.MessageTextColor);
 
-        // ボタンの色を設定
+        // ボタンのテキストの色を設定
         ApplyButtonColor(dialogSettings.ConfirmButtonName, dialogSettings.ConfirmButtonTextColor);
         ApplyButtonColor(dialogSettings.CancelButtonName, dialogSettings.CancelButtonTextColor);
     }
@@ -233,10 +231,10 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
 
     private void ApplyCustomSizes(DialogElementSettings dialogSettings)
     {
-        // メッセージテキストの色を設定
+        // メッセージテキストのサイズを設定
         ApplyTextSizes(dialogSettings.MessageObjectName, dialogSettings.MessageFontSize);
 
-        // ボタンの色を設定
+        // ボタンのテキストのサイズを設定
         ApplyButtonTextSizes(dialogSettings.ConfirmButtonName, dialogSettings.ConfirmFontSize);
         ApplyButtonTextSizes(dialogSettings.CancelButtonName, dialogSettings.CancelFontSize);
     }
@@ -329,6 +327,7 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
             var button = buttonTransform.GetComponent<Button>();
             if (button != null)
             {
+
                 // ボタン内のテキストコンポーネントを探す
                 var textComponent = button.GetComponentInChildren<Text>();
                 if (textComponent != null)
@@ -433,6 +432,25 @@ public class GameExitManager : SingletonMonoBehaviour<GameExitManager>
 
 
         return false;
+    }
+
+
+    /// <summary>
+    /// 確認ボタンのSE付きイベントハンドラー
+    /// </summary>
+    private void OnConfirmExitWithSE()
+    {
+        AudioManager.Instance.PlaySEById(SEName.TitleClicked);
+        OnConfirmExit();
+    }
+
+    /// <summary>
+    /// キャンセルボタンのSE付きイベントハンドラー
+    /// </summary>
+    private void OnCancelExitWithSE()
+    {
+        AudioManager.Instance.PlaySEById(SEName.TitleClicked);
+        OnCancelExit();
     }
 
 

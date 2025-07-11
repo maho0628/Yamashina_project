@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Go Animation
   m_EditorClassIdentifier: 
   basicSettings:
-    animationText: Go!!
+    displayText: Go
     textColor: {r: 1, g: 1, b: 1, a: 1}
     fontSize: 64
-    animationType: 0
-    alignment: 514
     fontAsset: {fileID: 11400000, guid: fd1f83cd21ef96a4dbe93ef7a075d219, type: 2}
-    animationFontStyles: 0
+    displayFontStyles: 0
+  animationType: 0
+  backGroundImage: {fileID: 0}
   timingSettings:
     fadeInDuration: 0.3
     fadeInAlpha: 1
@@ -36,19 +36,29 @@ MonoBehaviour:
     punchVibrato: 3
     easeType: 27
   customSettings:
-    customAnimationClip: {fileID: 0}
+    baseAnimatorController: {fileID: 22100000, guid: 2437bfbaa0af01345a0b7c42990bc175, type: 2}
+    overridePairs:
+    - originalClip: {fileID: 7400000, guid: 67ce3fcd6bdc91640bb08b0797f07e97, type: 2}
+      overrideClip: {fileID: 7400000, guid: 98e3ad16ae57b4f4693e555eed29436d, type: 2}
+      targetStateName: Idle
+    - originalClip: {fileID: 7400000, guid: 67ce3fcd6bdc91640bb08b0797f07e97, type: 2}
+      overrideClip: {fileID: 7400000, guid: 98e3ad16ae57b4f4693e555eed29436d, type: 2}
+      targetStateName: Jump
+    - originalClip: {fileID: 0}
+      overrideClip: {fileID: 7400000, guid: 98e3ad16ae57b4f4693e555eed29436d, type: 2}
+      targetStateName: Idle
   layoutSettings:
-    Alignment: 514
-    AnchoredPosition: {x: 0, y: 0}
-    Size: {x: 400, y: 100}
-    SortingOrder: 1000
-    AnchorMin: {x: 0.5, y: 0.5}
-    AnchorMax: {x: 0.5, y: 0.5}
-    ReferenceResolution: {x: 1920, y: 1080}
-    ScaleMode: 1
-    ScreenMatchMode: 0
-    AnimationTextWrappingModes: 0
-    MatchWidthOrHeight: 1
+    alignment: 514
+    animationTextWrappingModes: 0
+    textBoxWidth: 0
+    textBoxHeight: 0
+    anchorMin: {x: 0.5, y: 0.5}
+    anchorMax: {x: 0.5, y: 0.5}
+    sortingOrder: 1000
+    referenceResolution: {x: 1920, y: 1080}
+    scaleMode: 1
+    screenMatchMode: 0
+    matchWidthOrHeight: 1
   validationSettings: {fileID: 11400000, guid: 7442297552ddf52418659efad77107a1, type: 2}
   totalDuration: 1.6
   durationCheck: "\u2705 \u9069\u5207\u306A\u9577\u3055"

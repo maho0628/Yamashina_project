@@ -12,6 +12,7 @@ public class GaugeDebugConfig
     /// スコア変化しなくても常にゲージをアニメさせるかどうか
     /// </summary>
     [Header("▼デバッグ設定")]
+
     [SerializeField, Tooltip("スコア変化しなくても常にゲージをアニメさせるかどうか")]
     private bool debugAlwaysAnimate = false;
 

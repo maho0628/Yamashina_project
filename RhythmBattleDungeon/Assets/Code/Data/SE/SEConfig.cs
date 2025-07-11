@@ -12,6 +12,7 @@ public class SEConfig
     /// SEのID名
     /// </summary>
     [Header("▼ SE設定")]
+
     [SerializeField, Tooltip("SEのID名")]
     private SEName seId;
 

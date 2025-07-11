@@ -44,7 +44,6 @@ public class TextValidationSettings : ScriptableObject
     {
         get { return minDurationThreshold; }
         set { minDurationThreshold = value; }
-    
     }
 
     /// <summary>

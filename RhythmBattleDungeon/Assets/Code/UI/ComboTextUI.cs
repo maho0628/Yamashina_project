@@ -5,7 +5,8 @@ public class ComboTextUI : MonoBehaviour, IResultEntryUI
 {
     [SerializeField, Header("Max Comboテキスト表示用TextMeshPro")]
     private TextMeshProUGUI comboNameText;
-    [SerializeField, Header("コンボ数を表示するためのTextMeshPro")] private TextMeshProUGUI comboCountText;
+    [SerializeField, Header("コンボ数を表示するためのTextMeshPro")] 
+    private TextMeshProUGUI comboCountText;
 
     private void Awake()
     {

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c7458ea6a4bea4aa6f4af32b8a9c69, type: 3}
+  m_Name: CreditConfigTable
+  m_EditorClassIdentifier: 
+  creditConfigs:
+  - textSettings:
+      displayText: 
+      textColor: {r: 0, g: 0, b: 0, a: 0}
+      fontSize: 0
+      fontAsset: {fileID: 0}
+      displayFontStyles: 0
+    layoutSettings:
+      alignment: 0
+      animationTextWrappingModes: 0
+      textBoxWidth: 0
+      textBoxHeight: 0
+      anchorMin: {x: 0, y: 0}
+      anchorMax: {x: 0, y: 0}
+      sortingOrder: 0
+      referenceResolution: {x: 0, y: 0}
+      scaleMode: 0
+      screenMatchMode: 0
+      matchWidthOrHeight: 0
+    ScrollSpeed: 0
+    DisplayDuration: 0
+    FadeDuration: 0
+    PrefabReference: {fileID: 0}

@@ -26,11 +26,28 @@ MonoBehaviour:
       visual:
         displayName: PERFECT
         displayColor: {r: 0.9764706, g: 0.16078429, b: 0.8414409, a: 1}
-        displayIcon: {fileID: 0}
         showDuration: 0.5
         fadeOutDuration: 0.3
         scaleInTime: 0.2
         scaleEase: 30
+        comboEffectConfig:
+          comboTextFormat: 'Combo: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        judgementConfig:
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        scoreEffectConfig:
+          scoreTextFormat: 'Score: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+      judgementSE: 2
     - logic:
         judgementName: Great
         maxTimeDifference: 0.1
@@ -39,11 +56,28 @@ MonoBehaviour:
       visual:
         displayName: GREAT
         displayColor: {r: 0.16793872, g: 0.47111237, b: 0.86415094, a: 1}
-        displayIcon: {fileID: 0}
         showDuration: 0.5
         fadeOutDuration: 0.3
         scaleInTime: 0.2
         scaleEase: 27
+        comboEffectConfig:
+          comboTextFormat: 'Combo: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        judgementConfig:
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        scoreEffectConfig:
+          scoreTextFormat: 'Score: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+      judgementSE: 1
     - logic:
         judgementName: Miss
         maxTimeDifference: 0.35
@@ -52,12 +86,28 @@ MonoBehaviour:
       visual:
         displayName: MISS
         displayColor: {r: 0.96981126, g: 0.16651474, b: 0.16651474, a: 1}
-        displayIcon: {fileID: 0}
         showDuration: 0.1
         fadeOutDuration: 0.1
         scaleInTime: 0.2
         scaleEase: 0
-    gaugeConfig: {fileID: 11400000, guid: c99b943deb19c194bac7a17694c7fd6c, type: 2}
+        comboEffectConfig:
+          comboTextFormat: 'Combo: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        judgementConfig:
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        scoreEffectConfig:
+          scoreTextFormat: 'Score: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+      judgementSE: 0
     delayBeforeResult: 0.2
   - stageId: AC Ryhm
     stageBgmId: 0
@@ -72,11 +122,28 @@ MonoBehaviour:
       visual:
         displayName: PERFECT
         displayColor: {r: 0.44935617, g: 0.93207544, b: 0.096724704, a: 1}
-        displayIcon: {fileID: 0}
         showDuration: 0.5
         fadeOutDuration: 0.3
         scaleInTime: 0.2
         scaleEase: 27
+        comboEffectConfig:
+          comboTextFormat: 'Combo: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        judgementConfig:
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        scoreEffectConfig:
+          scoreTextFormat: 'Score: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+      judgementSE: 0
     - logic:
         judgementName: Great
         maxTimeDifference: 0.06
@@ -85,11 +152,28 @@ MonoBehaviour:
       visual:
         displayName: GREAT
         displayColor: {r: 0.8792453, g: 0.058063243, b: 0.77297944, a: 1}
-        displayIcon: {fileID: 0}
         showDuration: 0.5
         fadeOutDuration: 0.3
         scaleInTime: 0.2
         scaleEase: 27
+        comboEffectConfig:
+          comboTextFormat: 'Combo: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        judgementConfig:
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        scoreEffectConfig:
+          scoreTextFormat: 'Score: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+      judgementSE: 0
     - logic:
         judgementName: Miss
         maxTimeDifference: 0.05
@@ -98,12 +182,28 @@ MonoBehaviour:
       visual:
         displayName: MISS
         displayColor: {r: 0.93207544, g: 0.06858658, b: 0.06858658, a: 1}
-        displayIcon: {fileID: 0}
         showDuration: 0.5
         fadeOutDuration: 0.3
         scaleInTime: 0.2
         scaleEase: 27
-    gaugeConfig: {fileID: 11400000, guid: c99b943deb19c194bac7a17694c7fd6c, type: 2}
+        comboEffectConfig:
+          comboTextFormat: 'Combo: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        judgementConfig:
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        scoreEffectConfig:
+          scoreTextFormat: 'Score: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+      judgementSE: 0
     delayBeforeResult: 0.2
   - stageId: "\u865A\u507D"
     stageBgmId: 2
@@ -118,11 +218,28 @@ MonoBehaviour:
       visual:
         displayName: PERFECT
         displayColor: {r: 0.1866257, g: 0.9169811, b: 0.060555227, a: 1}
-        displayIcon: {fileID: 0}
         showDuration: 0.5
         fadeOutDuration: 0.3
         scaleInTime: 0.2
         scaleEase: 27
+        comboEffectConfig:
+          comboTextFormat: 'Combo: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        judgementConfig:
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        scoreEffectConfig:
+          scoreTextFormat: 'Score: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+      judgementSE: 0
     - logic:
         judgementName: Great
         maxTimeDifference: 0.05
@@ -131,11 +248,28 @@ MonoBehaviour:
       visual:
         displayName: GREAT
         displayColor: {r: 0.86415094, g: 0.19402625, b: 0.7375522, a: 1}
-        displayIcon: {fileID: 0}
         showDuration: 0.5
         fadeOutDuration: 0.3
         scaleInTime: 0.2
         scaleEase: 27
+        comboEffectConfig:
+          comboTextFormat: 'Combo: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        judgementConfig:
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        scoreEffectConfig:
+          scoreTextFormat: 'Score: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+      judgementSE: 0
     - logic:
         judgementName: Good
         maxTimeDifference: 0.05
@@ -144,11 +278,28 @@ MonoBehaviour:
       visual:
         displayName: GOOD
         displayColor: {r: 0.13296534, g: 0.5230522, b: 0.93962264, a: 1}
-        displayIcon: {fileID: 0}
         showDuration: 0.5
         fadeOutDuration: 0.3
         scaleInTime: 0.2
         scaleEase: 27
+        comboEffectConfig:
+          comboTextFormat: 'Combo: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        judgementConfig:
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        scoreEffectConfig:
+          scoreTextFormat: 'Score: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+      judgementSE: 0
     - logic:
         judgementName: Miss
         maxTimeDifference: 0.05
@@ -157,12 +308,28 @@ MonoBehaviour:
       visual:
         displayName: MISS
         displayColor: {r: 0.9622642, g: 0.041758526, b: 0.041758526, a: 1}
-        displayIcon: {fileID: 0}
         showDuration: 0.48
         fadeOutDuration: 0.3
         scaleInTime: 0.2
         scaleEase: 27
-    gaugeConfig: {fileID: 11400000, guid: c99b943deb19c194bac7a17694c7fd6c, type: 2}
+        comboEffectConfig:
+          comboTextFormat: 'Combo: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        judgementConfig:
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        scoreEffectConfig:
+          scoreTextFormat: 'Score: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+      judgementSE: 0
     delayBeforeResult: 0.2
   - stageId: "\u30DE\u30C8\u30EA\u30C3\u30AF\u30B9"
     stageBgmId: 3
@@ -177,11 +344,28 @@ MonoBehaviour:
       visual:
         displayName: PERFECT
         displayColor: {r: 0.1866257, g: 0.9169811, b: 0.060555227, a: 1}
-        displayIcon: {fileID: 0}
         showDuration: 0.5
         fadeOutDuration: 0.3
         scaleInTime: 0.2
         scaleEase: 27
+        comboEffectConfig:
+          comboTextFormat: 'Combo: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        judgementConfig:
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        scoreEffectConfig:
+          scoreTextFormat: 'Score: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+      judgementSE: 0
     - logic:
         judgementName: Great
         maxTimeDifference: 0.05
@@ -190,11 +374,28 @@ MonoBehaviour:
       visual:
         displayName: GREAT
         displayColor: {r: 0.86415094, g: 0.19402625, b: 0.7375522, a: 1}
-        displayIcon: {fileID: 0}
         showDuration: 0.5
         fadeOutDuration: 0.3
         scaleInTime: 0.2
         scaleEase: 27
+        comboEffectConfig:
+          comboTextFormat: 'Combo: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        judgementConfig:
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        scoreEffectConfig:
+          scoreTextFormat: 'Score: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+      judgementSE: 0
     - logic:
         judgementName: Good
         maxTimeDifference: 0.05
@@ -203,11 +404,28 @@ MonoBehaviour:
       visual:
         displayName: GOOD
         displayColor: {r: 0.13296534, g: 0.5230522, b: 0.93962264, a: 1}
-        displayIcon: {fileID: 0}
         showDuration: 0.5
         fadeOutDuration: 0.3
         scaleInTime: 0.2
         scaleEase: 27
+        comboEffectConfig:
+          comboTextFormat: 'Combo: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        judgementConfig:
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        scoreEffectConfig:
+          scoreTextFormat: 'Score: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+      judgementSE: 0
     - logic:
         judgementName: Miss
         maxTimeDifference: 0.05
@@ -216,10 +434,26 @@ MonoBehaviour:
       visual:
         displayName: MISS
         displayColor: {r: 0.9622642, g: 0.041758526, b: 0.041758526, a: 1}
-        displayIcon: {fileID: 0}
         showDuration: 0.48
         fadeOutDuration: 0.3
         scaleInTime: 0.2
         scaleEase: 27
-    gaugeConfig: {fileID: 11400000, guid: c99b943deb19c194bac7a17694c7fd6c, type: 2}
+        comboEffectConfig:
+          comboTextFormat: 'Combo: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        judgementConfig:
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+        scoreEffectConfig:
+          scoreTextFormat: 'Score: {0}!'
+          startScale: {x: 0, y: 0, z: 0}
+          endScale: {x: 1, y: 1, z: 1}
+          startAlpha: 1
+          endAlpha: 0
+      judgementSE: 0
     delayBeforeResult: 0.2
