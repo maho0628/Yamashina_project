@@ -12,6 +12,7 @@ public class GameExitSettings : ScriptableObject
     /// ダイアログを見せるかどうか
     /// </summary>
     [Header("▼確認ダイアログ設定")]
+
     [SerializeField, Tooltip("ダイアログを見せるかどうか")]
     private bool showConfirmDialog = true;
 

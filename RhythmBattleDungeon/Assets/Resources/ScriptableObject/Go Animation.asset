@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Go Animation
   m_EditorClassIdentifier: 
   basicSettings:
-    animationText: Go!!
+    displayText: Go
     textColor: {r: 1, g: 1, b: 1, a: 1}
     fontSize: 64
-    animationType: 1
     fontAsset: {fileID: 11400000, guid: fd1f83cd21ef96a4dbe93ef7a075d219, type: 2}
-    animationFontStyles: 0
-    backGroundImage: {fileID: 0}
+    displayFontStyles: 0
+  animationType: 0
+  backGroundImage: {fileID: 0}
   timingSettings:
     fadeInDuration: 0.3
     fadeInAlpha: 1
@@ -36,14 +36,17 @@ MonoBehaviour:
     punchVibrato: 3
     easeType: 27
   customSettings:
-    baseAnimatorController: {fileID: 9100000, guid: 1e107d81eaa51824fa26fb6f7d0f77d7, type: 2}
+    baseAnimatorController: {fileID: 22100000, guid: 2437bfbaa0af01345a0b7c42990bc175, type: 2}
     overridePairs:
     - originalClip: {fileID: 7400000, guid: 67ce3fcd6bdc91640bb08b0797f07e97, type: 2}
-      overrideClip: {fileID: 7400000, guid: 67ce3fcd6bdc91640bb08b0797f07e97, type: 2}
-      targetStateName: 
+      overrideClip: {fileID: 7400000, guid: 98e3ad16ae57b4f4693e555eed29436d, type: 2}
+      targetStateName: Idle
     - originalClip: {fileID: 7400000, guid: 67ce3fcd6bdc91640bb08b0797f07e97, type: 2}
-      overrideClip: {fileID: 7400000, guid: 67ce3fcd6bdc91640bb08b0797f07e97, type: 2}
-      targetStateName: 
+      overrideClip: {fileID: 7400000, guid: 98e3ad16ae57b4f4693e555eed29436d, type: 2}
+      targetStateName: Jump
+    - originalClip: {fileID: 0}
+      overrideClip: {fileID: 7400000, guid: 98e3ad16ae57b4f4693e555eed29436d, type: 2}
+      targetStateName: Idle
   layoutSettings:
     alignment: 514
     animationTextWrappingModes: 0

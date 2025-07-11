@@ -444,6 +444,7 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
                 AnimationManager.Instance.ShowScoreEffect(missJudgementConfig);
                 AnimationManager.Instance.ShowJudgeEffect(missJudgementConfig);
                 activeNotes.RemoveAt(i);
+
             }
         }
     }

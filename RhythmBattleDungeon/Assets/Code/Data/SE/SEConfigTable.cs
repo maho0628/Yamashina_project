@@ -12,7 +12,7 @@ public class SEConfigTable : ScriptableObject
     /// <summary>
     /// ゲーム内で使用するSE設定のリスト
     /// </summary>
-    [SerializeField, Header("▼ゲーム内で使用するSE設定のリスト")]
+    [SerializeField, Tooltip("▼ゲーム内で使用するSE設定のリスト")]
     private List<SEConfig> seLists= new List<SEConfig>();
 
     /// <summary>

@@ -12,6 +12,7 @@ public class StartSignalConfig : ScriptableObject
     /// Ready演出
     /// </summary>
     [Header("Ready演出")]
+
     [SerializeField, Tooltip("Ready演出設定")]
     private TextAnimationConfig readyConfig ;
 
@@ -21,6 +22,7 @@ public class StartSignalConfig : ScriptableObject
     /// Go演出
     /// </summary>
     [Header("Go演出")]
+
     [SerializeField, Tooltip("Go演出設定")]
     private TextAnimationConfig goConfig;
         
@@ -30,6 +32,7 @@ public class StartSignalConfig : ScriptableObject
     /// Ready と Go の間の待機時間
     /// </summary>
     [Header("全体設定")]
+
     [SerializeField, Tooltip("Ready と Go の間の待機時間")]
     private float intervalBetweenReadyGo = 0.2f;
 
@@ -39,6 +42,7 @@ public class StartSignalConfig : ScriptableObject
     /// ターゲットとするジャンル
     /// </summary>
     [Header("ジャンル設定")]
+
     [SerializeField, Tooltip("ターゲットとするジャンル")]
     private GameGenre targetGenre = GameGenre.Custom;
 
@@ -88,6 +92,9 @@ public class StartSignalConfig : ScriptableObject
 
     #endregion
 
+
+    #region ゲッター
+
     /// <summary>
     ///  Ready→Go全体の所要時間を計算して返す
     /// </summary>
@@ -96,6 +103,8 @@ public class StartSignalConfig : ScriptableObject
     {
         return readyConfig.TotalDuration + intervalBetweenReadyGo + goConfig.TotalDuration;
     }
+
+    #endregion
 
     // エディタでのみ実行される更新処理
     private void OnValidate()

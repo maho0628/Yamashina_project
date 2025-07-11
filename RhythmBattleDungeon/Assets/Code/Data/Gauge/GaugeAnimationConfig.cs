@@ -11,6 +11,7 @@ public class GaugeAnimationConfig
     /// <summary>
     /// ゲージ補間時間
     [Header("▼ゲージ補間設定"), Range(0f, 1f)]
+
     [SerializeField, Tooltip("ゲージ補間時間（秒）")]
     private float gaugeLerpDuration = 0.5f;
 
@@ -50,7 +51,6 @@ public class GaugeAnimationConfig
     ///  ゲージアニメーションに使う補間カーブ（イージング）の読み取り専用
     /// </summary>
     internal AnimationCurve GaugeAnimationCurve => gaugeAnimationCurve;
-
 
     #endregion
 

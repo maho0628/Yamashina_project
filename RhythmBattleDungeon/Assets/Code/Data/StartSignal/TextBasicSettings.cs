@@ -3,49 +3,42 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// アニメーションの基本設定のクラス
+///テキストの基本設定のクラス
 /// </summary>
 [System.Serializable]
 public class TextBasicSettings
 {
-    #region  アニメーションの基本設定の内部管理用変数
+    #region  テキストの基本設定の内部管理用変数
 
     /// <summary>
-    /// 表示するアニメーションテキスト
+    /// 表示するテキスト
     /// </summary>
-    [SerializeField, Tooltip("演出で表示する文字列。\n例：\"Ready\", \"Start\", \"Game Over\"など")]
-    private string animationText = "Ready";
+    [SerializeField, Tooltip("表示する文字列。\n例：\"Ready\", \"Start\", \"Game Over\"など")]
+    private string displayText = "Ready";
 
     [Space(15)]
 
     /// <summary>
-    /// アニメーションの文字色
+    /// 文字の色
     /// </summary>
-    [SerializeField, Tooltip("アニメーションの文字色")]
+    [SerializeField, Tooltip("文字の色")]
     private Color textColor = Color.white;
 
     [Space(15)]
 
     /// <summary>
-    /// アニメーションの文字の大きさ
+    /// 文字の大きさ
     /// </summary>
-    [SerializeField, Tooltip("アニメーションの文字の大きさ")]
+    [SerializeField, Tooltip("文字の大きさ")]
     private int fontSize = 48;
 
-    [Space(15)]
-
-    /// <summary>
-    /// 使用するアニメーションの種類
-    /// </summary>
-    [SerializeField, Tooltip("テキストの表示アニメーションの種類を選択します")]
-    private AnimationType animationType = AnimationType.Simple;
 
     [Space(15)]
 
     /// <summary>
     /// 使用するフォントアセット
     /// </summary>
-    [SerializeField, Tooltip("アニメーションテキストに使用するTMPフォントアセット")]
+    [SerializeField, Tooltip("テキストに使用するTMPフォントアセット")]
     private TMP_FontAsset fontAsset;
 
     [Space(15)]
@@ -54,15 +47,8 @@ public class TextBasicSettings
     /// フォントスタイル（Bold, Italicなど）
     /// </summary>
     [SerializeField, Tooltip("フォントのスタイル（Bold, Italicなど）を指定します")]
-    private FontStyles animationFontStyles;
+    private FontStyles displayFontStyles;
 
-    [Space(15)]
-
-    /// <summary>
-    /// 演出の背景画像
-    /// </summary>
-    [SerializeField, Tooltip("アニメーションテキストに使用する背景画像を指定します")]
-    private Sprite backGroundImage;
     #endregion
 
 
@@ -71,10 +57,10 @@ public class TextBasicSettings
     /// <summary>
     /// 表示するアニメーションテキスト の読み取り専用 
     /// </summary>
-    internal string AnimationText
+    internal string DisplayText
     {
-        get { return animationText; }
-        set { animationText = value; }
+        get { return displayText; }
+        set { displayText = value; }
     }
 
     /// <summary>
@@ -92,15 +78,6 @@ public class TextBasicSettings
     internal int FontSize => fontSize;
 
     /// <summary>
-    /// 使用するアニメーションの種類の読み取り専用
-    /// </summary>
-    internal AnimationType AnimationType
-    {
-        get { return animationType; }
-        set { animationType = value; }
-    }
-
-    /// <summary>
     /// 使用するフォントアセットの読み取り専用
     /// </summary>
     internal TMP_FontAsset FontAsset => fontAsset;
@@ -108,11 +85,8 @@ public class TextBasicSettings
     /// <summary>
     /// フォントスタイル（太字、斜体など）の読み取り専用
     /// </summary>
-    internal FontStyles AnimationFontStyles => animationFontStyles;
+    internal FontStyles DisplayFontStyles => displayFontStyles;
 
-    /// <summary>
-    /// 演出の背景画像の読み取り専用
-    /// </summary>
-    internal Sprite BackGroundImage => backGroundImage;  
     #endregion
+
 }

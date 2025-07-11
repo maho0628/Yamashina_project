@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -7,6 +8,8 @@ using UnityEngine;
 [System.Serializable]
 public class TextCustomSettings
 {
+    #region カスタムアニメーション設定の内部管理用変数
+
     /// <summary>
     /// AnimatorControllerの基本となるアセット。
     /// Animatorに適用されるコントローラー（ステートや遷移などを定義）。
@@ -20,20 +23,31 @@ public class TextCustomSettings
     /// AnimatorController内の元クリップと差し替え先のペア
     /// </summary>
     [SerializeField, Tooltip("AnimatorController内の元クリップと差し替え先のペア")]
-    private AnimationOverridePair[] overridePairs;
+    private List<AnimationOverridePair> overridePairs;
+
+    #endregion
+
+
+    #region 読み取り専用フィールド(カスタムアニメーション設定の内部管理用変数)
 
     /// <summary>
-    /// アニメーションコントローラーの取得の読み取り専用。
+    /// アニメーションコントローラーの取得の読み取り・取得
     /// </summary>
-    internal RuntimeAnimatorController BaseAnimatorController
+    public RuntimeAnimatorController BaseAnimatorController
     {
         get { return baseAnimatorController; }
+        set { baseAnimatorController = value; }
     }
 
-    internal AnimationOverridePair[] OverridePairs
+    /// <summary>
+    //アニメーションクリップを別のクリップに差し替えるための設定を保持するクラスの読み取り
+    /// </summary>
+    public List<AnimationOverridePair> OverridePairs
     {
         get { return overridePairs; }
     }
+
+    #endregion
 
 
     /// <summary>
@@ -43,6 +57,8 @@ public class TextCustomSettings
     [System.Serializable]
     public class AnimationOverridePair
     {
+        #region アニメーションクリップを別のクリップに差し替えるための設定の内部管理用変数
+
         /// <summary>
         /// カスタム時のアニメーションクリップ
         /// </summary>
@@ -62,21 +78,38 @@ public class TextCustomSettings
         /// <summary>
         /// 再生対象ステート名
         /// </summary>
-        [SerializeField, Tooltip("再生対象ステート名")]
-
+        [SerializeField, AnimatorStateDropdown("BaseAnimatorController")]
         private string targetStateName;
 
+        #endregion
+
+
+        #region アニメーションクリップを別のクリップに差し替えるための設定の内部管理用変数
+
         /// <summary>
-        /// カスタム時の差し替え対象となるAnimatorController内のクリップ
+        /// カスタム時の差し替え対象となるAnimatorController内のクリップの読み取り専用
         /// </summary>
         internal AnimationClip OriginalClip => originalClip;
 
         /// <summary>
-        /// 差し替える先のクリップ
+        /// 差し替える先のクリップのゲッター、セッター
         /// </summary>
-        internal AnimationClip OverrideClip => overrideClip;
-        
-        internal string TargetStateName { get { return targetStateName; } } 
+        public AnimationClip OverrideClip
+        {
+            get { return overrideClip; }
+            set { overrideClip = value; }
+        }
+
+        /// <summary>
+        /// 再生対象ステート名のゲッター、セッター
+        /// </summary>
+        public string TargetStateName
+        {
+            get { return targetStateName; }
+            set { targetStateName = value; }
+        }
+
+        #endregion
 
     }
 

@@ -12,6 +12,7 @@ Library: C:\Users\maho1\clean_repo\RhythmBattleDungeon\Temp\BurstOutput\Data\Plu
 --linker-options=PdbAltPath="RhythmBattleDungeon_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=C:\Users\maho1\clean_repo\RhythmBattleDungeon\Temp\Burst
+--debug=Full
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.0.46f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
 --decode-folder=C:\Users\maho1\clean_repo\RhythmBattleDungeon\Library\Burst
 --output=C:\Users\maho1\clean_repo\RhythmBattleDungeon\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
@@ -32,6 +33,7 @@ Library: C:\Users\maho1\clean_repo\RhythmBattleDungeon\Temp\BurstOutput\Data\Plu
 --linker-options=PdbAltPath="RhythmBattleDungeon_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=C:\Users\maho1\clean_repo\RhythmBattleDungeon\Temp\Burst
+--debug=Full
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.0.46f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
 --decode-folder=C:\Users\maho1\clean_repo\RhythmBattleDungeon\Library\Burst
 --output=C:\Users\maho1\clean_repo\RhythmBattleDungeon\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
@@ -50,6 +52,7 @@ Library: C:\Users\maho1\clean_repo\RhythmBattleDungeon\Temp\BurstOutput\Data\Plu
 --linker-options=PdbAltPath="RhythmBattleDungeon_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=C:\Users\maho1\clean_repo\RhythmBattleDungeon\Temp\Burst
+--debug=Full
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.0.46f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
 --decode-folder=C:\Users\maho1\clean_repo\RhythmBattleDungeon\Library\Burst
 --output=C:\Users\maho1\clean_repo\RhythmBattleDungeon\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
@@ -160,6 +163,7 @@ Library: C:\Users\maho1\clean_repo\RhythmBattleDungeon\Temp\BurstOutput\Data\Plu
 --linker-options=PdbAltPath="RhythmBattleDungeon_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=C:\Users\maho1\clean_repo\RhythmBattleDungeon\Temp\Burst
+--debug=Full
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.0.46f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
 --decode-folder=C:\Users\maho1\clean_repo\RhythmBattleDungeon\Library\Burst
 --output=C:\Users\maho1\clean_repo\RhythmBattleDungeon\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated

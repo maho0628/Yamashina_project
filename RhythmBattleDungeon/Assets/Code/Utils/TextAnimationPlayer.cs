@@ -23,7 +23,7 @@ public static class TextAnimationPlayer
 
         // テキストに設定を適用
         ApplyTextConfiguration(textComponent, config);
-        DebugManager.Log(config.Params.Basic.AnimationType.ToString());
+        DebugManager.Log(config.AnimationType.ToString());
 
         // アニメーションを再生
         await PlayAnimationByType(textComponent, config, isPreview);
@@ -64,18 +64,18 @@ public static class TextAnimationPlayer
         var (basicSettings, layoutSettings, timing, scale, _, _) = GetAnimationParameters(config);
 
         // 基本テキスト設定を反映
-        textComponent.text = basicSettings.AnimationText;//表示する文字テキスト
+        textComponent.text = basicSettings.DisplayText;//表示する文字テキスト
         textComponent.fontSize = basicSettings.FontSize;//フォントサイズ
         textComponent.font = basicSettings.FontAsset;//フォントアセット
-        textComponent.fontStyle = basicSettings.AnimationFontStyles;//フォントスタイル（太字、斜体など）
+        textComponent.fontStyle = basicSettings.DisplayFontStyles;//フォントスタイル（太字、斜体など）
         textComponent.alignment = layoutSettings.Alignment;//文字揃え設定（左揃え、中央揃え、右揃えなど）
         textComponent.textWrappingMode = layoutSettings.AnimationTextWrappingModes;// 折り返し設定
 
         // 背景画像設定（親のImageコンポーネントがあれば）
         var parentImage = textComponent.GetComponentInParent<Image>();
-        if (parentImage != null && basicSettings.BackGroundImage != null)
+        if (parentImage != null && config.BackGroundImage != null)
         {
-            parentImage.sprite = basicSettings.BackGroundImage;
+            parentImage.sprite = config.BackGroundImage;
             parentImage.rectTransform.sizeDelta = new Vector2(layoutSettings.TextBoxWidth, layoutSettings.TextBoxHeight);
         }
 
@@ -106,7 +106,7 @@ public static class TextAnimationPlayer
         var (basicSettings, _, timing, scale, punch, _) = GetAnimationParameters(config);
 
         //アニメーションタイプに応じてアニメーションを再生
-        switch (basicSettings.AnimationType)
+        switch (config.AnimationType)
         {
             // シンプルなフェードイン・表示・フェードアウトアニメーション
 

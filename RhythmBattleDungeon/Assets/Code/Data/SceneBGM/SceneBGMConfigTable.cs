@@ -13,6 +13,7 @@ public class SceneBGMConfigTable : ScriptableObject
     /// シーンに対応するBGM設定をまとめたリスト
     /// </summary>
     [Header("▼シーンに対応するBGMの一覧")]
+
     [SerializeField, Tooltip(" シーンに対応するBGM設定をまとめたリスト")]
     private List<SceneBGMConfig> sceneBgmConfigLists = new List<SceneBGMConfig>();
 

@@ -15,6 +15,7 @@ public class ComboEffectConfig
     /// 例: "Combo: {0}!" → Combo: 25! のように表示される。
     /// </summary>
     [Header("▼コンボ演出テキストフォーマット")]
+
     [SerializeField, Tooltip("コンボ数を表示するテキストフォーマット。{0}がコンボ数に置き換わります")]
     private string comboTextFormat = "Combo: {0}!";
 

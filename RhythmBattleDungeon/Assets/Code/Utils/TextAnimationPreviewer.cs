@@ -158,9 +158,7 @@ public static class TextAnimationPreviewer
     /// </summary>
     private static void CreateTextUI(TextAnimationConfig config)
     {
-        var basicSettings = config.Params.Basic;
-        var layoutSettings = config.Params.Layout;
-
+       
         // メインオブジェクト作成
         previewTextObj = new GameObject("PreviewText");
         previewTextObj.transform.SetParent(previewCanvasObj.transform, false);
@@ -170,7 +168,7 @@ public static class TextAnimationPreviewer
         textWrapper.transform.SetParent(previewTextObj.transform, false);
 
         // 背景作成
-        CreateBackgroundImage(textWrapper, basicSettings, layoutSettings);
+        CreateBackgroundImage(textWrapper, config);
 
         // テキスト作成
         CreateTextMeshPro(textWrapper);
@@ -179,12 +177,13 @@ public static class TextAnimationPreviewer
     /// <summary>
     /// 背景画像の作成
     /// </summary>
-    private static void CreateBackgroundImage(GameObject parent, TextBasicSettings basicSettings, TextLayoutSettings layoutSettings)
+    private static void CreateBackgroundImage(GameObject parent, TextAnimationConfig animationConfig)
     {
+        TextLayoutSettings layoutSettings = animationConfig.Params.Layout;
         GameObject bgObj = new GameObject("TextBackground");
         bgObj.transform.SetParent(parent.transform, false);
         var bgImage = bgObj.AddComponent<Image>();
-        bgImage.sprite = basicSettings.BackGroundImage;
+        bgImage.sprite = animationConfig.BackGroundImage;
         bgImage.rectTransform.sizeDelta = new Vector2(layoutSettings.TextBoxWidth, layoutSettings.TextBoxHeight);
     }
 

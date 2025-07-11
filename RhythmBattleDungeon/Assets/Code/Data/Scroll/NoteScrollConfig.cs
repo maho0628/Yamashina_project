@@ -12,7 +12,10 @@ public class NoteScrollConfig : ScriptableObject
     /// <summary>
     /// ノーツのタイミングや位置の設定
     /// </summary>
-    [SerializeField, Header("▼ノーツのタイミングや位置の設定")]
+    /// </summary>
+    [Header(" ▼ノーツのタイミングや位置の設定")]
+
+    [SerializeField, Tooltip("ノーツの出現Y座標やノーツが判定ラインに到達するまでの時間などを設定します")]
     private NoteTimingConfig timingConfig;
 
     [Space(15)]
@@ -20,7 +23,9 @@ public class NoteScrollConfig : ScriptableObject
     /// <summary>
     /// レーンの見た目設定
     /// </summary>
-    [SerializeField, Header("▼レーンの見た目設定")]
+    [Header(" ▼レーンの見た目設定")]
+
+    [SerializeField, Tooltip("レーンサイズやレーンの色などを設定します")]
     private LaneVisualConfig laneVisualConfig;
 
     [Space(15)]
@@ -28,7 +33,9 @@ public class NoteScrollConfig : ScriptableObject
     /// <summary>
     /// キーラベル設定
     /// </summary>
-    [SerializeField, Header("▼キーラベル設定")]
+    [Header(" ▼キーラベル設定")]
+
+    [SerializeField, Header("各レーンに割り当てられたキーの文字列と表示スタイルを設定します")]
     private KeyLabelConfig keyLabelConfig;
 
     #endregion

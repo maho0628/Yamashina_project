@@ -13,6 +13,7 @@ public class JudgementVisualConfig
     /// 画面に表示される判定名
     /// </summary>
     [Header("▼判定表示設定")]
+
     [SerializeField, Tooltip("画面に表示される判定名")]
     private string displayName = "PERFECT";
 
@@ -51,6 +52,7 @@ public class JudgementVisualConfig
     /// スケールイン時間
     /// </summary>
     [Header("▼スケーリング")]
+
     [SerializeField, Tooltip("スケールイン時間")]
     private float scaleInTime = 0.2f;
 
@@ -73,6 +75,7 @@ public class JudgementVisualConfig
     /// コンボ演出用の視覚効果設定
     /// </summary>
     [Header("▼コンボ演出設定")]
+
     [SerializeField, Tooltip("コンボ演出用の視覚効果設定")]
     private ComboEffectConfig comboEffectConfig = new ComboEffectConfig();
 
@@ -82,6 +85,7 @@ public class JudgementVisualConfig
     /// 判定演出用の視覚効果設定
     /// </summary>
     [Header("▼判定演出設定")]
+
     [SerializeField, Tooltip("判定演出用の視覚効果設定")]
     private JudgementEffectConfig judgementConfig = new JudgementEffectConfig();
 
@@ -91,6 +95,7 @@ public class JudgementVisualConfig
     /// スコア演出用の視覚効果設定
     /// </summary>
     [Header("▼スコア演出設定")]
+
     [SerializeField, Tooltip("スコア演出用の視覚効果設定")]
     private ScoreEffectConfig scoreEffectConfig = new ScoreEffectConfig();
 

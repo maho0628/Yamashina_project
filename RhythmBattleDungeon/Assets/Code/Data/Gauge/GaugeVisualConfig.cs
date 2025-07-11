@@ -12,6 +12,7 @@ public class GaugeVisualConfig
     /// ゲージの背景色
     /// </summary>
     [Header("▼ ゲージの基本色設定")]
+
     [SerializeField, Tooltip("ゲージの背景色")]
     private Color gaugeBackgroundColor = Color.gray;
 

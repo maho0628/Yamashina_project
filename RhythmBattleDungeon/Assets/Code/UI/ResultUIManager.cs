@@ -26,7 +26,6 @@ public class ResultUIManager : MonoBehaviour
     {
         SetUpResultUI();
         AnimationManager.Instance.InitResultAnimator(resultAnimator);
-        AnimationManager.Instance.PlayResultInAnimation();
     }
 
 
