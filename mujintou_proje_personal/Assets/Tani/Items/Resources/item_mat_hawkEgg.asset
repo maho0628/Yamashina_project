@@ -39,9 +39,9 @@ MonoBehaviour:
     m_LocalVariables: []
   extra_effect:
     m_TableReference:
-      m_TableCollectionName: GUID:5a4addbac0767ce42b2ab2b456cdbb64
+      m_TableCollectionName: 
     m_TableEntryReference:
-      m_KeyId: 17799286194618368
+      m_KeyId: 0
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
