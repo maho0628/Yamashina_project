@@ -86,10 +86,18 @@ public class DetailPanel : MonoBehaviour
 
             if (item_data.canUse)
             {
+                string extraEffectText = "";
+
+                // extra_effectが設定されているかチェック
+                if (item_data.extra_effect != null && !item_data.extra_effect.IsEmpty)
+                {
+                    extraEffectText = item_data.extra_effect.GetLocalizedString();
+                }
+
                 effect_text.text = (item_data.Health_Change > 0 ? $"体力 : +{item_data.Health_Change}" : $"体力 : {item_data.Health_Change}") + " " +
-                               (item_data.Hunger_Change > 0 ? $"食料 : +{item_data.Hunger_Change}" : $"食料 : {item_data.Hunger_Change}") + " " +
-                               (item_data.Thirst_Chage > 0 ? $"水分 : +{item_data.Thirst_Chage}" : $"水分 : {item_data.Thirst_Chage}") + "\n" +
-                                item_data.extra_effect;
+                                   (item_data.Hunger_Change > 0 ? $"食料 : +{item_data.Hunger_Change}" : $"食料 : {item_data.Hunger_Change}") + " " +
+                                   (item_data.Thirst_Chage > 0 ? $"水分 : +{item_data.Thirst_Chage}" : $"水分 : {item_data.Thirst_Chage}") + "\n" +
+                                   extraEffectText;
 
             }
             else
@@ -97,10 +105,10 @@ public class DetailPanel : MonoBehaviour
                 effect_text.text = "使用できない";
             }
 
-            discription_text.text = item_data.Discription.ToString();
+            discription_text.text = item_data.Discription.GetLocalizedString();
             icon_image.sprite = item_data.icon;
             icon_image.color = new Color(1, 1, 1, 1);
-            ItemName.text = item_data.item_name.ToString();
+            ItemName.text = item_data.item_name.GetLocalizedString();
 
             current_id = item_data.item_ID;
             Use_Button.interactable = item_data.canUse;
@@ -138,10 +146,18 @@ public class DetailPanel : MonoBehaviour
 
             if (item_data.canUse)
             {
-                effect_text.text = (item_data.Health_Change > 0 ? $"体力 : +{item_data.Health_Change}" : $"体力 : {item_data.Health_Change}") +" "+
-                               (item_data.Hunger_Change > 0 ? $"食料 : +{item_data.Hunger_Change}" : $"食料 : {item_data.Hunger_Change}" ) + " " +
-                               (item_data.Thirst_Chage > 0 ? $"水分 : +{item_data.Thirst_Chage}" : $"水分 : {item_data.Thirst_Chage}") + "\n" +
-                                item_data.extra_effect;
+                string extraEffectText = "";
+
+                // extra_effectが設定されているかチェック
+                if (item_data.extra_effect != null && !item_data.extra_effect.IsEmpty)
+                {
+                    extraEffectText = item_data.extra_effect.GetLocalizedString();
+                }
+
+                effect_text.text = (item_data.Health_Change > 0 ? $"体力 : +{item_data.Health_Change}" : $"体力 : {item_data.Health_Change}") + " " +
+                                   (item_data.Hunger_Change > 0 ? $"食料 : +{item_data.Hunger_Change}" : $"食料 : {item_data.Hunger_Change}") + " " +
+                                   (item_data.Thirst_Chage > 0 ? $"水分 : +{item_data.Thirst_Chage}" : $"水分 : {item_data.Thirst_Chage}") + "\n" +
+                                   extraEffectText;
 
             }
             else
