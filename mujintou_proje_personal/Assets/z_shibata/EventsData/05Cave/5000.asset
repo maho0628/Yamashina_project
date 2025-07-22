@@ -90,9 +90,9 @@ MonoBehaviour:
     required_action_value: 1
   - choise_text:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:5a4addbac0767ce42b2ab2b456cdbb64
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 134078257328848896
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -100,9 +100,9 @@ MonoBehaviour:
     Gain_Items: []
     result_text:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:5a4addbac0767ce42b2ab2b456cdbb64
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 134078539542593536
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
