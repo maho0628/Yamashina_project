@@ -3748,6 +3748,14 @@ MonoBehaviour:
     m_Localized: 'Thirst:'
     m_Metadata:
       m_Items: []
+  - m_Id: 134078257328848896
+    m_Localized: Stay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 134078539542593536
+    m_Localized: I stayed in place...
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
