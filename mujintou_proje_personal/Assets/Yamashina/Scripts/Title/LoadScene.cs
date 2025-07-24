@@ -126,6 +126,7 @@ public class LoadScene : MonoBehaviour
         {
             fade.scene_name_num = num;
             Instantiate(playerInfo);
+            Debug.Log(playerInfo.name);
             PlayerInfo.Instance.StartGame(false);
             fade.feadout_f = true;
             
