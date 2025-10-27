@@ -10234,9 +10234,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785bffbf97f060b4384c2ffb6fa97920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  japaneseFolderPath: JapaneseTextAssets
-  englishFolderPath: EnglishTextAssets
-  targetFolderName: Tutorial_Base_03
+  japaneseLocalizationFolder: JapaneseTextAssets
+  englishLocalizationFolder: EnglishTextAssets
+  localizationSubFolder: Tutorial_Base_03
 --- !u!224 &1274501928 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5808919919394709288, guid: 6b18cfe49e1c1cc44a901bf2fcd24962, type: 3}

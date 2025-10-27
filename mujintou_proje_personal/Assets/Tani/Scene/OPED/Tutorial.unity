@@ -545,9 +545,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785bffbf97f060b4384c2ffb6fa97920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  japaneseFolderPath: JapaneseTextAssets
-  englishFolderPath: EnglishTextAssets
-  targetFolderName: Tutorial
+  japaneseLocalizationFolder: JapaneseTextAssets
+  englishLocalizationFolder: EnglishTextAssets
+  localizationSubFolder: Tutorial
 --- !u!1001 &823767212
 PrefabInstance:
   m_ObjectHideFlags: 0

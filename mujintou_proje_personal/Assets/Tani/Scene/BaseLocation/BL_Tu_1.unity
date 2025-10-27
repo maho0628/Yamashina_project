@@ -8780,9 +8780,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785bffbf97f060b4384c2ffb6fa97920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  japaneseFolderPath: JapaneseTextAssets
-  englishFolderPath: EnglishTextAssets
-  targetFolderName: Tutorial_Base
+  japaneseLocalizationFolder: JapaneseTextAssets
+  englishLocalizationFolder: EnglishTextAssets
+  localizationSubFolder: Tutorial_Base
 --- !u!1 &1292816190
 GameObject:
   m_ObjectHideFlags: 0

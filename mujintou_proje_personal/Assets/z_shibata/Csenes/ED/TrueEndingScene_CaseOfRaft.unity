@@ -825,9 +825,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785bffbf97f060b4384c2ffb6fa97920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  japaneseFolderPath: JapaneseTextAssets
-  englishFolderPath: EnglishTextAssets
-  targetFolderName: TrueEnding_Raft
+  japaneseLocalizationFolder: JapaneseTextAssets
+  englishLocalizationFolder: EnglishTextAssets
+  localizationSubFolder: TrueEnding_Raft
 --- !u!1 &1370935726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1295,7 +1295,6 @@ MonoBehaviour:
   use_back_log_text: 0
   backLogObject: {fileID: 0}
   soundPlayer: {fileID: 0}
-  test: {fileID: 0}
 --- !u!114 &2112739359
 MonoBehaviour:
   m_ObjectHideFlags: 0

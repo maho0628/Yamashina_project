@@ -4,16 +4,30 @@ using System.Collections.Generic;
 
 public class LocalizedTextAssetLoader : MonoBehaviour
 {
-    public string japaneseFolderPath = "JapaneseTextAssets"; // Resources フォルダ内のパス
-    public string englishFolderPath = "EnglishTextAssets";
-    public string targetFolderName = "TargetFolder"; // サブフォルダ名
+    /// <summary>
+    /// 日本語用テキストが入っているフォルダ名
+    /// </summary>
+    [SerializeField, Header("日本語ローカライズテキストフォルダ")]
+    private string japaneseLocalizationFolder = "JapaneseTextAssets";
+
+    [SerializeField, Header("英語ローカライズテキストフォルダ")]
+    private string englishLocalizationFolder = "EnglishTextAssets";
+
+    [SerializeField, Header("ローカライズ対象サブフォルダ")]
+    private string localizationSubFolder = "TargetFolder";
 
     private List<TextAsset> textAssets = new List<TextAsset>();
 
-    private void Start()
+    /// <summary>
+    /// 
+    /// </summary>
+    public  string JapaneseLocalizationFolder
     {
-        // 必要に応じて自動でロードしたい場合はここで呼び出してください
-        // LoadTextAssetsForCurrentLocale();
+        get { return japaneseLocalizationFolder; }  
+    }
+    public string EnglishLocalizationFolder
+    {
+        get { return englishLocalizationFolder; }   
     }
 
     public List<TextAsset> LoadTextAssetsForCurrentLocale()
@@ -25,11 +39,11 @@ public class LocalizedTextAssetLoader : MonoBehaviour
 
         if (currentLocale == "ja")
         {
-            LoadTextAssets(japaneseFolderPath);
+            LoadTextAssets(japaneseLocalizationFolder);
         }
         else if (currentLocale == "en")
         {
-            LoadTextAssets(englishFolderPath);
+            LoadTextAssets(englishLocalizationFolder);
         }
         else
         {
@@ -42,7 +56,7 @@ public class LocalizedTextAssetLoader : MonoBehaviour
     public void LoadTextAssets(string relativeFolderPath)
     {
         // Resources.LoadAll で使うパス形式に変換（スラッシュ統一）
-        string resourcePath = System.IO.Path.Combine(relativeFolderPath, targetFolderName).Replace("\\", "/");
+        string resourcePath = System.IO.Path.Combine(relativeFolderPath, localizationSubFolder).Replace("\\", "/");
         Debug.Log("Loading Resources from: " + resourcePath);
 
         TextAsset[] loadedAssets = Resources.LoadAll<TextAsset>(resourcePath);
