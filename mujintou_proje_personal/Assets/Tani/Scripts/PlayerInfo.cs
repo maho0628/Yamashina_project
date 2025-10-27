@@ -187,8 +187,10 @@ public class PlayerInfo : SingletonMonoBehaviour<PlayerInfo>
         {
             
             print("save exist");
+            Debug.Log(override_current_data);
             if (override_current_data)
             {
+                
                 DataManager.Instance.InitializeSaveData();
             }
             LoadData();

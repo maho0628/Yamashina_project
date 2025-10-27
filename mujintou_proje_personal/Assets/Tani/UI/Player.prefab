@@ -20619,7 +20619,7 @@ MonoBehaviour:
     width: 24
     height: 24
   inventry: {fileID: 319469877}
-  Excute_StartGame_FuncHere: 1
+  Excute_StartGame_FuncHere: 0
   true_end:
     m_SceneName: TrueEndingScene
   bad_end:
