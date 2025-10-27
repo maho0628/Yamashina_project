@@ -18,8 +18,8 @@ public class Debug_TextChanger : MonoBehaviour
         string currentLocale = LocalizationSettings.SelectedLocale.Identifier.Code;
         if (currentLocale == "en")
         {
-            localization.LoadTextAssets(localization.englishFolderPath);
-            TextAsset textAsset = Resources.Load<TextAsset>(localization.englishFolderPath);
+            localization.LoadTextAssets(localization.EnglishLocalizationFolder);
+            TextAsset textAsset = Resources.Load<TextAsset>(localization.EnglishLocalizationFolder);
            GameObject.FindAnyObjectByType<Text>().text = textAsset.text;    
         }
     }

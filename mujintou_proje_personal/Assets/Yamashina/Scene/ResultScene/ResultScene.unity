@@ -257,17 +257,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7061ec8e0f674f7458c8117bc9b99a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title:
-    m_SceneName: Title_scene
-  Txt_deador: {fileID: 620890892}
-  Txt_day: {fileID: 1799143181}
-  Special: {fileID: 1909296320}
-  ItemImage: {fileID: 2070701906}
-  Text_screen: {fileID: 73478945}
-  gamepath: 
-  timeStamp: 
-  SEAudio: {fileID: 0}
+  deadOrSurviveText: {fileID: 620890892}
+  dayText: {fileID: 1799143181}
+  specialItemText: {fileID: 1909296320}
+  specialItemImage: {fileID: 2070701906}
+  screenshotTextObject: {fileID: 73478945}
+  SEAudio: {fileID: 683694059}
   fade: {fileID: 143761846}
+  sceneSettings: {fileID: 11400000, guid: f1f555fbe3c3caa488e7dda22ef65a82, type: 2}
 --- !u!114 &84786164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1004,6 +1001,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53ebee9855378614da86c4e5d6e9aab8, type: 3}
+--- !u!114 &683694059 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2351508341401188097, guid: 53ebee9855378614da86c4e5d6e9aab8, type: 3}
+  m_PrefabInstance: {fileID: 683694058}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ee30639273c854d9cb93ed7b7ab28f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &723027382
 GameObject:
   m_ObjectHideFlags: 0

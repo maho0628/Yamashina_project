@@ -36,17 +36,6 @@
 
 ビルドデータ：Build_Humanity<br>
 
-# Cross-Cultural Experiences<br>
-
-パス: cross-cultural experiences/<br>
-概要: 異文化体験をテーマとしたインタラクティブコンテンツ<br>
-技術: C<br>
-
-アピールポイントなどはcross-cultural experiences/Read.me.txtに記載
-
-
-場所: cross-cultural experiences/src/004_Novel/<br>
-実行ファイル: build/release/ 内<br>
 
 ## プロジェクト実行方法<br>
 # Unity プロジェクト<br>
@@ -55,14 +44,7 @@ Unity Hub でプロジェクトを開く<br>
 適切なUnityバージョンで実行<br>
 または Unity Room で直接プレイ<br>
 
- # C/C++ プロジェクト<br>
 
-
- Visual Studio ソリューションを開く<br>
-NovelGame.slnを起動
-
- または直接実行ファイルを実行
-./build/release/NovelGame.exe
 
 
 

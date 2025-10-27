@@ -502,7 +502,6 @@ MonoBehaviour:
   use_back_log_text: 0
   backLogObject: {fileID: 0}
   soundPlayer: {fileID: 0}
-  test: {fileID: 0}
 --- !u!114 &420666264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,9 +681,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785bffbf97f060b4384c2ffb6fa97920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  japaneseFolderPath: JapaneseTextAssets
-  englishFolderPath: EnglishTextAssets
-  targetFolderName: 
+  japaneseLocalizationFolder: JapaneseTextAssets
+  englishLocalizationFolder: EnglishTextAssets
+  localizationSubFolder: BadEnd
 --- !u!1 &473957355
 GameObject:
   m_ObjectHideFlags: 0

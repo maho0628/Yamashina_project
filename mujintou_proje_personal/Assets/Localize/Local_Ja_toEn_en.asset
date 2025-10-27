@@ -1932,7 +1932,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17804954729365504
-    m_Localized: writer
+    m_Localized: lighter
     m_Metadata:
       m_Items: []
   - m_Id: 17805000971567104
@@ -3749,7 +3749,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 134078257328848896
-    m_Localized: Stay
+    m_Localized: stay
     m_Metadata:
       m_Items: []
   - m_Id: 134078539542593536
