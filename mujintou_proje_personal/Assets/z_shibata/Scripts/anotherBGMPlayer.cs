@@ -26,8 +26,8 @@ public class anotherBGMPlayer : MonoBehaviour
         //éRïií«â¡ï™
         if (PlayerInfo.InstanceNullable == null) return;
 
-        Audiovolume.instance.audioSourceBGM = GameObject.FindWithTag("BGM").GetComponent<AudioSource>();
-        GameObject.FindWithTag("BGM").GetComponent<AudioSource>().volume = Audiovolume.instance.BGM;
+        AudioVolume.instance.audioSourceBGM = GameObject.FindWithTag("BGM").GetComponent<AudioSource>();
+        GameObject.FindWithTag("BGM").GetComponent<AudioSource>().volume = AudioVolume.instance.BGM;
         //Ç±Ç¡Ç©ÇÁéƒìcìsçá
         if(baseLocation != null)
         { 
