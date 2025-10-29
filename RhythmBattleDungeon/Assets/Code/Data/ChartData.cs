@@ -11,7 +11,11 @@ public class ChartData
     /// ※ 学習用に詳細コメントを記載
     /// </summary>
     [JsonProperty("notes")]
-    public Note[] Notes { get; internal set; }
+    public Note[] Notes 
+    {
+        get;
+        internal set; 
+    }
 
 }
 

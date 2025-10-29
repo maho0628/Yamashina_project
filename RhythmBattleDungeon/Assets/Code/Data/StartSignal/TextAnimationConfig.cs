@@ -124,16 +124,13 @@ public class TextAnimationConfig : ScriptableObject
     /// <summary>
     /// この設定オブジェクトからすべてのアニメーション関連設定をまとめた構造体を取得します。
     /// </summary>
-    public TextAnimationParams Params => new TextAnimationParams(this);
+    internal TextAnimationParams Params => new TextAnimationParams(this);
 
     /// <summary>
     /// 使用するアニメーションの種類の読み取り専用
     /// </summary>
-    public AnimationType AnimationType
-    {
-        get { return animationType; }
-        set { animationType = value; }
-    }
+    internal AnimationType AnimationType=> animationType; 
+    
 
     /// <summary>
     /// 演出の背景画像の読み取り専用
@@ -144,12 +141,12 @@ public class TextAnimationConfig : ScriptableObject
     /// TextAnimationConfig の各設定項目をまとめて取得するための構造体。
     /// 読み取り専用で、設定値への簡潔なアクセスを提供する。
     /// </summary>
-    public readonly struct TextAnimationParams
+    internal readonly struct TextAnimationParams
     {
         /// <summary>
         /// アニメーションの基本設定の読み取り専用
         /// </summary>
-        public TextBasicSettings Basic { get; }
+        internal TextBasicSettings Basic { get; }
 
         /// <summary>
         ///アニメーションのタイミング設定の読み取り専用
@@ -169,7 +166,7 @@ public class TextAnimationConfig : ScriptableObject
         /// <summary>
         /// カスタムアニメーション設定の読み取り専用
         /// </summary>
-        public TextCustomSettings Custom { get; }
+        internal TextCustomSettings Custom { get; }
 
         /// <summary>
         /// レイアウト＆Canvas設定の読み取り専用
@@ -180,7 +177,7 @@ public class TextAnimationConfig : ScriptableObject
         /// 指定されたアニメーション設定から各カテゴリの設定値を抽出して初期化します。
         /// </summary>
         /// <param name="config">元となるテキストアニメーション設定</param>
-        public TextAnimationParams(TextAnimationConfig config)
+        internal TextAnimationParams(TextAnimationConfig config)
         {
             Basic = config.basicSettings;
 

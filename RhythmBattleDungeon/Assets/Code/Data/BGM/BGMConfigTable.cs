@@ -38,15 +38,6 @@ public class BGMConfigTable : ScriptableObject
     #region ゲッターメソッド
 
     /// <summary>
-    ///BGMのリスト情報をすべて返す  
-    /// </summary>
-    /// <returns>BGMConfigのList</returns>
-    internal List<BGMConfig> GetAllBgmConfigs()
-    {
-        return bgmLists;
-    }
-
-    /// <summary>
     /// リスト内のBGMConfigをIDで探して返す
     /// </summary>
     /// <param name="id">BGMID</param>

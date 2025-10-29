@@ -33,20 +33,13 @@ public class TextCustomSettings
     /// <summary>
     /// アニメーションコントローラーの取得の読み取り・取得
     /// </summary>
-    public RuntimeAnimatorController BaseAnimatorController
-    {
-        get { return baseAnimatorController; }
-        set { baseAnimatorController = value; }
-    }
+    internal RuntimeAnimatorController BaseAnimatorController => baseAnimatorController;
 
     /// <summary>
     //アニメーションクリップを別のクリップに差し替えるための設定を保持するクラスの読み取り
     /// </summary>
-    public List<AnimationOverridePair> OverridePairs
-    {
-        get { return overridePairs; }
-    }
-
+    internal List<AnimationOverridePair> OverridePairs => overridePairs;
+   
     #endregion
 
 
@@ -55,7 +48,7 @@ public class TextCustomSettings
     /// 1つの差し替え対象（元のクリップ名）と、差し替える先（新しい AnimationClip）をペアで保持します。
     /// </summary>
     [System.Serializable]
-    public class AnimationOverridePair
+    internal class AnimationOverridePair
     {
         #region アニメーションクリップを別のクリップに差し替えるための設定の内部管理用変数
 
@@ -94,20 +87,12 @@ public class TextCustomSettings
         /// <summary>
         /// 差し替える先のクリップのゲッター、セッター
         /// </summary>
-        public AnimationClip OverrideClip
-        {
-            get { return overrideClip; }
-            set { overrideClip = value; }
-        }
+        internal AnimationClip OverrideClip => overrideClip;
 
         /// <summary>
         /// 再生対象ステート名のゲッター、セッター
         /// </summary>
-        public string TargetStateName
-        {
-            get { return targetStateName; }
-            set { targetStateName = value; }
-        }
+        internal string TargetStateName => targetStateName;
 
         #endregion
 

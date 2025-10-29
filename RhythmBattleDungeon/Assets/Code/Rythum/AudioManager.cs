@@ -106,11 +106,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     /// BGMが鳴り終わったかどうかを返す
     /// </summary>
     /// <returns>bool</returns>
-    internal bool IsBGMFinished()
-    {
-        //BGMが鳴り終わったかを判定
-        return bgmSource != null && !bgmSource.isPlaying && bgmSource.time > 0;
-    }
+    internal bool IsBGMFinished() => bgmSource != null && !bgmSource.isPlaying && bgmSource.time > 0;
 
     #endregion
 
@@ -300,6 +296,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         source.clip = clip;
         source.loop = loop;
 
+        //スタート時のオーディオソースの現在時刻を代入
         bgmStartDspTime = AudioSettings.dspTime;
 
         source.Play();
@@ -311,7 +308,6 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     private void PlayClipsMultiAudioSources(AudioSource[] sources, AudioClip clip)
     {
         //クリップに何も入ってこないなら
-
         if (clip == null)
         {
             //エラー出して終了
@@ -319,7 +315,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
             return;
         }
 
-        //オーディオソースの中から一個ずつ取り出して
+        //オーディオソースの中から一個ずつ取り出す
         foreach (var src in sources)
         {
             //そのオーディオソースが再生中ではないなら

@@ -23,6 +23,9 @@ public class Note
     public int LaneNumber { get; internal set; }
 
 
+    /// <summary>
+    /// ‚Ç‚ÌƒL[‚ÉŠ„‚è“–‚Ä‚ç‚ê‚Ä‚¢‚é‚©
+    /// </summary>
     [JsonProperty("key")]
 
     public string AssignedKeyAction { get; internal set; } 

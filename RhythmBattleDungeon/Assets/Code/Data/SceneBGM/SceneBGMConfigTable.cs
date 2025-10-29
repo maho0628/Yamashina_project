@@ -79,7 +79,7 @@ public class SceneBGMConfigTable : ScriptableObject
                 }
                 else
                 {
-                    //エラー出して終了
+                    //ワーニングを出して終了
                     DebugManager.LogWarning($"[SceneBGMConfigTable] シーン '{sceneBgm.SceneName}' は既に登録されています。");
                 }
             }

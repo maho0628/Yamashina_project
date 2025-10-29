@@ -22,10 +22,22 @@ public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
     /// <summary>
     /// 判定が適用されたときに発火するイベント。
     /// </summary>
-    internal event Action OnJudgementApplied;
+    private event Action OnJudgementApplied;
 
     /// <summary>
-    /// 判定設定を初期化する。
+    /// 登録されているすべての判定設定を取得。
+    /// </summary>
+    internal List<JudgementConfig> GetAllJudgements() => judgementConfigs;
+
+    /// <summary>
+    /// 指定した判定名の発生回数を取得。
+    /// </summary>
+    /// <param name="label">判定名（例："Perfect"）</param>
+    /// <returns>発生回数（なければ0）</returns>
+    internal int GetJudgementCount(string label) => judgementCounts.TryGetValue(label, out int count) ? count : 0;
+
+    /// <summary>
+    /// 判定設定を初期化する関数
     /// </summary>
     /// <param name="configs">判定設定リスト</param>
     internal void Setup(List<JudgementConfig> configs)
@@ -51,10 +63,7 @@ public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
         judgementCounts.Clear();
     }
 
-    /// <summary>
-    /// 登録されているすべての判定設定を取得。
-    /// </summary>
-    internal List<JudgementConfig> GetAllJudgements() => judgementConfigs;
+   
 
     /// <summary>
     /// "Miss" 判定を取得する。
@@ -79,7 +88,6 @@ public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
         foreach (var judgement in judgementConfigs)
         {
             // 入力とノーツのタイミング差が、その判定の最大許容時間内であれば
-
             if (Mathf.Abs(timeDifference) <= judgement.Logic.SetMaxTimeDifference)
             {
                 // この判定（例: Perfect）を返す
@@ -143,14 +151,5 @@ public class JudgementManager : SingletonMonoBehaviour<JudgementManager>
             AnimationManager.Instance.ShowComboEffect(config);
         }
     }
-
-    /// <summary>
-    /// 指定した判定名の発生回数を取得。
-    /// </summary>
-    /// <param name="label">判定名（例："Perfect"）</param>
-    /// <returns>発生回数（なければ0）</returns>
-    internal int GetJudgementCount(string label)
-    {
-        return judgementCounts.TryGetValue(label, out int count) ? count : 0;
-    }
+   
 }

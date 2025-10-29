@@ -40,22 +40,14 @@ public class TextValidationSettings : ScriptableObject
     /// アニメーション時間の妥当性チェック設定の読み取り専用
     /// 短いと『短すぎる』とみなされる
     /// </summary>
-    internal float MinDurationThreshold
-    {
-        get { return minDurationThreshold; }
-        set { minDurationThreshold = value; }
-    }
+    internal float MinDurationThreshold => minDurationThreshold;
 
     /// <summary>
     /// アニメーション時間の妥当性チェック設定の読み取り専用
     /// 長いと『長すぎる』とみなされる
     /// </summary>
-    internal float MaxDurationThreshold
-    {
-        get { return maxDurationThreshold; }    
-        set { maxDurationThreshold = value; }   
-    }
-
+    internal float MaxDurationThreshold => maxDurationThreshold;
+   
     #endregion
 
 }

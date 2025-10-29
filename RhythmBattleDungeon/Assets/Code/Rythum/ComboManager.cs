@@ -63,7 +63,7 @@ public class ComboManager : SingletonMonoBehaviour<ComboManager>
     /// <returns>フルコンボなら true、それ以外は false</returns>
     internal bool IsFullCombo()
     {
-        return maxCombo == NoteManager.Instance.TotalNoteCount; // �Ō�܂�1�x���؂�ĂȂ���ΐ���
+        return maxCombo == NoteManager.Instance.TotalNoteCount; 
     }
 
     /// <summary>

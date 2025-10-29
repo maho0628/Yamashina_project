@@ -40,14 +40,17 @@ public class JudgementConfig
     /// <summary>
     /// ロジック判定設定の読み取り専用
     /// </summary>
-    internal JudgementLogicConfig Logic { get { return logic; } }
-
+    internal JudgementLogicConfig Logic =>logic;
+    
     /// <summary>
     /// 見た目・演出設定の読み取り専用
     /// </summary>
-    internal JudgementVisualConfig Visual { get { return visual; } }
+    internal JudgementVisualConfig Visual => visual;
 
-    internal SEName JudgementSE {  get { return judgementSE; } } 
+    /// <summary>
+    /// 判定に応じたSEの名前の読み取り専用
+    /// </summary>
+    internal SEName JudgementSE => judgementSE;
     #endregion
 
 

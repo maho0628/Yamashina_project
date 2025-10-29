@@ -115,10 +115,9 @@ public class LaneVisualConfig : ScriptableObject
     /// </summary>
     /// <param name="containerWidth">laneContainer ‚Ì RectTransform ‚Ì•</param>
     /// <returns>1ƒŒ[ƒ“–Ú‚Ì’†‰›‚Ì X À•W</returns>
-    internal float GetStartX(float containerWidth)
-    {
-        return -containerWidth / 2f + laneWidth / 2f;
-    }
+    internal float GetStartX(float containerWidth) =>
+        -containerWidth / 2f + laneWidth / 2f;
+
 
     #endregion
 

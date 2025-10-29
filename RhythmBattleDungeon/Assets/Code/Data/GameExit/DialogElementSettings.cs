@@ -256,38 +256,23 @@ public class DialogElementSettings
     /// <summary>
     /// テキストのフォントサイズをスクリプタブルオブジェクト内で設定するかどうかの読み取り専用
     /// </summary>
-    internal bool UseCustomFontSize
-    {
-        get { return useCustomFontSize; }
-        set { useCustomFontSize = value; }
-    }
+    internal bool UseCustomFontSize => useCustomFontSize;   
 
     /// <summary>
     /// 実際に出す文章のテキストのフォントサイズの読み取り専用
     /// </summary>
-    internal int MessageFontSize
-    {
-        get { return messageFontSize; }
-        set { messageFontSize = value; }
-    }
+    internal int MessageFontSize => messageFontSize;
 
     /// <summary>
     /// 確認時にOKと見なすボタンのテキストのフォントサイズの名前の読み取り専用
     /// </summary>
-    internal int ConfirmFontSize
-    {
-        get { return confirmFontSize; }
-        set { confirmFontSize = value; }
-    }
-
+    internal int ConfirmFontSize => confirmFontSize;
+    
     /// <summary>
     /// 確認時にOKではないと見なすボタンのテキストのフォントサイズの読み取り専用
     /// </summary>
-    internal int CancelFontSize
-    {
-        get { return cancelFontSize; }
-        set { cancelFontSize = value; }
-    }
+    internal int CancelFontSize =>cancelFontSize;   
+    
 
     #endregion
 }

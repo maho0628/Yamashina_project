@@ -31,7 +31,6 @@ public class GaugeAnimationConfig
     [SerializeField, Tooltip("ゲージアニメーションに使う補間カーブ（イージング）")]
     private AnimationCurve gaugeAnimationCurve = AnimationCurve.Linear(0, 0, 1, 1);
 
-
     #endregion
 
 
