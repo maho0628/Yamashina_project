@@ -63,6 +63,9 @@ public class ResultSceneController : MonoBehaviour
     [SerializeField, Header("ResultSceneSettingsのスクリプタブルオブジェクトを入れる")]
     private ResultSceneSettings sceneSettings;
 
+
+       
+
     private void Awake()
     {
         //生存日数を代入
@@ -109,31 +112,41 @@ public class ResultSceneController : MonoBehaviour
     /// </summary>
     public IEnumerator Capture(string imageName = "image.png", Action callback = null)
     {
+
+        //現在の日時を取得して代入
         DateTime date = DateTime.Now;
+        //その日時をString に変換
         imageName = date.ToString("yyyy-MM-dd-HH-mm-ss-fff");
 
+        //スクリーンショット画像の保存先パスを「フォルダ名/画像名.png」という形式で作成して変数 path に代入
         string path = $"{sceneSettings.FolderName}/{imageName}.png";
+        //StreamingAssets フォルダと上のパスを結合して、実際のファイル保存先パスを imagePath に設定
         string imagePath = Path.Combine(Application.streamingAssetsPath, path);
+
+        //IOSやANDROIDの場合はアプリのデータ保存用フォルダ（persistentDataPath）と画像名を結合して、画像の保存先パスを作成・代入する
 
 #if !UNITY_EDITOR && (UNITY_IOS || UNITY_ANDROID)
             imagePath = Path.Combine(Application.persistentDataPath, imageName);
 #endif
 
+        //もし、同じ「imagePath」があれば削除
         if (File.Exists(imagePath))
             File.Delete(imagePath);
 
+        //imagePath名でスクリーンショットを撮影
         ScreenCapture.CaptureScreenshot(imagePath);
 
-        float latency = 0;
-        while (latency < sceneSettings.SaveTimeOut)
+        // スクリーンショット保存の処理を開始した時点の経過時間（アプリ起動からの実時間）を記録
+        float startTime = Time.realtimeSinceStartup;
+        while (Time.realtimeSinceStartup - startTime < sceneSettings.SaveTimeOut)
         {
             if (File.Exists(imagePath))
                 break;
-            latency += Time.deltaTime;
             yield return null;
         }
 
-        if (latency >= sceneSettings.SaveTimeOut)
+
+        if (startTime >= sceneSettings.SaveTimeOut)
             Debug.LogWarning($"スクリーンショット保存がタイムアウト（{sceneSettings.SaveTimeOut}秒）");
 
         callback?.Invoke();
