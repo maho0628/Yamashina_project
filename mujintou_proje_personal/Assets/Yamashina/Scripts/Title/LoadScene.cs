@@ -10,7 +10,6 @@ public class LoadScene : MonoBehaviour
     private void Start()
     {
         isstart = false;
-        audioVolume = GameObject.FindAnyObjectByType<Audiovolume>().GetComponent<Audiovolume>();
     }
     private void Update()
     {
@@ -65,7 +64,7 @@ public class LoadScene : MonoBehaviour
     [SerializeField] CreditPanel1 CreditPanel1;
    [SerializeField] GameObject playerInfo;
     [SerializeField] bool isstart;
-    [SerializeField]Audiovolume audioVolume;    
+    [SerializeField] AudioVolume AudioVolume;    
     //[SerializeField] GameObject image;
     // Update is called once per frame
     public void Text_of_each_places(int num = 0)
@@ -93,10 +92,10 @@ public class LoadScene : MonoBehaviour
        
         if (fade.feadout_f == false)
         {
-            GameObject.FindWithTag("BGM").GetComponent<AudioSource>().volume = audioVolume.BGM;
-           GameObject.FindWithTag("SE").GetComponent<AudioSource>().volume=audioVolume.SE  ;
-            Debug.Log(audioVolume.BGM);
-            Debug.Log(audioVolume.SE);
+            GameObject.FindWithTag("BGM").GetComponent<AudioSource>().volume = AudioVolume.BGM;
+           GameObject.FindWithTag("SE").GetComponent<AudioSource>().volume=AudioVolume.SE  ;
+            Debug.Log(AudioVolume.BGM);
+            Debug.Log(AudioVolume.SE);
 
         }
 
@@ -132,10 +131,10 @@ public class LoadScene : MonoBehaviour
             
             if (fade.feadout_f == false)
             {
-                GameObject.FindWithTag("BGM").GetComponent<AudioSource>().volume = audioVolume.BGM;
-          GameObject.FindWithTag("SE").GetComponent<AudioSource>().volume = audioVolume.SE;
-                Debug.Log(audioVolume.BGM);
-                Debug.Log(audioVolume.SE);
+                GameObject.FindWithTag("BGM").GetComponent<AudioSource>().volume = AudioVolume.BGM;
+          GameObject.FindWithTag("SE").GetComponent<AudioSource>().volume = AudioVolume.SE;
+                Debug.Log(AudioVolume.BGM);
+                Debug.Log(AudioVolume.SE);
             }
 
         }
