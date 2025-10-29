@@ -19,14 +19,14 @@ public class anotherSoundPlayer : MonoBehaviour
         if (au.GetComponent<SoundCoolTime>().canPlay)
         {
             au.GetComponent<SoundCoolTime>().canPlay = false;
-            Audiovolume.instance.audioSourceSE = GameObject.FindWithTag("SE").GetComponent<AudioSource>();
+            AudioVolume.instance.audioSourceSE = GameObject.FindWithTag("SE").GetComponent<AudioSource>();
 
-        //if (!Audiovolume.instance.audioSourceSE.isPlaying)
+        //if (!AudioVolume.Instance.audioSourceSE.isPlaying)
         //{
             GameObject.FindWithTag("SE").GetComponent<AudioSource>().PlayOneShot(audioClipSE[num]);
         //}
 
-            GameObject.FindWithTag("SE").GetComponent<AudioSource>().volume = Audiovolume.instance.SE;
+            GameObject.FindWithTag("SE").GetComponent<AudioSource>().volume = AudioVolume.instance.SE;
         
         }
        

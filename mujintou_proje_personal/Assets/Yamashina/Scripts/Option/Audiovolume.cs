@@ -6,9 +6,9 @@ using UnityEngine.Audio;
 using UnityEngine.UI;
 
 
-public class Audiovolume : MonoBehaviour
+public class AudioVolume : MonoBehaviour
 {
-    public static Audiovolume instance;
+    public static AudioVolume instance;
     public float BGM ;
     public float SE;
     public AudioSource audioSourceBGM;//BGM

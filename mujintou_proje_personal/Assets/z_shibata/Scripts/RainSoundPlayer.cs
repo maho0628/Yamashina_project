@@ -6,7 +6,7 @@ public class RainSoundPlayer : MonoBehaviour
 {
     void Start()
     {
-        GameObject.FindWithTag("BGM").GetComponent<AudioSource>().volume = Audiovolume.instance.BGM;
+        GameObject.FindWithTag("BGM").GetComponent<AudioSource>().volume = AudioVolume.instance.BGM;
 
         GetComponent<AudioSource>().volume = GameObject.FindGameObjectWithTag("BGM").GetComponent<AudioSource>().volume;
 

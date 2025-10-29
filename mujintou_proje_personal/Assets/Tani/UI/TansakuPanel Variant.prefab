@@ -12,6 +12,34 @@ PrefabInstance:
       propertyPath: First_unLocknum
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1022117496346050858, guid: fb0e0dcfcea39fc4898de2a2517f273e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904190967505679205, guid: fb0e0dcfcea39fc4898de2a2517f273e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649415195991771118, guid: fb0e0dcfcea39fc4898de2a2517f273e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882069372447521498, guid: fb0e0dcfcea39fc4898de2a2517f273e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4530418005933498701, guid: fb0e0dcfcea39fc4898de2a2517f273e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4673448372790452883, guid: fb0e0dcfcea39fc4898de2a2517f273e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124929375839767688, guid: fb0e0dcfcea39fc4898de2a2517f273e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6779975993702508085, guid: fb0e0dcfcea39fc4898de2a2517f273e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -124,7 +152,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: TansakuPanel Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1309170168, guid: fb0e0dcfcea39fc4898de2a2517f273e, type: 3}
+    - {fileID: 4452925513885076490, guid: fb0e0dcfcea39fc4898de2a2517f273e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

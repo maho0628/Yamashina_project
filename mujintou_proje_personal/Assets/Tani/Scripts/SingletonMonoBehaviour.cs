@@ -5,7 +5,7 @@ using UnityEngine;
 //シングルトンなMonoBehaviourの基底クラス
 public class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
 {
-    static T instance;
+    private static T instance;
     public static T Instance
     {
         get
@@ -34,7 +34,7 @@ public class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
-         //   Debug.LogError(typeof(T) + " is multiple created", this);
+            //   Debug.LogError(typeof(T) + " is multiple created", this);
             Destroy(this.gameObject);
             return;
         }

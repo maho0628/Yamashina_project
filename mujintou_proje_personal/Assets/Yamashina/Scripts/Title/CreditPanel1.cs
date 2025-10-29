@@ -101,14 +101,14 @@ public class CreditPanel1 : MonoBehaviour
     public Button quit;
     public Button Credit;
     public Button option;
-    [SerializeField] Audiovolume audiovolume;
+    [SerializeField] AudioVolume AudioVolume;
 
 
     void Start()//�n�܂�Ƃ�
     {
-        audiovolume = GameObject.FindAnyObjectByType<Audiovolume>().GetComponent<Audiovolume>();
-        GameObject.FindWithTag("BGM").GetComponent<AudioSource>().volume = audiovolume.BGM;
-        GameObject.FindWithTag("SE").GetComponent<AudioSource>().volume = audiovolume.SE;
+        AudioVolume = GameObject.FindAnyObjectByType<AudioVolume>().GetComponent<AudioVolume>();
+        GameObject.FindWithTag("BGM").GetComponent<AudioSource>().volume = AudioVolume.BGM;
+        GameObject.FindWithTag("SE").GetComponent<AudioSource>().volume = AudioVolume.SE;
         multi.ChooseSongs_BGM(0);
 
         //multi.playse();
