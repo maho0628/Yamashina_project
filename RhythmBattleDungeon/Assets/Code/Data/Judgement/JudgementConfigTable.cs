@@ -97,16 +97,17 @@ public class JudgementConfigTable : ScriptableObject
                 // JudgementNameが空白なら
                 if (string.IsNullOrEmpty(judgementName))
                 {
+                    //JudgementNameが空または nullなのでワーニングを出す
                     DebugManager.LogWarning($"[JudgementConfigTable] JudgementNameが空または null です: {name}");
                 }
                 else
                 {
-                    //同じキーを登録しようとしている
+                    //同じキーを登録しようとしているのでワーニングを出す
                     DebugManager.LogWarning($"[JudgementConfigTable] 重複したJudgementName: {judgementName} in {name}");
                 }
             }
         }
-
+        //JudgementConfigTable] 初期化完了し、judgementConfigDict.Countのログを表示
         DebugManager.Log($"[JudgementConfigTable] 初期化完了。登録数: {judgementConfigDict.Count}");
     }
 

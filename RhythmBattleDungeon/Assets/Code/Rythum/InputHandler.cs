@@ -48,7 +48,7 @@ public class InputHandler : MonoBehaviour
     /// プレイヤー入力の初期化処理。
     /// 入力アクションをステージに応じてバインドし、各レーンに対応付けます。
     /// </summary>
-    public void InitializeInput()
+    internal void InitializeInput()
     {
         //判定を行う際の最大許容時間を取得
         maxJudgementTime = JudgementManager.Instance.GetMaxJudgementTime();

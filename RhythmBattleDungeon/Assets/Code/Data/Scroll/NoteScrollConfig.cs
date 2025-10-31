@@ -47,19 +47,28 @@ public class NoteScrollConfig : ScriptableObject
     /// ノーツのタイミングや位置の設定を返す
     /// </summary>
     /// <returns>NoteTimingConfig</returns>
-    internal NoteTimingConfig GetNoteTimingConfig() { return timingConfig; }
+    internal NoteTimingConfig GetNoteTimingConfig()
+    {
+        return timingConfig;
+    }
 
     /// <summary>
     /// レーンの見た目設定を返す
     /// </summary>
     /// <returns>LaneVisualConfig</returns>
-    internal LaneVisualConfig GetLaneVisualConfig() { return laneVisualConfig; }
+    internal LaneVisualConfig GetLaneVisualConfig() 
+    {
+        return laneVisualConfig;
+    }
 
     /// <summary>
     /// キーラベル設定 を返す
     /// </summary>
     /// <returns>KeyLabelConfig</returns>
-    internal KeyLabelConfig GetKeyLabelConfig() { return keyLabelConfig; }
+    internal KeyLabelConfig GetKeyLabelConfig() 
+    { 
+        return keyLabelConfig;
+    }
 
     #endregion
 

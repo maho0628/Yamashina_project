@@ -36,7 +36,6 @@ public class GaugeConfig : ScriptableObject
     [SerializeField, Tooltip("ゲーム実行中のデバッグ用初期値などを設定します。")]
     private GaugeDebugConfig debugConfig;
 
-
     #endregion
 
 

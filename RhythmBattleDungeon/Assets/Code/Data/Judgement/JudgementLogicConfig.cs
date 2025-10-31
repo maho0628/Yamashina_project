@@ -53,7 +53,6 @@ public class JudgementLogicConfig
     /// </summary>
     internal bool ShouldBreakCombo => shouldBreakCombo;
 
-
     #endregion
 
 
@@ -62,22 +61,38 @@ public class JudgementLogicConfig
     /// <summary>
     /// 判定名の設定用プロパティ
     /// </summary>
-    internal string SetJudgementName { get => judgementName; set => judgementName = value; }
+    internal string SetJudgementName
+    {
+        get { return judgementName; }
+        set { judgementName = value; }
+    }
 
     /// <summary>
     /// 許容時間の設定用プロパティ
     /// </summary>
-    internal float SetMaxTimeDifference { get => maxTimeDifference; set => maxTimeDifference = value; }
+    internal float SetMaxTimeDifference
+    {
+        get { return maxTimeDifference; }
+        set { maxTimeDifference = value; }
+    }
 
     /// <summary>
     /// スコア値の設定用プロパティ
     /// </summary>
-    internal int SetScoreValue { get => scoreValue; set => scoreValue = value; }
+    internal int SetScoreValue
+    {
+        get { return scoreValue; }
+        set { scoreValue = value; }
+    }
 
     /// <summary>
     /// コンボを切るかどうかの設定用プロパティ
     /// </summary>
-    internal bool SetShouldBreakCombo { get => shouldBreakCombo; set => shouldBreakCombo = value; }
+    internal bool SetShouldBreakCombo
+    {
+        get { return shouldBreakCombo; }
+        set { shouldBreakCombo = value; }
+    }
 
     #endregion
 

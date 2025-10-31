@@ -39,8 +39,9 @@ public class ComboEffectController : MonoBehaviour, IUIEffectPoolable<ComboEffec
 
 
     #region 外部から呼び出し可能なエフェクト関連の関数
+
     /// <summary>
-    /// オブジェクトプールから作成された際に呼ばれる
+    /// オブジェクトプールから作成された際に呼ばれる関数
     /// </summary>
     /// <param name="pool">所属するプール</param>
     public void OnCreated(UIObjectPool<ComboEffectController> pool)
@@ -55,6 +56,7 @@ public class ComboEffectController : MonoBehaviour, IUIEffectPoolable<ComboEffec
     /// <param name="comboCount">現在のコンボ数</param>
     internal void Play(JudgementConfig config, int comboCount)
     {
+        //スコアの値をログで表示
         DebugManager.Log($"[ScoreEffect] Play called: +{config.Logic.SetScoreValue}");
 
         // コンボテキストを表示状態にする
@@ -72,6 +74,7 @@ public class ComboEffectController : MonoBehaviour, IUIEffectPoolable<ComboEffec
             activeSequence = null;
         }
 
+        //各種必要な設定を代入
         var visual = config.Visual;
         var comboCfg = visual.ComboEffect;
 
@@ -100,11 +103,13 @@ public class ComboEffectController : MonoBehaviour, IUIEffectPoolable<ComboEffec
             // 再利用処理（プールへ戻す）
             .OnComplete(ReturnToPool);
     }
+
     /// <summary>
-    /// プールに戻す
+    /// プールに戻す関数
     /// </summary>
     public void ReturnToPool()
     {
+        //プールに戻す関数が呼ばれていることをログで表示
         DebugManager.Log("ReturnToPool called");
 
         //現在再生中のDOTweenシーケンスを停止、何も入っていない状態にする
@@ -116,7 +121,7 @@ public class ComboEffectController : MonoBehaviour, IUIEffectPoolable<ComboEffec
         comboText.alpha = resetConfig.StartAlpha;
         comboText.transform.localScale = resetConfig.StartScale;
 
-
+        //テキストのオブジェクトを非表示に
         comboText.gameObject.SetActive(false);
 
         //プールに戻す

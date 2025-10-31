@@ -57,20 +57,12 @@ public class TextBasicSettings
     /// <summary>
     /// 表示するアニメーションテキスト の読み取り専用 
     /// </summary>
-    internal string DisplayText
-    {
-        get { return displayText; }
-        set { displayText = value; }
-    }
+    internal string DisplayText => displayText;
 
     /// <summary>
     /// アニメーションの文字色の読み取り専用
     /// </summary>
-    internal Color TextColor
-    {
-        get { return textColor; }
-        set { textColor = value; }
-    }
+    internal Color TextColor => textColor;
 
     /// <summary>
     ///アニメーションの文字の大きさの読み取り専用
