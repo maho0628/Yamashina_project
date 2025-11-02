@@ -117,7 +117,8 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
 
     /// <summary>
     /// ノートマネージャーの初期化が完了したときに呼ばれるイベント。
-    /// 初期化後に実行すべき処理を外部でフックする用途に使用。    /// </summary>
+    /// 初期化後に実行すべき処理を外部でフックする用途に使用。    
+    /// </summary>
     private event Action OnInitialized;
 
     #endregion
@@ -147,7 +148,8 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
 
     /// <summary>
     /// ノートの生成（Spawn）処理を許可するフラグを立てる。
-    /// 初期化完了後、音楽再生とタイミングを合わせてノート生成を開始させるために使用。    /// </summary>
+    /// 初期化完了後、音楽再生とタイミングを合わせてノート生成を開始させるために使用。    
+    /// </summary>
     internal void AllowNoteSpawning() => canSpawnNotes = true;
 
     #endregion
@@ -184,6 +186,7 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
         // アクティブなノーツの中から対象レーンの未ヒットノーツを探す
         foreach (var note in activeNotes)
         {
+            //ノーツが既にヒットしているもしくはアクションが対応しているレーンの番号ではないなら
             if (note.IsHit || note.LaneNumber != laneIndex) continue;
 
             // 現在時刻との時間差を計算し、最も近いノーツを記録
@@ -198,10 +201,11 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
     }
 
     /// <summary>
-    /// 
+    /// 再度ゲームプレイ時に初期化を行うための関数
     /// </summary>
     internal void ResetForNewScene()
     {
+        //全部リセット
         notesSpawned = false;
         isInitialized = false;
         canSpawnNotes = false;
@@ -416,6 +420,8 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
         Vector2 endPos = new Vector2(posX, noteTimingConfig.EndY);
 
         var noteUI = notePool.Get();
+
+        //laneContainerの子オブジェクトに、noteUIを設定
         noteUI.transform.SetParent(laneContainer, false);
         noteUI.GetComponent<RectTransform>().anchoredPosition = startPos;
         noteUI.Setup(noteData.SpawnTime, noteTimingConfig.ScrollDuration, startPos, endPos, noteData);
@@ -440,6 +446,7 @@ public class NoteManager : SingletonMonoBehaviour<NoteManager>
 
             if (currentTime - note.SpawnTime > missWindow)
             {
+                //ミス判定を反映し各種エフェクトを表示
                 JudgementManager.Instance.ApplyJudgement(missJudgementConfig, note.LaneNumber);
                 AnimationManager.Instance.ShowScoreEffect(missJudgementConfig);
                 AnimationManager.Instance.ShowJudgeEffect(missJudgementConfig);
